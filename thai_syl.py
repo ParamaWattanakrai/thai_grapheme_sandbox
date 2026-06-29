@@ -1,0 +1,218 @@
+import re
+
+ONSETS = {
+    'k': ['ก'], 'kʰ': ['ข', 'ฃ', 'ค', 'ฅ', 'ฆ'], 'ŋ': ['ง'],
+    't͡ɕ': ['จ'], 't͡ɕʰ': ['ช', 'ฌ'],
+    'd': ['ฎ', 'ด'], 't': ['ฏ', 'ต'], 'tʰ': ['ฐ', 'ฑ', 'ฒ', 'ถ', 'ท', 'ธ'], 'n': ['ณ', 'น'],
+    'b': ['บ'], 'p': ['ป'], 'pʰ': ['ผ', 'พ', 'ภ'], 'f': ['ฝ', 'ฟ'], 'm': ['ม'],
+    'j': ['ญ', 'ย'], 'r': ['ร'], 'l': ['ล', 'ฬ'], 'w': ['ว'],
+    's': ['ซ', 'ศ', 'ษ', 'ส'], 'h': ['ห', 'ฮ'], 'ʔ': ['อ']
+}
+
+CODAS = {
+    'k̚': ['ก', 'ข', 'ฃ', 'ค', 'ฅ', 'ฆ'], 'p̚': ['บ', 'ป', 'ผ', 'พ', 'ภ'],
+    't̚': ['จ', 'ฉ', 'ช', 'ซ', 'ฌ', 'ฎ', 'ฏ', 'ฐ', 'ฑ', 'ฒ', 'ด', 'ต', 'ถ', 'ท', 'ธ', 'ศ', 'ษ', 'ส'],
+    'n': ['ญ', 'ณ', 'น', 'ร', 'ล', 'ฬ'], 'm': ['ม'], 'ŋ': ['ง'], 'w': ['ว'], 'j': ['ย'],
+    '': ['']
+}
+
+CONSONANT_CLASSES = {
+    'mid': ['ก', 'จ', 'ฎ', 'ฏ', 'ด', 'ต', 'บ', 'ป', 'อ'],
+    'high': ['ข', 'ฃ', 'ฉ', 'ฐ', 'ถ', 'ผ', 'ฝ', 'ศ', 'ษ', 'ส', 'ห'],
+    'low': [ 'ค', 'ฅ', 'ฆ', 'ง', 'ช', 'ซ', 'ฌ', 'ญ', 'ฑ', 'ฒ', 'ณ', 'ท', 'ธ', 'น', 'พ', 'ฟ', 'ภ', 'ม', 'ย', 'ร', 'ล', 'ว', 'ฬ', 'ฮ']
+}
+
+def get_key(dictionary, value):
+    for k, v in dictionary.items():
+        if value in v:
+            return k
+
+def expand(pattern: str) -> str:
+    return (
+        pattern
+        .replace('f', r'(?:c[ุิ]?[์])')  # Final
+        .replace('x', r'($|(?=[\s+เ-ไๆ๏๚๛]|c[ะ-ฺ]))')  # Exclude
+        .replace('r', r'(?:c์)')  # Foreign
+        .replace('y', r'(?:cฺ?|c๎?)')  # Yamakkan
+        .replace('p', r'(cฺ?)')  # Pali Coda
+        .replace('c', r'[ก-ฮ]')  # Consonant
+        .replace('t', r'[่-๋]')  # Tone Marker
+        .replace('u', r'[กจฏฎดตบปอ]')  # Unaspirated
+        .replace('v', r'[งญณนมย-ว]')  # Sonorants
+        .replace('m', r'[ร-ว]')  # Medials
+        .strip()
+    )
+
+def get_consonants(text: str, vowel_form: tuple[str, str]) -> tuple[str, str]:
+    prefix, suffix = vowel_form
+
+    start = len(prefix)
+
+    if suffix:
+        suffix_pos = text.rfind(suffix)
+        onset_cluster = text[start:suffix_pos]
+        coda_cluster = text[suffix_pos + len(suffix):]
+    else:
+        onset_cluster = text[start:]
+        coda_cluster = ''
+
+    return onset_cluster, coda_cluster
+
+def get_vowel(text: str) -> tuple[tuple[str, str], str]:
+    if re.fullmatch(expand(r'เy*ct?อะr?p*f?'), text):
+        vowel_form = ('เ', 'อะ')
+        vowel = 'ɤ'
+    elif re.fullmatch(expand(r'เy*ct?าะr?p*f?'), text):
+        vowel_form = ('เ', 'าะ')
+        vowel = 'ɔ'
+    elif re.fullmatch(expand(r'เy*ct?ะr?p*f?'), text):
+        vowel_form = ('เ', 'ะ')
+        vowel = 'e'
+    elif re.fullmatch(expand(r'เy*ct?าr?p*f?'), text):
+        vowel_form = ('เ', 'า')
+        vowel = 'aw'
+    elif re.fullmatch(expand(r'เy*c็t?r?p+f?'), text):
+        vowel_form = ('เ', '็')
+        vowel = 'e'
+    elif re.fullmatch(expand(r'เy*ct?อr?p*f?'), text):
+        vowel_form = ('เ', 'อ')
+        vowel = 'ɤː'
+    elif re.fullmatch(expand(r'เy*ct?ยr?p*f?'), text):
+        vowel_form = ('เ', 'ย')
+        vowel = 'ɤːj'
+    elif re.fullmatch(expand(r'โy*ct?ะr?p*f?'), text):
+        vowel_form = ('โ', 'ะ')
+        vowel = 'o'
+    elif re.fullmatch(expand(r'แy*ct?ะr?p*f?'), text):
+        vowel_form = ('แ', 'ะ')
+        vowel = 'ɛ'
+    elif re.fullmatch(expand(r'แy*c็t?r?p+f?'), text):
+        vowel_form = ('แ', '็')
+        vowel = 'ɛ'
+    elif re.fullmatch(expand(r'เy*cีt?ยะr?p*f?'), text):
+        vowel_form = ('เ', 'ียะ')
+        vowel = 'ia̯ː'
+    elif re.fullmatch(expand(r'เy*cีt?ยr?p*f?'), text):
+        vowel_form = ('เ', 'ีย')
+        vowel = 'ia̯'
+    elif re.fullmatch(expand(r'เy*cืt?อะr?p*f?'), text):
+        vowel_form = ('เ', 'ือะ')
+        vowel = 'ɯa̯ː'
+    elif re.fullmatch(expand(r'เy*cืt?อ?r?p*f?'), text):
+        vowel_form = ('เ', 'ือ')
+        vowel = 'ɯa̯'
+
+    elif re.fullmatch(expand(r'y*ct?ะr?p*f?'), text):
+        vowel_form = ('', 'ะ')
+        vowel = 'a'
+    elif re.fullmatch(expand(r'y*cัt?r?p+f?'), text):
+        vowel_form = ('', 'ั')
+        vowel = 'a'
+    elif re.fullmatch(expand(r'y*ct?าr?p*f?'), text):
+        vowel_form = ('', 'า')
+        vowel = 'aː'
+    elif re.fullmatch(expand(r'y*cิt?r?p*f?'), text):
+        vowel_form = ('', 'ิ')
+        vowel = 'i'
+    elif re.fullmatch(expand(r'y*cีt?r?p*f?'), text):
+        vowel_form = ('', 'ี')
+        vowel = 'iː'
+    elif re.fullmatch(expand(r'y*cือt?r?p*f?'), text):
+        vowel_form = ('', 'ือ')
+        vowel = 'ɯː'
+    elif re.fullmatch(expand(r'y*cืt?r?p*f?'), text):
+        vowel_form = ('', 'ื')
+        vowel = 'ɯ'
+    elif re.fullmatch(expand(r'y*cึt?r?p*f?'), text):
+        vowel_form = ('', 'ึ')
+        vowel = 'ɯː'
+    elif re.fullmatch(expand(r'y*cุt?r?p*f?'), text):
+        vowel_form = ('', 'ุ')
+        vowel = 'u'
+    elif re.fullmatch(expand(r'y*cูt?r?p*f?'), text):
+        vowel_form = ('', 'ู')
+        vowel = 'uː'
+    elif re.fullmatch(expand(r'y*c็t?อr?p+f?'), text):
+        vowel_form = ('', '็อ')
+        vowel = 'ɔ'
+    elif re.fullmatch(expand(r'y*cัt?วะf?'), text):
+        vowel_form = ('', 'ัวะ')
+        vowel = 'ua̯'
+    elif re.fullmatch(expand(r'y*cัt?วf?'), text):
+        vowel_form = ('', 'ัว')
+        vowel = 'ua̯'
+    elif re.fullmatch(expand(r'y*ฤp*f?'), text):
+        vowel_form = ('', 'ฤ')
+        vowel = 'rɯ'
+    elif re.fullmatch(expand(r'y*ฦp*f?'), text):
+        vowel_form = ('', 'ฦ')
+        vowel = 'lɯ'
+
+    elif re.fullmatch(expand(r'y*ct?รรp*f?'), text):
+        vowel_form = ('', 'รร')
+        vowel = 'a'
+    elif re.fullmatch(expand(r'y*ct?อr?p*f?'), text):
+        vowel_form = ('', 'อ')
+        vowel = 'ɔː'
+    elif re.fullmatch(expand(r'y*ct?วr?p*f?'), text):
+        vowel_form = ('', 'ว')
+        vowel = 'ua̯'
+
+    elif re.fullmatch(expand(r'เy*ct?r?p*f?'), text):
+        vowel_form = ('เ', '')
+        vowel = 'eː'
+    elif re.fullmatch(expand(r'โy*ct?r?p*f?'), text):
+        vowel_form = ('โ', '')
+        vowel = 'oː'
+    elif re.fullmatch(expand(r'แy*ct?r?p*f?'), text):
+        vowel_form = ('แ', '')
+        vowel = 'ɛː'
+    elif re.fullmatch(expand(r'ไy*ct?r?p*f?'), text):
+        vowel_form = ('ไ', '')
+        vowel = 'aj'
+    elif re.fullmatch(expand(r'ใy*ct?r?p*f?'), text):
+        vowel_form = ('ใ', '')
+        vowel = 'aɰ'
+
+    elif re.fullmatch(expand(r'y*cp+f?'), text):
+        vowel_form = ('', '')
+        vowel = 'o, ɔː'
+    elif re.fullmatch(expand(r'y*cf?'), text):
+        vowel_form = ('', '')
+        vowel = 'a'
+
+    return vowel_form, vowel
+
+def extract(text: str) -> dict:
+    vowel_form, vowel = get_vowel(text)
+    onset_cluster, coda_cluster = get_consonants(text, vowel_form)
+
+    consonant_class = get_key(CONSONANT_CLASSES, onset_cluster[0])
+    
+    if len(onset_cluster) == 2 and onset_cluster[1] in ['ร', 'ล', 'ว']:
+        if (onset_cluster[1] in ['ร', 'ล'] and \
+            onset_cluster[0] in ['ก', 'ข', 'ฃ', 'ค', 'ฅ', 'ต', 'ป', 'พ']) or \
+            onset_cluster[1] == 'ว' and onset_cluster[0] in ['ก', 'ข', 'ฃ', 'ค', 'ฅ']:
+            true_cluster = 'true'
+            onset = get_key(ONSETS, onset_cluster[0]) + get_key(ONSETS, onset_cluster[1])
+        if 
+                
+
+    coda_letter = ''
+    if len(coda_cluster) >= 3 and coda_cluster[0] in ['ร', 'ห'] and coda_cluster[2] != '์':
+        coda_letter = coda_cluster[1]
+    elif len(coda_cluster) >= 2 and coda_cluster[1] != '์':
+        coda_letter = coda_cluster[0]
+    elif len(coda_cluster) == 1:
+        coda_letter = coda_cluster[0]
+
+    coda = get_key(CODAS, coda_letter)
+
+    if vowel == 'o, ɔː':
+        if re.fullmatch(expand(r'รf?'), coda_cluster):
+            vowel = 'ɔː'
+            coda = 'n'
+        else:
+            vowel = 'o'
+
+    print(vowel_form, vowel, onset_cluster, coda_cluster, coda)

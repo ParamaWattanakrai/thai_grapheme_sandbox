@@ -1,3 +1,4 @@
+# ควบไม่แท้
 import thai_ipa
 
 from enum import Enum
@@ -39,14 +40,18 @@ TONE_MARKERS = {'่', '้', '๊', '๋'}
 
 DIACRITICS = {'ฺ', '๎'}
 
+FRONT_VOWELS = {'เ','แ','โ','ใ','ไ'}
+
 def align(text: str, ipa: str) -> list[dict]:
     '''
-    Aligns Thai grapheme with Thai IPA transcription into syllables and their grapheme roles
+    Aligns Thai grapheme with Thai IPA transcription into syllables and assign each grapheme roles
     '''
     result = []
 
     i = -1
+
     for phoneme in thai_ipa.parse(ipa):
+        # If phoneme == final cluster then reduplication
         syllable = {}
 
         state = State.START
@@ -54,29 +59,38 @@ def align(text: str, ipa: str) -> list[dict]:
         while i < len(text) - 1:
             i += 1
             char = text[i]
+            next_char = text[i + 1]
 
             if state == State.START:
                 # if not ('ก' <= char <= 'ฮ' or \
                 #     'ะ' <= char <= 'ฺ' or \
                 #     'เ' <= char <= '๎'):
                 #     break
-                if char in VOWELS:
+                if char in FRONT_VOWELS:
                     syllable['char'].append({char: ['vowel']})
                     continue
-                if char == 'ห':
-                    if phoneme['initial'] != 'h':
-                        syllable['char'].append({char: ['leading']})
-                        continue
-                if char == 'อ':
-                    if phoneme['initial'] != 'ʔ':
-                        syllable['char'].append({char: ['leading']})
-                        continue
-                if 'ก' <= char <= 'ฮ':
+                if next_char == 'ร' and \
+                (phoneme['initial'] == 't͡ɕ' and char == 'จ') or \
+                (phoneme['initial'] == 's' and (char == 'ซ' or char == 'ท' or char == 'ศ' or char == 'ส')):
                     syllable['char'].append({char: ['initial']})
+                    syllable['char'].append({next_char: ['medial']})
+                    i += 1
+                    state = State.INITIAL
+                    continue
+                if (char == 'ห' and phoneme['initial'] != 'h') or \
+                (char == 'อ' and phoneme['initial'] != 'ʔ') and \
+                (next_char in INITIALS[phoneme['initial']]):
+                    syllable['char'].append({char: ['leading']})
+                    syllable['char'].append({next_char: ['initial']})
+                    i += 1
                     state = State.INITIAL
                     continue
                 if char in DIACRITICS:
                     syllable['char'].append({char: ['diacritic']})
+                    continue
+                if char in INITIALS[phoneme['initial']]:
+                    syllable['char'].append({char: ['initial']})
+                    state = State.INITIAL
                     continue
 
             if state == State.INITIAL:
