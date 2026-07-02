@@ -1,25 +1,54 @@
 import re
 
-ONSETS = {
+SANSKRIT_CONSONANTS = {
+    'k': ['ก'], 'kʰ': ['ข', 'ฃ'], 'g': ['ค', 'ฅ'], 'ɡʱ': ['ฆ'], 'ŋ': ['ง'],
+    't͡ɕ': ['จ'], 't͡ɕʰ': ['ฉ'], 'd͡ʑ': ['ช', 'ซ'], 'd͜ʑʱ': ['ฌ'], 'ɲ': ['ญ'],
+    'ʈ': ['ฎ', 'ฏ'], 'ʈʰ': ['ฐ'], 'ɖ': ['ฑ'], 'ɖʱ': ['ฒ'], 'ɳ': [],
+    't': ['ด', 'ต'], 'tʰ': ['ถ'], 'd': ['ท'], 'dʱ': ['ธ'], 'n': ['ณ', 'น'],
+    'p': ['บ', 'ป'], 'pʰ': ['ผ', 'ฝ'], 'b': ['พ', 'ฟ'], 'bʱ': ['ภ'], 'v': ['ฟ'], 'm': ['ม'],
+    'j': ['ย'], 'ɾ': ['ร'], 'l': ['ล'], 'w': ['ว'],
+    'ɕ': ['ศ'], 'ʂ': ['ษ'], 's': ['ส'], 'h': ['ห', 'ฮ'], 'ɭ': ['ฬ'], 'ʔ': ['อ']
+}
+
+THAI_ONSETS = {
     'k': ['ก'], 'kʰ': ['ข', 'ฃ', 'ค', 'ฅ', 'ฆ'], 'ŋ': ['ง'],
-    't͡ɕ': ['จ'], 't͡ɕʰ': ['ช', 'ฌ'],
+    't͡ɕ': ['จ'], 't͡ɕʰ': ['ฉ', 'ช', 'ฌ'],
     'd': ['ฎ', 'ด'], 't': ['ฏ', 'ต'], 'tʰ': ['ฐ', 'ฑ', 'ฒ', 'ถ', 'ท', 'ธ'], 'n': ['ณ', 'น'],
     'b': ['บ'], 'p': ['ป'], 'pʰ': ['ผ', 'พ', 'ภ'], 'f': ['ฝ', 'ฟ'], 'm': ['ม'],
     'j': ['ญ', 'ย'], 'r': ['ร'], 'l': ['ล', 'ฬ'], 'w': ['ว'],
     's': ['ซ', 'ศ', 'ษ', 'ส'], 'h': ['ห', 'ฮ'], 'ʔ': ['อ']
 }
 
+OLD_THAI_ONSETS = {
+    'k': ['ก'], 'kʰ': ['ข'], 'x': ['ฃ'], 'g': ['ค', 'ฆ'], 'ɣ': ['ฅ'], 'ŋ': ['ง'],
+    't͡ɕ': ['จ'], 't͡ɕʰ': ['ฉ'], 'ʑ': ['ช'], 'z': ['ซ', 'ฌ'], 'ɲ': ['ญ'],
+    'ˀd': ['ฎ', 'ด'], 't': ['ฏ', 'ต'], 'tʰ': ['ฐ', 'ถ'], 'd': ['ฑ', 'ฒ', 'ท', 'ธ'], 'n': ['ณ', 'น'],
+    'ˀb': ['บ'], 'p': ['ป'], 'pʰ': ['ผ'], 'f': ['ฝ'], 'b': ['พ', 'ภ'], 'v': ['ฟ'], 'm': ['ม'],
+    'j': ['ย'], 'r': ['ร'], 'l': ['ล', 'ฬ'], 'w': ['ว'],
+    's': ['ศ', 'ษ', 'ส'], 'h': ['ห', 'ฮ'], 'ʔ': ['อ']
+}
+
+DIGRAPHS = {
+    'ŋ̊': ['หง'], 'ɲ̊': ['หญ'], 'n̥': ['หน'], 'm̥': ['หม'], 'j̊': ['หย'], 'r̥': ['หร'], 'l̥': ['หล'], 'w̥': ['หว'], 'ˀj': ['อย']
+}
+
 CODAS = {
     'k̚': ['ก', 'ข', 'ฃ', 'ค', 'ฅ', 'ฆ'], 'p̚': ['บ', 'ป', 'ผ', 'พ', 'ภ'],
     't̚': ['จ', 'ฉ', 'ช', 'ซ', 'ฌ', 'ฎ', 'ฏ', 'ฐ', 'ฑ', 'ฒ', 'ด', 'ต', 'ถ', 'ท', 'ธ', 'ศ', 'ษ', 'ส'],
-    'n': ['ญ', 'ณ', 'น', 'ร', 'ล', 'ฬ'], 'm': ['ม'], 'ŋ': ['ง'], 'w': ['ว'], 'j': ['ย'],
+    'n': ['ญ', 'ณ', 'น', 'ร', 'ล', 'ฬ'], 'm': ['ม'], 'j': ['ย'], 'w': ['ว'], 'ŋ': ['ง'],
     '': ['']
 }
 
+CODA_TYPES = {
+    'dead': ['k̚', 'p̚', 't̚', 'ʔ'],
+    'live': ['n', 'm', 'j', 'w', 'ŋ', '']
+}
+
 CONSONANT_CLASSES = {
-    'mid': ['ก', 'จ', 'ฎ', 'ฏ', 'ด', 'ต', 'บ', 'ป', 'อ'],
-    'high': ['ข', 'ฃ', 'ฉ', 'ฐ', 'ถ', 'ผ', 'ฝ', 'ศ', 'ษ', 'ส', 'ห'],
-    'low': [ 'ค', 'ฅ', 'ฆ', 'ง', 'ช', 'ซ', 'ฌ', 'ญ', 'ฑ', 'ฒ', 'ณ', 'ท', 'ธ', 'น', 'พ', 'ฟ', 'ภ', 'ม', 'ย', 'ร', 'ล', 'ว', 'ฬ', 'ฮ']
+    'friction': ['ข', 'ฃ', 'ฉ', 'ฐ', 'ถ', 'ผ', 'ฝ', 'ศ', 'ษ', 'ส', 'ห'],
+    'unaspirated': ['ก', 'จ', 'ฏ', 'ต', 'ป'],
+    'glottalized': ['ฎ', 'ด', 'บ', 'อ'],
+    'voiced': [ 'ค', 'ฅ', 'ฆ', 'ง', 'ช', 'ซ', 'ฌ', 'ญ', 'ฑ', 'ฒ', 'ณ', 'ท', 'ธ', 'น', 'พ', 'ฟ', 'ภ', 'ม', 'ย', 'ร', 'ล', 'ว', 'ฬ', 'ฮ']
 }
 
 def get_key(dictionary, value):
@@ -30,7 +59,7 @@ def get_key(dictionary, value):
 def expand(pattern: str) -> str:
     return (
         pattern
-        .replace('f', r'(?:c[ุิ]?[์])')  # Final
+        .replace('f', r'(?:c[ุิ]?[์]?)')  # Final
         .replace('x', r'($|(?=[\s+เ-ไๆ๏๚๛]|c[ะ-ฺ]))')  # Exclude
         .replace('r', r'(?:c์)')  # Foreign
         .replace('y', r'(?:cฺ?|c๎?)')  # Yamakkan
@@ -183,21 +212,29 @@ def get_vowel(text: str) -> tuple[tuple[str, str], str]:
 
     return vowel_form, vowel
 
-def extract(text: str) -> dict:
-    vowel_form, vowel = get_vowel(text)
-    onset_cluster, coda_cluster = get_consonants(text, vowel_form)
+def get_onset(onset_cluster: str, dictionary: dict=OLD_THAI_ONSETS) -> tuple[str, bool]:
+    onset_letter = onset_cluster[0]
+    onset = get_key(dictionary, onset_letter)
+    cluster_type = None
 
-    consonant_class = get_key(CONSONANT_CLASSES, onset_cluster[0])
-    
     if len(onset_cluster) == 2 and onset_cluster[1] in ['ร', 'ล', 'ว']:
         if (onset_cluster[1] in ['ร', 'ล'] and \
             onset_cluster[0] in ['ก', 'ข', 'ฃ', 'ค', 'ฅ', 'ต', 'ป', 'พ']) or \
             onset_cluster[1] == 'ว' and onset_cluster[0] in ['ก', 'ข', 'ฃ', 'ค', 'ฅ']:
-            true_cluster = 'true'
-            onset = get_key(ONSETS, onset_cluster[0]) + get_key(ONSETS, onset_cluster[1])
-        if 
-                
+            cluster_type = True
+            onset = get_key(dictionary, onset_cluster[0]) + get_key(dictionary, onset_cluster[1])
+        elif onset_cluster[1] in ['จ', 'ซ', 'ท', 'ศ', 'ส'] and onset_cluster[1] == 'ร':
+            cluster_type = False
+            if onset_cluster == 'ทร':
+                onset = 'z'
+    
+    if len(onset_cluster) == 2 and ((onset_cluster == 'อย')  or \
+        (onset_cluster[0] == 'ห' and get_key(CODAS, onset_cluster[1]) == 'voiced')):
+        onset = get_key(DIGRAPHS, onset_cluster)
+    
+    return onset, cluster_type
 
+def get_coda(coda_cluster: str) -> str:
     coda_letter = ''
     if len(coda_cluster) >= 3 and coda_cluster[0] in ['ร', 'ห'] and coda_cluster[2] != '์':
         coda_letter = coda_cluster[1]
@@ -206,7 +243,60 @@ def extract(text: str) -> dict:
     elif len(coda_cluster) == 1:
         coda_letter = coda_cluster[0]
 
-    coda = get_key(CODAS, coda_letter)
+    return get_key(CODAS, coda_letter)
+
+def get_proto_tone(tone_marker: str, syllable_type: str, vowel_duration: str) -> str:
+    if tone_marker == '':
+        if syllable_type == 'live':
+            proto_tone = 'A'
+        elif vowel_duration == 'short':
+            proto_tone = 'DS'
+        else:
+            proto_tone = 'DL'
+    elif tone_marker == '่':
+        proto_tone = 'B'
+    elif tone_marker == '้':
+        proto_tone = 'C'
+    
+    return proto_tone
+
+def extract(text: str) -> dict:
+    vowel_form, vowel = get_vowel(text)
+    onset_cluster, coda_cluster = get_consonants(text, vowel_form)
+
+    ambiguous_cluster = False
+    if not vowel_form[1] and len(onset_cluster) > 1:
+        if re.search(expand(r't'), text):
+            onset_cluster, coda_cluster = re.split(expand(r't'), onset_cluster)
+        elif onset_cluster[2] in ['ิ', 'ุ', '์']:
+            onset_cluster, coda_cluster = onset_cluster[:1], onset_cluster[1:]
+        elif onset_cluster[1] == '๎':
+            onset_cluster, coda_cluster = onset_cluster[:3], onset_cluster[3:]
+            onset_cluster = re.sub(expand(r'๎'), '', onset_cluster)
+            coda_cluster = re.sub(expand(r'ฺ'), '', coda_cluster)
+        elif 'ฺ' in onset_cluster:
+            if onset_cluster[1] == 'ฺ':
+                onset_cluster, coda_cluster = onset_cluster[:3], onset_cluster[3:]
+            else:
+                onset_cluster, coda_cluster = onset_cluster[:1], onset_cluster[1:]
+            onset_cluster = re.sub(expand(r'ฺ'), '', onset_cluster)
+            coda_cluster = re.sub(expand(r'ฺ'), '', coda_cluster)
+        else:
+            if not ((onset_cluster[1] in ['ร', 'ล'] and \
+                onset_cluster[0] in ['ก', 'ข', 'ฃ', 'ค', 'ฅ', 'ต', 'ป', 'พ']) or \
+                onset_cluster[1] == 'ว' and onset_cluster[0] in ['ก', 'ข', 'ฃ', 'ค', 'ฅ']) or \
+                (onset_cluster[1] in ['จ', 'ซ', 'ท', 'ศ', 'ส'] and onset_cluster[1] == 'ร') or \
+                (onset_cluster[0] == 'ห' and get_key(CODAS, onset_cluster[1]) == 'voiced'):
+                onset_cluster, coda_cluster = onset_cluster[:1], onset_cluster[1:]
+            else:
+                ambiguous_cluster = True
+
+    tone_marker = "".join(re.findall(expand(r't'), text))
+    onset_cluster = re.sub(expand(r't'), '', onset_cluster)
+
+    consonant_class = get_key(CONSONANT_CLASSES, onset_cluster[0])
+    onset, cluster_type = get_onset(onset_cluster)
+    coda = get_coda(coda_cluster)
 
     if vowel == 'o, ɔː':
         if re.fullmatch(expand(r'รf?'), coda_cluster):
@@ -214,5 +304,23 @@ def extract(text: str) -> dict:
             coda = 'n'
         else:
             vowel = 'o'
+    
+    if vowel[-1] != 'ː':
+        vowel_duration = 'short'
+    else:
+        vowel_duration = 'long'
 
-    print(vowel_form, vowel, onset_cluster, coda_cluster, coda)
+    if vowel_duration == 'short' and not coda:
+        coda = 'ʔ'
+    
+    syllable_type = get_key(CODA_TYPES, coda)
+    proto_tone = get_proto_tone(tone_marker, syllable_type, vowel_duration)
+    if consonant_class in ['friction', 'unaspirated', 'glottalized']:
+        gedney_tone = proto_tone + '1'
+    else:
+        gedney_tone = proto_tone + '2'
+
+    print(vowel_form, vowel, onset_cluster, coda_cluster)
+    print(consonant_class, vowel_duration, syllable_type)
+    print(onset, vowel, coda, gedney_tone)
+    print(ambiguous_cluster)
