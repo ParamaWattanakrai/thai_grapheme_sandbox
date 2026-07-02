@@ -1,3 +1,3 @@
 import thai_syl
 
-print(thai_syl.extract('เหตุ'))
+print(thai_syl.extract('โดรน', False))
