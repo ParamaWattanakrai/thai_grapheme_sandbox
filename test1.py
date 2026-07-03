@@ -1,6 +1,6 @@
 import thai_syl
 
-old_thai = thai_syl.extract('ฃวา', force_cluster=False, sesquisyllable=False)
+old_thai = thai_syl.extract('เขมร', force_cluster=False, sesquisyllable=True)
 print(old_thai)
 standard_thai = thai_syl.sound_shift(old_thai, thai_syl.STANDARD_THAI_SOUND_SHIFTS)
 print(standard_thai)

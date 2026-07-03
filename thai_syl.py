@@ -380,7 +380,7 @@ def extract(text: str, force_cluster: bool=False, sesquisyllable: bool=False) ->
     reduplicable = False
     if coda_cluster and not '์' in coda_cluster:
         reduplicable = True
-        if len(coda_cluster) and coda_cluster[0] in ['ร', 'ห']:
+        if len(coda_cluster) > 1 and coda_cluster[0] in ['ร', 'ห']:
             reduplicated_cluster = coda_cluster[1:]
         else:
             reduplicated_cluster = coda_cluster
