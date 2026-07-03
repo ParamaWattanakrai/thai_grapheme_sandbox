@@ -36,7 +36,9 @@ ONSET_CLUSTERS = {
     'old_thai': ['คร', 'พร', 'กล', 'คล', 'ปล', 'พล', 'มล', 'กว', 'ขว', 'ฃว', 'คว', 'ฅว'], # งว?
     'old_khmer': ['กร', 'ตร', 'ทร', 'ปร', 'ผล', 'สร',
         'คร', 'พร', 'กล', 'คล', 'ปล', 'พล', 'มล', 'กว', 'คว'], # ขว?
-    'sanskrit': ['ศร'],
+    'sanskrit': ['ศร',
+        'กร', 'ตร', 'ทร', 'ปร', 'ผล', 'สร',
+        'คร', 'พร', 'กล', 'คล', 'ปล', 'พล', 'มล', 'กว', 'คว'],
     'invention': ['ขร', 'จร', 'ซร'],
     'foreign': ['บร', 'ดร']
 }
@@ -249,7 +251,7 @@ def get_onset(onset_cluster: str, force_cluster: bool=False, dictionary: dict=OL
     onset = get_key(dictionary, onset_letter)
     cluster_type = None
 
-    if len(onset_cluster) == 2 and onset_cluster[1] in ['ร', 'ล', 'ว']:
+    if len(onset_cluster) == 2:
         cluster_type = get_key(ONSET_CLUSTERS, onset_cluster)
         if cluster_type in ['old_thai', 'old_khmer'] or \
             (force_cluster and cluster_type in ['foreign']) or \
@@ -269,7 +271,10 @@ def get_coda(coda_cluster: str) -> str:
     if len(coda_cluster) >= 3 and coda_cluster[0] in ['ร', 'ห'] and coda_cluster[2] != '์':
         coda_letter = coda_cluster[1]
     elif len(coda_cluster) >= 2 and coda_cluster[1] != '์':
-        coda_letter = coda_cluster[0]
+        if coda_cluster[0] in ['ร', 'ห']:
+            coda_letter = coda_cluster[1]
+        else:
+            coda_letter = coda_cluster[0]
     elif len(coda_cluster) == 1:
         coda_letter = coda_cluster[0]
 
@@ -316,13 +321,12 @@ def extract(text: str, force_cluster: bool=False, sesquisyllable: bool=False) ->
         elif sesquisyllable:
             onset_cluster, coda_cluster = onset_cluster[:2], onset_cluster[2:]
         else:
+            cluster_type = get_key(ONSET_CLUSTERS, onset_cluster)
             if force_cluster:
                 onset_cluster, coda_cluster = onset_cluster[:2], onset_cluster[2:]
-            elif not (((onset_cluster[1] in ['ร', 'ล'] and \
-                onset_cluster[0] in ['ก', 'ข', 'ฃ', 'ค', 'ฅ', 'ต', 'ป', 'พ']) or \
-                onset_cluster[1] == 'ว' and onset_cluster[0] in ['ก', 'ข', 'ฃ', 'ค', 'ฅ']) or \
-                (onset_cluster[1] in ['จ', 'ซ', 'ท', 'ศ', 'ส'] and onset_cluster[1] == 'ร') or \
-                (onset_cluster[0] == 'ห' and get_key(CONSONANT_CLASSES, onset_cluster[1]) == 'voiced')):
+            elif cluster_type in ['old_thai', 'old_khmer'] or \
+                (force_cluster and cluster_type in ['foreign']) or \
+                onset_cluster == 'ขร':
                 onset_cluster, coda_cluster = onset_cluster[:1], onset_cluster[1:]
             else:
                 ambiguous_cluster = True
@@ -333,8 +337,7 @@ def extract(text: str, force_cluster: bool=False, sesquisyllable: bool=False) ->
 
     consonant_class = get_key(CONSONANT_CLASSES, onset_cluster[0])
 
-    minor_consonant = None
-    minor_syllable = None
+    minor_consonant, minor_syllable = None, None
     if sesquisyllable:
         minor_consonant = onset_cluster[0]
         minor_syllable = get_key(OLD_THAI_ONSETS, minor_consonant) + 'ə'
@@ -347,6 +350,10 @@ def extract(text: str, force_cluster: bool=False, sesquisyllable: bool=False) ->
     epenthesizable = False
     if coda_cluster and not '์' in coda_cluster:
         epenthesizable = True
+        if len(coda_cluster) and coda_cluster[0] in ['ร', 'ห']:
+            epenthetic_cluster = coda_cluster[1:]
+        else:
+            epenthetic_cluster = coda_cluster
 
     if vowel == 'o, ɔː':
         if re.fullmatch(expand(r'รf?'), coda_cluster):
@@ -376,15 +383,28 @@ def extract(text: str, force_cluster: bool=False, sesquisyllable: bool=False) ->
     else:
         gedney_tone = proto_tone + '2'
 
+    if epenthesizable:
+        epenthesis_vowel_form, epenthesis_vowel = get_vowel(epenthetic_cluster)
+        if not epenthesis_vowel_form == ('', ''):
+            epenthesis_onset_cluster, _ = get_consonants(epenthetic_cluster, epenthesis_vowel_form)
+        else:
+            epenthesis_onset_cluster = epenthetic_cluster
+            epenthesis_vowel = 'ə'
+        epenthesis_onset, _ = get_onset(epenthesis_onset_cluster)
+    else:
+        epenthetic_cluster, epenthesis_onset, epenthesis_vowel = None, None, None
+
+
     return {
-        'vowel_form': vowel_form, 'minor_consonant': minor_consonant,'onset_cluster': onset_cluster, 'tone_marker': tone_marker, 'coda_cluster': coda_cluster,
+        'vowel_form': vowel_form, 'minor_consonant': minor_consonant,'onset_cluster': onset_cluster, 'tone_marker': tone_marker, 'coda_cluster': coda_cluster, 'epenthetic_cluster': epenthetic_cluster,
         'consonant_class': consonant_class, 'vowel_duration': vowel_duration, 'syllable_type': syllable_type,
-        'minor_syllable': minor_syllable,'onset': onset, 'vowel': vowel, 'coda': coda, 'gedney_tone': gedney_tone, 'tone': proto_tone,
+        'minor_syllable': minor_syllable,
+        'onset': onset, 'vowel': vowel, 'coda': coda, 'gedney_tone': gedney_tone, 'tone': proto_tone,
+        'epenthesis_onset': epenthesis_onset, 'epenthesis_vowel': epenthesis_vowel,
         'ambiguous_cluster': ambiguous_cluster, 'epenthesizable': epenthesizable
     }
 
 def merge_sounds(sound: str, dictionary: list[tuple[list[str], str]]) -> str:
-    print(dictionary)
     for old_sounds, new_sound in dictionary:
         for old_sound in old_sounds:
             sound = sound.replace(old_sound, new_sound)
