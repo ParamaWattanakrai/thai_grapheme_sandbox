@@ -292,22 +292,54 @@ def get_coda(coda_cluster: str) -> str:
 
     return get_key(CODAS, coda_letter)
 
-def get_proto_tone(tone_marker: str, syllable_type: str, vowel_duration: str) -> str:
+def get_old_tone(tone_marker: str, syllable_type: str, vowel_duration: str) -> str:
     if tone_marker == '':
         if syllable_type == 'live':
-            proto_tone = 'A'
+            old_tone = 'A'
         elif vowel_duration == 'short':
-            proto_tone = 'DS'
+            old_tone = 'DS'
         else:
-            proto_tone = 'DL'
+            old_tone = 'DL'
     elif tone_marker == '่':
-        proto_tone = 'B'
+        old_tone = 'B'
     elif tone_marker == '้':
-        proto_tone = 'C'
+        old_tone = 'C'
     elif tone_marker in ['๊', '๋']:
-        proto_tone = None
+        old_tone = None
     
-    return proto_tone
+    return old_tone
+
+def get_tones(tone_marker: str, consonant_class: str, syllable_type: str, vowel_duration: str) -> tuple[str, str, str]:
+    if tone_marker == '':
+        if syllable_type == 'live':
+            old_tone = 'A'
+        elif vowel_duration == 'short':
+            old_tone = 'DS'
+        else:
+            old_tone = 'DL'
+    elif tone_marker == '่':
+        old_tone = 'B'
+    elif tone_marker == '้':
+        old_tone = 'C'
+    elif tone_marker in ['๊', '๋']:
+        old_tone = None
+
+    old_tone = get_old_tone(tone_marker, syllable_type, vowel_duration)
+    if not old_tone:
+        gedney_tone = None
+    elif consonant_class in ['friction', 'unaspirated', 'glottalized']:
+        gedney_tone = old_tone + '1'
+    else:
+        gedney_tone = old_tone + '2'
+
+    if tone_marker == '๊':
+            tone_split = 'mai_tri'
+    elif tone_marker == '๋':
+        tone_split = 'mai_chattawa'
+    else:
+        tone_split = gedney_tone + consonant_class
+    
+    return tone_split, gedney_tone, old_tone
 
 def extract(text: str, force_cluster: bool=False, sesquisyllable: bool=False) -> dict:
     vowel_form, vowel = get_vowel(text)
@@ -396,13 +428,8 @@ def extract(text: str, force_cluster: bool=False, sesquisyllable: bool=False) ->
         coda = 'ʔ'
     
     syllable_type = get_key(CODA_TYPES, coda)
-    proto_tone = get_proto_tone(tone_marker, syllable_type, vowel_duration)
-    if not proto_tone:
-        gedney_tone = None
-    elif consonant_class in ['friction', 'unaspirated', 'glottalized']:
-        gedney_tone = proto_tone + '1'
-    else:
-        gedney_tone = proto_tone + '2'
+    
+    tone_split, gedney_tone, old_tone = get_tones(tone_marker, consonant_class, syllable_type, vowel_duration)
 
     if reduplicable:
         reduplicated_vowel_form, reduplicated_vowel = get_vowel(reduplicated_cluster)
@@ -420,7 +447,7 @@ def extract(text: str, force_cluster: bool=False, sesquisyllable: bool=False) ->
         'vowel_form': vowel_form, 'minor_consonant': minor_consonant,'onset_cluster': onset_cluster, 'tone_marker': tone_marker, 'coda_cluster': coda_cluster, 'reduplicated_cluster': reduplicated_cluster,
         'consonant_class': consonant_class, 'vowel_duration': vowel_duration, 'syllable_type': syllable_type,
         'minor_syllable': minor_syllable,
-        'onset': onset, 'medial': medial, 'vowel': vowel, 'coda': coda, 'gedney_tone': gedney_tone, 'tone': proto_tone,
+        'onset': onset, 'medial': medial, 'vowel': vowel, 'coda': coda, 'tone_split': tone_split, 'gedney_tone': gedney_tone, 'tone': old_tone,
         'reduplicated_onset': reduplicated_onset, 'reduplicated_medial': reduplicated_medial, 'reduplicated_vowel': reduplicated_vowel,
         'ambiguous_cluster': ambiguous_cluster, 'reduplicable': reduplicable
     }
@@ -458,16 +485,9 @@ def sound_shift(old_syllable: dict, dialect: dict=STANDARD_THAI_SOUND_SHIFTS) ->
         syllable['coda'] = merge_sounds(syllable['coda'], dialect['codas'])
 
     if dialect.get('tones'):
-        if syllable['tone_marker'] == '๊':
-            tone_split = 'mai_tri'
-        elif syllable['tone_marker'] == '๋':
-            tone_split = 'mai_chattawa'
-        else:
-            tone_split = syllable['gedney_tone'] + syllable['consonant_class']
         for tone, tone_splits in dialect['tones'].items():
-            if tone_split in tone_splits:
+            if syllable['tone_split'] in tone_splits:
                 syllable['tone'] = tone
-        print(tone_split)
 
     return syllable
 
