@@ -347,13 +347,13 @@ def extract(text: str, force_cluster: bool=False, sesquisyllable: bool=False) ->
 
     coda = get_coda(coda_cluster)
 
-    epenthesizable = False
+    reduplicable = False
     if coda_cluster and not '์' in coda_cluster:
-        epenthesizable = True
+        reduplicable = True
         if len(coda_cluster) and coda_cluster[0] in ['ร', 'ห']:
-            epenthetic_cluster = coda_cluster[1:]
+            reduplicated_cluster = coda_cluster[1:]
         else:
-            epenthetic_cluster = coda_cluster
+            reduplicated_cluster = coda_cluster
 
     if vowel == 'o, ɔː':
         if re.fullmatch(expand(r'รf?'), coda_cluster):
@@ -383,25 +383,25 @@ def extract(text: str, force_cluster: bool=False, sesquisyllable: bool=False) ->
     else:
         gedney_tone = proto_tone + '2'
 
-    if epenthesizable:
-        epenthesis_vowel_form, epenthesis_vowel = get_vowel(epenthetic_cluster)
-        if not epenthesis_vowel_form == ('', ''):
-            epenthesis_onset_cluster, _ = get_consonants(epenthetic_cluster, epenthesis_vowel_form)
+    if reduplicable:
+        reduplicated_vowel_form, reduplicated_vowel = get_vowel(reduplicated_cluster)
+        if not reduplicated_vowel_form == ('', ''):
+            reduplicated_onset_cluster, _ = get_consonants(reduplicated_cluster, reduplicated_vowel_form)
         else:
-            epenthesis_onset_cluster = epenthetic_cluster
-            epenthesis_vowel = 'ə'
-        epenthesis_onset, _ = get_onset(epenthesis_onset_cluster)
+            reduplicated_onset_cluster = reduplicated_cluster
+            reduplicated_vowel = 'ə'
+        reduplicated_onset, _ = get_onset(reduplicated_onset_cluster)
     else:
-        epenthetic_cluster, epenthesis_onset, epenthesis_vowel = None, None, None
+        reduplicated_cluster, reduplicated_onset, reduplicated_vowel = None, None, None
 
 
     return {
-        'vowel_form': vowel_form, 'minor_consonant': minor_consonant,'onset_cluster': onset_cluster, 'tone_marker': tone_marker, 'coda_cluster': coda_cluster, 'epenthetic_cluster': epenthetic_cluster,
+        'vowel_form': vowel_form, 'minor_consonant': minor_consonant,'onset_cluster': onset_cluster, 'tone_marker': tone_marker, 'coda_cluster': coda_cluster, 'reduplicated_cluster': reduplicated_cluster,
         'consonant_class': consonant_class, 'vowel_duration': vowel_duration, 'syllable_type': syllable_type,
         'minor_syllable': minor_syllable,
         'onset': onset, 'vowel': vowel, 'coda': coda, 'gedney_tone': gedney_tone, 'tone': proto_tone,
-        'epenthesis_onset': epenthesis_onset, 'epenthesis_vowel': epenthesis_vowel,
-        'ambiguous_cluster': ambiguous_cluster, 'epenthesizable': epenthesizable
+        'reduplicated_onset': reduplicated_onset, 'reduplicated_vowel': reduplicated_vowel,
+        'ambiguous_cluster': ambiguous_cluster, 'reduplicable': reduplicable
     }
 
 def merge_sounds(sound: str, dictionary: list[tuple[list[str], str]]) -> str:
@@ -421,9 +421,11 @@ def sound_shift(old_syllable: dict, dialect: dict=STANDARD_THAI_SOUND_SHIFTS) ->
     
     if dialect.get('onsets'):
         syllable['onset'] = merge_sounds(syllable['onset'], dialect['onsets'])
+        syllable['reduplicated_onset'] = merge_sounds(syllable['reduplicated_onset'], dialect['onsets'])
 
     if dialect.get('vowels'):
         syllable['vowel'] = merge_sounds(syllable['vowel'], dialect['vowels'])
+        syllable['reduplicated_vowel'] = merge_sounds(syllable['reduplicated_vowel'], dialect['vowels'])
 
     if dialect.get('codas'):
         syllable['coda'] = merge_sounds(syllable['coda'], dialect['codas'])
