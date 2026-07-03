@@ -61,7 +61,7 @@ CONSONANT_CLASSES = {
     'friction': ['ข', 'ฃ', 'ฉ', 'ฐ', 'ถ', 'ผ', 'ฝ', 'ศ', 'ษ', 'ส', 'ห'],
     'unaspirated': ['ก', 'จ', 'ฏ', 'ต', 'ป'],
     'glottalized': ['ฎ', 'ด', 'บ', 'อ'],
-    'voiced': [ 'ค', 'ฅ', 'ฆ', 'ง', 'ช', 'ซ', 'ฌ', 'ญ', 'ฑ', 'ฒ', 'ณ', 'ท', 'ธ', 'น', 'พ', 'ฟ', 'ภ', 'ม', 'ย', 'ร', 'ล', 'ว', 'ฬ', 'ฮ']
+    'voiced': [ 'ค', 'ฅ', 'ฆ', 'ง', 'ช', 'ซ', 'ฌ', 'ญ', 'ฑ', 'ฒ', 'ณ', 'ท', 'ธ', 'น', 'พ', 'ฟ', 'ภ', 'ม', 'ย', 'ร', 'ล', 'ว', 'ฬ', 'ฮ', 'ฤ', 'ฦ']
 }
 
 STANDARD_THAI_SOUND_SHIFTS = {
@@ -78,7 +78,7 @@ STANDARD_THAI_SOUND_SHIFTS = {
         '˦˩': ['B2voiced',
             'C1friction', 'C1unaspirated', 'C1glottal',
             'DL2voiced'],
-        '˦˥': ['C2glottal',
+        '˦˥': ['C2voiced',
             'DS2voiced', 'mai_tri'],
         '˨˥': ['A1friction', 'mai_chattawa'],
     }
@@ -176,6 +176,9 @@ def get_vowel(text: str) -> tuple[tuple[str, str], str]:
     elif re.fullmatch(expand(r'y*ct?าr?p*f?'), text):
         vowel_form = ('', 'า')
         vowel = 'aː'
+    elif re.fullmatch(expand(r'y*ct?ำr?f?'), text):
+        vowel_form = ('', 'ำ')
+        vowel = 'am'
     elif re.fullmatch(expand(r'y*cิt?r?p*f?'), text):
         vowel_form = ('', 'ิ')
         vowel = 'i'
@@ -249,6 +252,8 @@ def get_vowel(text: str) -> tuple[tuple[str, str], str]:
     return vowel_form, vowel
 
 def get_onset(onset_cluster: str, force_cluster: bool=False, dictionary: dict=OLD_THAI_ONSETS) -> tuple[str, bool]:
+    if not onset_cluster:
+        return None, None, None
     onset_letter = onset_cluster[0]
     onset = get_key(dictionary, onset_letter)
     medial = None
@@ -342,7 +347,10 @@ def extract(text: str, force_cluster: bool=False, sesquisyllable: bool=False) ->
     tone_marker = "".join(re.findall(expand(r't'), text))
     onset_cluster = re.sub(expand(r't'), '', onset_cluster)
 
-    consonant_class = get_key(CONSONANT_CLASSES, onset_cluster[0])
+    if len(onset_cluster) > 1:
+        consonant_class = get_key(CONSONANT_CLASSES, onset_cluster[0])
+    else:
+        consonant_class = get_key(CONSONANT_CLASSES, vowel_form[1])
 
     minor_consonant, minor_syllable = None, None
     if sesquisyllable:
@@ -369,9 +377,15 @@ def extract(text: str, force_cluster: bool=False, sesquisyllable: bool=False) ->
         else:
             vowel = 'o'
     
+    if vowel[0] in ['r', 'l']:
+        medial = vowel[0]
+        vowel = vowel[1]
     if vowel[-1] in ['j', 'w', 'm', 'ɰ']:
         coda = vowel[1]
         vowel = vowel[0]
+    if not onset and medial:
+        onset = medial
+        medial = None
 
     if vowel[-1] != 'ː':
         vowel_duration = 'short'
@@ -453,6 +467,7 @@ def sound_shift(old_syllable: dict, dialect: dict=STANDARD_THAI_SOUND_SHIFTS) ->
         for tone, tone_splits in dialect['tones'].items():
             if tone_split in tone_splits:
                 syllable['tone'] = tone
+        print(tone_split)
 
     return syllable
 
