@@ -1,3 +1,3 @@
 import thai_syl
 
-print(thai_syl.extract('เขมร', force_cluster=False, sesquisyllable=True))
+print(thai_syl.extract('โดรน', force_cluster=True, sesquisyllable=False))

@@ -32,6 +32,15 @@ DIGRAPHS = {
     'ŋ̊': ['หง'], 'ɲ̊': ['หญ'], 'n̥': ['หน'], 'm̥': ['หม'], 'j̊': ['หย'], 'r̥': ['หร'], 'l̥': ['หล'], 'w̥': ['หว'], 'ˀj': ['อย']
 }
 
+ONSET_CLUSTERS = {
+    'old_thai': ['คร', 'พร', 'กล', 'คล', 'ปล', 'พล', 'มล', 'กว', 'ขว', 'ฃว', 'คว', 'ฅว'], # งว?
+    'old_khmer': ['กร', 'ตร', 'ทร', 'ปร', 'ผล', 'สร',
+        'คร', 'พร', 'กล', 'คล', 'ปล', 'พล', 'มล', 'กว', 'คว'], # ขว?
+    'sanskrit': ['ศร'],
+    'invention': ['ขร', 'จร', 'ซร'],
+    'foreign': ['บร', 'ดร']
+}
+
 CODAS = {
     'k̚': ['ก', 'ข', 'ฃ', 'ค', 'ฅ', 'ฆ'], 'p̚': ['บ', 'ป', 'ผ', 'พ', 'ภ'],
     't̚': ['จ', 'ฉ', 'ช', 'ซ', 'ฌ', 'ฎ', 'ฏ', 'ฐ', 'ฑ', 'ฒ', 'ด', 'ต', 'ถ', 'ท', 'ธ', 'ศ', 'ษ', 'ส'],
@@ -215,20 +224,18 @@ def get_vowel(text: str) -> tuple[tuple[str, str], str]:
 
     return vowel_form, vowel
 
-def get_onset(onset_cluster: str, dictionary: dict=OLD_THAI_ONSETS) -> tuple[str, bool]:
+def get_onset(onset_cluster: str, force_cluster: bool=False, dictionary: dict=OLD_THAI_ONSETS) -> tuple[str, bool]:
     onset_letter = onset_cluster[0]
     onset = get_key(dictionary, onset_letter)
     cluster_type = None
 
     if len(onset_cluster) == 2 and onset_cluster[1] in ['ร', 'ล', 'ว']:
-        if (onset_cluster[1] in ['ร', 'ล'] and \
-            onset_cluster[0] in ['ก', 'ข', 'ฃ', 'ค', 'ฅ', 'ต', 'ป', 'พ']) or \
-            onset_cluster[1] == 'ว' and onset_cluster[0] in ['ก', 'ข', 'ฃ', 'ค', 'ฅ']:
-            cluster_type = True
+        cluster_type = get_key(ONSET_CLUSTERS, onset_cluster)
+        if cluster_type in ['old_thai', 'old_khmer'] or \
+            (force_cluster and cluster_type in ['foreign']) or \
+            onset_cluster == 'ขร':
             onset = get_key(dictionary, onset_cluster[0]) + get_key(dictionary, onset_cluster[1])
-        elif onset_cluster[1] in ['จ', 'ซ', 'ท', 'ศ', 'ส'] and onset_cluster[1] == 'ร':
-            cluster_type = False
-            if onset_cluster == 'ทร':
+        elif onset_cluster == 'ทร':
                 onset = 'z'
     
     if len(onset_cluster) == 2 and ((onset_cluster == 'อย')  or \
@@ -290,7 +297,9 @@ def extract(text: str, force_cluster: bool=False, sesquisyllable: bool=False) ->
         elif sesquisyllable:
             onset_cluster, coda_cluster = onset_cluster[:2], onset_cluster[2:]
         else:
-            if not (((onset_cluster[1] in ['ร', 'ล'] and \
+            if force_cluster:
+                onset_cluster, coda_cluster = onset_cluster[:2], onset_cluster[2:]
+            elif not (((onset_cluster[1] in ['ร', 'ล'] and \
                 onset_cluster[0] in ['ก', 'ข', 'ฃ', 'ค', 'ฅ', 'ต', 'ป', 'พ']) or \
                 onset_cluster[1] == 'ว' and onset_cluster[0] in ['ก', 'ข', 'ฃ', 'ค', 'ฅ']) or \
                 (onset_cluster[1] in ['จ', 'ซ', 'ท', 'ศ', 'ส'] and onset_cluster[1] == 'ร') or \
@@ -298,10 +307,7 @@ def extract(text: str, force_cluster: bool=False, sesquisyllable: bool=False) ->
                 onset_cluster, coda_cluster = onset_cluster[:1], onset_cluster[1:]
             else:
                 ambiguous_cluster = True
-                if force_cluster:
-                    onset_cluster, coda_cluster = onset_cluster[:2], onset_cluster[2:]
-                else:
-                    onset_cluster, coda_cluster = onset_cluster[:1], onset_cluster[1:]
+                onset_cluster, coda_cluster = onset_cluster[:1], onset_cluster[1:]
 
     tone_marker = "".join(re.findall(expand(r't'), text))
     onset_cluster = re.sub(expand(r't'), '', onset_cluster)
@@ -315,7 +321,7 @@ def extract(text: str, force_cluster: bool=False, sesquisyllable: bool=False) ->
         minor_syllable = get_key(OLD_THAI_ONSETS, minor_consonant) + 'ə'
         onset_cluster = onset_cluster[1:]
 
-    onset, cluster_type = get_onset(onset_cluster)
+    onset, cluster_type = get_onset(onset_cluster, force_cluster=force_cluster)
 
     coda = get_coda(coda_cluster)
 
@@ -354,5 +360,5 @@ def extract(text: str, force_cluster: bool=False, sesquisyllable: bool=False) ->
         'ambiguous_cluster': ambiguous_cluster, 'epenthesizable': epenthesizable
     }
 
-def sound_shift(syllable: dict) -> dict:
+def sound_shift(syllable: dict, dialect: str='') -> dict:
     pass
