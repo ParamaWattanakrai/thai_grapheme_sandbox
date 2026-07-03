@@ -103,6 +103,9 @@ def get_vowel(text: str) -> tuple[tuple[str, str], str]:
     elif re.fullmatch(expand(r'เy*c็t?r?p+f?'), text):
         vowel_form = ('เ', '็')
         vowel = 'e'
+    elif re.fullmatch(expand(r'เy*cิt?r?p+f?'), text):
+        vowel_form = ('เ', 'ิ')
+        vowel = 'e'
     elif re.fullmatch(expand(r'เy*ct?อr?p*f?'), text):
         vowel_form = ('เ', 'อ')
         vowel = 'ɤː'
@@ -257,10 +260,12 @@ def get_proto_tone(tone_marker: str, syllable_type: str, vowel_duration: str) ->
         proto_tone = 'B'
     elif tone_marker == '้':
         proto_tone = 'C'
+    elif tone_marker in ['๊', '๋']:
+        proto_tone = None
     
     return proto_tone
 
-def extract(text: str, no_cluster_alt: bool=False) -> dict:
+def extract(text: str, force_cluster: bool=False, sesquisyllable: bool=False) -> dict:
     # sesquisyllable
     vowel_form, vowel = get_vowel(text)
     onset_cluster, coda_cluster = get_consonants(text, vowel_form)
@@ -282,6 +287,8 @@ def extract(text: str, no_cluster_alt: bool=False) -> dict:
                 onset_cluster, coda_cluster = onset_cluster[:1], onset_cluster[1:]
             onset_cluster = re.sub(expand(r'ฺ'), '', onset_cluster)
             coda_cluster = re.sub(expand(r'ฺ'), '', coda_cluster)
+        elif sesquisyllable:
+            onset_cluster, coda_cluster = onset_cluster[:2], onset_cluster[2:]
         else:
             if not (((onset_cluster[1] in ['ร', 'ล'] and \
                 onset_cluster[0] in ['ก', 'ข', 'ฃ', 'ค', 'ฅ', 'ต', 'ป', 'พ']) or \
@@ -291,14 +298,25 @@ def extract(text: str, no_cluster_alt: bool=False) -> dict:
                 onset_cluster, coda_cluster = onset_cluster[:1], onset_cluster[1:]
             else:
                 ambiguous_cluster = True
-                if no_cluster_alt:
+                if force_cluster:
+                    onset_cluster, coda_cluster = onset_cluster[:2], onset_cluster[2:]
+                else:
                     onset_cluster, coda_cluster = onset_cluster[:1], onset_cluster[1:]
 
     tone_marker = "".join(re.findall(expand(r't'), text))
     onset_cluster = re.sub(expand(r't'), '', onset_cluster)
 
     consonant_class = get_key(CONSONANT_CLASSES, onset_cluster[0])
+
+    minor_consonant = None
+    minor_syllable = None
+    if sesquisyllable:
+        minor_consonant = onset_cluster[0]
+        minor_syllable = get_key(OLD_THAI_ONSETS, minor_consonant) + 'ə'
+        onset_cluster = onset_cluster[1:]
+
     onset, cluster_type = get_onset(onset_cluster)
+
     coda = get_coda(coda_cluster)
 
     epenthesizable = False
@@ -322,14 +340,19 @@ def extract(text: str, no_cluster_alt: bool=False) -> dict:
     
     syllable_type = get_key(CODA_TYPES, coda)
     proto_tone = get_proto_tone(tone_marker, syllable_type, vowel_duration)
-    if consonant_class in ['friction', 'unaspirated', 'glottalized']:
+    if not proto_tone:
+        gedney_tone = None
+    elif consonant_class in ['friction', 'unaspirated', 'glottalized']:
         gedney_tone = proto_tone + '1'
     else:
         gedney_tone = proto_tone + '2'
 
     return {
-        'vowel_form': vowel_form, 'onset_cluster': onset_cluster, 'tone_marker': tone_marker, 'coda_cluster': coda_cluster,
+        'vowel_form': vowel_form, 'minor_consonant': minor_consonant,'onset_cluster': onset_cluster, 'tone_marker': tone_marker, 'coda_cluster': coda_cluster,
         'consonant_class': consonant_class, 'vowel_duration': vowel_duration, 'syllable_type': syllable_type,
-        'onset': onset, 'vowel': vowel, 'coda': coda, 'gedney_tone': gedney_tone,
+        'minor_syllable': minor_syllable,'onset': onset, 'vowel': vowel, 'coda': coda, 'gedney_tone': gedney_tone,
         'ambiguous_cluster': ambiguous_cluster, 'epenthesizable': epenthesizable
     }
+
+def sound_shift(syllable: dict) -> dict:
+    pass
