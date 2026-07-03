@@ -415,9 +415,11 @@ def sound_shift(old_syllable: dict, dialect: dict=STANDARD_THAI_SOUND_SHIFTS) ->
     if dialect.get('epentheses'):
         for epenthesis in dialect['epentheses']:
             if syllable['onset'] == epenthesis:
-                syllable['minor_consonant'] = onset_cluster[0]
-                syllable['minor_syllable'] = get_key(OLD_THAI_ONSETS, minor_consonant) + 'ə'
-                syllable['onset_cluster'] = onset_cluster[1:]
+                syllable['minor_consonant'] = syllable['onset_cluster'][0]
+                syllable['minor_syllable'] = get_key(OLD_THAI_ONSETS, syllable['minor_consonant']) + 'ə'
+                syllable['onset_cluster'] = syllable['onset_cluster'][1:]
+                syllable['onset'] = syllable['onset'][-1]
+
     
     if dialect.get('onsets'):
         syllable['onset'] = merge_sounds(syllable['onset'], dialect['onsets'])

@@ -31,6 +31,8 @@ SORTED_INITIALS = sorted(INITIALS, key=len, reverse=True)
 SORTED_NUCLEI = sorted(NUCLEI, key=len, reverse=True)
 SORTED_CODAS = sorted(CODAS, key=len, reverse=True)
 
+def split_units(ipa: str) -> list[str]:
+    
 
 def parse(ipa: str) -> list[dict]: 
     '''
