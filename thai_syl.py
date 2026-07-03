@@ -293,7 +293,6 @@ def get_coda(coda_cluster: str) -> str:
     return get_key(CODAS, coda_letter)
 
 def get_tones(tone_marker: str, consonant_class: str, syllable_type: str, vowel_duration: str) -> tuple[str, str, str]:
-    print(tone_marker, consonant_class, syllable_type, vowel_duration)
     if not tone_marker:
         if syllable_type == 'live':
             old_tone = 'A'
