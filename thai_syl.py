@@ -292,31 +292,16 @@ def get_coda(coda_cluster: str) -> str:
 
     return get_key(CODAS, coda_letter)
 
-def get_old_tone(tone_marker: str, syllable_type: str, vowel_duration: str) -> str:
-    if tone_marker == '':
-        if syllable_type == 'live':
-            old_tone = 'A'
-        elif vowel_duration == 'short':
-            old_tone = 'DS'
-        else:
-            old_tone = 'DL'
-    elif tone_marker == '่':
-        old_tone = 'B'
-    elif tone_marker == '้':
-        old_tone = 'C'
-    elif tone_marker in ['๊', '๋']:
-        old_tone = None
-    
-    return old_tone
-
 def get_tones(tone_marker: str, consonant_class: str, syllable_type: str, vowel_duration: str) -> tuple[str, str, str]:
-    if tone_marker == '':
+    print(tone_marker, consonant_class, syllable_type, vowel_duration)
+    if not tone_marker:
         if syllable_type == 'live':
             old_tone = 'A'
-        elif vowel_duration == 'short':
-            old_tone = 'DS'
-        else:
-            old_tone = 'DL'
+        elif syllable_type == 'dead':
+            if vowel_duration == 'short':
+                old_tone = 'DS'
+            elif vowel_duration == 'long':
+                old_tone = 'DL'
     elif tone_marker == '่':
         old_tone = 'B'
     elif tone_marker == '้':
@@ -324,12 +309,11 @@ def get_tones(tone_marker: str, consonant_class: str, syllable_type: str, vowel_
     elif tone_marker in ['๊', '๋']:
         old_tone = None
 
-    old_tone = get_old_tone(tone_marker, syllable_type, vowel_duration)
     if not old_tone:
         gedney_tone = None
     elif consonant_class in ['friction', 'unaspirated', 'glottalized']:
         gedney_tone = old_tone + '1'
-    else:
+    elif consonant_class == 'voiced':
         gedney_tone = old_tone + '2'
 
     if tone_marker == '๊':
@@ -379,7 +363,7 @@ def extract(text: str, force_cluster: bool=False, sesquisyllable: bool=False) ->
     tone_marker = "".join(re.findall(expand(r't'), text))
     onset_cluster = re.sub(expand(r't'), '', onset_cluster)
 
-    if len(onset_cluster) > 1:
+    if len(onset_cluster) >= 1:
         consonant_class = get_key(CONSONANT_CLASSES, onset_cluster[0])
     else:
         consonant_class = get_key(CONSONANT_CLASSES, vowel_form[1])
@@ -419,15 +403,15 @@ def extract(text: str, force_cluster: bool=False, sesquisyllable: bool=False) ->
         onset = medial
         medial = None
 
-    if vowel[-1] != 'ː':
+    if vowel[-1] != 'ː' and len(vowel) == 1:
         vowel_duration = 'short'
     else:
         vowel_duration = 'long'
 
     if vowel_duration == 'short' and not coda:
         coda = 'ʔ'
-    
-    syllable_type = get_key(CODA_TYPES, coda)
+
+    syllable_type = get_key(CODA_TYPES, coda if coda else '')
     
     tone_split, gedney_tone, old_tone = get_tones(tone_marker, consonant_class, syllable_type, vowel_duration)
 
