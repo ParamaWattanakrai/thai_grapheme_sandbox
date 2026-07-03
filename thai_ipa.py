@@ -31,8 +31,31 @@ SORTED_INITIALS = sorted(INITIALS, key=len, reverse=True)
 SORTED_NUCLEI = sorted(NUCLEI, key=len, reverse=True)
 SORTED_CODAS = sorted(CODAS, key=len, reverse=True)
 
+SORTED_UNITS = sorted(
+    INITIALS | NUCLEI | CODAS | TONES | {'.'},
+    key=len,
+    reverse=True
+)
+
+
 def split_units(ipa: str) -> list[str]:
-    
+    """
+    Split an IPA string into its constituent units.
+    """
+    units = []
+    i = 0
+
+    while i < len(ipa):
+        for unit in SORTED_UNITS:
+            if ipa.startswith(unit, i):
+                units.append(unit)
+                i += len(unit)
+                break
+        else:
+            raise ValueError(f"Unknown IPA symbol at position {i}: {ipa[i:]!r}")
+
+    return units
+
 
 def parse(ipa: str) -> list[dict]: 
     '''
