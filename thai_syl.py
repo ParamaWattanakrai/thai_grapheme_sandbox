@@ -60,6 +60,26 @@ CONSONANT_CLASSES = {
     'voiced': [ 'ค', 'ฅ', 'ฆ', 'ง', 'ช', 'ซ', 'ฌ', 'ญ', 'ฑ', 'ฒ', 'ณ', 'ท', 'ธ', 'น', 'พ', 'ฟ', 'ภ', 'ม', 'ย', 'ร', 'ล', 'ว', 'ฬ', 'ฮ']
 }
 
+STANDARD_THAI_SOUND_SHIFTS = {
+    'epentheses': ['ml'],
+    'onsets': [(['x'], 'kʰ'), (['ɣ'], 'g'),
+        (['ʑ', 'z'], 't͡ɕʰ'), (['ɲ', 'ɲ̊', 'j̊', 'ʔj'], 'j'), (['ˀd'], 'd'), (['d'], 'tʰ'), (['ˀb'], 'b'), (['b'], 'pʰ'), (['v'], 'f'),
+        (['ŋ̊'], 'ŋ'), (['m̥'], 'm'), (['r̥'], 'r'), (['l̥'], 'l'), (['w̥'], 'w')],
+    'codas': [(['ɰ'], 'j')],
+    'tones': {
+        'mid': ['A1unaspirated', 'A1glottal', 'A2voiced'],
+        'low': ['B1friction', 'B1unaspirated', 'B1glottal',
+            'DL1friction', 'DL1unaspirated', 'DL1glottal',
+            'DS1friction', 'DS1unaspirated', 'DS1glottal'],
+        'falling': ['B2voiced',
+            'C1friction', 'C1unaspirated', 'C1glottal',
+            'DL2voiced'],
+        'high': ['C2glottal',
+            'DS2voiced', 'mai_tri'],
+        'rising': ['A1friction', 'mai_chattawa'],
+    }
+}
+
 def get_key(dictionary, value):
     for k, v in dictionary.items():
         if value in v:
@@ -237,9 +257,9 @@ def get_onset(onset_cluster: str, force_cluster: bool=False, dictionary: dict=OL
             onset = get_key(dictionary, onset_cluster[0]) + get_key(dictionary, onset_cluster[1])
         elif onset_cluster == 'ทร':
                 onset = 'z'
-    
+
     if len(onset_cluster) == 2 and ((onset_cluster == 'อย')  or \
-        (onset_cluster[0] == 'ห' and get_key(CODAS, onset_cluster[1]) == 'voiced')):
+        (onset_cluster[0] == 'ห' and get_key(CONSONANT_CLASSES, onset_cluster[1]) == 'voiced')):
         onset = get_key(DIGRAPHS, onset_cluster)
     
     return onset, cluster_type
@@ -273,7 +293,6 @@ def get_proto_tone(tone_marker: str, syllable_type: str, vowel_duration: str) ->
     return proto_tone
 
 def extract(text: str, force_cluster: bool=False, sesquisyllable: bool=False) -> dict:
-    # sesquisyllable
     vowel_form, vowel = get_vowel(text)
     onset_cluster, coda_cluster = get_consonants(text, vowel_form)
 
@@ -336,6 +355,10 @@ def extract(text: str, force_cluster: bool=False, sesquisyllable: bool=False) ->
         else:
             vowel = 'o'
     
+    if vowel[-1] in ['j', 'w', 'm', 'ɰ']:
+        coda = vowel[1]
+        vowel = vowel[0]
+
     if vowel[-1] != 'ː':
         vowel_duration = 'short'
     else:
@@ -356,9 +379,44 @@ def extract(text: str, force_cluster: bool=False, sesquisyllable: bool=False) ->
     return {
         'vowel_form': vowel_form, 'minor_consonant': minor_consonant,'onset_cluster': onset_cluster, 'tone_marker': tone_marker, 'coda_cluster': coda_cluster,
         'consonant_class': consonant_class, 'vowel_duration': vowel_duration, 'syllable_type': syllable_type,
-        'minor_syllable': minor_syllable,'onset': onset, 'vowel': vowel, 'coda': coda, 'gedney_tone': gedney_tone,
+        'minor_syllable': minor_syllable,'onset': onset, 'vowel': vowel, 'coda': coda, 'gedney_tone': gedney_tone, 'tone': proto_tone,
         'ambiguous_cluster': ambiguous_cluster, 'epenthesizable': epenthesizable
     }
 
-def sound_shift(syllable: dict, dialect: str='') -> dict:
-    pass
+def merge_sounds(sound: str, dictionary: list[tuple[list[str], str]]) -> str:
+    print(dictionary)
+    for old_sounds, new_sound in dictionary:
+        for old_sound in old_sounds:
+            sound = sound.replace(old_sound, new_sound)
+    return sound
+
+def sound_shift(old_syllable: dict, dialect: dict=STANDARD_THAI_SOUND_SHIFTS) -> dict:
+    syllable = old_syllable.copy()
+    if dialect.get('epentheses'):
+        for epenthesis in dialect['epentheses']:
+            if syllable['onset'] == epenthesis:
+                syllable['minor_consonant'] = onset_cluster[0]
+                syllable['minor_syllable'] = get_key(OLD_THAI_ONSETS, minor_consonant) + 'ə'
+                syllable['onset_cluster'] = onset_cluster[1:]
+    
+    if dialect.get('onsets'):
+        syllable['onset'] = merge_sounds(syllable['onset'], dialect['onsets'])
+
+    if dialect.get('vowels'):
+        syllable['vowel'] = merge_sounds(syllable['vowel'], dialect['vowels'])
+
+    if dialect.get('codas'):
+        syllable['coda'] = merge_sounds(syllable['coda'], dialect['codas'])
+
+    if dialect.get('tones'):
+        if syllable['tone_marker'] == '๊':
+            tone_split = 'mai_tri'
+        elif syllable['tone_marker'] == '๋':
+            tone_split = 'mai_chattawa'
+        else:
+            tone_split = syllable['gedney_tone'] + syllable['consonant_class']
+        for tone, tone_splits in dialect['tones'].items():
+            if tone_split in tone_splits:
+                syllable['tone'] = tone
+
+    return syllable
