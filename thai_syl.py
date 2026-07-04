@@ -181,6 +181,7 @@ class Syllable:
 
         tone_marker = ''.join(re.findall(expand(r't'), text))
         onset_chars = re.sub(expand(r't'), '', onset_chars)
+        coda_chars = re.sub(expand(r't'), '', coda_chars)
 
         minor_part = SyllablePart()
         if sesquisyllable and len(onset_chars) > 0:
@@ -241,7 +242,7 @@ class Syllable:
             else:
                 r_onset_chars = redup_text
                 r_coda_chars = ''
-                
+            
             r_tone_marker = "".join(re.findall(expand(r't'), redup_text))
             r_onset_chars = re.sub(expand(r't'), '', r_onset_chars)
 
@@ -312,9 +313,9 @@ class Syllable:
             consonant_class = get_key(CONSONANT_CLASSES, vowel_form[1]) if vowel_form and len(vowel_form) > 1 and vowel_form[1] else None
 
         tone_split, gedney_tone, old_tone = cls._get_tones(
-            tone_marker, 
-            consonant_class, 
-            get_key(CODA_TYPES, coda if coda else ''), 
+            tone_marker,
+            consonant_class,
+            get_key(CODA_TYPES, coda if coda else ''),
             vowel_duration
         )
         
