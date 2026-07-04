@@ -35,9 +35,9 @@ DIGRAPHS = {
 }
 
 ONSET_CLUSTERS = {
-    'old_thai': ['คร', 'พร', 'กล', 'คล', 'ปล', 'พล', 'มล', 'กว', 'ขว', 'ฃว', 'คว', 'ฅว'], # งว?
+    'old_thai': ['คร', 'พร', 'กล', 'คล', 'ปล', 'พล', 'มล', 'กว', 'ขว', 'ฃว', 'คว', 'ฅว'],
     'old_khmer': ['กร', 'ตร', 'ทร', 'ปร', 'ผล', 'สร',
-        'คร', 'พร', 'กล', 'คล', 'ปล', 'พล', 'มล', 'กว', 'คว'], # ขว?
+        'คร', 'พร', 'กล', 'คล', 'ปล', 'พล', 'มล', 'กว', 'คว'],
     'sanskrit': ['ศร',
         'กร', 'ตร', 'ทร', 'ปร', 'ผล', 'สร',
         'คร', 'พร', 'กล', 'คล', 'ปล', 'พล', 'มล', 'กว', 'คว'],
@@ -108,7 +108,7 @@ def expand(pattern: str) -> str:
 
 @dataclass
 class MinorSyllable:
-    consonant: Optional[str] = None
+    text: Optional[str] = None
     onset: Optional[str] = None
     syllable: Optional[str] = None
     tone_split: Optional[str] = None
@@ -120,22 +120,26 @@ class MinorSyllable:
 
 @dataclass
 class CoreSyllable:
-    onset_cluster: Optional[str] = None
-    coda_cluster: Optional[str] = None
+    onset_chars: Optional[str] = None
+    tone_marker: Optional[str] = None
+    coda_chars: Optional[str] = None
     onset: Optional[str] = None
     medial: Optional[str] = None
     vowel: Optional[str] = None
     coda: Optional[str] = None
+    vowel_duration: Optional[str] = None
     tone_split: Optional[str] = None
     gedney_tone: Optional[str] = None
     tone: Optional[str] = None
+    cluster_type: Optional[str] = None
 
     def __getitem__(self, item: str) -> Any:
         return getattr(self, item)
 
 @dataclass
 class ReduplicatedSyllable:
-    cluster: Optional[str] = None
+    text: Optional[str] = None
+    vowel_form: Optional[Tuple[str, str]] = None
     onset: Optional[str] = None
     medial: Optional[str] = None
     vowel: Optional[str] = None
@@ -149,11 +153,6 @@ class ReduplicatedSyllable:
 @dataclass
 class Syllable:
     text: str
-    vowel_form: Tuple[str, str]
-    tone_marker: str
-    vowel_duration: str
-    syllable_type: Optional[str]
-    cluster_type: Optional[str] = None
     ambiguous_cluster: bool = False
     reduplicable: bool = False
     
@@ -167,70 +166,72 @@ class Syllable:
     @classmethod
     def extract(cls, text: str, force_cluster: bool = False, sesquisyllable: bool = False) -> 'Syllable':
         vowel_form, vowel = cls._get_vowel(text)
-        onset_cluster, coda_cluster = cls._get_consonants(text, vowel_form)
+        onset_chars, coda_chars = cls._get_consonants(text, vowel_form)
 
         ambiguous_cluster = False
-        if not vowel_form[1] and len(onset_cluster) > 1:
+        cluster_type = None
+        if not vowel_form[1] and len(onset_chars) > 1:
             if re.search(expand(r't'), text):
-                onset_cluster, coda_cluster = re.split(expand(r't'), onset_cluster)
-            elif len(onset_cluster) > 2 and onset_cluster[2] in ['ิ', 'ุ', '์']:
-                onset_cluster, coda_cluster = onset_cluster[:1], onset_cluster[1:]
-            elif onset_cluster[1] == '๎':
-                onset_cluster, coda_cluster = onset_cluster[:3], onset_cluster[3:]
-                onset_cluster = re.sub(expand(r'๎'), '', onset_cluster)
-                coda_cluster = re.sub(expand(r'ฺ'), '', coda_cluster)
-            elif 'ฺ' in onset_cluster:
-                if onset_cluster[1] == 'ฺ':
-                    onset_cluster, coda_cluster = onset_cluster[:3], onset_cluster[3:]
+                onset_chars, coda_chars = re.split(expand(r't'), onset_chars)
+            elif len(onset_chars) > 2 and onset_chars[2] in ['ิ', 'ุ', '์']:
+                onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
+            elif onset_chars[1] == '๎':
+                onset_chars, coda_chars = onset_chars[:3], onset_chars[3:]
+                onset_chars = re.sub(expand(r'๎'), '', onset_chars)
+                coda_chars = re.sub(expand(r'ฺ'), '', coda_chars)
+            elif 'ฺ' in onset_chars:
+                if onset_chars[1] == 'ฺ':
+                    onset_chars, coda_chars = onset_chars[:3], onset_chars[3:]
                 else:
-                    onset_cluster, coda_cluster = onset_cluster[:1], onset_cluster[1:]
-                onset_cluster = re.sub(expand(r'ฺ'), '', onset_cluster)
-                coda_cluster = re.sub(expand(r'ฺ'), '', coda_cluster)
+                    onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
+                onset_chars = re.sub(expand(r'ฺ'), '', onset_chars)
+                coda_chars = re.sub(expand(r'ฺ'), '', coda_chars)
             elif sesquisyllable:
-                onset_cluster, coda_cluster = onset_cluster[:2], onset_cluster[2:]
+                onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
             else:
-                cluster_type = get_key(ONSET_CLUSTERS, onset_cluster)
+                cluster_type = get_key(ONSET_CLUSTERS, onset_chars)
                 if force_cluster:
-                    onset_cluster, coda_cluster = onset_cluster[:2], onset_cluster[2:]
-                elif cluster_type in ['old_thai', 'old_khmer'] or (force_cluster and cluster_type in ['foreign']) or onset_cluster == 'ขร':
-                    onset_cluster, coda_cluster = onset_cluster[:1], onset_cluster[1:]
+                    onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
+                elif cluster_type in ['old_thai', 'old_khmer'] or (force_cluster and cluster_type in ['foreign']) or onset_chars == 'ขร':
+                    onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
                 else:
                     ambiguous_cluster = True
-                    onset_cluster, coda_cluster = onset_cluster[:1], onset_cluster[1:]
+                    onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
 
         tone_marker = "".join(re.findall(expand(r't'), text))
-        onset_cluster = re.sub(expand(r't'), '', onset_cluster)
+        onset_chars = re.sub(expand(r't'), '', onset_chars)
 
-        minor_consonant, minor_onset, minor_syl_text = None, None, None
+        minor_text, minor_onset, minor_syl_text = None, None, None
         minor_tone_split, minor_gedney_tone, minor_old_tone = None, None, None
-        if sesquisyllable:
-            minor_consonant = onset_cluster[0]
-            minor_onset = get_key(OLD_THAI_ONSETS, minor_consonant)
+        if sesquisyllable and len(onset_chars) > 0:
+            minor_text = onset_chars[0]
+            minor_onset = get_key(OLD_THAI_ONSETS, minor_text)
             minor_syl_text = minor_onset + 'aʔ' if minor_onset else 'aʔ'
-            onset_cluster = onset_cluster[1:]
+            onset_chars = onset_chars[1:]
             
-            minor_class = get_key(CONSONANT_CLASSES, minor_consonant)
+            minor_class = get_key(CONSONANT_CLASSES, minor_text)
             minor_tone_split, minor_gedney_tone, minor_old_tone = cls._get_tones('', minor_class, 'dead', 'short')
 
-        if len(onset_cluster) >= 1:
-            consonant_class = get_key(CONSONANT_CLASSES, onset_cluster[0])
+        if len(onset_chars) >= 1:
+            consonant_class = get_key(CONSONANT_CLASSES, onset_chars[0])
         else:
             consonant_class = get_key(CONSONANT_CLASSES, vowel_form[1])
 
-        onset, medial, cluster_type = cls._get_onset(onset_cluster, force_cluster=force_cluster)
-        coda = cls._get_coda(coda_cluster)
+        onset, medial, cluster_type_mapped = cls._get_onset(onset_chars, force_cluster=force_cluster)
+        cluster_type = cluster_type_mapped if cluster_type_mapped else cluster_type
+        coda = cls._get_coda(coda_chars)
 
         reduplicable = False
-        reduplicated_cluster = None
-        if coda_cluster and '์' not in coda_cluster:
+        reduplicated_text = None
+        if coda_chars and '์' not in coda_chars:
             reduplicable = True
-            if len(coda_cluster) > 1 and coda_cluster[0] in ['ร', 'ห']:
-                reduplicated_cluster = coda_cluster[1:]
+            if len(coda_chars) > 1 and coda_chars[0] in ['ร', 'ห']:
+                reduplicated_text = coda_chars[1:]
             else:
-                reduplicated_cluster = coda_cluster
+                reduplicated_text = coda_chars
 
         if vowel == 'o, ɔː':
-            if re.fullmatch(expand(r'รf?'), coda_cluster):
+            if re.fullmatch(expand(r'รf?'), coda_chars):
                 vowel = 'ɔː'
                 coda = 'n'
             else:
@@ -254,40 +255,42 @@ class Syllable:
         if vowel_duration == 'short' and not coda:
             coda = 'ʔ'
 
-        syllable_type = get_key(CODA_TYPES, coda if coda else '')
-        main_tone_split, main_gedney_tone, main_old_tone = cls._get_tones(tone_marker, consonant_class, syllable_type, vowel_duration)
+        main_tone_split, main_gedney_tone, main_old_tone = cls._get_tones(tone_marker, consonant_class, get_key(CODA_TYPES, coda if coda else ''), vowel_duration)
 
+        reduplicated_vowel_form = None
         reduplicated_onset, reduplicated_medial, reduplicated_vowel = None, None, None
         redup_tone_split, redup_gedney_tone, redup_old_tone = None, None, None
-        if reduplicable and reduplicated_cluster:
-            reduplicated_vowel_form, r_vowel = cls._get_vowel(reduplicated_cluster)
+        if reduplicable and reduplicated_text:
+            reduplicated_vowel_form, r_vowel = cls._get_vowel(reduplicated_text)
             if reduplicated_vowel_form != ('', ''):
-                reduplicated_onset_cluster, _ = cls._get_consonants(reduplicated_cluster, reduplicated_vowel_form)
+                reduplicated_onset_chars, _ = cls._get_consonants(reduplicated_text, reduplicated_vowel_form)
                 reduplicated_vowel = r_vowel
             else:
-                reduplicated_onset_cluster = reduplicated_cluster
+                reduplicated_onset_chars = reduplicated_text
                 reduplicated_vowel = 'aʔ'
-            reduplicated_onset, reduplicated_medial, _ = cls._get_onset(reduplicated_onset_cluster)
+            reduplicated_onset, reduplicated_medial, _ = cls._get_onset(reduplicated_onset_chars)
             
-            if reduplicated_onset_cluster:
-                redup_class = get_key(CONSONANT_CLASSES, reduplicated_onset_cluster[0])
+            if reduplicated_onset_chars:
+                redup_class = get_key(CONSONANT_CLASSES, reduplicated_onset_chars[0])
                 redup_duration = 'short' if reduplicated_vowel == 'aʔ' else 'long'
-                redup_tone_split, redup_gedney_tone, redup_old_tone = cls._get_tones('', redup_class, 'live', redup_duration)
+                redup_tone_split, redup_gedney_tone, redup_old_tone = cls._get_tones('', redup_class, get_key(CODA_TYPES, reduplicated_vowel[-1] if reduplicated_vowel else ''), redup_duration)
 
         return cls(
-            text=text, vowel_form=vowel_form, tone_marker=tone_marker,
-            vowel_duration=vowel_duration, syllable_type=syllable_type,
-            cluster_type=cluster_type, ambiguous_cluster=ambiguous_cluster, reduplicable=reduplicable,
+            text=text,
+            ambiguous_cluster=ambiguous_cluster, reduplicable=reduplicable,
             minor_syllable=MinorSyllable(
-                consonant=minor_consonant, onset=minor_onset, syllable=minor_syl_text,
+                text=minor_text, onset=minor_onset, syllable=minor_syl_text,
                 tone_split=minor_tone_split, gedney_tone=minor_gedney_tone, tone=minor_old_tone
             ),
             main_syllable=CoreSyllable(
-                onset_cluster=onset_cluster, coda_cluster=coda_cluster, onset=onset, medial=medial, vowel=vowel, coda=coda,
-                tone_split=main_tone_split, gedney_tone=main_gedney_tone, tone=main_old_tone
+                onset_chars=onset_chars, tone_marker=tone_marker, coda_chars=coda_chars,
+                onset=onset, medial=medial, vowel=vowel, coda=coda,
+                vowel_duration=vowel_duration, tone_split=main_tone_split, gedney_tone=main_gedney_tone, tone=main_old_tone,
+                cluster_type=cluster_type
             ),
             reduplicated_syllable=ReduplicatedSyllable(
-                cluster=reduplicated_cluster, onset=reduplicated_onset, medial=reduplicated_medial, vowel=reduplicated_vowel,
+                text=reduplicated_text, vowel_form=reduplicated_vowel_form, onset=reduplicated_onset, 
+                medial=reduplicated_medial, vowel=reduplicated_vowel,
                 tone_split=redup_tone_split, gedney_tone=redup_gedney_tone, tone=redup_old_tone
             )
         )
@@ -298,12 +301,12 @@ class Syllable:
         start = len(prefix)
         if suffix:
             suffix_pos = text.rfind(suffix)
-            onset_cluster = text[start:suffix_pos]
-            coda_cluster = text[suffix_pos + len(suffix):]
+            onset_chars = text[start:suffix_pos]
+            coda_chars = text[suffix_pos + len(suffix):]
         else:
-            onset_cluster = text[start:]
-            coda_cluster = ''
-        return onset_cluster, coda_cluster
+            onset_chars = text[start:]
+            coda_chars = ''
+        return onset_chars, coda_chars
 
     @staticmethod
     def _get_vowel(text: str) -> Tuple[Tuple[str, str], str]:
@@ -356,39 +359,39 @@ class Syllable:
         return ('', ''), 'a'
 
     @staticmethod
-    def _get_onset(onset_cluster: str, force_cluster: bool = False, dictionary: dict = OLD_THAI_ONSETS) -> Tuple[Optional[str], Optional[str], Optional[str]]:
-        if not onset_cluster:
+    def _get_onset(onset_chars: str, force_cluster: bool = False, dictionary: dict = OLD_THAI_ONSETS) -> Tuple[Optional[str], Optional[str], Optional[str]]:
+        if not onset_chars:
             return None, None, None
-        onset_letter = onset_cluster[0]
+        onset_letter = onset_chars[0]
         onset = get_key(dictionary, onset_letter)
         medial = None
         cluster_type = None
 
-        if len(onset_cluster) == 2:
-            cluster_type = get_key(ONSET_CLUSTERS, onset_cluster)
-            if cluster_type in ['old_thai', 'old_khmer'] or (force_cluster and cluster_type in ['foreign']) or onset_cluster == 'ขร':
-                onset = get_key(dictionary, onset_cluster[0])
-                medial = get_key(dictionary, onset_cluster[1])
-            elif onset_cluster == 'ทร':
+        if len(onset_chars) == 2:
+            cluster_type = get_key(ONSET_CLUSTERS, onset_chars)
+            if cluster_type in ['old_thai', 'old_khmer'] or (force_cluster and cluster_type in ['foreign']) or onset_chars == 'ขร':
+                onset = get_key(dictionary, onset_chars[0])
+                medial = get_key(dictionary, onset_chars[1])
+            elif onset_chars == 'ทร':
                 onset = 'z'
 
-        if len(onset_cluster) == 2 and ((onset_cluster == 'อย') or (onset_cluster[0] == 'ห' and get_key(CONSONANT_CLASSES, onset_cluster[1]) == 'voiced')):
-            onset = get_key(DIGRAPHS, onset_cluster)
+        if len(onset_chars) == 2 and ((onset_chars == 'อย') or (onset_chars[0] == 'ห' and get_key(CONSONANT_CLASSES, onset_chars[1]) == 'voiced')):
+            onset = get_key(DIGRAPHS, onset_chars)
 
         return onset, medial, cluster_type
 
     @staticmethod
-    def _get_coda(coda_cluster: str) -> Optional[str]:
+    def _get_coda(coda_chars: str) -> Optional[str]:
         coda_letter = None
-        if len(coda_cluster) >= 3 and coda_cluster[0] in ['ร', 'ห'] and coda_cluster[2] != '์':
-            coda_letter = coda_cluster[1]
-        elif len(coda_cluster) >= 2 and coda_cluster[1] != '์':
-            if coda_cluster[0] in ['ร', 'ห']:
-                coda_letter = coda_cluster[1]
+        if len(coda_chars) >= 3 and coda_chars[0] in ['ร', 'ห'] and coda_chars[2] != '์':
+            coda_letter = coda_chars[1]
+        elif len(coda_chars) >= 2 and coda_chars[1] != '์':
+            if coda_chars[0] in ['ร', 'ห']:
+                coda_letter = coda_chars[1]
             else:
-                coda_letter = coda_cluster[0]
-        elif len(coda_cluster) == 1:
-            coda_letter = coda_cluster[0]
+                coda_letter = coda_chars[0]
+        elif len(coda_chars) == 1:
+            coda_letter = coda_chars[0]
 
         if not coda_letter:
             return None
@@ -436,14 +439,14 @@ class Syllable:
         if dialect.get('epentheses') and main.medial and main.onset:
             for epenthesis in dialect['epentheses']:
                 if main.onset + main.medial == epenthesis:
-                    minor.consonant = main.onset_cluster[0]
-                    minor_onset = get_key(OLD_THAI_ONSETS, minor.consonant)
+                    minor.text = main.onset_chars[0]
+                    minor_onset = get_key(OLD_THAI_ONSETS, minor.text)
                     minor.syllable = minor_onset + 'aʔ' if minor_onset else 'aʔ'
-                    main.onset_cluster = main.onset_cluster[1:]
+                    main.onset_chars = main.onset_chars[1:]
                     main.onset = main.medial
                     main.medial = None
                     
-                    minor_class = get_key(CONSONANT_CLASSES, minor.consonant)
+                    minor_class = get_key(CONSONANT_CLASSES, minor.text)
                     minor.tone_split, minor.gedney_tone, minor.tone = self._get_tones('', minor_class, 'dead', 'short')
 
         if dialect.get('onsets'):
