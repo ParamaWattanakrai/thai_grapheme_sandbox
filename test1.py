@@ -1,6 +1,6 @@
 from thai_syl import Syllable
 
-syllable = Syllable.extract('กร', force_cluster=False, sesquisyllable=False)
+syllable = Syllable.extract('ลักษมณ์', force_cluster=False, sesquisyllable=False)
 syllable.sound_shift()
 
 print(syllable.reduplicated_syllable.tone_split)

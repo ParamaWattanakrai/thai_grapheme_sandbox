@@ -207,7 +207,6 @@ class Syllable:
             onset_chars = onset_chars[1:]
 
         # MAIN
-        print(vowel_form, onset_chars, coda_chars, tone_marker, vowel)
         m_onset, m_medial, cluster_type_mapped, m_vowel, m_coda, m_vowel_duration, m_tone_split, m_gedney_tone, m_old_tone = cls._process_phonemes(
             vowel_form, onset_chars, coda_chars, tone_marker, vowel, force_cluster=force_cluster
         )
