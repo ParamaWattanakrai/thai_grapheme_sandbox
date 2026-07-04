@@ -120,6 +120,7 @@ class MinorSyllable:
 
 @dataclass
 class CoreSyllable:
+    vowel_form: Optional[str] = None
     onset_chars: Optional[str] = None
     tone_marker: Optional[str] = None
     coda_chars: Optional[str] = None
@@ -221,7 +222,6 @@ class Syllable:
         cluster_type = cluster_type_mapped if cluster_type_mapped else cluster_type
         coda = cls._get_coda(coda_chars)
 
-        reduplicable = False
         reduplicated_text = None
         if coda_chars and '์' not in coda_chars:
             reduplicable = True
@@ -260,11 +260,11 @@ class Syllable:
         reduplicated_vowel_form = None
         reduplicated_onset, reduplicated_medial, reduplicated_vowel = None, None, None
         redup_tone_split, redup_gedney_tone, redup_old_tone = None, None, None
-        if reduplicable and reduplicated_text:
+        if reduplicable:
             reduplicated_vowel_form, r_vowel = cls._get_vowel(reduplicated_text)
             if reduplicated_vowel_form != ('', ''):
                 reduplicated_onset_chars, _ = cls._get_consonants(reduplicated_text, reduplicated_vowel_form)
-                reduplicated_vowel = r_vowel
+                reduplicated_vowel = r_vowel + 'ʔ' if r_vowel[-1] != 'ː' else ''
             else:
                 reduplicated_onset_chars = reduplicated_text
                 reduplicated_vowel = 'aʔ'
@@ -283,7 +283,7 @@ class Syllable:
                 tone_split=minor_tone_split, gedney_tone=minor_gedney_tone, tone=minor_old_tone
             ),
             main_syllable=CoreSyllable(
-                onset_chars=onset_chars, tone_marker=tone_marker, coda_chars=coda_chars,
+                vowel_form=vowel_form, onset_chars=onset_chars, tone_marker=tone_marker, coda_chars=coda_chars,
                 onset=onset, medial=medial, vowel=vowel, coda=coda,
                 vowel_duration=vowel_duration, tone_split=main_tone_split, gedney_tone=main_gedney_tone, tone=main_old_tone,
                 cluster_type=cluster_type
@@ -327,7 +327,7 @@ class Syllable:
             (r'เy*cืt?อะr?p*f?', ('เ', 'ือะ'), 'ɯa̯ː'),
             (r'เy*cืt?อ?r?p*f?', ('เ', 'ือ'), 'ɯa̯'),
             (r'y*ct?ะr?p*f?', ('', 'ะ'), 'a'),
-            (r'y*cัt?r?p+f?', ('', 'ั'), 'a'),
+            (r'y*cัt?r?p*f?', ('', 'ั'), 'a'),
             (r'y*ct?าr?p*f?', ('', 'า'), 'aː'),
             (r'y*ct?ำr?f?', ('', 'ำ'), 'am'),
             (r'y*cิt?r?p*f?', ('', 'ิ'), 'i'),
