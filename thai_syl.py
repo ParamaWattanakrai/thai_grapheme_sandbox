@@ -149,6 +149,7 @@ class Syllable:
         vowel_form, vowel = cls._get_vowel(text)
         onset_chars, coda_chars = cls._get_consonants(text, vowel_form)
 
+        # AMBIGUOUS CLUSTER
         ambiguous_cluster = False
         cluster_type = None
         if not vowel_form[1] and len(onset_chars) > 1:
@@ -183,18 +184,17 @@ class Syllable:
         onset_chars = re.sub(expand(r't'), '', onset_chars)
         coda_chars = re.sub(expand(r't'), '', coda_chars)
 
+        # MINOR
         minor_part = SyllablePart()
         if sesquisyllable and len(onset_chars) > 0:
-            m_text = onset_chars[0]
-            m_onset = get_key(OLD_THAI_ONSETS, m_text)
-            m_class = get_key(CONSONANT_CLASSES, m_text)
+            m_onset_chars = onset_chars[0]
+            m_onset = get_key(OLD_THAI_ONSETS, m_onset_chars)
+            m_class = get_key(CONSONANT_CLASSES, m_onset_chars)
             m_tone_split, m_gedney_tone, m_old_tone = cls._get_tones('', m_class, 'dead', 'short')
             
             minor_part = SyllablePart(
                 vowel_form=('', ''),
-                onset_chars=m_text,
-                tone_marker='',
-                coda_chars='',
+                onset_chars=m_onset_chars,
                 onset=m_onset,
                 medial=None,
                 vowel='a',
@@ -203,10 +203,11 @@ class Syllable:
                 tone_split=m_tone_split,
                 gedney_tone=m_gedney_tone,
                 tone=m_old_tone,
-                cluster_type=None
             )
             onset_chars = onset_chars[1:]
 
+        # MAIN
+        print(vowel_form, onset_chars, coda_chars, tone_marker, vowel)
         m_onset, m_medial, cluster_type_mapped, m_vowel, m_coda, m_vowel_duration, m_tone_split, m_gedney_tone, m_old_tone = cls._process_phonemes(
             vowel_form, onset_chars, coda_chars, tone_marker, vowel, force_cluster=force_cluster
         )
@@ -227,6 +228,7 @@ class Syllable:
             cluster_type=cluster_type_mapped if cluster_type_mapped else cluster_type
         )
 
+        # REDUPLICATION
         redup_part = SyllablePart()
         reduplicable = False
         if coda_chars and '์' not in coda_chars:
@@ -242,18 +244,14 @@ class Syllable:
             else:
                 r_onset_chars = redup_text
                 r_coda_chars = ''
-            
-            r_tone_marker = "".join(re.findall(expand(r't'), redup_text))
-            r_onset_chars = re.sub(expand(r't'), '', r_onset_chars)
 
             r_onset, r_medial, r_cluster_type, r_vowel, r_coda, r_vowel_duration, r_tone_split, r_gedney_tone, r_old_tone = cls._process_phonemes(
-                r_vowel_form, r_onset_chars, r_coda_chars, r_tone_marker, r_raw_vowel, force_cluster=False
+                r_vowel_form, r_onset_chars, r_coda_chars, '', r_raw_vowel, force_cluster=False
             )
 
             redup_part = SyllablePart(
                 vowel_form=r_vowel_form,
                 onset_chars=r_onset_chars,
-                tone_marker=r_tone_marker,
                 coda_chars=r_coda_chars,
                 onset=r_onset,
                 medial=r_medial,
