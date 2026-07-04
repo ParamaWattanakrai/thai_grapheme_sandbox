@@ -239,13 +239,14 @@ class Syllable:
                 
             r_vowel_form, r_raw_vowel = cls._get_vowel(redup_text)
             if r_vowel_form != ('', ''):
-                r_onset_chars, r_coda_chars = cls._get_consonants(redup_text, r_vowel_form)
+                r_onset_chars, _ = cls._get_consonants(redup_text, r_vowel_form)
             else:
                 r_onset_chars = redup_text
                 r_coda_chars = ''
+                r_raw_vowel = 'a'
 
             r_onset, r_medial, r_cluster_type, r_vowel, r_coda, r_vowel_duration, r_tone_split, r_gedney_tone, r_old_tone = cls._process_phonemes(
-                r_vowel_form, r_onset_chars, r_coda_chars, '', r_raw_vowel, force_cluster=False
+                r_vowel_form, r_onset_chars, '', '', r_raw_vowel, force_cluster=True
             )
 
             redup_part = SyllablePart(
