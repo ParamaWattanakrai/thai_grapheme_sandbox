@@ -1,7 +1,7 @@
 from thai_syl import Syllable
 
 # 1. Parse a Thai word into its linguistic components
-syllable = Syllable.extract("อนา", sesquisyllable=True)
+syllable = Syllable.extract('จักร', force_cluster=False, sesquisyllable=False)
 
 # Access main syllable sub-properties using string keys
 print(f"Onset: {syllable['minor_syllable']['consonant']}")
@@ -16,5 +16,5 @@ print(f"Coda: {syllable['main_syllable']['coda']}")      # Output: m
 syllable = syllable.sound_shift()
 
 # 3. Generate the International Phonetic Alphabet (IPA) representation
-ipa_output = syllable.get_ipa()
+ipa_output = syllable.get_ipa(reduplicate=True)
 print(f"IPA: {ipa_output}")

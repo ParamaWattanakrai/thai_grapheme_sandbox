@@ -206,7 +206,7 @@ class Syllable:
         if sesquisyllable:
             minor_consonant = onset_cluster[0]
             minor_onset = get_key(OLD_THAI_ONSETS, minor_consonant)
-            minor_syl_text = minor_onset + 'ə' if minor_onset else 'ə'
+            minor_syl_text = minor_onset + 'aʔ' if minor_onset else 'aʔ'
             onset_cluster = onset_cluster[1:]
             
             minor_class = get_key(CONSONANT_CLASSES, minor_consonant)
@@ -266,12 +266,12 @@ class Syllable:
                 reduplicated_vowel = r_vowel
             else:
                 reduplicated_onset_cluster = reduplicated_cluster
-                reduplicated_vowel = 'ə'
+                reduplicated_vowel = 'aʔ'
             reduplicated_onset, reduplicated_medial, _ = cls._get_onset(reduplicated_onset_cluster)
             
             if reduplicated_onset_cluster:
                 redup_class = get_key(CONSONANT_CLASSES, reduplicated_onset_cluster[0])
-                redup_duration = 'short' if reduplicated_vowel == 'ə' else 'long'
+                redup_duration = 'short' if reduplicated_vowel == 'aʔ' else 'long'
                 redup_tone_split, redup_gedney_tone, redup_old_tone = cls._get_tones('', redup_class, 'live', redup_duration)
 
         return cls(
@@ -438,7 +438,7 @@ class Syllable:
                 if main.onset + main.medial == epenthesis:
                     minor.consonant = main.onset_cluster[0]
                     minor_onset = get_key(OLD_THAI_ONSETS, minor.consonant)
-                    minor.syllable = minor_onset + 'ə' if minor_onset else 'ə'
+                    minor.syllable = minor_onset + 'aʔ' if minor_onset else 'aʔ'
                     main.onset_cluster = main.onset_cluster[1:]
                     main.onset = main.medial
                     main.medial = None
