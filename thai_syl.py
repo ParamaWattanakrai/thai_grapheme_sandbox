@@ -154,7 +154,9 @@ class Syllable:
         cluster_type = None
         if not vowel_form[1] and len(onset_chars) > 1:
             if re.search(expand(r't'), text):
-                onset_chars, coda_chars = re.split(expand(r't'), onset_chars)
+                split_result = re.split(expand(r't'), onset_chars, maxsplit=1)
+                onset_chars = split_result[0]
+                coda_chars = split_result[1] if len(split_result) > 1 else ''
             elif len(onset_chars) > 2 and onset_chars[2] in ['ิ', 'ุ', '์']:
                 onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
             elif onset_chars[1] == '๎':
@@ -238,11 +240,11 @@ class Syllable:
                 redup_text = coda_chars
                 
             r_vowel_form, r_raw_vowel = cls._get_vowel(redup_text)
+            r_coda_chars = ''
             if r_vowel_form != ('', ''):
                 r_onset_chars, _ = cls._get_consonants(redup_text, r_vowel_form)
             else:
                 r_onset_chars = redup_text
-                r_coda_chars = ''
                 r_raw_vowel = 'a'
 
             r_onset, r_medial, r_cluster_type, r_vowel, r_coda, r_vowel_duration, r_tone_split, r_gedney_tone, r_old_tone = cls._process_phonemes(
@@ -424,6 +426,7 @@ class Syllable:
     def _get_tones(cls, tone_marker: str, consonant_class: Optional[str], coda_type: Optional[str], duration: str) -> Tuple[Optional[str], Optional[str], Optional[str]]:
         old_tone = None
         gedney_tone = None
+        tone_split = None
 
         if tone_marker == '่':
             old_tone = 'B'
