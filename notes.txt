@@ -1,3 +1,2 @@
-1. States
-2. Possible grouping algorithm
-3. Solve
+1. Possible grouping algorithm
+2. Solve

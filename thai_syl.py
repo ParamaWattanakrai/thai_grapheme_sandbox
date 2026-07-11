@@ -122,7 +122,7 @@ class SyllablePart:
     syllable: Optional[str] = None
     onset: Optional[str] = None
     medial: Optional[str] = None
-    vowel: Optional[str] = None
+    nucleus: Optional[str] = None
     coda: Optional[str] = None
     vowel_duration: Optional[str] = None
     coda_type: Optional[str] = None
@@ -139,10 +139,10 @@ class SyllablePart:
         return getattr(self, item)
 
     def get_ipa(self) -> str:
-        if not self.onset and not self.vowel:
+        if not self.onset and not self.nucleus:
             return ""
         tone = (self.assimilated_tone if self.assimilate_tone and self.assimilated_tone is not None else self.tone)
-        return (self.onset or '') + (self.medial or '') + (self.vowel or '') + (self.coda or '') + (tone or '')
+        return (self.onset or '') + (self.medial or '') + (self.nucleus or '') + (self.coda or '') + (tone or '')
 
 @dataclass
 class Syllable:
@@ -161,7 +161,7 @@ class Syllable:
 
     @classmethod
     def extract(cls, text: str, force_cluster: bool = False, sesquisyllable: bool = False) -> 'Syllable':
-        vowel_form, vowel = cls._get_vowel(text)
+        vowel_form, nucleus = cls._get_vowel(text)
         onset_chars, coda_chars = cls._get_consonants(text, vowel_form)
 
         has_ambiguous_cluster = False
@@ -212,7 +212,7 @@ class Syllable:
                 onset_chars=m_onset_chars,
                 onset=m_onset,
                 medial=None,
-                vowel='a',
+                nucleus='a',
                 coda='ʔ',
                 vowel_duration='short',
                 coda_type='dead',
@@ -223,7 +223,7 @@ class Syllable:
             onset_chars = onset_chars[1:]
 
         m_onset, m_medial, cluster_type_mapped, m_vowel, m_coda, m_vowel_duration, m_coda_type, m_consonant_class, m_tone_split, m_old_tone = cls._process_phonemes(
-            vowel_form, onset_chars, coda_chars, tone_marker, vowel, force_cluster=force_cluster
+            vowel_form, onset_chars, coda_chars, tone_marker, nucleus, force_cluster=force_cluster
         )
         
         assimilated_consonant_class = None
@@ -248,7 +248,7 @@ class Syllable:
             coda_chars=coda_chars,
             onset=m_onset,
             medial=m_medial,
-            vowel=m_vowel,
+            nucleus=m_vowel,
             coda=m_coda,
             vowel_duration=m_vowel_duration,
             coda_type=m_coda_type,
@@ -289,7 +289,7 @@ class Syllable:
                 coda_chars=r_coda_chars,
                 onset=r_onset,
                 medial=r_medial,
-                vowel=r_vowel,
+                nucleus=r_vowel,
                 coda=r_coda,
                 vowel_duration=r_vowel_duration,
                 coda_type=r_coda_type,
@@ -312,27 +312,27 @@ class Syllable:
     def _process_phonemes(cls, vowel_form, onset_chars, coda_chars, tone_marker, raw_vowel, force_cluster=False):
         onset, medial, cluster_type = cls._get_onset(onset_chars, force_cluster=force_cluster)
         coda = cls._get_coda(coda_chars)
-        vowel = raw_vowel
+        nucleus = raw_vowel
         
-        if vowel == 'o, ɔː':
+        if nucleus == 'o, ɔː':
             if coda_chars and re.fullmatch(expand(r'รf?'), coda_chars):
-                vowel = 'ɔː'
+                nucleus = 'ɔː'
                 coda = 'n'
             else:
-                vowel = 'o'
+                nucleus = 'o'
 
-        if vowel and vowel[0] in ['r', 'l']:
-            medial = vowel[0]
-            vowel = vowel[1:]
-        if vowel and vowel[-1] in ['j', 'w', 'm', 'ɰ']:
-            coda = vowel[-1]
-            vowel = vowel[:-1]
+        if nucleus and nucleus[0] in ['r', 'l']:
+            medial = nucleus[0]
+            nucleus = nucleus[1:]
+        if nucleus and nucleus[-1] in ['j', 'w', 'm', 'ɰ']:
+            coda = nucleus[-1]
+            nucleus = nucleus[:-1]
             
         if not onset and medial:
             onset = medial
             medial = None
 
-        if vowel and vowel[-1] != 'ː' and len(vowel) == 1:
+        if nucleus and nucleus[-1] != 'ː' and len(nucleus) == 1:
             vowel_duration = 'short'
         else:
             vowel_duration = 'long'
@@ -354,7 +354,7 @@ class Syllable:
             vowel_duration
         )
         
-        return onset, medial, cluster_type, vowel, coda, vowel_duration, coda_type, consonant_class, tone_split, old_tone
+        return onset, medial, cluster_type, nucleus, coda, vowel_duration, coda_type, consonant_class, tone_split, old_tone
 
     @classmethod
     def _get_vowel(cls, text: str) -> Tuple[Tuple[str, str], str]:
@@ -492,11 +492,11 @@ class Syllable:
 
     def get_ipa(self, is_reduplicated: bool = False) -> str:
         parts = []
-        if self.minor_syllable.vowel:
+        if self.minor_syllable.nucleus:
             parts.append(self.minor_syllable.get_ipa())
-        if self.main_syllable.vowel:
+        if self.main_syllable.nucleus:
             parts.append(self.main_syllable.get_ipa())
-        if is_reduplicated and self.is_reduplicable and self.is_reduplicatedd_syllable.vowel:
+        if is_reduplicated and self.is_reduplicable and self.is_reduplicatedd_syllable.nucleus:
             parts.append(self.is_reduplicatedd_syllable.get_ipa())
         return '.'.join(parts)
     
@@ -555,7 +555,7 @@ class Syllable:
                     minor.vowel_form = ('', '')
                     minor.coda_chars = ''
                     minor.tone_marker = ''
-                    minor.vowel = 'a'
+                    minor.nucleus = 'a'
                     minor.coda = 'ʔ'
                     minor.vowel_duration = 'short'
                     minor.onset = get_key(OLD_THAI_ONSETS, minor.text)
@@ -578,7 +578,7 @@ class Syllable:
                     )
         
         for p in [minor, main, self.is_reduplicatedd_syllable]:
-            if not p.vowel:
+            if not p.nucleus:
                 continue
 
             if dialect.get('onsets') and p.onset:

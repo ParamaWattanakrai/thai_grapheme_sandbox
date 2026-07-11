@@ -5,7 +5,6 @@ def align(text: str, ipa: str) -> list[dict]:
     '''
     Aligns Thai grapheme with Thai IPA transcription into syllables and assign each grapheme roles
     '''
-
     for phoneme in thai_ipa.parse(ipa):
-        
-    return result
+        print(phoneme)
+    # return result
