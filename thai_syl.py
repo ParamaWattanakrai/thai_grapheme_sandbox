@@ -36,12 +36,12 @@ DIGRAPHS = {
 
 ONSET_CLUSTERS = {
     'old_thai': ['คร', 'พร', 'กล', 'คล', 'ปล', 'พล', 'มล', 'กว', 'ขว', 'ฃว', 'คว', 'ฅว'],
-    'old_khmer': ['กร', 'ตร', 'ทร', 'ปร', 'ผล', 'สร',
+    'old_khmer': ['กร', 'ตร', 'ทร', 'ปร', 'ขล', 'ผล', 'สร',
         'คร', 'พร', 'กล', 'คล', 'ปล', 'พล', 'มล', 'กว', 'คว'],
     'sanskrit': ['ศร',
         'กร', 'ตร', 'ทร', 'ปร', 'ผล', 'สร',
         'คร', 'พร', 'กล', 'คล', 'ปล', 'พล', 'มล', 'กว', 'คว'],
-    'invention': ['ขร', 'จร', 'ซร'],
+    'orthography': ['ขร', 'จร', 'ซร'],
     'foreign': ['บร', 'ดร']
 }
 
@@ -340,7 +340,7 @@ class Syllable:
             (r'เy*cืt?อะr?p*f?', ('เ', 'ือะ'), 'ɯa̯ː'),
             (r'เy*cืt?อ?r?p*f?', ('เ', 'ือ'), 'ɯa̯'),
             (r'y*ct?ะr?p*f?', ('', 'ะ'), 'a'),
-            (r'y*cัt?r?p*f?', ('', 'ั'), 'a'),
+            (r'y*cัt?p*cิ?f?', ('', 'ั'), 'a'),
             (r'y*ct?าr?p*f?', ('', 'า'), 'aː'),
             (r'y*ct?ำr?f?', ('', 'ำ'), 'am'),
             (r'y*cิt?r?p*f?', ('', 'ิ'), 'i'),
@@ -390,12 +390,12 @@ class Syllable:
     def _get_onset(cls, onset_chars: str, force_cluster: bool = False) -> Tuple[Optional[str], Optional[str], Optional[str]]:
         if not onset_chars:
             return None, None, None
-            
+
         cleaned_onset_chars = re.sub(expand(r'[์ฺ๎]'), '', onset_chars)
 
         cluster_type = get_key(ONSET_CLUSTERS, cleaned_onset_chars)
 
-        if len(cleaned_onset_chars) == 2 and force_cluster:
+        if len(cleaned_onset_chars) == 2 and (cluster_type in ['old_thai', 'old_khmer'] or force_cluster):
             cluster_type = cluster_type if cluster_type else 'foreign'
             return get_key(OLD_THAI_ONSETS, cleaned_onset_chars[0]), get_key(OLD_THAI_ONSETS, cleaned_onset_chars[1]), cluster_type
 
