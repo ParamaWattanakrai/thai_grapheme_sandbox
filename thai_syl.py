@@ -121,15 +121,19 @@ class SyllablePart:
     tone_split: Optional[str] = None
     gedney_tone: Optional[str] = None
     tone: Optional[str] = None
+    assimilated_tone_split: Optional[str] = None
+    assimilated_gedney_tone: Optional[str] = None
+    assimilated_tone: Optional[str] = None
     cluster_type: Optional[str] = None
 
     def __getitem__(self, item: str) -> Any:
         return getattr(self, item)
 
-    def get_ipa(self) -> str:
+    def get_ipa(self, assimilate_tone: bool = True) -> str:
         if not self.onset and not self.vowel:
             return ""
-        return (self.onset or '') + (self.medial or '') + (self.vowel or '') + (self.coda or '') + (self.tone or '')
+        tone = (self.assimilated_tone if assimilate_tone and self.assimilated_tone is not None else self.tone)
+        return (self.onset or '') + (self.medial or '') + (self.vowel or '') + (self.coda or '') + (tone or '')
 
 @dataclass
 class Syllable:
@@ -226,6 +230,9 @@ class Syllable:
             tone_split=m_tone_split,
             gedney_tone=m_gedney_tone,
             tone=m_old_tone,
+            assimilated_tone_split=minor_part.tone_split,
+            assimilated_gedney_tone=minor_part.gedney_tone,
+            assimilated_tone=minor_part.tone,
             cluster_type=cluster_type_mapped if cluster_type_mapped else cluster_type
         )
 
@@ -459,14 +466,14 @@ class Syllable:
         
         return tone_split, gedney_tone, old_tone
 
-    def get_ipa(self, reduplicate: bool = False) -> str:
+    def get_ipa(self, assimilate_tone: bool = True, reduplicate: bool = False) -> str:
         parts = []
         if self.minor_syllable.vowel:
-            parts.append(self.minor_syllable.get_ipa())
+            parts.append(self.minor_syllable.get_ipa(assimilate_tone=assimilate_tone))
         if self.main_syllable.vowel:
-            parts.append(self.main_syllable.get_ipa())
+            parts.append(self.main_syllable.get_ipa(assimilate_tone=assimilate_tone))
         if reduplicate and self.reduplicable and self.reduplicated_syllable.vowel:
-            parts.append(self.reduplicated_syllable.get_ipa())
+            parts.append(self.reduplicated_syllable.get_ipa(assimilate_tone=assimilate_tone))
         return '.'.join(parts)
     
     def reconstruct_text(self) -> str:
@@ -508,6 +515,10 @@ class Syllable:
                     main.onset_chars = main.onset_chars[1:]
                     main.onset = main.medial
                     main.medial = None
+
+                    main.assimilated_tone_split = minor.tone_split
+                    main.assimilated_gedney_tone = minor.gedney_tone
+                    main.assimilated_tone = minor.tone
         
         for p in [minor, main, self.reduplicated_syllable]:
             if not p.vowel:
@@ -523,3 +534,7 @@ class Syllable:
                         p.coda = sound_shift
             if dialect.get('tones') and p.tone_split:
                 p.tone = get_key(dialect['tones'], p.tone_split)
+            if dialect.get('tones') and p.assimilated_tone_split:
+                p.assimilated_tone = get_key(dialect['tones'], p.assimilated_tone_split)
+            if dialect.get('tones') and p.assimilated_tone_split:
+                p.assimilated_tone = get_key(dialect['tones'], p.assimilated_tone_split)
