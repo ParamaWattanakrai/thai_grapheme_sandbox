@@ -16,14 +16,14 @@ NUCLEI = {
     'i', 'iː', 'ɯ', 'ɯː', 'u', 'uː',
     'e', 'eː', 'ɤ', 'ɤː', 'o', 'oː',
     'ɛ', 'ɛː', 'ɔ', 'ɔː',
-    'ia̯', 'ɯa̯', 'ua̯'
+    'iə', 'ɯə', 'uə'
 }
 
-CODAS = {'ʔ', 'k̚', 'p̚', 't̚', 'n', 'm', 'ŋ', 'w', 'j'}
+CODAS = {'ʔ', 'k', 'p', 't', 'n', 'm', 'ŋ', 'w', 'j'}
 
 TONES = {'˧', '˨˩', '˦˩', '˦˥', '˨˥'}
 
-OBSTRUENTS = {'ʔ', 'k̚', 'p̚', 't̚'}
+OBSTRUENTS = {'ʔ', 'k', 'p', 't'}
 
 TONE_PATTERN = re.compile(r'[˥˦˧˨˩]+$')
 
@@ -97,7 +97,7 @@ def parse(ipa: str) -> list[dict]:
                     medial = rest
                 break
 
-        duration = 'long' if 'ː' in nucleus or nucleus in {'ia̯', 'ɯa̯', 'ua̯'} else 'short'
+        duration = 'long' if 'ː' in nucleus or nucleus in {'iə', 'ɯə', 'uə'} else 'short'
 
         if coda:
             if coda in OBSTRUENTS:

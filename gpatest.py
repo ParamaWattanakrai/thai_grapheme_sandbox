@@ -1,4 +1,7 @@
 import thai_gpa
 
-print(thai_gpa.align('กิจการ', 'kit̚˨˩.t͡ɕa˨˩.kaːn˧'))
-print(thai_gpa.align('สุจิตรา', 'su˨˩.t͡ɕit̚˨˩.traː˧'))
+syllables = thai_gpa.align('กิจการ', 'kit˨˩.t͡ɕaʔ˨˩.kaːn˧')
+for syllable in syllables:
+    print(syllable)
+
+# print(thai_gpa.align('สุจิตรา', 'suʔ˨˩.t͡ɕit˨˩.traː˧'))

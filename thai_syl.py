@@ -159,6 +159,12 @@ class Syllable:
     def __getitem__(self, item: str) -> Any:
         return getattr(self, item)
 
+    def __str__(self) -> str:
+        return self.get_ipa()
+
+    def __repr__(self) -> str:
+        return self.get_ipa()
+
     @classmethod
     def extract(cls, text: str, force_cluster: bool = False, sesquisyllable: bool = False) -> 'Syllable':
         vowel_form, nucleus = cls._get_vowel(text)

@@ -1,2 +1,1 @@
-1. Possible grouping algorithm
-2. Solve
+1. len(cluster) <= len(phonemes)
