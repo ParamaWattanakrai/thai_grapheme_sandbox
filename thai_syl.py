@@ -93,7 +93,7 @@ def get_key(dictionary: dict, value: Any) -> Optional[str]:
 def expand(pattern: str) -> str:
     return (
         pattern
-        .replace('f', r'(?:c[ุิ]?[์]?)')
+        .replace('f', r'(?:c[ะิุ]?[์]?)')
         .replace('x', r'($|(?=[\s+เ-ไๆ๏๚๛]|c[ะ-ฺ]))')
         .replace('r', r'(?:c์)')
         .replace('y', r'(?:cฺ?|c๎?)')
@@ -192,7 +192,7 @@ class Syllable:
 
         # MINOR
         minor_part = SyllablePart()
-        if sesquisyllable and len(onset_chars) > 0:
+        if sesquisyllable and len(onset_chars) > 1:
             m_onset_chars = onset_chars[0]
             m_onset = get_key(OLD_THAI_ONSETS, m_onset_chars)
             m_class = get_key(CONSONANT_CLASSES, m_onset_chars)
