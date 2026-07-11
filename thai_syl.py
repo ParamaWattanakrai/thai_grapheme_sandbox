@@ -528,10 +528,17 @@ class Syllable:
                 for onsets, sound_shift in dialect['onsets']:
                     if p.onset in onsets:
                         p.onset = sound_shift
+                        break
+            if dialect.get('medials') and p.onset:
+                for onsets, sound_shift in dialect['medials']:
+                    if p.onset in onsets:
+                        p.onset = sound_shift
+                        break
             if dialect.get('codas') and p.coda:
                 for codas, sound_shift in dialect['codas']:
                     if p.coda in codas:
                         p.coda = sound_shift
+                        break
             if dialect.get('tones') and p.tone_split:
                 p.tone = get_key(dialect['tones'], p.tone_split)
             if dialect.get('tones') and p.assimilated_tone_split:
