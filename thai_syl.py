@@ -133,25 +133,28 @@ class SyllablePart:
     assimilated_tone_split: Optional[Tuple[str, str]] = None
     assimilated_tone: Optional[str] = None
     cluster_type: Optional[str] = None
+    assimilate_tone: bool = False
 
     def __getitem__(self, item: str) -> Any:
         return getattr(self, item)
 
-    def get_ipa(self, assimilate_tone: bool = True) -> str:
+    def get_ipa(self) -> str:
         if not self.onset and not self.vowel:
             return ""
-        tone = (self.assimilated_tone if assimilate_tone and self.assimilated_tone is not None else self.tone)
+        tone = (self.assimilated_tone if self.assimilate_tone and self.assimilated_tone is not None else self.tone)
         return (self.onset or '') + (self.medial or '') + (self.vowel or '') + (self.coda or '') + (tone or '')
 
 @dataclass
 class Syllable:
     text: str
-    ambiguous_cluster: bool = False
-    reduplicable: bool = False
+    has_ambiguous_cluster: bool = False
+    is_reduplicable: bool = False
+    is_tone_assimilated: bool = False
+    is_reduplicated: bool = False
     
     minor_syllable: SyllablePart = field(default_factory=SyllablePart)
     main_syllable: SyllablePart = field(default_factory=SyllablePart)
-    reduplicated_syllable: SyllablePart = field(default_factory=SyllablePart)
+    is_reduplicatedd_syllable: SyllablePart = field(default_factory=SyllablePart)
 
     def __getitem__(self, item: str) -> Any:
         return getattr(self, item)
@@ -161,8 +164,7 @@ class Syllable:
         vowel_form, vowel = cls._get_vowel(text)
         onset_chars, coda_chars = cls._get_consonants(text, vowel_form)
 
-        # AMBIGUOUS CLUSTER
-        ambiguous_cluster = False
+        has_ambiguous_cluster = False
         cluster_type = None
         if not vowel_form[1] and len(onset_chars) > 1:
             if re.search(expand(r't'), text):
@@ -191,14 +193,13 @@ class Syllable:
                 elif cluster_type in ['old_thai', 'old_khmer'] or (force_cluster and cluster_type in ['foreign']):
                     onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
                 else:
-                    ambiguous_cluster = True
+                    has_ambiguous_cluster = True
                     onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
 
         tone_marker = ''.join(re.findall(expand(r't'), text))
         onset_chars = re.sub(expand(r't'), '', onset_chars)
         coda_chars = re.sub(expand(r't'), '', coda_chars)
 
-        # MINOR
         minor_part = SyllablePart()
         if sesquisyllable and len(onset_chars) > 1:
             m_onset_chars = onset_chars[0]
@@ -221,7 +222,6 @@ class Syllable:
             )
             onset_chars = onset_chars[1:]
 
-        # MAIN
         m_onset, m_medial, cluster_type_mapped, m_vowel, m_coda, m_vowel_duration, m_coda_type, m_consonant_class, m_tone_split, m_old_tone = cls._process_phonemes(
             vowel_form, onset_chars, coda_chars, tone_marker, vowel, force_cluster=force_cluster
         )
@@ -229,7 +229,10 @@ class Syllable:
         assimilated_consonant_class = None
         assimilated_tone_split = None
         assimilated_tone = None
+        assimilate_tone_flag = False
+        
         if minor_part.onset_chars:
+            assimilate_tone_flag = True
             assimilated_consonant_class = minor_part.consonant_class
             assimilated_tone_split, assimilated_tone = cls._get_tones(
                 tone_marker, 
@@ -255,14 +258,14 @@ class Syllable:
             assimilated_consonant_class=assimilated_consonant_class,
             assimilated_tone_split=assimilated_tone_split,
             assimilated_tone=assimilated_tone,
-            cluster_type=cluster_type_mapped if cluster_type_mapped else cluster_type
+            cluster_type=cluster_type_mapped if cluster_type_mapped else cluster_type,
+            assimilate_tone=assimilate_tone_flag
         )
 
-        # REDUPLICATION
         redup_part = SyllablePart()
-        reduplicable = False
+        is_reduplicable = False
         if coda_chars and '์' not in coda_chars:
-            reduplicable = True
+            is_reduplicable = True
             if len(coda_chars) > 1 and coda_chars[0] in ['ร', 'ห']:
                 redup_text = coda_chars[1:]
             else:
@@ -298,11 +301,11 @@ class Syllable:
 
         return cls(
             text=text,
-            ambiguous_cluster=ambiguous_cluster, 
-            reduplicable=reduplicable,
+            has_ambiguous_cluster=has_ambiguous_cluster, 
+            is_reduplicable=is_reduplicable,
             minor_syllable=minor_part,
             main_syllable=main_part,
-            reduplicated_syllable=redup_part
+            is_reduplicatedd_syllable=redup_part
         )
 
     @classmethod
@@ -487,14 +490,14 @@ class Syllable:
 
         return tone_split, old_tone
 
-    def get_ipa(self, assimilate_tone: bool = True, reduplicate: bool = False) -> str:
+    def get_ipa(self, is_reduplicated: bool = False) -> str:
         parts = []
         if self.minor_syllable.vowel:
-            parts.append(self.minor_syllable.get_ipa(assimilate_tone=assimilate_tone))
+            parts.append(self.minor_syllable.get_ipa())
         if self.main_syllable.vowel:
-            parts.append(self.main_syllable.get_ipa(assimilate_tone=assimilate_tone))
-        if reduplicate and self.reduplicable and self.reduplicated_syllable.vowel:
-            parts.append(self.reduplicated_syllable.get_ipa(assimilate_tone=assimilate_tone))
+            parts.append(self.main_syllable.get_ipa())
+        if is_reduplicated and self.is_reduplicable and self.is_reduplicatedd_syllable.vowel:
+            parts.append(self.is_reduplicatedd_syllable.get_ipa())
         return '.'.join(parts)
     
     def reconstruct_text(self) -> str:
@@ -509,11 +512,13 @@ class Syllable:
             vowel_tone = self.main_syllable.vowel_form[1]
         
         text = self.main_syllable.vowel_form[0] + minor + onset_tone + vowel_tone + \
-            ((self.reduplicated_syllable.onset_chars + self.reduplicated_syllable.vowel_form[1]) if self.reduplicable else self.main_syllable.coda_chars)
+            ((self.is_reduplicatedd_syllable.onset_chars + self.is_reduplicatedd_syllable.vowel_form[1]) if self.is_reduplicable else self.main_syllable.coda_chars)
 
         return text
 
     def assimilate_tone(self, other: 'Syllable') -> None:
+        self.is_tone_assimilated = True
+        self.main_syllable.assimilate_tone = True
         donor = other.main_syllable
         if not donor.onset_chars:
             return
@@ -529,6 +534,14 @@ class Syllable:
         self.main_syllable.assimilated_consonant_class = donor_class
         self.main_syllable.assimilated_tone_split = tone_split
         self.main_syllable.assimilated_tone = tone
+    
+    def unassimilate_tone(self) -> None:
+        self.is_tone_assimilated = False
+        self.main_syllable.assimilate_tone = False
+
+        self.main_syllable.assimilated_consonant_class = None
+        self.main_syllable.assimilated_tone_split = None
+        self.main_syllable.assimilated_tone = None
 
     def sound_shift(self, dialect: Dict[str, Any] = STANDARD_THAI_SOUND_SHIFTS) -> None:
         minor = self.minor_syllable
@@ -564,7 +577,7 @@ class Syllable:
                         main.vowel_duration
                     )
         
-        for p in [minor, main, self.reduplicated_syllable]:
+        for p in [minor, main, self.is_reduplicatedd_syllable]:
             if not p.vowel:
                 continue
 

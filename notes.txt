@@ -1,20 +1,3 @@
-Syllable Labels
-1. Sesquisyllable
-2. Reduplicated
-3. Irregularities
-    3.1 Short Duration
-    3.2 Long Duration
-    3.3 Tone
-    3.4 Dropped Medial
-
-Character Labels
-1. Consonant
-    1.1. Leading
-    1.2. Initial*
-    1.3. Medial
-    1.4. Final*
-    1.5. Final Cluster
-2. Vowel
-3. Tone Marker
-4. Diacritic
-5. Reduplicated
+1. States
+2. Possible grouping algorithm
+3. Solve
