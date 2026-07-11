@@ -513,7 +513,7 @@ class Syllable:
 
         return text
 
-    def assimilate_from(self, other: 'Syllable') -> None:
+    def assimilate_tone(self, other: 'Syllable') -> None:
         donor = other.main_syllable
         if not donor.onset_chars:
             return
