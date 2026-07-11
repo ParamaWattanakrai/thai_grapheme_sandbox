@@ -1,7 +1,7 @@
 from thai_syl import Syllable
 
-syllable1 = Syllable.extract('ดำ', force_cluster=False, sesquisyllable=False)
-syllable2 = Syllable.extract('เนิน', force_cluster=False, sesquisyllable=False)
+syllable1 = Syllable.extract('ตำ', force_cluster=False, sesquisyllable=False)
+syllable2 = Syllable.extract('รวจ', force_cluster=False, sesquisyllable=False)
 
 syllable2.assimilate_from(syllable1)
 syllable1.sound_shift()

@@ -91,9 +91,6 @@ def get_key(dictionary: dict, value: Any) -> Optional[str]:
     return None
 
 def get_tone_key(dictionary: dict, tone_split: Tuple[str, str]) -> Optional[str]:
-    """Like get_key, but for tone_split tuples. An entry may be a full
-    (box, consonant_class) tuple for an exact match, or a bare box-name
-    string (e.g. 'mai_tri') to match on the box alone, ignoring class."""
     for k, v in dictionary.items():
         for entry in v:
             if entry == tone_split or (isinstance(entry, str) and entry == tone_split[0]):
@@ -128,8 +125,11 @@ class SyllablePart:
     vowel: Optional[str] = None
     coda: Optional[str] = None
     vowel_duration: Optional[str] = None
+    coda_type: Optional[str] = None
+    consonant_class: Optional[str] = None
     tone_split: Optional[Tuple[str, str]] = None
     tone: Optional[str] = None
+    assimilated_consonant_class: Optional[str] = None
     assimilated_tone_split: Optional[Tuple[str, str]] = None
     assimilated_tone: Optional[str] = None
     cluster_type: Optional[str] = None
@@ -214,15 +214,29 @@ class Syllable:
                 vowel='a',
                 coda='ʔ',
                 vowel_duration='short',
+                coda_type='dead',
+                consonant_class=m_class,
                 tone_split=m_tone_split,
                 tone=m_old_tone,
             )
             onset_chars = onset_chars[1:]
 
         # MAIN
-        m_onset, m_medial, cluster_type_mapped, m_vowel, m_coda, m_vowel_duration, m_tone_split, m_old_tone = cls._process_phonemes(
+        m_onset, m_medial, cluster_type_mapped, m_vowel, m_coda, m_vowel_duration, m_coda_type, m_consonant_class, m_tone_split, m_old_tone = cls._process_phonemes(
             vowel_form, onset_chars, coda_chars, tone_marker, vowel, force_cluster=force_cluster
         )
+        
+        assimilated_consonant_class = None
+        assimilated_tone_split = None
+        assimilated_tone = None
+        if minor_part.onset_chars:
+            assimilated_consonant_class = minor_part.consonant_class
+            assimilated_tone_split, assimilated_tone = cls._get_tones(
+                tone_marker, 
+                assimilated_consonant_class, 
+                m_coda_type, 
+                m_vowel_duration
+            )
         
         main_part = SyllablePart(
             vowel_form=vowel_form,
@@ -234,10 +248,13 @@ class Syllable:
             vowel=m_vowel,
             coda=m_coda,
             vowel_duration=m_vowel_duration,
+            coda_type=m_coda_type,
+            consonant_class=m_consonant_class,
             tone_split=m_tone_split,
             tone=m_old_tone,
-            assimilated_tone_split=minor_part.tone_split,
-            assimilated_tone=minor_part.tone,
+            assimilated_consonant_class=assimilated_consonant_class,
+            assimilated_tone_split=assimilated_tone_split,
+            assimilated_tone=assimilated_tone,
             cluster_type=cluster_type_mapped if cluster_type_mapped else cluster_type
         )
 
@@ -259,7 +276,7 @@ class Syllable:
                 r_onset_chars = redup_text
                 r_raw_vowel = 'a'
 
-            r_onset, r_medial, r_cluster_type, r_vowel, r_coda, r_vowel_duration, r_tone_split, r_old_tone = cls._process_phonemes(
+            r_onset, r_medial, r_cluster_type, r_vowel, r_coda, r_vowel_duration, r_coda_type, r_consonant_class, r_tone_split, r_old_tone = cls._process_phonemes(
                 r_vowel_form, r_onset_chars, '', '', r_raw_vowel, force_cluster=True
             )
 
@@ -272,6 +289,8 @@ class Syllable:
                 vowel=r_vowel,
                 coda=r_coda,
                 vowel_duration=r_vowel_duration,
+                coda_type=r_coda_type,
+                consonant_class=r_consonant_class,
                 tone_split=r_tone_split,
                 tone=r_old_tone,
                 cluster_type=r_cluster_type
@@ -323,14 +342,16 @@ class Syllable:
         else:
             consonant_class = get_key(CONSONANT_CLASSES, vowel_form[1]) if vowel_form and len(vowel_form) > 1 and vowel_form[1] else None
 
+        coda_type = get_key(CODA_TYPES, coda if coda else '')
+
         tone_split, old_tone = cls._get_tones(
             tone_marker,
             consonant_class,
-            get_key(CODA_TYPES, coda if coda else ''),
+            coda_type,
             vowel_duration
         )
         
-        return onset, medial, cluster_type, vowel, coda, vowel_duration, tone_split, old_tone
+        return onset, medial, cluster_type, vowel, coda, vowel_duration, coda_type, consonant_class, tone_split, old_tone
 
     @classmethod
     def _get_vowel(cls, text: str) -> Tuple[Tuple[str, str], str]:
@@ -498,8 +519,14 @@ class Syllable:
             return
 
         donor_class = get_key(CONSONANT_CLASSES, donor.onset_chars[0])
-        tone_split, tone = self._get_tones('', donor_class, 'dead', 'short')
+        
+        tone_marker = self.main_syllable.tone_marker if self.main_syllable.tone_marker else ''
+        coda_type = self.main_syllable.coda_type
+        duration = self.main_syllable.vowel_duration
 
+        tone_split, tone = self._get_tones(tone_marker, donor_class, coda_type, duration)
+
+        self.main_syllable.assimilated_consonant_class = donor_class
         self.main_syllable.assimilated_tone_split = tone_split
         self.main_syllable.assimilated_tone = tone
 
@@ -521,14 +548,21 @@ class Syllable:
                     minor.onset = get_key(OLD_THAI_ONSETS, minor.text)
                     
                     minor_class = get_key(CONSONANT_CLASSES, minor.text)
-                    minor.tone_split, minor.tone = self._get_tones('', minor_class, 'dead', 'short')
+                    minor.coda_type = 'dead'
+                    minor.consonant_class = minor_class
+                    minor.tone_split, minor.tone = self._get_tones('', minor_class, minor.coda_type, minor.vowel_duration)
                     
                     main.onset_chars = main.onset_chars[1:]
                     main.onset = main.medial
                     main.medial = None
 
-                    main.assimilated_tone_split = minor.tone_split
-                    main.assimilated_tone = minor.tone
+                    main.assimilated_consonant_class = minor_class
+                    main.assimilated_tone_split, main.assimilated_tone = self._get_tones(
+                        main.tone_marker if main.tone_marker else '', 
+                        minor_class, 
+                        main.coda_type, 
+                        main.vowel_duration
+                    )
         
         for p in [minor, main, self.reduplicated_syllable]:
             if not p.vowel:
