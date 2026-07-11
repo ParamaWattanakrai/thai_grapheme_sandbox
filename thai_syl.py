@@ -35,13 +35,13 @@ DIGRAPHS = {
 }
 
 ONSET_CLUSTERS = {
-    'old_thai': ['คร', 'พร', 'กล', 'คล', 'ปล', 'พล', 'มล', 'กว', 'ขว', 'ฃว', 'คว', 'ฅว'],
+    'old_thai': ['ขร', 'คร', 'พร', 'กล', 'คล', 'ปล', 'พล', 'มล', 'กว', 'ขว', 'ฃว', 'คว', 'ฅว'],
     'old_khmer': ['กร', 'ตร', 'ทร', 'ปร', 'ขล', 'ผล', 'สร',
         'คร', 'พร', 'กล', 'คล', 'ปล', 'พล', 'มล', 'กว', 'คว'],
     'sanskrit': ['ศร',
         'กร', 'ตร', 'ทร', 'ปร', 'ผล', 'สร',
         'คร', 'พร', 'กล', 'คล', 'ปล', 'พล', 'มล', 'กว', 'คว'],
-    'orthography': ['ขร', 'จร', 'ซร'],
+    'orthography': ['จร', 'ซร'],
     'foreign': ['บร', 'ดร']
 }
 
@@ -180,7 +180,7 @@ class Syllable:
                 cluster_type = get_key(ONSET_CLUSTERS, onset_chars)
                 if force_cluster:
                     onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
-                elif cluster_type in ['old_thai', 'old_khmer'] or (force_cluster and cluster_type in ['foreign']) or onset_chars == 'ขร':
+                elif cluster_type in ['old_thai', 'old_khmer'] or (force_cluster and cluster_type in ['foreign']):
                     onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
                 else:
                     ambiguous_cluster = True
