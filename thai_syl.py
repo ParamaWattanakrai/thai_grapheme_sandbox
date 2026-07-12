@@ -204,14 +204,25 @@ class Syllable:
             elif sesquisyllable:
                 onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
             else:
-                cluster_type = get_key(ONSET_CLUSTERS, onset_chars)
-                if force_cluster:
-                    onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
-                elif cluster_type in ['old_thai', 'old_khmer'] or (force_cluster and cluster_type in ['foreign']):
-                    onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
+                if len(onset_chars) > 2:
+                    candidate_onset, remainder = onset_chars[:2], onset_chars[2:]
+                    if cls._cluster_is_valid(candidate_onset):
+                        cluster_type = get_key(ONSET_CLUSTERS, candidate_onset)
+                        onset_chars, coda_chars = candidate_onset, remainder
+                    elif force_cluster:
+                        onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
+                    else:
+                        has_ambiguous_cluster = True
+                        onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
                 else:
-                    has_ambiguous_cluster = True
-                    onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
+                    cluster_type = get_key(ONSET_CLUSTERS, onset_chars)
+                    if force_cluster:
+                        onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
+                    elif cluster_type in ['old_thai', 'old_khmer']:
+                        onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
+                    else:
+                        has_ambiguous_cluster = True
+                        onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
 
         tone_marker = ''.join(re.findall(expand(r't'), text))
         onset_chars = re.sub(expand(r't'), '', onset_chars)
