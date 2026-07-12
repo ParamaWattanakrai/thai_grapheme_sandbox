@@ -148,6 +148,7 @@ class SyllablePart:
 class Syllable:
     text: str
     has_ambiguous_cluster: bool = False
+    has_impossible_cluster: bool = False
     is_reduplicable: bool = False
     is_tone_assimilated: bool = False
     is_reduplicated: bool = False
@@ -166,13 +167,23 @@ class Syllable:
         return self.get_ipa()
 
     @classmethod
+    def _cluster_is_valid(cls, chars: str) -> bool:
+        if get_key(ONSET_CLUSTERS, chars) is not None:
+            return True
+        all_digraphs = {c for group in DIGRAPHS.values() for c in group}
+        return chars in all_digraphs
+
+    @classmethod
     def extract(cls, text: str, force_cluster: bool = False, sesquisyllable: bool = False) -> 'Syllable':
         vowel_form, nucleus = cls._get_vowel(text)
         onset_chars, coda_chars = cls._get_consonants(text, vowel_form)
 
         has_ambiguous_cluster = False
+        has_impossible_cluster = False
         cluster_type = None
-        if not vowel_form[1] and len(onset_chars) > 1:
+        if vowel_form[1] and len(onset_chars) > 1 and not cls._cluster_is_valid(onset_chars):
+            has_impossible_cluster = True
+        elif not vowel_form[1] and len(onset_chars) > 1:
             if re.search(expand(r't'), text):
                 split_result = re.split(expand(r't'), onset_chars, maxsplit=1)
                 onset_chars = split_result[0]
@@ -207,7 +218,8 @@ class Syllable:
         coda_chars = re.sub(expand(r't'), '', coda_chars)
 
         minor_part = SyllablePart()
-        if sesquisyllable and len(onset_chars) > 1:
+        force_minor = sesquisyllable or has_impossible_cluster
+        if force_minor and len(onset_chars) > 1:
             m_onset_chars = onset_chars[0]
             m_onset = get_key(OLD_THAI_ONSETS, m_onset_chars)
             m_class = get_key(CONSONANT_CLASSES, m_onset_chars)
@@ -307,7 +319,8 @@ class Syllable:
 
         return cls(
             text=text,
-            has_ambiguous_cluster=has_ambiguous_cluster, 
+            has_ambiguous_cluster=has_ambiguous_cluster,
+            has_impossible_cluster=has_impossible_cluster,
             is_reduplicable=is_reduplicable,
             minor_syllable=minor_part,
             main_syllable=main_part,
@@ -549,7 +562,7 @@ class Syllable:
         self.main_syllable.assimilated_tone_split = None
         self.main_syllable.assimilated_tone = None
 
-    def sound_shift(self, dialect: Dict[str, Any] = STANDARD_THAI_SOUND_SHIFTS) -> None:
+    def sound_shift(self, dialect: Dict[str, Any] = STANDARD_THAI_SOUND_SHIFTS) -> 'Syllable':
         minor = self.minor_syllable
         main = self.main_syllable
 
@@ -606,3 +619,4 @@ class Syllable:
                 p.tone = get_tone_key(dialect['tones'], p.tone_split)
             if dialect.get('tones') and p.assimilated_tone_split:
                 p.assimilated_tone = get_tone_key(dialect['tones'], p.assimilated_tone_split)
+        return self

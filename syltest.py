@@ -11,4 +11,17 @@ print(syllable1, syllable2)
 print(syllable1.reconstruct_text() + syllable2.reconstruct_text())
 print(f'{syllable1.main_syllable.tone_split} - {syllable2.main_syllable.assimilated_tone_split}({syllable2.main_syllable.tone_split})')
 
-print(Syllable.extract('กกิ', force_cluster=False, sesquisyllable=True))
+cases = [
+    ('กกิ', False, False),
+    ('กกิ', False, True),
+    ('กริ่ง', False, False),
+    ('กริ่ง', False, True),
+    ('หมู', False, False),
+    ('หมู', True, False),
+    ('หมู', False, True),
+    ('แปรง', False, True),
+    ('แปรง', False, False),
+]
+for text, force_cluster, sesqui in cases:
+    syllable = Syllable.extract(text, force_cluster=force_cluster, sesquisyllable=sesqui).sound_shift()
+    print(f'{syllable.reconstruct_text()}, {syllable}, cluster {force_cluster}, sesqui {sesqui}')
