@@ -22,6 +22,7 @@ cases = [
     ('แปรง', False, True),
     ('แปรง', False, False),
     ('ครก', False, False),
+    ('ถนน', False, True),
     ('เจริญ', False, False),
 ]
 for text, force_cluster, sesqui in cases:
