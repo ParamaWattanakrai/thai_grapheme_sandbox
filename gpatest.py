@@ -1,6 +1,6 @@
 import thai_gpa
 
-syllables = thai_gpa.align('การตลาด', 'kaːn˧.taʔ˨˩.laːt˨˩')
+syllables = thai_gpa.align('การเจริญทำ', 'kaːn˧.t͡ɕaʔ˨˩.rɤːn˧.tʰam˧')
 print(syllables)
 
 

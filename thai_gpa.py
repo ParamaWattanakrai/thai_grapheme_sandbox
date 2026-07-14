@@ -9,13 +9,13 @@ def align(text: str, ipa: str) -> list:
     clusters = segment(text)
     phonemes = thai_ipa.parse(ipa)
 
-    units = []
-    for cluster in clusters:
+    can_merge = [True] * (len(clusters) + 1) # Can merge with cluster in front 
+    for i, cluster in enumerate(clusters):
         syllable = Syllable.extract(cluster, force_cluster=False, sesquisyllable=False)
-        front, behind = True, True
         if re.match(r'^[เ-ไ]', cluster) or \
-            len(syllable.main_syllable.onset_chars) > 1:
-            front = False
-        if re.search(r'[ะำ]', cluster):
-            behind = False
-        units.append(syllable, front, behind)
+            len(syllable.onset_chars) > 1:
+            can_merge[i] = False
+        if re.search(r'[ะำ์]', cluster):
+            can_merge[i + 1] = False
+    print(clusters)
+    print(can_merge)

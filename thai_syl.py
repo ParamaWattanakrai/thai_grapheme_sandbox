@@ -147,6 +147,7 @@ class SyllablePart:
 @dataclass
 class Syllable:
     text: str
+    onset_chars: Optional[str] = None
     has_ambiguous_cluster: bool = False
     has_impossible_cluster: bool = False
     is_reduplicable: bool = False
@@ -227,6 +228,8 @@ class Syllable:
         tone_marker = ''.join(re.findall(expand(r't'), text))
         onset_chars = re.sub(expand(r't'), '', onset_chars)
         coda_chars = re.sub(expand(r't'), '', coda_chars)
+
+        full_onset_chars = onset_chars
 
         minor_part = SyllablePart()
         force_minor = sesquisyllable or has_impossible_cluster
@@ -330,6 +333,7 @@ class Syllable:
 
         return cls(
             text=text,
+            onset_chars=full_onset_chars,
             has_ambiguous_cluster=has_ambiguous_cluster,
             has_impossible_cluster=has_impossible_cluster,
             is_reduplicable=is_reduplicable,
