@@ -24,6 +24,8 @@ cases = [
     ('ครก', False, False),
     ('ถนน', False, True),
     ('เจริญ', False, False),
+    ('ไทย', False, False),
+    ('เคย', False, False),
 ]
 for text, force_cluster, sesqui in cases:
     syllable = Syllable.extract(text, force_cluster=force_cluster, sesquisyllable=sesqui).sound_shift()
