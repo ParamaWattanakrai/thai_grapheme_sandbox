@@ -1,27 +1,27 @@
-เy*cีt?ยะ?r?p*f? เอียะ
+เy*cีt?ยะ?r?p*f? เอียะ complete เปรียะ = เอ + อี + ยะ, เพลีย = เพ + ลี + ย, เพรียก = เพ + รี + ยก
 
-เy*cืt?อะ?r?p*f? เอือะ
+เc?cืt?อะr?p*f? เอือะ เปรือะ complete
+เy*cืt?อะ?r?p*f? เอือ complete เปลือก = เป + ลือ + ก
 
-เy*cิt?r?cf? เอิด
+เy*cิt?r?cf? เอิด complete เปริด = เอ + อิด
 
 ก็
-y*c็t?อr?cf? กร็อบ
+y*c็t?อr?cf? กร็อบ = ก + ร็อบ
 
-[เแ]c?c็t?r?cf? เอ็ด แอ็ด complete
-เc?ct?าะr?p*f? เอาะ complete
+[เแ]c?c็t?r?cf? เอ็ด แอ็ด เกร็ด แกร็บ complete
+เc?ct?าะr?p*f? เอาะ เพราะ complete
 เy*ct?าะ?r?p*f? เอาะ complete
 
-[เ-ไ]หvtf?x
-[เ-ไ]umtf?x
-[เ-โ]y*ct?ะ?r?p*f?
-[เ-ไ]y*ct?r?p*f?
+[เ-ไ]หvtf?x ไหล่ = ไห + ล่
+[เ-ไ]umtf?x ใกล้ = ใก + ล้
+[เ-โ]y*ct?ะ?r?p*f? เอะ แอะ โอะ complete เหละ = เห + ละ, แหละ = แห + ละ, โหละ = โห + ละ, โหลด = โห + ลด
+[เ-ไ]y*ct?r?p*f? ไอ complete ไพร = ไพ + ร
 
-y*ct?[ะาำ]r?p*f?
+y*ct?[ะาำ]r?p*f? อะ complete กระ = ก + ระ, ขาด = ขา + ด
 
-y*c[ิ-ู]t?r?p*f?
+y*cืt?r?cf? อือ complete พรือ = พ + รือ
+y*c[ิ-ู]t?r?p*f? อิ อี อึ อื อุ อู complete พริบ + พ + ริ + บ
 c[ิ-ฺํ๎]t?r?f?
-
-y*cืt?r?cf?
 
 y*cัt?cิf?
 y*cัt?cุf?
@@ -37,7 +37,7 @@ y*ctr?cf?
 y*ฤๅ?
 y*ฦๅ?
 
-cรรc์
+cรรc์ วรรค์ complete สวรรค์ = ส + วรรค์
 y*cr?cf
 y*c?p*
 [\s+฿ๆ๏๚๛]
