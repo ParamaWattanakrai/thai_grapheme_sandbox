@@ -3,7 +3,7 @@
 เc?cืt?อะr?p*f? เอือะ เปรือะ complete
 เy*cืt?อะ?r?p*f? เอือ complete เปลือก = เป + ลือ + ก
 
-เy*cิt?r?cf? เอิด complete เปริด = เอ + อิด
+เy*cิt?r?cf? เอิด complete เปริด = เป + ริด
 
 ก็
 y*c็t?อr?cf? กร็อบ = ก + ร็อบ
@@ -20,7 +20,7 @@ y*c็t?อr?cf? กร็อบ = ก + ร็อบ
 y*ct?[ะาำ]r?p*f? อะ complete กระ = ก + ระ, ขาด = ขา + ด
 
 y*cืt?r?cf? อือ complete พรือ = พ + รือ
-y*c[ิ-ู]t?r?p*f? อิ อี อึ อื อุ อู complete พริบ + พ + ริ + บ
+y*c[ิ-ู]t?r?p*f? อิ อี อึ อื อุ อู complete พริบ = พ + ริ + บ
 c[ิ-ฺํ๎]t?r?f?
 
 y*cัt?cิf?

@@ -538,7 +538,7 @@ class Syllable:
         minor = self.minor_syllable.onset_chars if self.minor_syllable.onset_chars else ''
 
         tone_marker = self.main_syllable.tone_marker if self.main_syllable.tone_marker else ''
-        if any(ch in self.main_syllable.vowel_form[1] for ch in ['ิ', 'ุ']):
+        if any(ch in self.main_syllable.vowel_form[1] for ch in ['ั', 'ิ', 'ี', 'ึ', 'ื', 'ุ', 'ู']):
             onset_tone = self.main_syllable.onset_chars
             vowel_tone = self.main_syllable.vowel_form[1] + tone_marker
         else:
