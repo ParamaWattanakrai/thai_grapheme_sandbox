@@ -68,7 +68,7 @@ STANDARD_THAI_SOUND_SHIFTS = {
     'epentheses': ['ml'],
     'onsets': [(['x', 'g', 'ɣ'], 'kʰ'),
         (['ʑ', 'z'], 't͡ɕʰ'), (['ɲ', 'ɲ̊', 'j̊', 'ʔj'], 'j'), (['ˀd'], 'd'), (['d'], 'tʰ'), (['ˀb'], 'b'), (['b'], 'pʰ'), (['v'], 'f'),
-        (['ŋ̊'], 'ŋ'), (['m̥'], 'm'), (['r̥'], 'r'), (['l̥'], 'l'), (['w̥'], 'w')],
+        (['ŋ̊'], 'ŋ'), (['n̥'], 'n'), (['m̥'], 'm'), (['r̥'], 'r'), (['l̥'], 'l'), (['w̥'], 'w')],
     'codas': [(['ɰ'], 'j')],
     'tones': {
         '˧': [('A1', 'unaspirated'), ('A1', 'glottalized'), ('A2', 'voiced')],
@@ -492,6 +492,13 @@ class Syllable:
         cluster_type = get_key(ONSET_CLUSTERS, cleaned_onset_chars)
         digraph = get_key(DIGRAPHS, cleaned_onset_chars)
 
+        # A genuine digraph (หม, หน, ...) is never a real onset+medial
+        # cluster, no matter what force_cluster asks for -- Thai doesn't have
+        # a literal /hm/ or /hn/ cluster; ห+sonorant is always either the
+        # digraph (one sound) or two separate syllables, never one syllable
+        # with both consonants pronounced. force_cluster only makes sense
+        # for combos that are ambiguous cluster candidates in the first
+        # place, so it's gated on not being a digraph here.
         if len(cleaned_onset_chars) == 2 and digraph is None and (cluster_type in ['old_thai', 'old_khmer'] or force_cluster):
             cluster_type = cluster_type if cluster_type else 'foreign'
             return get_key(OLD_THAI_ONSETS, cleaned_onset_chars[0]), get_key(OLD_THAI_ONSETS, cleaned_onset_chars[1]), cluster_type

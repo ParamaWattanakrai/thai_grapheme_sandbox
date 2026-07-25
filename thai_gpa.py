@@ -32,9 +32,16 @@ def _candidate_syllables(text: str, prev_syllable: 'Syllable' = None, next_clust
 
       - sesquisyllable: always try both False and True (extract() is a no-op
         difference when there's nothing to split, so this never hurts).
-      - force_cluster: only tried if the plain default extraction reports
-        has_ambiguous_cluster -- force_cluster exists to resolve exactly
-        that ambiguity, so there's no reason to try it otherwise.
+      - force_cluster: always tried both ways. has_ambiguous_cluster only
+        gets set for *unrecognized* onset combos -- a recognized old_thai
+        or old_khmer cluster (e.g. ปล in แปล) takes a different branch in
+        extract() entirely, defaulting to an onset+coda split with no
+        has_ambiguous_cluster flag at all, even though force_cluster=True
+        still produces a genuinely different, valid reading (the actual
+        pl- cluster). Since that flag can't be trusted to catch every case
+        where force_cluster matters, there's no reliable gate cheaper than
+        just trying both -- extract() is cheap enough that this costs
+        nothing to always do.
       - tone assimilation: only tried if a prev_syllable (the syllable group
         immediately preceding this one in the accepted parse) was given and
         its main syllable actually has an onset to donate a class from --
@@ -61,8 +68,7 @@ def _candidate_syllables(text: str, prev_syllable: 'Syllable' = None, next_clust
     would produce (1 to 3 entries: minor?, main, reduplicated?), already
     sound-shifted.
     """
-    default = Syllable.extract(text, force_cluster=False, sesquisyllable=False)
-    force_cluster_options = [False, True] if default.has_ambiguous_cluster else [False]
+    force_cluster_options = [False, True]
 
     can_assimilate = bool(prev_syllable is not None and prev_syllable.main_syllable.onset_chars)
 
