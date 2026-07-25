@@ -156,7 +156,7 @@ class Syllable:
     
     minor_syllable: SyllablePart = field(default_factory=SyllablePart)
     main_syllable: SyllablePart = field(default_factory=SyllablePart)
-    is_reduplicatedd_syllable: SyllablePart = field(default_factory=SyllablePart)
+    reduplicated_syllable: SyllablePart = field(default_factory=SyllablePart)
 
     def __getitem__(self, item: str) -> Any:
         return getattr(self, item)
@@ -339,7 +339,7 @@ class Syllable:
             is_reduplicable=is_reduplicable,
             minor_syllable=minor_part,
             main_syllable=main_part,
-            is_reduplicatedd_syllable=redup_part
+            reduplicated_syllable=redup_part
         )
 
     @classmethod
@@ -530,8 +530,8 @@ class Syllable:
             parts.append(self.minor_syllable.get_ipa())
         if self.main_syllable.nucleus:
             parts.append(self.main_syllable.get_ipa())
-        if is_reduplicated and self.is_reduplicable and self.is_reduplicatedd_syllable.nucleus:
-            parts.append(self.is_reduplicatedd_syllable.get_ipa())
+        if is_reduplicated and self.is_reduplicable and self.reduplicated_syllable.nucleus:
+            parts.append(self.reduplicated_syllable.get_ipa())
         return '.'.join(parts)
     
     def reconstruct_text(self) -> str:
@@ -546,7 +546,7 @@ class Syllable:
             vowel_tone = self.main_syllable.vowel_form[1]
         
         text = self.main_syllable.vowel_form[0] + minor + onset_tone + vowel_tone + \
-            ((self.is_reduplicatedd_syllable.onset_chars + self.is_reduplicatedd_syllable.vowel_form[1]) if self.is_reduplicable else self.main_syllable.coda_chars)
+            ((self.reduplicated_syllable.onset_chars + self.reduplicated_syllable.vowel_form[1]) if self.is_reduplicable else self.main_syllable.coda_chars)
 
         return text
 
@@ -611,7 +611,7 @@ class Syllable:
                         main.vowel_duration
                     )
         
-        for p in [minor, main, self.is_reduplicatedd_syllable]:
+        for p in [minor, main, self.reduplicated_syllable]:
             if not p.nucleus:
                 continue
 

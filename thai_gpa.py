@@ -17,5 +17,6 @@ def align(text: str, ipa: str) -> list:
             can_merge[i] = False
         if re.search(r'[ะำ์]', cluster):
             can_merge[i + 1] = False
+    
     print(clusters)
     print(can_merge)
