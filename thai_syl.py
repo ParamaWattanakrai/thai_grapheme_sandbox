@@ -100,7 +100,7 @@ def get_tone_key(dictionary: dict, tone_split: Tuple[str, str]) -> Optional[str]
 def expand(pattern: str) -> str:
     return (
         pattern
-        .replace('f', r'(?:c[ะิุา]?[์]?)')
+        .replace('f', r'(?:c[ะา-ู]?[์]?)')
         .replace('x', r'($|(?=[\s+เ-ไๆ๏๚๛]|c[ะ-ฺ]))')
         .replace('r', r'(?:c์)')
         .replace('y', r'(?:cฺ?|c๎?)')

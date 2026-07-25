@@ -1,7 +1,7 @@
 import thai_gpa
 
-syllables = thai_gpa.align('สุจิตรา', 'suʔ˨˩.t͡ɕit˨˩.traː˧')
-print(syllables[1])
+syllables = thai_gpa.align('กุฏิ', 'kut˨˩.tiʔ˨˩')
+print(syllables)
 
 
 # 'การขัดกันของผลประโยชน์', 'kaːn˧.kʰat˨˩.kan˧.kʰɔːŋ˨˥.pʰon˨˥.praʔ˨˩.joːt˨˩'
