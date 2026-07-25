@@ -26,6 +26,7 @@ cases = [
     ('เจริญ', False, False),
     ('ไทย', False, False),
     ('เคย', False, False),
+    ('กษัตริย์', False, True)
 ]
 
 for text, force_cluster, sesqui in cases:

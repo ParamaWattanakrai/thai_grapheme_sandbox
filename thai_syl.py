@@ -524,13 +524,13 @@ class Syllable:
 
         return tone_split, old_tone
 
-    def get_ipa(self, is_reduplicated: bool = False) -> str:
+    def get_ipa(self) -> str:
         parts = []
         if self.minor_syllable.nucleus:
             parts.append(self.minor_syllable.get_ipa())
         if self.main_syllable.nucleus:
             parts.append(self.main_syllable.get_ipa())
-        if is_reduplicated and self.is_reduplicable and self.reduplicated_syllable.nucleus:
+        if self.is_reduplicated and self.is_reduplicable and self.reduplicated_syllable.nucleus:
             parts.append(self.reduplicated_syllable.get_ipa())
         return '.'.join(parts)
     
