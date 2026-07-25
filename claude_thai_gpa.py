@@ -1,237 +1,670 @@
-from dataclasses import replace
+import re
+from dataclasses import dataclass, field
+from typing import Optional, Tuple, Dict, Any
 
-from thai_lcc import segment
-from thai_syl import Syllable, SyllablePart
-import thai_ipa
+SANSKRIT_CONSONANTS = {
+    'k': ['ก'], 'kʰ': ['ข', 'ฃ'], 'g': ['ค', 'ฅ'], 'ɡʱ': ['ฆ'], 'ŋ': ['ง'],
+    't͡ɕ': ['จ'], 't͡ɕʰ': ['ฉ'], 'd͡ʑ': ['ช', 'ซ'], 'd͜ʑʱ': ['ฌ'], 'ɲ': ['ญ'],
+    'ʈ': ['ฎ', 'ฏ'], 'ʈʰ': ['ฐ'], 'ɖ': ['ฑ'], 'ɖʱ': ['ฒ'], 'ɳ': ['ณ'],
+    't': ['ด', 'ต'], 'tʰ': ['ถ'], 'd': ['ท'], 'dʱ': ['ธ'], 'n': ['น'],
+    'p': ['บ', 'ป'], 'pʰ': ['ผ', 'ฝ'], 'b': ['พ', 'ฟ'], 'bʱ': ['ภ'], 'v': ['ฟ'], 'm': ['ม'],
+    'j': ['ย'], 'ɾ': ['ร'], 'l': ['ล'], 'w': ['ว'],
+    'ɕ': ['ศ'], 'ʂ': ['ษ'], 's': ['ส'], 'h': ['ห', 'ฮ'], 'ɭ': ['ฬ'], 'ʔ': ['อ']
+}
 
-MAX_SPAN = 4  # widest plausible grapheme-cluster span for one merged text group
+THAI_ONSETS = {
+    'k': ['ก'], 'kʰ': ['ข', 'ฃ', 'ค', 'ฅ', 'ฆ'], 'ŋ': ['ง'],
+    't͡ɕ': ['จ'], 't͡ɕʰ': ['ฉ', 'ช', 'ฌ'],
+    'd': ['ฎ', 'ด'], 't': ['ฏ', 'ต'], 'tʰ': ['ฐ', 'ฑ', 'ฒ', 'ถ', 'ท', 'ธ'], 'n': ['ณ', 'น'],
+    'b': ['บ'], 'p': ['ป'], 'pʰ': ['ผ', 'พ', 'ภ'], 'f': ['ฝ', 'ฟ'], 'm': ['ม'],
+    'j': ['ญ', 'ย'], 'r': ['ร'], 'l': ['ล', 'ฬ'], 'w': ['ว'],
+    's': ['ซ', 'ศ', 'ษ', 'ส'], 'h': ['ห', 'ฮ'], 'ʔ': ['อ']
+}
 
-# A cluster is "bridge-eligible" if it's a single bare consonant with no
-# vowel or tone marks -- i.e. it's ambiguous whether it belongs to the
-# previous syllable (as coda) or should also be read as part of the next
-# syllable's onset cluster (e.g. the 'ต' in สุจิตรา -> สุ.จิต.ตรา).
-_THAI_CONSONANTS = set('กขฃคฅฆงจฉชซฌญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรลวศษสหฬอฮ')
+OLD_THAI_ONSETS = {
+    'k': ['ก'], 'kʰ': ['ข'], 'x': ['ฃ'], 'g': ['ค', 'ฆ'], 'ɣ': ['ฅ'], 'ŋ': ['ง'],
+    't͡ɕ': ['จ'], 't͡ɕʰ': ['ฉ'], 'ʑ': ['ช'], 'z': ['ซ', 'ฌ'], 'ɲ': ['ญ'],
+    'ˀd': ['ฎ', 'ด'], 't': ['ฏ', 'ต'], 'tʰ': ['ฐ', 'ถ'], 'd': ['ฑ', 'ฒ', 'ท', 'ธ'], 'n': ['ณ', 'น'],
+    'ˀb': ['บ'], 'p': ['ป'], 'pʰ': ['ผ'], 'f': ['ฝ'], 'b': ['พ', 'ภ'], 'v': ['ฟ'], 'm': ['ม'],
+    'j': ['ย'], 'r': ['ร'], 'l': ['ล', 'ฬ'], 'w': ['ว'],
+    's': ['ศ', 'ษ', 'ส'], 'h': ['ห', 'ฮ'], 'ʔ': ['อ']
+}
 
-# Flag combinations to try when extracting a merged span. force_cluster
-# controls whether a 2-consonant onset with no explicit yamakkan mark is
-# read as a genuine cluster; sesquisyllable controls whether a leading
-# 2-consonant onset is instead split into a minor pre-syllable + main.
-_EXTRACT_FLAG_COMBOS = [
-    (force_cluster, sesquisyllable)
-    for force_cluster in (False, True)
-    for sesquisyllable in (False, True)
-]
+DIGRAPHS = {
+    'ŋ̊': ['หง'], 'ɲ̊': ['หญ'], 'n̥': ['หน'], 'm̥': ['หม'], 'j̊': ['หย'], 'r̥': ['หร'], 'l̥': ['หล'], 'w̥': ['หว'], 'ˀj': ['อย']
+}
 
+ONSET_CLUSTERS = {
+    'old_thai': ['ขร', 'คร', 'พร', 'กล', 'คล', 'ปล', 'พล', 'มล', 'กว', 'ขว', 'ฃว', 'คว', 'ฅว'],
+    'old_khmer': ['กร', 'ตร', 'ทร', 'ปร', 'ขล', 'ผล', 'สร',
+        'คร', 'พร', 'กล', 'คล', 'ปล', 'พล', 'มล', 'กว', 'คว'],
+    'sanskrit': ['ศร',
+        'กร', 'ตร', 'ทร', 'ปร', 'ผล', 'สร',
+        'คร', 'พร', 'กล', 'คล', 'ปล', 'พล', 'มล', 'กว', 'คว'],
+    'orthography': ['จร', 'ซร'],
+    'foreign': ['บร', 'ดร']
+}
 
-def _is_bridge_cluster(cluster: str) -> bool:
-    return len(cluster) == 1 and cluster in _THAI_CONSONANTS
+CODAS = {
+    'k': ['ก', 'ข', 'ฃ', 'ค', 'ฅ', 'ฆ'], 'p': ['บ', 'ป', 'ผ', 'พ', 'ภ'],
+    't': ['จ', 'ฉ', 'ช', 'ซ', 'ฌ', 'ฎ', 'ฏ', 'ฐ', 'ฑ', 'ฒ', 'ด', 'ต', 'ถ', 'ท', 'ธ', 'ศ', 'ษ', 'ส'],
+    'n': ['ญ', 'ณ', 'น', 'ร', 'ล', 'ฬ'], 'm': ['ม'], 'j': ['ย'], 'w': ['ว'], 'ŋ': ['ง'],
+    '': ['']
+}
 
+CODA_TYPES = {
+    'dead': ['k', 'p', 't', 'ʔ'],
+    'live': ['n', 'm', 'j', 'w', 'ŋ', '']
+}
 
-def _effective_tone(part: SyllablePart):
-    '''The tone SyllablePart.get_ipa() actually emits: assimilated tone
-    takes precedence over the syllable's own raw tone when assimilation
-    applies (e.g. a sesquisyllable main syllable inheriting its tone
-    class from the minor syllable's onset consonant). Scoring against
-    the raw .tone field instead of this would silently penalize correct
-    assimilated readings.'''
-    if part.assimilate_tone and part.assimilated_tone is not None:
-        return part.assimilated_tone
-    return part.tone
+CONSONANT_CLASSES = {
+    'friction': ['ข', 'ฃ', 'ฉ', 'ฐ', 'ถ', 'ผ', 'ฝ', 'ศ', 'ษ', 'ส', 'ห'],
+    'unaspirated': ['ก', 'จ', 'ฏ', 'ต', 'ป'],
+    'glottalized': ['ฎ', 'ด', 'บ', 'อ'],
+    'voiced': [ 'ค', 'ฅ', 'ฆ', 'ง', 'ช', 'ซ', 'ฌ', 'ญ', 'ฑ', 'ฒ', 'ณ', 'ท', 'ธ', 'น', 'พ', 'ฟ', 'ภ', 'ม', 'ย', 'ร', 'ล', 'ว', 'ฬ', 'ฮ', 'ฤ', 'ฦ']
+}
 
+STANDARD_THAI_SOUND_SHIFTS = {
+    'epentheses': ['ml'],
+    'onsets': [(['x', 'g', 'ɣ'], 'kʰ'),
+        (['ʑ', 'z'], 't͡ɕʰ'), (['ɲ', 'ɲ̊', 'j̊', 'ʔj'], 'j'), (['ˀd'], 'd'), (['d'], 'tʰ'), (['ˀb'], 'b'), (['b'], 'pʰ'), (['v'], 'f'),
+        (['ŋ̊'], 'ŋ'), (['m̥'], 'm'), (['r̥'], 'r'), (['l̥'], 'l'), (['w̥'], 'w')],
+    'codas': [(['ɰ'], 'j')],
+    'tones': {
+        '˧': [('A1', 'unaspirated'), ('A1', 'glottalized'), ('A2', 'voiced')],
+        '˨˩': [('B1', 'friction'), ('B1', 'unaspirated'), ('B1', 'glottalized'),
+            ('DL1', 'friction'), ('DL1', 'unaspirated'), ('DL1', 'glottalized'),
+            ('DS1', 'friction'), ('DS1', 'unaspirated'), ('DS1', 'glottalized')],
+        '˦˩': [('B2', 'voiced'),
+            ('C1', 'friction'), ('C1', 'unaspirated'), ('C1', 'glottalized'),
+            ('DL2', 'voiced')],
+        '˦˥': [('C2', 'voiced'),
+            ('DS2', 'voiced'), 'mai_tri'],
+        '˨˥': [('A1', 'friction'), 'mai_chattawa'],
+    }
+}
 
-def _score(part: SyllablePart, target: dict) -> float:
-    '''Structural match between a predicted SyllablePart and a target
-    phoneme dict from thai_ipa.parse. Equal weight per field; None==None
-    (e.g. no medial on both sides) counts as a match.'''
-    fields = (
-        (part.onset, target['initial']),
-        (part.medial, target['medial']),
-        (part.nucleus, target['nucleus']),
-        (part.coda, target['coda']),
-        (_effective_tone(part), target['tone']),
+def get_key(dictionary: dict, value: Any) -> Optional[str]:
+    for k, v in dictionary.items():
+        if value in v:
+            return k
+    return None
+
+def get_tone_key(dictionary: dict, tone_split: Tuple[str, str]) -> Optional[str]:
+    for k, v in dictionary.items():
+        for entry in v:
+            if entry == tone_split or (isinstance(entry, str) and entry == tone_split[0]):
+                return k
+    return None
+
+def expand(pattern: str) -> str:
+    return (
+        pattern
+        .replace('f', r'(?:c[ะิุ]?[์]?)')
+        .replace('x', r'($|(?=[\s+เ-ไๆ๏๚๛]|c[ะ-ฺ]))')
+        .replace('r', r'(?:c์)')
+        .replace('y', r'(?:cฺ?|c๎?)')
+        .replace('p', r'(cฺ?)')
+        .replace('c', r'[ก-ฮ]')
+        .replace('t', r'[่-๋]')
+        .replace('u', r'[กจฏฎดตบปอ]')
+        .replace('v', r'[งญณนมย-ว]')
+        .replace('m', r'[ร-ว]')
+        .strip()
     )
-    return sum(1 for p, t in fields if p == t) / len(fields)
+
+@dataclass
+class SyllablePart:
+    vowel_form: Optional[Tuple[str, str]] = None
+    onset_chars: Optional[str] = None
+    tone_marker: Optional[str] = None
+    coda_chars: Optional[str] = None
+    syllable: Optional[str] = None
+    onset: Optional[str] = None
+    medial: Optional[str] = None
+    nucleus: Optional[str] = None
+    coda: Optional[str] = None
+    vowel_duration: Optional[str] = None
+    coda_type: Optional[str] = None
+    consonant_class: Optional[str] = None
+    tone_split: Optional[Tuple[str, str]] = None
+    tone: Optional[str] = None
+    assimilated_consonant_class: Optional[str] = None
+    assimilated_tone_split: Optional[Tuple[str, str]] = None
+    assimilated_tone: Optional[str] = None
+    cluster_type: Optional[str] = None
+    assimilate_tone: bool = False
+
+    def __getitem__(self, item: str) -> Any:
+        return getattr(self, item)
+
+    def get_ipa(self) -> str:
+        if not self.onset and not self.nucleus:
+            return ""
+        tone = (self.assimilated_tone if self.assimilate_tone and self.assimilated_tone is not None else self.tone)
+        return (self.onset or '') + (self.medial or '') + (self.nucleus or '') + (self.coda or '') + (tone or '')
+
+@dataclass
+class Syllable:
+    text: str
+    onset_chars: Optional[str] = None
+    has_ambiguous_cluster: bool = False
+    has_impossible_cluster: bool = False
+    is_reduplicable: bool = False
+    is_tone_assimilated: bool = False
+    is_reduplicated: bool = False
+    
+    minor_syllable: SyllablePart = field(default_factory=SyllablePart)
+    main_syllable: SyllablePart = field(default_factory=SyllablePart)
+    reduplicated_syllable: SyllablePart = field(default_factory=SyllablePart)
+
+    _VOWEL_PATTERNS = [
+        (r'เy*ct?อะr?p*f?', ('เ', 'อะ'), 'ɤ'),
+        (r'เy*ct?าะr?p*f?', ('เ', 'าะ'), 'ɔ'),
+        (r'เy*ct?ะr?p*f?', ('เ', 'ะ'), 'e'),
+        (r'เy*ct?าr?p*f?', ('เ', 'า'), 'aw'),
+        (r'เy*c็t?r?p+f?', ('เ', '็'), 'e'),
+        (r'เy*cิt?r?p+f?', ('เ', 'ิ'), 'ɤː'),
+        (r'เy*ct?อr?p*f?', ('เ', 'อ'), 'ɤː'),
+        (r'เy*ct?ยr?p*f?', ('เ', 'ย'), 'ɤːj'),
+        (r'โy*ct?ะr?p*f?', ('โ', 'ะ'), 'o'),
+        (r'แy*ct?ะr?p*f?', ('แ', 'ะ'), 'ɛ'),
+        (r'แy*c็t?r?p+f?', ('แ', '็'), 'ɛ'),
+        (r'เy*cีt?ยะr?p*f?', ('เ', 'ียะ'), 'iəː'),
+        (r'เy*cีt?ยr?p*f?', ('เ', 'ีย'), 'iə'),
+        (r'เy*cืt?อะr?p*f?', ('เ', 'ือะ'), 'ɯəː'),
+        (r'เy*cืt?อ?r?p*f?', ('เ', 'ือ'), 'ɯə'),
+        (r'y*ct?ะr?p*f?', ('', 'ะ'), 'a'),
+        (r'y*cัt?p*cิ?f?', ('', 'ั'), 'a'),
+        (r'y*ct?าr?p*f?', ('', 'า'), 'aː'),
+        (r'y*ct?ำr?f?', ('', 'ำ'), 'am'),
+        (r'y*cิt?r?p*f?', ('', 'ิ'), 'i'),
+        (r'y*cีt?r?p*f?', ('', 'ี'), 'iː'),
+        (r'y*cือt?r?p*f?', ('', 'ือ'), 'ɯː'),
+        (r'y*cืt?r?p*f?', ('', 'ื'), 'ɯ'),
+        (r'y*cึt?r?p*f?', ('', 'ึ'), 'ɯː'),
+        (r'y*cุt?r?p*f?', ('', 'ุ'), 'u'),
+        (r'y*cูt?r?p*f?', ('', 'ู'), 'uː'),
+        (r'y*c็t?อr?p+f?', ('', '็อ'), 'ɔ'),
+        (r'y*cัt?วะf?', ('', 'ัวะ'), 'uə'),
+        (r'y*cัt?วf?', ('', 'ัว'), 'uə'),
+        (r'y*ฤp*f?', ('', 'ฤ'), 'rɯ'),
+        (r'y*ฦp*f?', ('', 'ฦ'), 'lɯ'),
+        (r'y*ct?รรp*f?', ('', 'รร'), 'a'),
+        (r'y*ct?อr?p*f?', ('', 'อ'), 'ɔː'),
+        (r'y*ct?วr?p*f?', ('', 'ว'), 'uə'),
+        (r'เy*ct?r?p*f?', ('เ', ''), 'eː'),
+        (r'โy*ct?r?p*f?', ('โ', ''), 'oː'),
+        (r'แy*ct?r?p*f?', ('แ', ''), 'ɛː'),
+        (r'ไy*ct?r?p*f?', ('ไ', ''), 'aj'),
+        (r'ใy*ct?r?p*f?', ('ใ', ''), 'aɰ'),
+        (r'y*cp+f?', ('', ''), 'o, ɔː'),
+        (r'y*cf?', ('', ''), 'a'),
+    ]
+
+    def __getitem__(self, item: str) -> Any:
+        return getattr(self, item)
+
+    def __str__(self) -> str:
+        return self.get_ipa()
+
+    def __repr__(self) -> str:
+        return self.get_ipa()
+
+    @classmethod
+    def _cluster_is_valid(cls, chars: str) -> bool:
+        if get_key(ONSET_CLUSTERS, chars) is not None:
+            return True
+        all_digraphs = {c for group in DIGRAPHS.values() for c in group}
+        return chars in all_digraphs
+
+    @classmethod
+    def extract(cls, text: str, force_cluster: bool = False, sesquisyllable: bool = False) -> 'Syllable':
+        original_text = text
+        tail_leftover = ''
+        if not cls._fullmatches_vowel_pattern(text):
+            # Nothing spans the whole text -- most likely because a trailing
+            # portion carries its own explicit vowel (e.g. the ตร-า cluster
+            # in จิตรา) that no pattern's coda-absorbing tail can reach past
+            # (those only ever swallow bare consonants, never a vowel mark).
+            # Fall back to the longest leading portion that DOES parse as a
+            # complete syllable shape on its own, and keep whatever's left
+            # over to feed the reduplicated syllable below -- a plain
+            # single-syllable text always fullmatches on the first try, so
+            # this loop never runs for the cases that already worked.
+            for k in range(len(text) - 1, 0, -1):
+                if cls._fullmatches_vowel_pattern(text[:k]):
+                    tail_leftover = text[k:]
+                    text = text[:k]
+                    break
+
+        vowel_form, nucleus = cls._get_vowel(text)
+        onset_chars, coda_chars = cls._get_consonants(text, vowel_form)
+
+        has_ambiguous_cluster = False
+        has_impossible_cluster = False
+        cluster_type = None
+        if vowel_form[1] and len(onset_chars) > 1 and not cls._cluster_is_valid(onset_chars):
+            has_impossible_cluster = True
+        elif not vowel_form[1] and len(onset_chars) > 1:
+            if re.search(expand(r't'), text):
+                split_result = re.split(expand(r't'), onset_chars, maxsplit=1)
+                onset_chars = split_result[0]
+                coda_chars = split_result[1] if len(split_result) > 1 else ''
+            elif len(onset_chars) > 2 and onset_chars[2] in ['ิ', 'ุ', '์']:
+                onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
+            elif onset_chars[1] == '๎':
+                onset_chars, coda_chars = onset_chars[:3], onset_chars[3:]
+                onset_chars = re.sub(expand(r'๎'), '', onset_chars)
+                coda_chars = re.sub(expand(r'ฺ'), '', coda_chars)
+            elif 'ฺ' in onset_chars:
+                if onset_chars[1] == 'ฺ':
+                    onset_chars, coda_chars = onset_chars[:3], onset_chars[3:]
+                else:
+                    onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
+                onset_chars = re.sub(expand(r'ฺ'), '', onset_chars)
+                coda_chars = re.sub(expand(r'ฺ'), '', coda_chars)
+            elif sesquisyllable:
+                onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
+            else:
+                if len(onset_chars) > 2:
+                    candidate_onset, remainder = onset_chars[:2], onset_chars[2:]
+                    if cls._cluster_is_valid(candidate_onset):
+                        cluster_type = get_key(ONSET_CLUSTERS, candidate_onset)
+                        onset_chars, coda_chars = candidate_onset, remainder
+                    elif force_cluster:
+                        onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
+                    else:
+                        has_ambiguous_cluster = True
+                        onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
+                else:
+                    cluster_type = get_key(ONSET_CLUSTERS, onset_chars)
+                    if force_cluster:
+                        onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
+                    elif cluster_type in ['old_thai', 'old_khmer']:
+                        onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
+                    else:
+                        has_ambiguous_cluster = True
+                        onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
+
+        tone_marker = ''.join(re.findall(expand(r't'), text))
+        onset_chars = re.sub(expand(r't'), '', onset_chars)
+        coda_chars = re.sub(expand(r't'), '', coda_chars)
+
+        full_onset_chars = onset_chars
+
+        minor_part = SyllablePart()
+        force_minor = sesquisyllable or has_impossible_cluster
+        if force_minor and len(onset_chars) > 1:
+            m_onset_chars = onset_chars[0]
+            m_onset = get_key(OLD_THAI_ONSETS, m_onset_chars)
+            m_class = get_key(CONSONANT_CLASSES, m_onset_chars)
+            m_tone_split, m_old_tone = cls._get_tones('', m_class, 'dead', 'short')
+            
+            minor_part = SyllablePart(
+                vowel_form=('', ''),
+                onset_chars=m_onset_chars,
+                onset=m_onset,
+                medial=None,
+                nucleus='a',
+                coda='ʔ',
+                vowel_duration='short',
+                coda_type='dead',
+                consonant_class=m_class,
+                tone_split=m_tone_split,
+                tone=m_old_tone,
+            )
+            onset_chars = onset_chars[1:]
+
+        m_onset, m_medial, cluster_type_mapped, m_vowel, m_coda, m_vowel_duration, m_coda_type, m_consonant_class, m_tone_split, m_old_tone = cls._process_phonemes(
+            vowel_form, onset_chars, coda_chars, tone_marker, nucleus, force_cluster=force_cluster
+        )
+        
+        assimilated_consonant_class = None
+        assimilated_tone_split = None
+        assimilated_tone = None
+        assimilate_tone_flag = False
+        
+        if minor_part.onset_chars:
+            assimilate_tone_flag = True
+            assimilated_consonant_class = minor_part.consonant_class
+            assimilated_tone_split, assimilated_tone = cls._get_tones(
+                tone_marker, 
+                assimilated_consonant_class, 
+                m_coda_type, 
+                m_vowel_duration
+            )
+        
+        main_part = SyllablePart(
+            vowel_form=vowel_form,
+            onset_chars=onset_chars,
+            tone_marker=tone_marker,
+            coda_chars=coda_chars,
+            onset=m_onset,
+            medial=m_medial,
+            nucleus=m_vowel,
+            coda=m_coda,
+            vowel_duration=m_vowel_duration,
+            coda_type=m_coda_type,
+            consonant_class=m_consonant_class,
+            tone_split=m_tone_split,
+            tone=m_old_tone,
+            assimilated_consonant_class=assimilated_consonant_class,
+            assimilated_tone_split=assimilated_tone_split,
+            assimilated_tone=assimilated_tone,
+            cluster_type=cluster_type_mapped if cluster_type_mapped else cluster_type,
+            assimilate_tone=assimilate_tone_flag
+        )
+
+        redup_part = SyllablePart()
+        is_reduplicable = False
+        redup_source = coda_chars + tail_leftover
+        if redup_source and '์' not in redup_source:
+            is_reduplicable = True
+            if len(redup_source) > 1 and redup_source[0] in ['ร', 'ห']:
+                redup_text = redup_source[1:]
+            else:
+                redup_text = redup_source
+                
+            r_vowel_form, r_raw_vowel = cls._get_vowel(redup_text)
+            r_coda_chars = ''
+            if r_vowel_form != ('', ''):
+                r_onset_chars, _ = cls._get_consonants(redup_text, r_vowel_form)
+            else:
+                r_onset_chars = redup_text
+                r_raw_vowel = 'a'
+
+            r_onset, r_medial, r_cluster_type, r_vowel, r_coda, r_vowel_duration, r_coda_type, r_consonant_class, r_tone_split, r_old_tone = cls._process_phonemes(
+                r_vowel_form, r_onset_chars, '', '', r_raw_vowel, force_cluster=True
+            )
+
+            redup_part = SyllablePart(
+                vowel_form=r_vowel_form,
+                onset_chars=r_onset_chars,
+                coda_chars=r_coda_chars,
+                onset=r_onset,
+                medial=r_medial,
+                nucleus=r_vowel,
+                coda=r_coda,
+                vowel_duration=r_vowel_duration,
+                coda_type=r_coda_type,
+                consonant_class=r_consonant_class,
+                tone_split=r_tone_split,
+                tone=r_old_tone,
+                cluster_type=r_cluster_type
+            )
+
+        return cls(
+            text=original_text,
+            onset_chars=full_onset_chars,
+            has_ambiguous_cluster=has_ambiguous_cluster,
+            has_impossible_cluster=has_impossible_cluster,
+            is_reduplicable=is_reduplicable,
+            minor_syllable=minor_part,
+            main_syllable=main_part,
+            reduplicated_syllable=redup_part
+        )
+
+    @classmethod
+    def _process_phonemes(cls, vowel_form, onset_chars, coda_chars, tone_marker, raw_vowel, force_cluster=False):
+        onset, medial, cluster_type = cls._get_onset(onset_chars, force_cluster=force_cluster)
+        coda = cls._get_coda(coda_chars)
+        nucleus = raw_vowel
+        
+        if nucleus == 'o, ɔː':
+            if coda_chars and re.fullmatch(expand(r'รf?'), coda_chars):
+                nucleus = 'ɔː'
+                coda = 'n'
+            else:
+                nucleus = 'o'
+
+        if nucleus and nucleus[0] in ['r', 'l']:
+            medial = nucleus[0]
+            nucleus = nucleus[1:]
+        if nucleus and nucleus[-1] in ['j', 'w', 'm', 'ɰ']:
+            coda = nucleus[-1]
+            nucleus = nucleus[:-1]
+            
+        if not onset and medial:
+            onset = medial
+            medial = None
+
+        if nucleus and nucleus[-1] != 'ː' and len(nucleus) == 1:
+            vowel_duration = 'short'
+        else:
+            vowel_duration = 'long'
+
+        if vowel_duration == 'short' and not coda:
+            coda = 'ʔ'
+        
+        if onset_chars and len(onset_chars) >= 1:
+            consonant_class = get_key(CONSONANT_CLASSES, onset_chars[0])
+        else:
+            consonant_class = get_key(CONSONANT_CLASSES, vowel_form[1]) if vowel_form and len(vowel_form) > 1 and vowel_form[1] else None
+
+        coda_type = get_key(CODA_TYPES, coda if coda else '')
+
+        tone_split, old_tone = cls._get_tones(
+            tone_marker,
+            consonant_class,
+            coda_type,
+            vowel_duration
+        )
+        
+        return onset, medial, cluster_type, nucleus, coda, vowel_duration, coda_type, consonant_class, tone_split, old_tone
+
+    @classmethod
+    def _get_vowel(cls, text: str) -> Tuple[Tuple[str, str], str]:
+        for pat, form, val in cls._VOWEL_PATTERNS:
+            if re.fullmatch(expand(pat), text):
+                return form, val
+        return ('', ''), 'a'
+
+    @classmethod
+    def _fullmatches_vowel_pattern(cls, text: str) -> bool:
+        """
+        Whether `text` is fully accounted for by one of the syllable-shaped
+        vowel patterns, as opposed to only reaching the ('', ''), 'a'
+        fallback because nothing actually matched. _get_vowel()'s return
+        value can't tell these apart on its own, since a real, plain
+        vowel-less syllable legitimately returns that same tuple.
+        """
+        return any(re.fullmatch(expand(pat), text) for pat, _, _ in cls._VOWEL_PATTERNS)
 
 
-def _sub_parts(syl: Syllable, use_redup: bool) -> list:
-    '''The ordered list of SyllableParts a given extraction actually
-    realizes as separate spoken syllables: an optional sesquisyllable
-    minor syllable, the main syllable, and an optional reduplicated
-    syllable read off the leftover coda.'''
-    parts = []
-    if syl.minor_syllable.nucleus:
-        parts.append(syl.minor_syllable)
-    if syl.main_syllable.nucleus:
-        parts.append(syl.main_syllable)
-    if use_redup and syl.is_reduplicable and syl.is_reduplicatedd_syllable.nucleus:
-        parts.append(syl.is_reduplicatedd_syllable)
-    return parts
 
+    @classmethod
+    def _get_consonants(cls, text: str, vowel_form: Tuple[str, str]) -> Tuple[str, str]:
+        pre_vowel, post_vowel = vowel_form
+        pattern = rf'^{pre_vowel}(.*?){post_vowel}$'
+        match = re.search(pattern, text)
+        if match:
+            return match.group(1), ''
 
-def _candidate_readings(text: str):
-    '''Yield (parts, syl) for every distinct reading of `text` worth
-    scoring: each extraction-flag combo, crossed with whether we treat
-    a reduplicable coda as a real extra syllable or not (both are valid
-    Thai readings depending on context, so both must be tried).'''
-    seen_signatures = set()
-    for force_cluster, sesquisyllable in _EXTRACT_FLAG_COMBOS:
-        try:
-            syl = Syllable.extract(text, force_cluster=force_cluster, sesquisyllable=sesquisyllable)
-            syl.sound_shift()
-        except Exception:
-            continue
+        pattern = rf'^{pre_vowel}(.+?){post_vowel}(.+)$'
+        match = re.search(pattern, text)
+        if match:
+            return match.group(1), match.group(2)
 
-        redup_options = (False, True) if syl.is_reduplicable else (False,)
-        for use_redup in redup_options:
-            parts = _sub_parts(syl, use_redup)
-            if not parts:
-                continue
-            signature = tuple(p.get_ipa() for p in parts)
-            if signature in seen_signatures:
-                continue
-            seen_signatures.add(signature)
-            yield parts, syl
+        return text, ''
 
+    @classmethod
+    def _get_onset(cls, onset_chars: str, force_cluster: bool = False) -> Tuple[Optional[str], Optional[str], Optional[str]]:
+        if not onset_chars:
+            return None, None, None
 
-def _wrap(part, text: str) -> Syllable:
-    '''Wrap a single realized SyllablePart back into a standalone
-    Syllable so each returned item prints/behaves as one syllable,
-    regardless of whether it came from a minor, main, or reduplicated
-    reading.'''
-    return Syllable(text=text, main_syllable=part)
+        cleaned_onset_chars = re.sub(expand(r'[์ฺ๎]'), '', onset_chars)
 
+        cluster_type = get_key(ONSET_CLUSTERS, cleaned_onset_chars)
 
-def _with_assimilation_variants(parts: list, wrapped: list, donor_onset_chars):
-    '''Given a span's realized parts (already wrapped as standalone
-    Syllables), yield both the as-extracted reading and -- if there's a
-    preceding syllable to borrow from -- a second reading where the
-    first syllable of this span has had its tone assimilated from that
-    donor's onset consonant class. This is a distinct mechanism from
-    the internal sesquisyllable minor->main link (which extract() /
-    sound_shift() already handle on their own): it links two separately
-    resolved syllables across a span boundary, e.g. ประ -> โยชน์ in
-    ประโยชน์, where โยชน์'s tone is not predictable from its own onset
-    at all -- only from ประ's.
+        if len(cleaned_onset_chars) == 2 and (cluster_type in ['old_thai', 'old_khmer'] or force_cluster):
+            cluster_type = cluster_type if cluster_type else 'foreign'
+            return get_key(OLD_THAI_ONSETS, cleaned_onset_chars[0]), get_key(OLD_THAI_ONSETS, cleaned_onset_chars[1]), cluster_type
 
-    Note: assimilate_tone() mutates the SyllablePart it's called on, so
-    the assimilated variant must operate on a fresh copy -- the
-    unassimilated variant above is still referenced by the caller and
-    must not be silently altered.'''
-    yield parts, wrapped
+        digraph = get_key(DIGRAPHS, cleaned_onset_chars)
+        if digraph:
+            return digraph, None, cluster_type
+        if len(cleaned_onset_chars) > 0:
+            return get_key(OLD_THAI_ONSETS, cleaned_onset_chars[0]), None, cluster_type
+        
+        return None, None, cluster_type
 
-    if donor_onset_chars is None:
-        return
+    @classmethod
+    def _get_coda(cls, coda_chars: str) -> Optional[str]:
+        if not coda_chars:
+            return None
 
-    donor = Syllable(text='', main_syllable=SyllablePart(onset_chars=donor_onset_chars))
-    assimilated_first = _wrap(replace(wrapped[0].main_syllable), wrapped[0].text)
-    assimilated_first.assimilate_tone(donor)
-    assimilated_first.sound_shift()  # assimilate_tone only sets the raw
-    # tone category (e.g. 'D'); sound_shift converts it to the actual
-    # contour symbol (e.g. '˨˩') via the tone table, same as it does
-    # for a syllable's own .tone.
-    yield parts, [assimilated_first] + wrapped[1:]
+        if len(coda_chars) > 1:
+            if coda_chars[1] == '์':
+                return get_key(CODAS, coda_chars[0])
+            elif coda_chars[1] == 'ฺ' and len(coda_chars) > 2:
+                return get_key(CODAS, coda_chars[2])
+            elif coda_chars[0] == 'ร':
+                return get_key(CODAS, coda_chars[1])
 
+        return get_key(CODAS, coda_chars[0])
+        
+    @classmethod
+    def _get_tones(cls, tone_marker: str, consonant_class: Optional[str], coda_type: Optional[str], duration: str) -> Tuple[Optional[Tuple[str, str]], Optional[str]]:
+        old_tone = None
+        tone_split = None
 
-def align(text: str, ipa: str) -> list:
-    '''
-    Aligns Thai graphemes with a Thai IPA transcription into syllables.
+        if tone_marker == '่':
+            old_tone = 'B'
+        elif tone_marker == '้':
+            old_tone = 'C'
+        elif tone_marker == '๊':
+            old_tone = 'mai_tri'
+        elif tone_marker == '๋':
+            old_tone = 'mai_chattawa'
 
-    Uses the target IPA as an oracle to resolve segmentation ambiguity,
-    rather than guessing cluster-merge decisions blind. Three distinct
-    ambiguity patterns are searched:
+        elif coda_type == 'live' or coda_type == '':
+            old_tone = 'A'
+        elif coda_type == 'dead':
+            old_tone = 'D'
 
-      1. A merged span of clusters can realize more than one spoken
-         syllable on its own, via thai_syl's sesquisyllable (minor
-         syllable) and reduplication (coda re-read with its own vowel)
-         mechanisms -- e.g. กิจ -> [kit, t͡ɕaʔ] from one extract() call.
+        if consonant_class:
+            split_num = '1' if consonant_class in ['friction', 'unaspirated', 'glottalized'] else '2'
 
-      2. A trailing bare consonant can instead be a genuine "bridge":
-         shared between the coda of one syllable and the onset cluster
-         of the next, when it combines with graphemes that follow it
-         rather than standing alone -- e.g. จิต + ตรา, where ต only
-         resolves correctly once merged with ร.
+            if old_tone == 'D':
+                box = f'D{"S" if duration == "short" else "L"}{split_num}'
+            elif old_tone in ('mai_tri', 'mai_chattawa'):
+                box = old_tone
+            else:
+                box = f'{old_tone}{split_num}'
 
-      3. A syllable's tone can be unpredictable from its own onset and
-         instead assimilated from the *previous* syllable's onset class
-         -- e.g. ประ -> โยชน์ in ประโยชน์, via Syllable.assimilate_tone.
-         Unlike (1), this links two already-separate syllables across a
-         span boundary, so it's tried as an alternate reading of each
-         new span's first syllable, conditioned on whichever syllable
-         preceded it in the path.
+            tone_split = (box, consonant_class)
 
-    Every candidate span/flag/reading/assimilation combination is scored
-    against the known target syllables from thai_ipa.parse, and the
-    highest-scoring full alignment (via memoized search) is returned.
-    '''
-    clusters = segment(text)
-    targets = thai_ipa.parse(ipa)
-    n, m = len(clusters), len(targets)
+        return tone_split, old_tone
 
-    memo = {}
+    def get_ipa(self) -> str:
+        parts = []
+        if self.minor_syllable.nucleus:
+            parts.append(self.minor_syllable.get_ipa())
+        if self.main_syllable.nucleus:
+            parts.append(self.main_syllable.get_ipa())
+        if self.is_reduplicated and self.is_reduplicable and self.reduplicated_syllable.nucleus:
+            parts.append(self.reduplicated_syllable.get_ipa())
+        return '.'.join(parts)
+    
+    def reconstruct_text(self) -> str:
+        minor = self.minor_syllable.onset_chars if self.minor_syllable.onset_chars else ''
 
-    def solve(a: int, i: int, prev_onset_chars):
-        key = (a, i, prev_onset_chars)
-        if key in memo:
-            return memo[key]
-        if i == m:
-            memo[key] = (0.0 if a == n else float('-inf'), [])
-            return memo[key]
-        if a >= n:
-            memo[key] = (float('-inf'), [])
-            return memo[key]
+        tone_marker = self.main_syllable.tone_marker if self.main_syllable.tone_marker else ''
+        if any(ch in self.main_syllable.vowel_form[1] for ch in ['ั', 'ิ', 'ี', 'ึ', 'ื', 'ุ', 'ู']):
+            onset_tone = self.main_syllable.onset_chars
+            vowel_tone = self.main_syllable.vowel_form[1] + tone_marker
+        else:
+            onset_tone = self.main_syllable.onset_chars + tone_marker
+            vowel_tone = self.main_syllable.vowel_form[1]
+        
+        text = self.main_syllable.vowel_form[0] + minor + onset_tone + vowel_tone + \
+            ((self.reduplicated_syllable.onset_chars + self.reduplicated_syllable.vowel_form[1]) if self.is_reduplicable else self.main_syllable.coda_chars)
 
-        best_score, best_path = float('-inf'), None
-        for span_len in range(1, min(MAX_SPAN, n - a) + 1):
-            b = a + span_len
-            text_chunk = ''.join(clusters[a:b])
+        return text
 
-            for parts, syl in _candidate_readings(text_chunk):
-                k = len(parts)
-                if i + k > m:
-                    continue
-                wrapped_base = [_wrap(p, text_chunk) for p in parts]
+    def assimilate_tone(self, other: 'Syllable') -> None:
+        self.is_tone_assimilated = True
+        self.main_syllable.assimilate_tone = True
+        donor = other.main_syllable
+        if not donor.onset_chars:
+            return
 
-                for variant_parts, variant_wrapped in _with_assimilation_variants(
-                    parts, wrapped_base, prev_onset_chars
-                ):
-                    # Weighted sum (not average) so path scores are
-                    # comparable across different span/syllable counts:
-                    # a 2-syllable span matched perfectly must outscore
-                    # two 1-syllable spans matched at 90% each, not lose
-                    # to them just because splitting produces more
-                    # separately-scored pieces. Total is out of m at the
-                    # root, same as before.
-                    span_total = sum(
-                        _score(s.main_syllable, targets[i + j])
-                        for j, s in enumerate(variant_wrapped)
+        donor_class = get_key(CONSONANT_CLASSES, donor.onset_chars[0])
+        
+        tone_marker = self.main_syllable.tone_marker if self.main_syllable.tone_marker else ''
+        coda_type = self.main_syllable.coda_type
+        duration = self.main_syllable.vowel_duration
+
+        tone_split, tone = self._get_tones(tone_marker, donor_class, coda_type, duration)
+
+        self.main_syllable.assimilated_consonant_class = donor_class
+        self.main_syllable.assimilated_tone_split = tone_split
+        self.main_syllable.assimilated_tone = tone
+    
+    def unassimilate_tone(self) -> None:
+        self.is_tone_assimilated = False
+        self.main_syllable.assimilate_tone = False
+
+        self.main_syllable.assimilated_consonant_class = None
+        self.main_syllable.assimilated_tone_split = None
+        self.main_syllable.assimilated_tone = None
+
+    def sound_shift(self, dialect: Dict[str, Any] = STANDARD_THAI_SOUND_SHIFTS) -> 'Syllable':
+        minor = self.minor_syllable
+        main = self.main_syllable
+
+        if dialect.get('epentheses') and main.medial and main.onset:
+            for epenthesis in dialect['epentheses']:
+                if main.onset + main.medial == epenthesis:
+                    minor.text = main.onset_chars[0]
+                    minor.onset_chars = minor.text
+                    minor.vowel_form = ('', '')
+                    minor.coda_chars = ''
+                    minor.tone_marker = ''
+                    minor.nucleus = 'a'
+                    minor.coda = 'ʔ'
+                    minor.vowel_duration = 'short'
+                    minor.onset = get_key(OLD_THAI_ONSETS, minor.text)
+                    
+                    minor_class = get_key(CONSONANT_CLASSES, minor.text)
+                    minor.coda_type = 'dead'
+                    minor.consonant_class = minor_class
+                    minor.tone_split, minor.tone = self._get_tones('', minor_class, minor.coda_type, minor.vowel_duration)
+                    
+                    main.onset_chars = main.onset_chars[1:]
+                    main.onset = main.medial
+                    main.medial = None
+
+                    main.assimilated_consonant_class = minor_class
+                    main.assimilated_tone_split, main.assimilated_tone = self._get_tones(
+                        main.tone_marker if main.tone_marker else '', 
+                        minor_class, 
+                        main.coda_type, 
+                        main.vowel_duration
                     )
-                    next_prev_onset = variant_wrapped[-1].main_syllable.onset_chars
+        
+        for p in [minor, main, self.reduplicated_syllable]:
+            if not p.nucleus:
+                continue
 
-                    # normal continuation: next span starts fresh at b
-                    rest_score, rest_path = solve(b, i + k, next_prev_onset)
-                    total = span_total + rest_score
-                    if total > best_score:
-                        best_score, best_path = total, variant_wrapped + rest_path
-
-                    # bridge continuation: next span reuses clusters[b-1]
-                    # (redup and bridge are two different explanations
-                    # for the same leftover grapheme -- both get tried)
-                    if _is_bridge_cluster(clusters[b - 1]):
-                        rest_score, rest_path = solve(b - 1, i + k, next_prev_onset)
-                        total = span_total + rest_score
-                        if total > best_score:
-                            best_score, best_path = total, variant_wrapped + rest_path
-
-        memo[key] = (best_score, best_path if best_path is not None else [])
-        return memo[key]
-
-    score, path = solve(0, 0, None)
-    if not path or score == float('-inf'):
-        raise ValueError(f'Could not align {text!r} with {ipa!r}')
-
-    avg_score = score / m
-    if avg_score < 1.0:
-        import warnings
-        warnings.warn(f'Alignment for {text!r} matched at {avg_score:.0%} field-confidence, not exact')
-
-    return path
+            if dialect.get('onsets') and p.onset:
+                for onsets, sound_shift in dialect['onsets']:
+                    if p.onset in onsets:
+                        p.onset = sound_shift
+                        break
+            if dialect.get('medials') and p.onset:
+                for onsets, sound_shift in dialect['medials']:
+                    if p.onset in onsets:
+                        p.onset = sound_shift
+                        break
+            if dialect.get('codas') and p.coda:
+                for codas, sound_shift in dialect['codas']:
+                    if p.coda in codas:
+                        p.coda = sound_shift
+                        break
+            if dialect.get('tones') and p.tone_split:
+                p.tone = get_tone_key(dialect['tones'], p.tone_split)
+            if dialect.get('tones') and p.assimilated_tone_split:
+                p.assimilated_tone = get_tone_key(dialect['tones'], p.assimilated_tone_split)
+        return self

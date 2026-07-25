@@ -100,7 +100,7 @@ def get_tone_key(dictionary: dict, tone_split: Tuple[str, str]) -> Optional[str]
 def expand(pattern: str) -> str:
     return (
         pattern
-        .replace('f', r'(?:c[ะิุ]?[์]?)')
+        .replace('f', r'(?:c[ะิุา]?[์]?)')
         .replace('x', r'($|(?=[\s+เ-ไๆ๏๚๛]|c[ะ-ฺ]))')
         .replace('r', r'(?:c์)')
         .replace('y', r'(?:cฺ?|c๎?)')
@@ -157,6 +157,50 @@ class Syllable:
     minor_syllable: SyllablePart = field(default_factory=SyllablePart)
     main_syllable: SyllablePart = field(default_factory=SyllablePart)
     reduplicated_syllable: SyllablePart = field(default_factory=SyllablePart)
+
+    _VOWEL_PATTERNS = [
+        (r'เy*ct?อะr?p*f?', ('เ', 'อะ'), 'ɤ'),
+        (r'เy*ct?าะr?p*f?', ('เ', 'าะ'), 'ɔ'),
+        (r'เy*ct?ะr?p*f?', ('เ', 'ะ'), 'e'),
+        (r'เy*ct?าr?p*f?', ('เ', 'า'), 'aw'),
+        (r'เy*c็t?r?p+f?', ('เ', '็'), 'e'),
+        (r'เy*cิt?r?p+f?', ('เ', 'ิ'), 'ɤː'),
+        (r'เy*ct?อr?p*f?', ('เ', 'อ'), 'ɤː'),
+        (r'เy*ct?ยr?p*f?', ('เ', 'ย'), 'ɤːj'),
+        (r'โy*ct?ะr?p*f?', ('โ', 'ะ'), 'o'),
+        (r'แy*ct?ะr?p*f?', ('แ', 'ะ'), 'ɛ'),
+        (r'แy*c็t?r?p+f?', ('แ', '็'), 'ɛ'),
+        (r'เy*cีt?ยะr?p*f?', ('เ', 'ียะ'), 'iəː'),
+        (r'เy*cีt?ยr?p*f?', ('เ', 'ีย'), 'iə'),
+        (r'เy*cืt?อะr?p*f?', ('เ', 'ือะ'), 'ɯəː'),
+        (r'เy*cืt?อ?r?p*f?', ('เ', 'ือ'), 'ɯə'),
+        (r'y*ct?ะr?p*f?', ('', 'ะ'), 'a'),
+        (r'y*cัt?p*cิ?f?', ('', 'ั'), 'a'),
+        (r'y*ct?าr?p*f?', ('', 'า'), 'aː'),
+        (r'y*ct?ำr?f?', ('', 'ำ'), 'am'),
+        (r'y*cิt?r?p*f?', ('', 'ิ'), 'i'),
+        (r'y*cีt?r?p*f?', ('', 'ี'), 'iː'),
+        (r'y*cือt?r?p*f?', ('', 'ือ'), 'ɯː'),
+        (r'y*cืt?r?p*f?', ('', 'ื'), 'ɯ'),
+        (r'y*cึt?r?p*f?', ('', 'ึ'), 'ɯː'),
+        (r'y*cุt?r?p*f?', ('', 'ุ'), 'u'),
+        (r'y*cูt?r?p*f?', ('', 'ู'), 'uː'),
+        (r'y*c็t?อr?p+f?', ('', '็อ'), 'ɔ'),
+        (r'y*cัt?วะf?', ('', 'ัวะ'), 'uə'),
+        (r'y*cัt?วf?', ('', 'ัว'), 'uə'),
+        (r'y*ฤp*f?', ('', 'ฤ'), 'rɯ'),
+        (r'y*ฦp*f?', ('', 'ฦ'), 'lɯ'),
+        (r'y*ct?รรp*f?', ('', 'รร'), 'a'),
+        (r'y*ct?อr?p*f?', ('', 'อ'), 'ɔː'),
+        (r'y*ct?วr?p*f?', ('', 'ว'), 'uə'),
+        (r'เy*ct?r?p*f?', ('เ', ''), 'eː'),
+        (r'โy*ct?r?p*f?', ('โ', ''), 'oː'),
+        (r'แy*ct?r?p*f?', ('แ', ''), 'ɛː'),
+        (r'ไy*ct?r?p*f?', ('ไ', ''), 'aj'),
+        (r'ใy*ct?r?p*f?', ('ใ', ''), 'aɰ'),
+        (r'y*cp+f?', ('', ''), 'o, ɔː'),
+        (r'y*cf?', ('', ''), 'a'),
+    ]
 
     def __getitem__(self, item: str) -> Any:
         return getattr(self, item)
@@ -392,50 +436,7 @@ class Syllable:
 
     @classmethod
     def _get_vowel(cls, text: str) -> Tuple[Tuple[str, str], str]:
-        patterns = [
-            (r'เy*ct?อะr?p*f?', ('เ', 'อะ'), 'ɤ'),
-            (r'เy*ct?าะr?p*f?', ('เ', 'าะ'), 'ɔ'),
-            (r'เy*ct?ะr?p*f?', ('เ', 'ะ'), 'e'),
-            (r'เy*ct?าr?p*f?', ('เ', 'า'), 'aw'),
-            (r'เy*c็t?r?p+f?', ('เ', '็'), 'e'),
-            (r'เy*cิt?r?p+f?', ('เ', 'ิ'), 'ɤː'),
-            (r'เy*ct?อr?p*f?', ('เ', 'อ'), 'ɤː'),
-            (r'เy*ct?ยr?p*f?', ('เ', 'ย'), 'ɤːj'),
-            (r'โy*ct?ะr?p*f?', ('โ', 'ะ'), 'o'),
-            (r'แy*ct?ะr?p*f?', ('แ', 'ะ'), 'ɛ'),
-            (r'แy*c็t?r?p+f?', ('แ', '็'), 'ɛ'),
-            (r'เy*cีt?ยะr?p*f?', ('เ', 'ียะ'), 'iəː'),
-            (r'เy*cีt?ยr?p*f?', ('เ', 'ีย'), 'iə'),
-            (r'เy*cืt?อะr?p*f?', ('เ', 'ือะ'), 'ɯəː'),
-            (r'เy*cืt?อ?r?p*f?', ('เ', 'ือ'), 'ɯə'),
-            (r'y*ct?ะr?p*f?', ('', 'ะ'), 'a'),
-            (r'y*cัt?p*cิ?f?', ('', 'ั'), 'a'),
-            (r'y*ct?าr?p*f?', ('', 'า'), 'aː'),
-            (r'y*ct?ำr?f?', ('', 'ำ'), 'am'),
-            (r'y*cิt?r?p*f?', ('', 'ิ'), 'i'),
-            (r'y*cีt?r?p*f?', ('', 'ี'), 'iː'),
-            (r'y*cือt?r?p*f?', ('', 'ือ'), 'ɯː'),
-            (r'y*cืt?r?p*f?', ('', 'ื'), 'ɯ'),
-            (r'y*cึt?r?p*f?', ('', 'ึ'), 'ɯː'),
-            (r'y*cุt?r?p*f?', ('', 'ุ'), 'u'),
-            (r'y*cูt?r?p*f?', ('', 'ู'), 'uː'),
-            (r'y*c็t?อr?p+f?', ('', '็อ'), 'ɔ'),
-            (r'y*cัt?วะf?', ('', 'ัวะ'), 'uə'),
-            (r'y*cัt?วf?', ('', 'ัว'), 'uə'),
-            (r'y*ฤp*f?', ('', 'ฤ'), 'rɯ'),
-            (r'y*ฦp*f?', ('', 'ฦ'), 'lɯ'),
-            (r'y*ct?รรp*f?', ('', 'รร'), 'a'),
-            (r'y*ct?อr?p*f?', ('', 'อ'), 'ɔː'),
-            (r'y*ct?วr?p*f?', ('', 'ว'), 'uə'),
-            (r'เy*ct?r?p*f?', ('เ', ''), 'eː'),
-            (r'โy*ct?r?p*f?', ('โ', ''), 'oː'),
-            (r'แy*ct?r?p*f?', ('แ', ''), 'ɛː'),
-            (r'ไy*ct?r?p*f?', ('ไ', ''), 'aj'),
-            (r'ใy*ct?r?p*f?', ('ใ', ''), 'aɰ'),
-            (r'y*cp+f?', ('', ''), 'o, ɔː'),
-            (r'y*cf?', ('', ''), 'a')
-        ]
-        for pat, form, val in patterns:
+        for pat, form, val in cls._VOWEL_PATTERNS:
             if re.fullmatch(expand(pat), text):
                 return form, val
         return ('', ''), 'a'

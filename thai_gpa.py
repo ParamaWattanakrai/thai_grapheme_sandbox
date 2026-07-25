@@ -41,6 +41,11 @@ def _candidate_syllables(text: str, prev_syllable: 'Syllable' = None):
         assimilate_tone() is a no-op otherwise.
       - is_reduplicated: only tried if the resulting Syllable reports
         is_reduplicable (and actually produced a reduplicated syllable).
+        Syllable.extract() itself now falls back to the longest matching
+        prefix and folds whatever's left over into the reduplicated
+        syllable, so this covers both bare-coda redup (ม -> ma) and
+        borrowed-vowel redup (ต+รา -> traː) without any help from here --
+        thai_gpa just has to hand it the full merged group text.
 
     ipa_parts is the list of surface IPA syllable strings this reading
     would produce (1 to 3 entries: minor?, main, reduplicated?), already
