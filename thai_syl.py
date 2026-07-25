@@ -287,6 +287,8 @@ class Syllable:
                         onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
                     elif cluster_type in ['old_thai', 'old_khmer']:
                         onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
+                    elif nucleus and nucleus[-1] in ['j', 'w', 'm', 'ɰ']:
+                        onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
                     else:
                         has_ambiguous_cluster = True
                         onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
@@ -488,12 +490,12 @@ class Syllable:
         cleaned_onset_chars = re.sub(expand(r'[์ฺ๎]'), '', onset_chars)
 
         cluster_type = get_key(ONSET_CLUSTERS, cleaned_onset_chars)
+        digraph = get_key(DIGRAPHS, cleaned_onset_chars)
 
-        if len(cleaned_onset_chars) == 2 and (cluster_type in ['old_thai', 'old_khmer'] or force_cluster):
+        if len(cleaned_onset_chars) == 2 and digraph is None and (cluster_type in ['old_thai', 'old_khmer'] or force_cluster):
             cluster_type = cluster_type if cluster_type else 'foreign'
             return get_key(OLD_THAI_ONSETS, cleaned_onset_chars[0]), get_key(OLD_THAI_ONSETS, cleaned_onset_chars[1]), cluster_type
 
-        digraph = get_key(DIGRAPHS, cleaned_onset_chars)
         if digraph:
             return digraph, None, cluster_type
         if len(cleaned_onset_chars) > 0:
