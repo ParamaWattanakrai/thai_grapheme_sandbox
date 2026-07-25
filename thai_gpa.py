@@ -85,12 +85,21 @@ def _candidate_syllables(text: str, prev_syllable: 'Syllable' = None):
                     yield result, parts
 
 
-def align(text: str, ipa: str) -> list:
+def align_all(text: str, ipa: str) -> list:
     """
-    Align Thai text against its IPA transcription, returning the list of
-    Syllable objects (one per orthographic syllable-group -- a sesquisyllable
-    still yields a single Syllable with both a minor and main part) whose
-    combined, sound-shifted IPA reconstructs `ipa` exactly.
+    Align Thai text against its IPA transcription, returning EVERY distinct
+    way of parsing `text` into a sequence of Syllable objects (one per
+    orthographic syllable-group -- a sesquisyllable still counts as a single
+    Syllable with both a minor and main part) whose combined, sound-shifted
+    IPA reconstructs `ipa` exactly.
+
+    Ambiguity is inherent here, not a bug to resolve down to one answer: the
+    same surface IPA can genuinely arise from more than one valid grouping.
+    In กฐิน, for instance, ก can either be folded into a single sesquisyllable
+    Syllable together with ฐิน (minor+main in one object), or stand as its
+    own standalone syllable that donates its tone class to ฐิน next door via
+    assimilate_tone() -- both are legitimate readings of the same word, and
+    both come back here.
     """
     clusters = segment(text)
     targets = thai_ipa.parse(ipa)
@@ -99,23 +108,28 @@ def align(text: str, ipa: str) -> list:
     n_clusters = len(clusters)
     n_targets = len(targets)
 
-    memo_fail = set()
+    # (ci, ti, donor_key) -> list of continuations (list[list[Syllable]]),
+    # each a way to complete the parse from that state onward. Reachability
+    # from here only ever depends on position and the donor's class (see
+    # donor_key below), never on how we got here, so this is safe to cache
+    # and reuse across different outer paths that land on the same state.
+    memo: dict = {}
 
-    def backtrack(ci: int, ti: int, prev: 'Syllable' = None):
+    def backtrack(ci: int, ti: int, prev: 'Syllable' = None) -> list:
         if ci == n_clusters and ti == n_targets:
-            return []
+            return [[]]
         if ci >= n_clusters or ti >= n_targets:
-            return None
+            return []
 
         # A tone donor is identified purely by its main syllable's onset
         # chars (that's all assimilate_tone() ever reads from it), so that's
-        # the only part of `prev` that can change whether this position is
-        # reachable -- use it, not object identity, as the memo key.
+        # the only part of `prev` that can change what's reachable here.
         donor_key = prev.main_syllable.onset_chars if prev is not None else None
         memo_key = (ci, ti, donor_key)
-        if memo_key in memo_fail:
-            return None
+        if memo_key in memo:
+            return memo[memo_key]
 
+        solutions = []
         max_end = ci + 1
         while max_end < n_clusters and can_merge[max_end]:
             max_end += 1
@@ -129,14 +143,61 @@ def align(text: str, ipa: str) -> list:
                 expected = [targets[k]['syllable'] for k in range(ti, ti + n)]
                 if parts != expected:
                     continue
-                rest = backtrack(end, ti + n, syl)
-                if rest is not None:
-                    return [syl] + rest
+                for rest in backtrack(end, ti + n, syl):
+                    solutions.append([syl] + rest)
 
-        memo_fail.add(memo_key)
-        return None
+        memo[memo_key] = solutions
+        return solutions
 
-    result = backtrack(0, 0, None)
-    if result is None:
+    solutions = backtrack(0, 0, None)
+    if not solutions:
         raise ValueError(f"Could not align {text!r} with {ipa!r}")
-    return result
+
+    # Different search paths can land on structurally identical parses
+    # (same group texts, same flags) -- collapse those down.
+    seen = set()
+    unique_solutions = []
+    for sol in solutions:
+        key = tuple(
+            (s.text, s.is_reduplicated, bool(s.minor_syllable.nucleus))
+            for s in sol
+        )
+        if key in seen:
+            continue
+        seen.add(key)
+        unique_solutions.append(sol)
+
+    return unique_solutions
+
+
+def _solution_cost(solution: list) -> int:
+    """
+    Preference score for choosing among multiple valid parses of the same
+    IPA -- lower is better. assimilate_tone() lets a syllable borrow its
+    tone class from an unrelated donor across a syllable boundary, which is
+    the only way to explain some words (ประโยชน์: ปร is a genuine onset
+    cluster, so ประ can't be split into a minor syllable at all, and โยชน์
+    only gets the right tone by reaching back across the boundary to ป).
+    But when a plain sesquisyllable Syllable -- one object, minor_syllable
+    populated -- already explains the same IPA without reaching outside
+    itself, that's the more direct reading and should win. Counting
+    is_tone_assimilated occurrences captures exactly that: it's True only
+    on syllables that had to borrow a class from a neighbor, never on a
+    minor_syllable-based reading (that's a different, self-contained
+    mechanism).
+    """
+    return sum(1 for s in solution if s.is_tone_assimilated)
+
+
+def align(text: str, ipa: str) -> list:
+    """
+    Align Thai text against its IPA transcription, returning ONE list of
+    Syllable objects whose combined, sound-shifted IPA reconstructs `ipa`
+    exactly. Among multiple valid parses, prefers ones that explain a
+    syllable's tone via its own minor_syllable over ones that reach across
+    a syllable boundary via assimilate_tone() -- the latter is only chosen
+    when it's the only valid explanation available. Use align_all() to see
+    every valid reading, unranked.
+    """
+    solutions = align_all(text, ipa)
+    return min(solutions, key=_solution_cost)

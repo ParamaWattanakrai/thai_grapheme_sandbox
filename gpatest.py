@@ -1,6 +1,6 @@
 import thai_gpa
 
-syllables = thai_gpa.align('กุฏิ', 'kut˨˩.tiʔ˨˩')
+syllables = thai_gpa.align('กฐิน', 'kaʔ˨˩.tʰin˨˥')
 print(syllables)
 
 
@@ -11,3 +11,8 @@ print(syllables)
 # 'ชาติพันธุ์', 't͡ɕʰaːt˦˩.tiʔ˨˩.pʰan˧'
 # 'กษัตริย์', 'kaʔ˨˩.sat˨˩'
 # 'สุจิตรา', 'suʔ˨˩.t͡ɕit˨˩.traː˧'
+# 'ตำรวจ', 'tam˧.ruət˨˩'
+# 'เล่น', 'len˦˩'
+# 'ประชาธิปไตย', 'praʔ˨˩.t͡ɕʰaː˧.tʰip˦˥.paʔ˨˩.taj˧'
+# 'จมูก', 't͡ɕa˨˩.muːk˨˩'
+# กฐิน
