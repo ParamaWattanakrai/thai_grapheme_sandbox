@@ -9,7 +9,7 @@ def align(text: str, ipa: str) -> list:
     clusters = segment(text)
     phonemes = thai_ipa.parse(ipa)
 
-    can_merge = [True] * (len(clusters) + 1) # Can merge with cluster in front 
+    can_merge = [True] * (len(clusters) + 1) # Can merge with cluster in front
     for i, cluster in enumerate(clusters):
         syllable = Syllable.extract(cluster, force_cluster=False, sesquisyllable=False)
         if re.match(r'^[เ-ไ]', cluster) or \

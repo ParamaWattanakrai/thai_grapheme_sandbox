@@ -27,6 +27,7 @@ cases = [
     ('ไทย', False, False),
     ('เคย', False, False),
 ]
+
 for text, force_cluster, sesqui in cases:
     syllable = Syllable.extract(text, force_cluster=force_cluster, sesquisyllable=sesqui).sound_shift()
     print(f'{syllable.reconstruct_text()}, {syllable}, cluster {force_cluster}, sesqui {sesqui}, {syllable.main_syllable.vowel_form}')
