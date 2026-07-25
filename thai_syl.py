@@ -100,13 +100,7 @@ def get_tone_key(dictionary: dict, tone_split: Tuple[str, str]) -> Optional[str]
 def expand(pattern: str) -> str:
     return (
         pattern
-        # Final consonant, as before -- OR an optional consonant followed by
-        # า. That second branch is what lets a pattern's tail (after its own
-        # nucleus is spoken for) additionally absorb a reduplicated cluster
-        # like the ตร-า in จิตรา: p* already greedily eats bare trailing
-        # consonants (ต, then ร), so by the time f? is reached there's only
-        # the า left to account for.
-        .replace('f', r'(?:c[ะิุ]?[์]?|c?า)')
+        .replace('f', r'(?:c[ะา-ู]?[์]?|c?า)')
         .replace('x', r'($|(?=[\s+เ-ไๆ๏๚๛]|c[ะ-ฺ]))')
         .replace('r', r'(?:c์)')
         .replace('y', r'(?:cฺ?|c๎?)')
