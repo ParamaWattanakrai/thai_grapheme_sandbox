@@ -175,6 +175,8 @@ class Syllable:
     reduplicated_syllable: SyllablePart = field(default_factory=SyllablePart)
 
     _VOWEL_PATTERNS = [
+        (r'y*ฤp*f?', ('', 'ฤ'), 'rɯ'),
+        (r'y*ฦp*f?', ('', 'ฦ'), 'lɯ'),
         (r'เy*ct?อะr?p*f?', ('เ', 'อะ'), 'ɤ'),
         (r'เy*ct?าะr?p*f?', ('เ', 'าะ'), 'ɔ'),
         (r'เy*ct?ะr?p*f?', ('เ', 'ะ'), 'e'),
@@ -204,8 +206,6 @@ class Syllable:
         (r'y*c็t?อr?p+f?', ('', '็อ'), 'ɔ'),
         (r'y*cัt?วะf?', ('', 'ัวะ'), 'uə'),
         (r'y*cัt?วf?', ('', 'ัว'), 'uə'),
-        (r'y*ฤp*f?', ('', 'ฤ'), 'rɯ'),
-        (r'y*ฦp*f?', ('', 'ฦ'), 'lɯ'),
         (r'y*ct?รรp*f?', ('', 'รร'), 'a'),
         (r'y*ct?อr?p*f?', ('', 'อ'), 'ɔː'),
         (r'y*ct?วr?p*f?', ('', 'ว'), 'uə'),
@@ -319,7 +319,7 @@ class Syllable:
         m_onset, m_medial, cluster_type_mapped, m_vowel, m_coda, m_vowel_duration, m_coda_type, m_consonant_class, m_tone_split, m_old_tone = cls._process_phonemes(
             vowel_form, onset_chars, coda_chars, tone_marker, nucleus, force_cluster=force_cluster
         )
-        
+
         assimilated_consonant_class = None
         assimilated_tone_split = None
         assimilated_tone = None
@@ -464,6 +464,10 @@ class Syllable:
     @classmethod
     def _get_consonants(cls, text: str, vowel_form: Tuple[str, str]) -> Tuple[str, str]:
         pre_vowel, post_vowel = vowel_form
+
+        if post_vowel in ('ฤ', 'ฦ') and text.startswith(post_vowel):
+            return '', text[len(post_vowel):]
+
         pattern = rf'^{pre_vowel}(.*?){post_vowel}$'
         match = re.search(pattern, text)
         if match:
@@ -486,13 +490,6 @@ class Syllable:
         cluster_type = get_key(ONSET_CLUSTERS, cleaned_onset_chars)
         digraph = get_key(DIGRAPHS, cleaned_onset_chars)
 
-        # A genuine digraph (หม, หน, ...) is never a real onset+medial
-        # cluster, no matter what force_cluster asks for -- Thai doesn't have
-        # a literal /hm/ or /hn/ cluster; ห+sonorant is always either the
-        # digraph (one sound) or two separate syllables, never one syllable
-        # with both consonants pronounced. force_cluster only makes sense
-        # for combos that are ambiguous cluster candidates in the first
-        # place, so it's gated on not being a digraph here.
         if len(cleaned_onset_chars) == 2 and digraph is None and (cluster_type in ['old_thai', 'old_khmer'] or force_cluster):
             cluster_type = cluster_type if cluster_type else 'foreign'
             return get_key(OLD_THAI_ONSETS, cleaned_onset_chars[0]), get_key(OLD_THAI_ONSETS, cleaned_onset_chars[1]), cluster_type

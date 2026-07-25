@@ -1,6 +1,6 @@
 import thai_gpa
 
-syllables = thai_gpa.align('แหน', 'nɛː˨˥')
+syllables = thai_gpa.align('ฤทธิ์', 'rit˦˥')
 print(syllables)
 
 
