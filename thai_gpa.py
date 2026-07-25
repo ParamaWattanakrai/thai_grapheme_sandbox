@@ -25,7 +25,7 @@ def _compute_can_merge(clusters: list) -> list:
     return can_merge
 
 
-def _candidate_syllables(text: str, prev_syllable: 'Syllable' = None):
+def _candidate_syllables(text: str, prev_syllable: 'Syllable' = None, next_cluster: str = None):
     """
     For a chunk of text (one or more merged LTCCs), yield every distinct
     (Syllable, ipa_parts) reading worth trying, from simplest to most exotic:
@@ -39,6 +39,16 @@ def _candidate_syllables(text: str, prev_syllable: 'Syllable' = None):
         immediately preceding this one in the accepted parse) was given and
         its main syllable actually has an onset to donate a class from --
         assimilate_tone() is a no-op otherwise.
+      - vowel assimilation: assimilate_vowel() looks the opposite direction
+        from assimilate_tone() -- it's the *following* syllable that
+        triggers it (e.g. the ร in กร-ณี licensing ก to read as กอ instead
+        of กะ), which this function can't see on its own since it only ever
+        gets handed the current group's own text. next_cluster is that
+        lookahead: the single following LTCC cluster, unmerged, extracted
+        on its own and handed to assimilate_vowel() as the candidate donor.
+        It's a no-op unless the conditions actually hold (bare single-ร
+        donor, bare vowel-less single-consonant self), so this is safe to
+        always offer when a next_cluster is available.
       - is_reduplicated: only tried if the resulting Syllable reports
         is_reduplicable (and actually produced a reduplicated syllable).
         Syllable.extract() itself now falls back to the longest matching
@@ -83,6 +93,18 @@ def _candidate_syllables(text: str, prev_syllable: 'Syllable' = None):
                     result = copy.deepcopy(syl)
                     result.is_reduplicated = redup
                     yield result, parts
+
+    if next_cluster:
+        donor = Syllable.extract(next_cluster, force_cluster=False, sesquisyllable=False)
+        vowel_syl = Syllable.extract(text, force_cluster=False, sesquisyllable=False)
+        vowel_syl.assimilate_vowel(donor)
+        if vowel_syl.is_vowel_assimilated:
+            vowel_syl.sound_shift()
+            parts = [vowel_syl.main_syllable.get_ipa()]
+            dedup_key = tuple(parts)
+            if dedup_key not in seen:
+                seen.add(dedup_key)
+                yield vowel_syl, parts
 
 
 def align_all(text: str, ipa: str) -> list:
@@ -136,7 +158,8 @@ def align_all(text: str, ipa: str) -> list:
 
         for end in range(ci + 1, max_end + 1):
             group_text = ''.join(clusters[ci:end])
-            for syl, parts in _candidate_syllables(group_text, prev_syllable=prev):
+            next_cluster = clusters[end] if end < n_clusters else None
+            for syl, parts in _candidate_syllables(group_text, prev_syllable=prev, next_cluster=next_cluster):
                 n = len(parts)
                 if ti + n > n_targets:
                     continue
@@ -186,7 +209,7 @@ def _solution_cost(solution: list) -> int:
     minor_syllable-based reading (that's a different, self-contained
     mechanism).
     """
-    return sum(1 for s in solution if s.is_tone_assimilated)
+    return sum(1 for s in solution if s.is_tone_assimilated or s.is_vowel_assimilated)
 
 
 def align(text: str, ipa: str) -> list:

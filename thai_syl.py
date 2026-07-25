@@ -100,7 +100,13 @@ def get_tone_key(dictionary: dict, tone_split: Tuple[str, str]) -> Optional[str]
 def expand(pattern: str) -> str:
     return (
         pattern
-        .replace('f', r'(?:c[ะา-ู]?[์]?)')
+        # Final consonant, as before -- OR an optional consonant followed by
+        # า. That second branch is what lets a pattern's tail (after its own
+        # nucleus is spoken for) additionally absorb a reduplicated cluster
+        # like the ตร-า in จิตรา: p* already greedily eats bare trailing
+        # consonants (ต, then ร), so by the time f? is reached there's only
+        # the า left to account for.
+        .replace('f', r'(?:c[ะิุ]?[์]?|c?า)')
         .replace('x', r'($|(?=[\s+เ-ไๆ๏๚๛]|c[ะ-ฺ]))')
         .replace('r', r'(?:c์)')
         .replace('y', r'(?:cฺ?|c๎?)')
@@ -135,14 +141,29 @@ class SyllablePart:
     cluster_type: Optional[str] = None
     assimilate_tone: bool = False
 
+    assimilate_vowel: bool = False
+    assimilated_nucleus: Optional[str] = None
+    assimilated_vowel_duration: Optional[str] = None
+    assimilated_coda: Optional[str] = None
+    assimilated_coda_type: Optional[str] = None
+    assimilated_vowel_tone_split: Optional[Tuple[str, str]] = None
+    assimilated_vowel_tone: Optional[str] = None
+
     def __getitem__(self, item: str) -> Any:
         return getattr(self, item)
 
     def get_ipa(self) -> str:
         if not self.onset and not self.nucleus:
             return ""
-        tone = (self.assimilated_tone if self.assimilate_tone and self.assimilated_tone is not None else self.tone)
-        return (self.onset or '') + (self.medial or '') + (self.nucleus or '') + (self.coda or '') + (tone or '')
+        if self.assimilate_vowel and self.assimilated_nucleus is not None:
+            nucleus = self.assimilated_nucleus
+            coda = self.assimilated_coda
+            tone = self.assimilated_vowel_tone if self.assimilated_vowel_tone is not None else self.tone
+        else:
+            nucleus = self.nucleus
+            coda = self.coda
+            tone = (self.assimilated_tone if self.assimilate_tone and self.assimilated_tone is not None else self.tone)
+        return (self.onset or '') + (self.medial or '') + (nucleus or '') + (coda or '') + (tone or '')
 
 @dataclass
 class Syllable:
@@ -152,6 +173,7 @@ class Syllable:
     has_impossible_cluster: bool = False
     is_reduplicable: bool = False
     is_tone_assimilated: bool = False
+    is_vowel_assimilated: bool = False
     is_reduplicated: bool = False
     
     minor_syllable: SyllablePart = field(default_factory=SyllablePart)
@@ -206,10 +228,10 @@ class Syllable:
         return getattr(self, item)
 
     def __str__(self) -> str:
-        return self.get_ipa()
+        return self.get_ipa(is_reduplicated=self.is_reduplicated)
 
     def __repr__(self) -> str:
-        return self.get_ipa()
+        return self.get_ipa(is_reduplicated=self.is_reduplicated)
 
     @classmethod
     def _cluster_is_valid(cls, chars: str) -> bool:
@@ -441,6 +463,8 @@ class Syllable:
                 return form, val
         return ('', ''), 'a'
 
+
+
     @classmethod
     def _get_consonants(cls, text: str, vowel_form: Tuple[str, str]) -> Tuple[str, str]:
         pre_vowel, post_vowel = vowel_form
@@ -525,13 +549,13 @@ class Syllable:
 
         return tone_split, old_tone
 
-    def get_ipa(self) -> str:
+    def get_ipa(self, is_reduplicated: bool = False) -> str:
         parts = []
         if self.minor_syllable.nucleus:
             parts.append(self.minor_syllable.get_ipa())
         if self.main_syllable.nucleus:
             parts.append(self.main_syllable.get_ipa())
-        if self.is_reduplicated and self.is_reduplicable and self.reduplicated_syllable.nucleus:
+        if is_reduplicated and self.is_reduplicable and self.reduplicated_syllable.nucleus:
             parts.append(self.reduplicated_syllable.get_ipa())
         return '.'.join(parts)
     
@@ -577,6 +601,43 @@ class Syllable:
         self.main_syllable.assimilated_consonant_class = None
         self.main_syllable.assimilated_tone_split = None
         self.main_syllable.assimilated_tone = None
+
+    def assimilate_vowel(self, other: 'Syllable') -> None:
+        m = self.main_syllable
+        donor = other.main_syllable
+        if not (
+            m.onset_chars and len(m.onset_chars) == 1
+            and not m.coda_chars
+            and m.vowel_form == ('', '')
+            and m.nucleus == 'a'
+            and donor.onset_chars == 'ร'
+        ):
+            return
+
+        assimilated_coda_type = get_key(CODA_TYPES, '')
+        assimilated_tone_split, assimilated_tone = self._get_tones(
+            m.tone_marker or '', m.consonant_class, assimilated_coda_type, 'long'
+        )
+
+        self.is_vowel_assimilated = True
+        m.assimilate_vowel = True
+        m.assimilated_nucleus = 'ɔː'
+        m.assimilated_vowel_duration = 'long'
+        m.assimilated_coda = None
+        m.assimilated_coda_type = assimilated_coda_type
+        m.assimilated_vowel_tone_split = assimilated_tone_split
+        m.assimilated_vowel_tone = assimilated_tone
+
+    def unassimilate_vowel(self) -> None:
+        self.is_vowel_assimilated = False
+        self.main_syllable.assimilate_vowel = False
+
+        self.main_syllable.assimilated_nucleus = None
+        self.main_syllable.assimilated_vowel_duration = None
+        self.main_syllable.assimilated_coda = None
+        self.main_syllable.assimilated_coda_type = None
+        self.main_syllable.assimilated_vowel_tone_split = None
+        self.main_syllable.assimilated_vowel_tone = None
 
     def sound_shift(self, dialect: Dict[str, Any] = STANDARD_THAI_SOUND_SHIFTS) -> 'Syllable':
         minor = self.minor_syllable
@@ -635,4 +696,6 @@ class Syllable:
                 p.tone = get_tone_key(dialect['tones'], p.tone_split)
             if dialect.get('tones') and p.assimilated_tone_split:
                 p.assimilated_tone = get_tone_key(dialect['tones'], p.assimilated_tone_split)
+            if dialect.get('tones') and p.assimilated_vowel_tone_split:
+                p.assimilated_vowel_tone = get_tone_key(dialect['tones'], p.assimilated_vowel_tone_split)
         return self
