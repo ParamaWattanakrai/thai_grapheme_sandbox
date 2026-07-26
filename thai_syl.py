@@ -193,6 +193,8 @@ class Syllable:
     _VOWEL_PATTERNS = [
         (r'y*ฤp*f?', ('', 'ฤ'), 'rɯ'),
         (r'y*ฦp*f?', ('', 'ฦ'), 'lɯ'),
+        (r'y*ct?รรp+f?', ('', 'รร'), 'a'),
+        (r'y*ct?รรf?', ('', 'รร'), 'an'),
         (r'เy*ct?อะr?p*f?', ('เ', 'อะ'), 'ɤ'),
         (r'เy*ct?าะr?p*f?', ('เ', 'าะ'), 'ɔ'),
         (r'เy*ct?ะr?p*f?', ('เ', 'ะ'), 'e'),
@@ -204,9 +206,9 @@ class Syllable:
         (r'โy*ct?ะr?p*f?', ('โ', 'ะ'), 'o'),
         (r'แy*ct?ะr?p*f?', ('แ', 'ะ'), 'ɛ'),
         (r'แy*c็t?r?p+f?', ('แ', '็'), 'ɛ'),
-        (r'เy*cีt?ยะr?p*f?', ('เ', 'ียะ'), 'iəː'),
+        (r'เy*cีt?ยะr?p*f?', ('เ', 'ียะ'), 'iəʔ'),
         (r'เy*cีt?ยr?p*f?', ('เ', 'ีย'), 'iə'),
-        (r'เy*cืt?อะr?p*f?', ('เ', 'ือะ'), 'ɯəː'),
+        (r'เy*cืt?อะr?p*f?', ('เ', 'ือะ'), 'ɯəʔ'),
         (r'เy*cืt?อ?r?p*f?', ('เ', 'ือ'), 'ɯə'),
         (r'y*ct?ะr?p*f?', ('', 'ะ'), 'a'),
         (r'y*ct?าr?p*f?', ('', 'า'), 'aː'),
@@ -219,11 +221,9 @@ class Syllable:
         (r'y*cุt?r?p*f?', ('', 'ุ'), 'u'),
         (r'y*cูt?r?p*f?', ('', 'ู'), 'uː'),
         (r'y*c็t?อr?p+f?', ('', '็อ'), 'ɔ'),
-        (r'y*cัt?วะf?', ('', 'ัวะ'), 'uə'),
+        (r'y*cัt?วะf?', ('', 'ัวะ'), 'uəʔ'),
         (r'y*cัt?วf?', ('', 'ัว'), 'uə'),
         (r'y*cัt?p*cิ?f?', ('', 'ั'), 'a'),
-        (r'y*ct?รรp+f?', ('', 'รร'), 'a'),
-        (r'y*ct?รรf?', ('', 'รร'), 'an'),
         (r'y*ct?อr?p*f?', ('', 'อ'), 'ɔː'),
         (r'y*ct?วr?p*f?', ('', 'ว'), 'uə'),
         (r'เy*ct?r?p*f?', ('เ', ''), 'eː'),
@@ -300,7 +300,7 @@ class Syllable:
                         onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
                     elif cluster_type in ['old_thai', 'old_khmer']:
                         onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
-                    elif nucleus and nucleus[-1] in ['j', 'w', 'm', 'ɰ', 'n']:
+                    elif nucleus and nucleus[-1] in ['j', 'w', 'm', 'ɰ', 'n', 'ʔ']:
                         onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
                     else:
                         has_ambiguous_cluster = True
@@ -439,7 +439,7 @@ class Syllable:
         if nucleus and nucleus[0] in ['r', 'l']:
             medial = nucleus[0]
             nucleus = nucleus[1:]
-        if nucleus and nucleus[-1] in ['j', 'w', 'm', 'ɰ', 'n']:
+        if nucleus and nucleus[-1] in ['j', 'w', 'm', 'ɰ', 'n', 'ʔ']:
             coda = nucleus[-1]
             nucleus = nucleus[:-1]
             

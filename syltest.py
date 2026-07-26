@@ -35,14 +35,18 @@ cases = [
     ('หม้าย', True, False),
     ('รั่ว', False, False),
     ('สรร', False, False),
+    ('วรรดิ', False, False),
     ('กร', False, False),
     ('กรณ์', False, False),
     ('กอล์ฟ', False, False),
-    ('ทิฐิ', False, False)
+    ('ทิฐิ', False, False),
+    ('เอ๋อ', False, False),
+    ('อ๋อง', False, False),
+    ('ปอร์ต', False, False),
 ]
 
 for text, force_cluster, sesqui in cases:
     syllable = Syllable.extract(text, force_cluster=force_cluster, sesquisyllable=sesqui)
-    print(f'{syllable.reconstruct_text()}, {syllable}, {syllable.sound_shift()}, cluster {force_cluster}, sesqui {sesqui}, {syllable.main_syllable.vowel_form}')
+    print(f'{syllable.reconstruct_text()}, {syllable}, {syllable.sound_shift()}, cluster {force_cluster}, sesqui {sesqui}, {syllable.main_syllable.vowel_form}, {syllable.main_syllable.onset_chars}')
 
 print(Syllable.extract('ทิฐิ', force_cluster=False, sesquisyllable=False).main_syllable.onset_chars)
