@@ -548,11 +548,6 @@ class Syllable:
 
         if len(cleaned_onset_chars) == 2 and digraph is None and (cluster_type in ['old_thai', 'old_khmer'] or force_cluster):
             if cleaned_onset_chars in ['ทร', 'สร'] and not force_cluster:
-                # ทร/สร conventionally collapse to a single /s/ (ทราบ, ทราย,
-                # ทรง, สร้าง) -- that's the default reading. But a handful of
-                # etymologically Sanskrit words (จันทรา) keep the genuine
-                # cluster instead; force_cluster=True is how a caller asks
-                # for that alternate reading rather than the usual /s/.
                 return 's', None, cluster_type
             cluster_type = cluster_type if cluster_type else 'foreign'
             return get_key(OLD_THAI_ONSETS, cleaned_onset_chars[0]), get_key(OLD_THAI_ONSETS, cleaned_onset_chars[1]), cluster_type
