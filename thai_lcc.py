@@ -43,10 +43,11 @@ y*ฤๅ?
 y*ฦๅ?
 
 cรรc์
-y*cr?cf
+y*cr?cg
 y*c?p*
 [\s+฿ๆ๏๚๛]
 '''.replace('f', r'(?:cc?[ุิ]?์)') # Final
+    .replace('g', r'(?:c[ุิ]?์)') # Narrow final
     .replace('x', r'($|(?=[\s+เ-ไๆ๏๚๛]|c[ะ-ฺ]))') # Exclude
     .replace('r', r'(?:c์)') # Foreign
     .replace('y', r'(?:cฺ|c๎)') # Yamakkan: Explicit Cluster Beginning
