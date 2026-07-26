@@ -193,8 +193,8 @@ class Syllable:
     _VOWEL_PATTERNS = [
         (r'y*ฤp*f?', ('', 'ฤ'), 'rɯ'),
         (r'y*ฦp*f?', ('', 'ฦ'), 'lɯ'),
-        (r'y*ct?รรp+f?', ('', 'รร'), 'a'),
-        (r'y*ct?รรf?', ('', 'รร'), 'an'),
+        (r'y*ct?รรr?', ('', 'รร'), 'an'),
+        (r'y*ct?รรp*f?', ('', 'รร'), 'a'),
         (r'เy*ct?อะr?p*f?', ('เ', 'อะ'), 'ɤ'),
         (r'เy*ct?าะr?p*f?', ('เ', 'าะ'), 'ɔ'),
         (r'เy*ct?ะr?p*f?', ('เ', 'ะ'), 'e'),
@@ -257,12 +257,16 @@ class Syllable:
         vowel_form, nucleus = cls._get_vowel(text)
         onset_chars, coda_chars = cls._get_consonants(text, vowel_form)
 
-        stripped_onset_chars = re.sub(expand(r'f'), '', onset_chars)
         has_ambiguous_cluster = False
         has_impossible_cluster = False
         cluster_type = None
-        if vowel_form[1] and len(stripped_onset_chars) > 1 and not cls._cluster_is_valid(stripped_onset_chars):
-            has_impossible_cluster = True
+        if vowel_form[1] and len(onset_chars) > 1:
+            if cls._cluster_is_valid(onset_chars[:2]):
+                cluster_type = get_key(ONSET_CLUSTERS, onset_chars[:2])
+                if len(onset_chars) > 2:
+                    onset_chars, coda_chars = onset_chars[:2], onset_chars[2:] + coda_chars
+            else:
+                has_impossible_cluster = True
         elif not vowel_form[1] and len(onset_chars) > 1:
             if re.search(expand(r't'), text):
                 split_result = re.split(expand(r't'), onset_chars, maxsplit=1)
@@ -284,7 +288,7 @@ class Syllable:
             elif sesquisyllable:
                 onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
             else:
-                if len(stripped_onset_chars) > 2:
+                if len(onset_chars) > 2:
                     candidate_onset, remainder = onset_chars[:2], onset_chars[2:]
                     if cls._cluster_is_valid(candidate_onset):
                         cluster_type = get_key(ONSET_CLUSTERS, candidate_onset)
@@ -295,7 +299,7 @@ class Syllable:
                         has_ambiguous_cluster = True
                         onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
                 else:
-                    cluster_type = get_key(ONSET_CLUSTERS, stripped_onset_chars)
+                    cluster_type = get_key(ONSET_CLUSTERS, onset_chars)
                     if force_cluster:
                         onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
                     elif cluster_type in ['old_thai', 'old_khmer']:
@@ -487,6 +491,9 @@ class Syllable:
         if post_vowel in ('ฤ', 'ฦ') and text.startswith(post_vowel):
             return '', text[len(post_vowel):]
 
+        if not post_vowel:
+            return text[len(pre_vowel):], ''
+
         def _with_optional_tone_gaps(literal: str) -> str:
             tone_gap = expand('t') + '?'
             return tone_gap.join(re.escape(ch) for ch in literal)
@@ -494,15 +501,9 @@ class Syllable:
         pre_pattern = _with_optional_tone_gaps(pre_vowel)
         post_pattern = _with_optional_tone_gaps(post_vowel)
 
-        pattern = rf'^{pre_pattern}(.*?){post_pattern}$'
-        match = re.search(pattern, text)
+        match = re.match(rf'^{pre_pattern}(.+?){post_pattern}', text)
         if match:
-            return match.group(1), ''
-
-        pattern = rf'^{pre_pattern}(.+?){post_pattern}(.+)$'
-        match = re.search(pattern, text)
-        if match:
-            return match.group(1), match.group(2)
+            return match.group(1), text[match.end():]
 
         return text, ''
 

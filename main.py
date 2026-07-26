@@ -12,6 +12,6 @@ text = '''สิทธิ์ลุ้นเครื่องรางของ�
 # text = 'ล้กทำไม'
 # text = 'กฎมนเทียรบาล'
 # text = 'ไพร่ฟ้า'
-text = 'กอล์ฟ'
+text = 'ปอร์ต'
 tccs = thai_lcc.segment(text)
 print('|'.join(tccs))
