@@ -34,9 +34,15 @@ cases = [
     ('พฤติ', False, False),
     ('หม้าย', True, False),
     ('รั่ว', False, False),
-    ('สรร', False, False)
+    ('สรร', False, False),
+    ('กร', False, False),
+    ('กรณ์', False, False),
+    ('กอล์ฟ', False, False),
+    ('ฑูรย์', False, False)
 ]
 
 for text, force_cluster, sesqui in cases:
     syllable = Syllable.extract(text, force_cluster=force_cluster, sesquisyllable=sesqui)
     print(f'{syllable.reconstruct_text()}, {syllable}, {syllable.sound_shift()}, cluster {force_cluster}, sesqui {sesqui}, {syllable.main_syllable.vowel_form}')
+
+print(Syllable.extract('ฑูรย์', force_cluster=False, sesquisyllable=False).main_syllable.coda_chars)

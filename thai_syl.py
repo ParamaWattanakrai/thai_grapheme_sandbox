@@ -46,7 +46,7 @@ ONSET_CLUSTERS = {
 }
 
 CODAS = {
-    'k': ['ก', 'ข', 'ฃ', 'ค', 'ฅ', 'ฆ'], 'p': ['บ', 'ป', 'ผ', 'พ', 'ภ'],
+    'k': ['ก', 'ข', 'ฃ', 'ค', 'ฅ', 'ฆ'], 'p': ['บ', 'ป', 'ผ', 'พ', 'ฟ', 'ภ'],
     't': ['จ', 'ฉ', 'ช', 'ซ', 'ฌ', 'ฎ', 'ฏ', 'ฐ', 'ฑ', 'ฒ', 'ด', 'ต', 'ถ', 'ท', 'ธ', 'ศ', 'ษ', 'ส'],
     'n': ['ญ', 'ณ', 'น', 'ร', 'ล', 'ฬ'], 'm': ['ม'], 'j': ['ย'], 'w': ['ว'], 'ŋ': ['ง'],
     '': ['']
@@ -257,10 +257,11 @@ class Syllable:
         vowel_form, nucleus = cls._get_vowel(text)
         onset_chars, coda_chars = cls._get_consonants(text, vowel_form)
 
+        stripped_onset_chars = re.sub(expand(r'f'), '', onset_chars)
         has_ambiguous_cluster = False
         has_impossible_cluster = False
         cluster_type = None
-        if vowel_form[1] and len(onset_chars) > 1 and not cls._cluster_is_valid(onset_chars):
+        if vowel_form[1] and len(stripped_onset_chars) > 1 and not cls._cluster_is_valid(stripped_onset_chars):
             has_impossible_cluster = True
         elif not vowel_form[1] and len(onset_chars) > 1:
             if re.search(expand(r't'), text):
@@ -283,7 +284,7 @@ class Syllable:
             elif sesquisyllable:
                 onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
             else:
-                if len(onset_chars) > 2:
+                if len(stripped_onset_chars) > 2:
                     candidate_onset, remainder = onset_chars[:2], onset_chars[2:]
                     if cls._cluster_is_valid(candidate_onset):
                         cluster_type = get_key(ONSET_CLUSTERS, candidate_onset)
@@ -294,7 +295,7 @@ class Syllable:
                         has_ambiguous_cluster = True
                         onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
                 else:
-                    cluster_type = get_key(ONSET_CLUSTERS, onset_chars)
+                    cluster_type = get_key(ONSET_CLUSTERS, stripped_onset_chars)
                     if force_cluster:
                         onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
                     elif cluster_type in ['old_thai', 'old_khmer']:
@@ -533,10 +534,12 @@ class Syllable:
 
         if len(coda_chars) > 1:
             if coda_chars[1] == '์':
+                if len(coda_chars) > 2 and (len(coda_chars) <= 3 or coda_chars[3] != '์'):
+                    return get_key(CODAS, coda_chars[2])
                 return None
             elif coda_chars[1] == 'ฺ' and len(coda_chars) > 2:
                 return get_key(CODAS, coda_chars[2])
-            elif coda_chars[0] == 'ร':
+            elif coda_chars[0] == 'ร' and (len(coda_chars) <= 2 or coda_chars[2] != '์'):
                 return get_key(CODAS, coda_chars[1])
 
         return get_key(CODAS, coda_chars[0])
