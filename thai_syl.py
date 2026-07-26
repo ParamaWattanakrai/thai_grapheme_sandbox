@@ -214,8 +214,8 @@ class Syllable:
         (r'y*cิt?r?p*f?', ('', 'ิ'), 'i'),
         (r'y*cีt?r?p*f?', ('', 'ี'), 'iː'),
         (r'y*cือt?r?p*f?', ('', 'ือ'), 'ɯː'),
-        (r'y*cืt?r?p*f?', ('', 'ื'), 'ɯ'),
-        (r'y*cึt?r?p*f?', ('', 'ึ'), 'ɯː'),
+        (r'y*cืt?r?p*f?', ('', 'ื'), 'ɯː'),
+        (r'y*cึt?r?p*f?', ('', 'ึ'), 'ɯ'),
         (r'y*cุt?r?p*f?', ('', 'ุ'), 'u'),
         (r'y*cูt?r?p*f?', ('', 'ู'), 'uː'),
         (r'y*c็t?อr?p+f?', ('', '็อ'), 'ɔ'),
@@ -517,9 +517,10 @@ class Syllable:
         digraph = get_key(DIGRAPHS, cleaned_onset_chars)
 
         if len(cleaned_onset_chars) == 2 and digraph is None and (cluster_type in ['old_thai', 'old_khmer'] or force_cluster):
+            if cleaned_onset_chars in ['ทร', 'สร']:
+                return 's', None, cluster_type
             cluster_type = cluster_type if cluster_type else 'foreign'
             return get_key(OLD_THAI_ONSETS, cleaned_onset_chars[0]), get_key(OLD_THAI_ONSETS, cleaned_onset_chars[1]), cluster_type
-
         if digraph:
             return digraph, None, cluster_type
         if len(cleaned_onset_chars) > 0:

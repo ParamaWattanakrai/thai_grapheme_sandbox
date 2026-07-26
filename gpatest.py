@@ -1,6 +1,6 @@
 import thai_gpa
 
-syllables = thai_gpa.align('ไปสู่สรวงสวรรค์', 'paj˧.suː˨˩.suəŋ˨˥.saʔ˨˩.wan˨˥')
+syllables = thai_gpa.align('การขัดกันของผลประโยชน์', 'kaːn˧.kʰat˨˩.kan˧.kʰɔːŋ˨˥.pʰon˨˥.praʔ˨˩.joːt˨˩')
 print(syllables)
 print(syllables[0].get_ipa(apply_irregularities=False))
 
@@ -18,3 +18,4 @@ print(syllables[0].get_ipa(apply_irregularities=False))
 # 'เล่น', 'len˦˩'
 # 'ไหม', 'maj˦˥'
 # 'ฤทธิ์', 'rit˦˥'
+# 'มิจฉาทิฐิ', 'mit˦˥.t͡ɕʰaː˨˥.tʰit˦˥.tʰiʔ˨˩'
