@@ -1,6 +1,6 @@
 import thai_gpa
 
-syllables = thai_gpa.align('เจน', 't͡ɕen˦˩')
+syllables = thai_gpa.align('หม้าย', 'maj˦˩')
 print(syllables)
 print(syllables[0].get_ipa(apply_irregularities=False))
 

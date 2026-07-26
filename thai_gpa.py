@@ -142,23 +142,25 @@ def _lenient_match(part_objs: list, target_slice: list):
     """
     Fallback comparison used only once the strict pass has found no
     complete solution anywhere in the word. Unlike the strict pass (which
-    requires an exact string match), this allows each part to differ from
-    its target in at most one respect -- vowel duration, vowel quality, or
-    tone, never onset/medial/coda, since those aren't the kind of thing that
-    goes irregular on their own. thai_ipa.parse() already hands back
-    onset/medial/nucleus/coda/tone as separate fields, so this can tell
-    exactly which single respect is off rather than falling back to fuzzy
-    string distance. A nucleus mismatch is further split: if stripping the
-    length mark makes both sides equal, it's the same vowel just spoken
-    short/long (irregular_vowel_duration); otherwise it's a genuinely
-    different vowel (irregular_vowel).
+    requires an exact string match), this allows each part's nucleus and
+    tone to independently differ from its target -- never onset, medial, or
+    coda, since those aren't the kind of thing that goes irregular on their
+    own. A word can need more than one irregularity at once (เจน is spelled
+    with the long-eː เ pattern and its class/coda would regularly give ˧,
+    but it's actually said with both a short e AND tone ˦˩), so nucleus and
+    tone are checked independently rather than requiring at most one to be
+    off. thai_ipa.parse() already hands back onset/medial/nucleus/coda/tone
+    as separate fields, so this can tell exactly which respects are off
+    rather than falling back to fuzzy string distance. A nucleus mismatch is
+    further split: if stripping the length mark makes both sides equal,
+    it's the same vowel just spoken short/long (irregular_vowel_duration);
+    otherwise it's a genuinely different vowel (irregular_vowel).
 
     Returns a list of (part, kind, value) irregularities to apply if every
-    part matches exactly or via exactly one such difference (the list is
-    empty when everything matched exactly -- still a valid, just non
-    -irregular, lenient match), or None if some part is off in more than
-    one respect, or in onset/medial/coda -- too different to call
-    "irregular".
+    part's onset/medial/coda match exactly (the list is empty when nucleus
+    and tone also matched exactly -- still a valid, just non-irregular,
+    lenient match), or None if any part's onset/medial/coda don't match --
+    too different to call "irregular".
     """
     irregularities = []
     for p, t in zip(part_objs, target_slice):
@@ -169,21 +171,15 @@ def _lenient_match(part_objs: list, target_slice: list):
             return None
 
         p_nucleus = _effective_nucleus(p)
-        nucleus_ok = p_nucleus == t['nucleus']
-        tone_ok = _effective_tone(p) == t['tone']
-
-        if nucleus_ok and tone_ok:
-            continue
-        elif nucleus_ok and not tone_ok:
-            irregularities.append((p, 'tone', t['tone']))
-        elif tone_ok and not nucleus_ok:
+        if p_nucleus != t['nucleus']:
             if _strip_length(p_nucleus) == _strip_length(t['nucleus']):
                 duration = 'long' if (t['nucleus'] or '').endswith('ː') else 'short'
                 irregularities.append((p, 'duration', duration))
             else:
                 irregularities.append((p, 'vowel', t['nucleus']))
-        else:
-            return None
+
+        if _effective_tone(p) != t['tone']:
+            irregularities.append((p, 'tone', t['tone']))
 
     return irregularities
 
@@ -332,6 +328,19 @@ def _solution_cost(solution: list) -> int:
     mechanism).
     """
     return sum(1 for s in solution if s.is_tone_assimilated or s.is_vowel_assimilated or s.is_irregular)
+
+
+def evaluate(text: str, ipa: str) -> tuple:
+    """
+    Align `text` against `ipa` and return (reconstructed_text, reconstructed_ipa)
+    for the whole word -- reconstructed_text should equal `text` and
+    reconstructed_ipa should equal `ipa` when alignment succeeded, making
+    this convenient for scoring against a dataset of (text, ipa) pairs.
+    """
+    result = align(text, ipa)
+    reconstructed_text = ''.join(s.reconstruct_text() for s in result)
+    reconstructed_ipa = '.'.join(s.get_ipa(is_reduplicated=s.is_reduplicated) for s in result)
+    return reconstructed_text, reconstructed_ipa
 
 
 def align(text: str, ipa: str) -> list:

@@ -245,10 +245,11 @@ class Syllable:
 
     @classmethod
     def _cluster_is_valid(cls, chars: str) -> bool:
-        if get_key(ONSET_CLUSTERS, chars) is not None:
+        cleaned = re.sub(expand(r't'), '', chars)
+        if get_key(ONSET_CLUSTERS, cleaned) is not None:
             return True
         all_digraphs = {c for group in DIGRAPHS.values() for c in group}
-        return chars in all_digraphs
+        return cleaned in all_digraphs
 
     @classmethod
     def extract(cls, text: str, force_cluster: bool = False, sesquisyllable: bool = False) -> 'Syllable':
