@@ -541,7 +541,7 @@ class Syllable:
 
         if len(coda_chars) > 1:
             if coda_chars[1] == '์':
-                return get_key(CODAS, coda_chars[0])
+                return None
             elif coda_chars[1] == 'ฺ' and len(coda_chars) > 2:
                 return get_key(CODAS, coda_chars[2])
             elif coda_chars[0] == 'ร':

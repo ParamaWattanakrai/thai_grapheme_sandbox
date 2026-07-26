@@ -1,6 +1,6 @@
 import thai_gpa
 
-syllables = thai_gpa.align('โดดเดี่ยว', 'doːt˨˩.diəw˨˩')
+syllables = thai_gpa.align('ทาส', 'tʰaːt˦˩.saʔ˨˩.')
 print(syllables)
 print(syllables[0].get_ipa(apply_irregularities=False))
 
