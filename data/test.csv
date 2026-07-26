@@ -109,7 +109,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 กรมท่า,krom˧.ma˦˥.tʰaː˥˩,1,krom˧.maʔ˦˥.tʰaː˦˩,กรมท่า,krom˧.maʔ˦˥.tʰaː˦˩
 กรมธรรม,krom˧.ma˦˥.tʰam˧,1,krom˧.maʔ˦˥.tʰam˧,กรมธรรม,krom˧.maʔ˦˥.tʰam˧
 กรมธรรม์,krom˧.ma˦˥.tʰan˧,1,krom˧.maʔ˦˥.tʰan˧,กรมธรรม์,krom˧.maʔ˦˥.tʰan˧
-กรรตุการก,kat̚˨˩.tu˨˩.kaː˧.rok̚˦˥,2,kat˨˩.tuʔ˨˩.kaː˧.rok˦˥,,ERROR: Could not align 'กรรตุการก' with 'kat˨˩.tuʔ˨˩.kaː˧.rok˦˥'
+กรรตุการก,kat̚˨˩.tu˨˩.kaː˧.rok̚˦˥,2,kat˨˩.tuʔ˨˩.kaː˧.rok˦˥,กรรตุการก,kat˨˩.tuʔ˨˩.kaː˧.rok˦˥
 กรรตุการก,kan˧.tu˨˩.kaː˧.rok̚˦˥,2,kan˧.tuʔ˨˩.kaː˧.rok˦˥,กรรตุการก,kan˧.tuʔ˨˩.kaː˧.rok˦˥
 กรรปุระ,kan˧.pu˨˩.raʔ˦˥,1,kan˧.puʔ˨˩.raʔ˦˥,กรรปุระ,kan˧.puʔ˨˩.raʔ˦˥
 กรรม,kam˧,2,kam˧,กรรม,kam˧
@@ -125,9 +125,9 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 กรรมสัมปาทิก,kam˧.ma˦˥.sam˩˩˦.paː˧.tʰi˦˥.ka˨˩.,3,kam˧.maʔ˦˥.sam˨˥.paː˧.tʰiʔ˦˥.kaʔ˨˩,กรรมสัมปาทิก,kam˧.maʔ˦˥.sam˨˥.paː˧.tʰiʔ˦˥.kaʔ˨˩
 กรรมสาร,kam˧.ma˦˥.saːn˩˩˦,1,kam˧.maʔ˦˥.saːn˨˥,กรรมสาร,kam˧.maʔ˦˥.saːn˨˥
 กรรมสิทธิ์,kam˧.ma˦˥.sit̚˨˩,1,kam˧.maʔ˦˥.sit˨˩,กรรมสิทธิ์,kam˧.maʔ˦˥.sit˨˩
-กรรมาชีพ,kam˧.maː˧.t͡ɕʰiːp̚˥˩,2,kam˧.maː˧.t͡ɕʰiːp˦˩,,ERROR: Could not align 'กรรมาชีพ' with 'kam˧.maː˧.t͡ɕʰiːp˦˩'
+กรรมาชีพ,kam˧.maː˧.t͡ɕʰiːp̚˥˩,2,kam˧.maː˧.t͡ɕʰiːp˦˩,กรรมาชีพ,kam˧.maː˧.t͡ɕʰiːp˦˩
 กรรมาชีพ,kan˧.maː˧.t͡ɕʰiːp̚˥˩,2,kan˧.maː˧.t͡ɕʰiːp˦˩,กรรมาชีพ,kan˧.maː˧.t͡ɕʰiːp˦˩
-กรรมาธิการ,kam˧.maː˧.tʰi˦˥.kaːn˧,2,kam˧.maː˧.tʰiʔ˦˥.kaːn˧,,ERROR: Could not align 'กรรมาธิการ' with 'kam˧.maː˧.tʰiʔ˦˥.kaːn˧'
+กรรมาธิการ,kam˧.maː˧.tʰi˦˥.kaːn˧,2,kam˧.maː˧.tʰiʔ˦˥.kaːn˧,กรรมาธิการ,kam˧.maː˧.tʰiʔ˦˥.kaːn˧
 กรรมาธิการ,kan˧.maː˧.tʰi˦˥.kaːn˧,2,kan˧.maː˧.tʰiʔ˦˥.kaːn˧,กรรมาธิการ,kan˧.maː˧.tʰiʔ˦˥.kaːn˧
 กรรเชียง,kan˧.t͡ɕʰia̯ŋ˧,1,kan˧.t͡ɕʰiəŋ˧,กรรเชียง,kan˧.t͡ɕʰiəŋ˧
 กรรโชก,kan˧.t͡ɕʰoːk̚˥˩,1,kan˧.t͡ɕʰoːk˦˩,กรรโชก,kan˧.t͡ɕʰoːk˦˩
@@ -211,7 +211,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 กระดูกสันหลัง,kra˨˩.duːk̚˨˩.san˩˩˦.laŋ˩˩˦,1,kraʔ˨˩.duːk˨˩.san˨˥.laŋ˨˥,กระดูกสันหลัง,kraʔ˨˩.duːk˨˩.san˨˥.laŋ˨˥
 กระดูกสันอก,kra˨˩.duːk̚˨˩.san˩˩˦.ʔok̚˨˩,1,kraʔ˨˩.duːk˨˩.san˨˥.ʔok˨˩,กระดูกสันอก,kraʔ˨˩.duːk˨˩.san˨˥.ʔok˨˩
 กระดูกหัก,kra˨˩.duːk̚˨˩.hak̚˨˩,1,kraʔ˨˩.duːk˨˩.hak˨˩,กระดูกหัก,kraʔ˨˩.duːk˨˩.hak˨˩
-กระดูกอ่อน,kra˨˩.duːk̚˨˩.ʔɔːn˨˩,1,kraʔ˨˩.duːk˨˩.ʔɔːn˨˩,,ERROR: Could not align 'กระดูกอ่อน' with 'kraʔ˨˩.duːk˨˩.ʔɔːn˨˩'
+กระดูกอ่อน,kra˨˩.duːk̚˨˩.ʔɔːn˨˩,1,kraʔ˨˩.duːk˨˩.ʔɔːn˨˩,กระดูกอ่อน,kraʔ˨˩.duːk˨˩.ʔɔːn˨˩
 กระดูกเชิงกราน,kra˨˩.duːk̚˨˩.t͡ɕʰɤːŋ˧.kraːn˧,1,kraʔ˨˩.duːk˨˩.t͡ɕʰɤːŋ˧.kraːn˧,กระดูกเชิงกราน,kraʔ˨˩.duːk˨˩.t͡ɕʰɤːŋ˧.kraːn˧
 กระดูกแข้ง,kra˨˩.duːk̚˨˩.kʰɛŋ˥˩,1,kraʔ˨˩.duːk˨˩.kʰɛŋ˦˩,กระดูกแข้ง,kraʔ˨˩.duːk˨˩.kʰɛŋ˦˩
 กระดูกโกลน,kra˨˩.duːk̚˨˩.kloːn˧,1,kraʔ˨˩.duːk˨˩.kloːn˧,กระดูกโกลน,kraʔ˨˩.duːk˨˩.kloːn˧
@@ -613,8 +613,8 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 กอริลลา,kɔː˧.ril˧.laː˥˩,2,kɔː˧.ril˧.laː˦˩,,ERROR: argument of type 'NoneType' is not iterable
 กอลลัม,kɔn˧.lam˥˩,2,kɔn˧.lam˦˩,กอลลัม,kɔn˧.lam˦˩
 กอลลัม,kɔl˧.lam˥˩,2,kɔl˧.lam˦˩,,ERROR: argument of type 'NoneType' is not iterable
-กอล์ฟ,kɔːp̚˦˥,4,kɔːp˦˥,,ERROR: Could not align 'กอล์ฟ' with 'kɔːp˦˥'
-กอล์ฟ,kɔp̚˦˥,4,kɔp˦˥,,ERROR: Could not align 'กอล์ฟ' with 'kɔp˦˥'
+กอล์ฟ,kɔːp̚˦˥,4,kɔːp˦˥,กอล์ฟ,kɔːp˦˥
+กอล์ฟ,kɔp̚˦˥,4,kɔp˦˥,กอล์ฟ,kɔp˦˥
 กอล์ฟ,kɔːf˦˥,4,kɔːf˦˥,,ERROR: argument of type 'NoneType' is not iterable
 กอล์ฟ,kɔf˦˥,4,kɔf˦˥,,ERROR: argument of type 'NoneType' is not iterable
 กะ,kaʔ˨˩,1,kaʔ˨˩,กะ,kaʔ˨˩
@@ -1010,7 +1010,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 การบริจาค,kaːn˧.bɔː˧.ri˦˥.t͡ɕaːk̚˨˩,1,kaːn˧.bɔː˧.riʔ˦˥.t͡ɕaːk˨˩,การบริจาค,kaːn˧.bɔː˧.riʔ˦˥.t͡ɕaːk˨˩
 การบริบาล,kaːn˧.bɔː˧.ri˦˥.baːn˧,1,kaːn˧.bɔː˧.riʔ˦˥.baːn˧,การบริบาล,kaːn˧.bɔː˧.riʔ˦˥.baːn˧
 การบริหาร,kaːn˧.bɔː˧.ri˦˥.haːn˩˩˦,1,kaːn˧.bɔː˧.riʔ˦˥.haːn˨˥,การบริหาร,kaːn˧.bɔː˧.riʔ˦˥.haːn˨˥
-การบล็อก,kaːn˧.blɔk̚˦˥,1,kaːn˧.blɔk˦˥,การบล็อก,kaːn˧.blɔk˦˥
+การบล็อก,kaːn˧.blɔk̚˦˥,1,kaːn˧.blɔk˦˥,,ERROR: Could not align 'การบล็อก' with 'kaːn˧.blɔk˦˥'
 การบวก,kaːn˧.bua̯k̚˨˩,1,kaːn˧.buək˨˩,การบวก,kaːn˧.buək˨˩
 การบวช,kaːn˧.bua̯t̚˨˩,1,kaːn˧.buət˨˩,การบวช,kaːn˧.buət˨˩
 การบังคม,kaːn˧.baŋ˧.kʰom˧,1,kaːn˧.baŋ˧.kʰom˧,การบังคม,kaːn˧.baŋ˧.kʰom˧
@@ -1289,10 +1289,10 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 การอม,kaːn˧.ʔom˧,1,kaːn˧.ʔom˧,การอม,kaːn˧.ʔom˧
 การอยู่,kaːn˧.juː˨˩,1,kaːn˧.juː˨˩,,ERROR: Could not align 'การอยู่' with 'kaːn˧.juː˨˩'
 การอวสาน,kaːn˧.ʔa˨˩.wa˦˥.saːn˩˩˦,1,kaːn˧.ʔaʔ˨˩.waʔ˦˥.saːn˨˥,การอวสาน,kaːn˧.ʔaʔ˨˩.waʔ˦˥.saːn˨˥
-การออก,kaːn˧.ʔɔːk̚˨˩,1,kaːn˧.ʔɔːk˨˩,,ERROR: Could not align 'การออก' with 'kaːn˧.ʔɔːk˨˩'
-การออกกำลังกาย,kaːn˧.ʔɔːk̚˨˩.kam˧.laŋ˧.kaːj˧,1,kaːn˧.ʔɔːk˨˩.kam˧.laŋ˧.kaːj˧,,ERROR: Could not align 'การออกกำลังกาย' with 'kaːn˧.ʔɔːk˨˩.kam˧.laŋ˧.kaːj˧'
-การออกเสียง,kaːn˧.ʔɔːk̚˨˩.sia̯ŋ˩˩˦,1,kaːn˧.ʔɔːk˨˩.siəŋ˨˥,,ERROR: Could not align 'การออกเสียง' with 'kaːn˧.ʔɔːk˨˩.siəŋ˨˥'
-การออกแบบ,kaːn˧.ʔɔːk̚˨˩.bɛːp̚˨˩,1,kaːn˧.ʔɔːk˨˩.bɛːp˨˩,,ERROR: Could not align 'การออกแบบ' with 'kaːn˧.ʔɔːk˨˩.bɛːp˨˩'
+การออก,kaːn˧.ʔɔːk̚˨˩,1,kaːn˧.ʔɔːk˨˩,การออก,kaːn˧.ʔɔːk˨˩
+การออกกำลังกาย,kaːn˧.ʔɔːk̚˨˩.kam˧.laŋ˧.kaːj˧,1,kaːn˧.ʔɔːk˨˩.kam˧.laŋ˧.kaːj˧,การออกกำลังกาย,kaːn˧.ʔɔːk˨˩.kam˧.laŋ˧.kaːj˧
+การออกเสียง,kaːn˧.ʔɔːk̚˨˩.sia̯ŋ˩˩˦,1,kaːn˧.ʔɔːk˨˩.siəŋ˨˥,การออกเสียง,kaːn˧.ʔɔːk˨˩.siəŋ˨˥
+การออกแบบ,kaːn˧.ʔɔːk̚˨˩.bɛːp̚˨˩,1,kaːn˧.ʔɔːk˨˩.bɛːp˨˩,การออกแบบ,kaːn˧.ʔɔːk˨˩.bɛːp˨˩
 การอัญเชิญ,kaːn˧.ʔan˧.t͡ɕʰɤːn˧,1,kaːn˧.ʔan˧.t͡ɕʰɤːn˧,การอัญเชิญ,kaːn˧.ʔan˧.t͡ɕʰɤːn˧
 การอับปาง,kaːn˧.ʔap̚˨˩.paːŋ˧,1,kaːn˧.ʔap˨˩.paːŋ˧,การอับปาง,kaːn˧.ʔap˨˩.paːŋ˧
 การอาราธนา,kaːn˧.ʔaː˧.raːt̚˥˩.tʰa˦˥.naː˧,1,kaːn˧.ʔaː˧.raːt˦˩.tʰaʔ˦˥.naː˧,การอาราธนา,kaːn˧.ʔaː˧.raːt˦˩.tʰaʔ˦˥.naː˧
@@ -1458,8 +1458,8 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 การไว้วางใจ,kaːn˧.waj˦˥.waːŋ˧.t͡ɕaj˧,1,kaːn˧.waj˦˥.waːŋ˧.t͡ɕaj˧,การไว้วางใจ,kaːn˧.waj˦˥.waːŋ˧.t͡ɕaj˧
 การไหวหวั่น,kaːn˧.waj˩˩˦.hwan˨˩,1,kaːn˧.waj˨˥.hwan˨˩,,ERROR: Could not align 'การไหวหวั่น' with 'kaːn˧.waj˨˥.hwan˨˩'
 การไหว้,kaːn˧.waːj˥˩,1,kaːn˧.waːj˦˩,การไหว้,kaːn˧.waːj˦˩
-การ์ด,kaːt̚˦˥,2,kaːt˦˥,,ERROR: Could not align 'การ์ด' with 'kaːt˦˥'
-การ์ด,kaːt̚˨˩,2,kaːt˨˩,,ERROR: Could not align 'การ์ด' with 'kaːt˨˩'
+การ์ด,kaːt̚˦˥,2,kaːt˦˥,การ์ด,kaːt˦˥
+การ์ด,kaːt̚˨˩,2,kaːt˨˩,การ์ด,kaːt˨˩
 การ์ตูน,kaː˧.tuːn˧,1,kaː˧.tuːn˧,การ์ตูน,kaː˧.tuːn˧
 การ์ฟิลด์,kaː˧.fin˧,2,kaː˧.fin˧,การ์ฟิลด์,kaː˧.fin˧
 การ์ฟิลด์,kaː˧.fil˧,2,kaː˧.fil˧,,ERROR: argument of type 'NoneType' is not iterable
@@ -1776,15 +1776,15 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ขนมเข่ง,kʰa˦˥.nom˩˩˦.kʰeŋ˨˩,2,kʰaʔ˦˥.nom˨˥.kʰeŋ˨˩,ขนมเข่ง,kʰaʔ˦˥.nom˨˥.kʰeŋ˨˩
 ขนมเบื้อง,kʰa˨˩.nom˩˩˦.bɯa̯ŋ˥˩,1,kʰaʔ˨˩.nom˨˥.bɯəŋ˦˩,ขนมเบื้อง,kʰaʔ˨˩.nom˨˥.bɯəŋ˦˩
 ขนมเปียกปูน,kʰa˨˩.nom˩˩˦.pia̯k̚˨˩.puːn˧,1,kʰaʔ˨˩.nom˨˥.piək˨˩.puːn˧,ขนมเปียกปูน,kʰaʔ˨˩.nom˨˥.piək˨˩.puːn˧
-ขนมเปี๊ยะ,kʰa˨˩.nom˩˩˦.pia̯ʔ˦˥,2,kʰaʔ˨˩.nom˨˥.piəʔ˦˥,,ERROR: Could not align 'ขนมเปี๊ยะ' with 'kʰaʔ˨˩.nom˨˥.piəʔ˦˥'
-ขนมเปี๊ยะ,kʰa˦˥.nom˩˩˦.pia̯ʔ˦˥,2,kʰaʔ˦˥.nom˨˥.piəʔ˦˥,,ERROR: Could not align 'ขนมเปี๊ยะ' with 'kʰaʔ˦˥.nom˨˥.piəʔ˦˥'
+ขนมเปี๊ยะ,kʰa˨˩.nom˩˩˦.pia̯ʔ˦˥,2,kʰaʔ˨˩.nom˨˥.piəʔ˦˥,ขนมเปี๊ยะ,kʰaʔ˨˩.nom˨˥.piəʔ˦˥
+ขนมเปี๊ยะ,kʰa˦˥.nom˩˩˦.pia̯ʔ˦˥,2,kʰaʔ˦˥.nom˨˥.piəʔ˦˥,ขนมเปี๊ยะ,kʰaʔ˦˥.nom˨˥.piəʔ˦˥
 ขนมโตเกียว,kʰa˨˩.nom˩˩˦.toː˧.kia̯w˧,1,kʰaʔ˨˩.nom˨˥.toː˧.kiəw˧,ขนมโตเกียว,kʰaʔ˨˩.nom˨˥.toː˧.kiəw˧
 ขนมไหว้พระจันทร์,kʰa˨˩.nom˩˩˦.waːj˥˩.pʰra˦˥.t͡ɕan˧,1,kʰaʔ˨˩.nom˨˥.waːj˦˩.pʰraʔ˦˥.t͡ɕan˧,ขนมไหว้พระจันทร์,kʰaʔ˨˩.nom˨˥.waːj˦˩.pʰraʔ˦˥.t͡ɕan˧
 ขนรักแร้,kʰon˩˩˦.rak̚˦˥.rɛː˦˥,1,kʰon˨˥.rak˦˥.rɛː˦˥,ขนรักแร้,kʰon˨˥.rak˦˥.rɛː˦˥
 ขนส่ง,kʰon˩˩˦.soŋ˨˩,1,kʰon˨˥.soŋ˨˩,ขนส่ง,kʰon˨˥.soŋ˨˩
 ขนส่งมวลชน,kʰon˩˩˦.soŋ˨˩.mua̯n˧.t͡ɕʰon˧,1,kʰon˨˥.soŋ˨˩.muən˧.t͡ɕʰon˧,ขนส่งมวลชน,kʰon˨˥.soŋ˨˩.muən˧.t͡ɕʰon˧
 ขนอุย,kʰon˩˩˦.ʔuj˧,1,kʰon˨˥.ʔuj˧,ขนอุย,kʰon˨˥.ʔuj˧
-ขนอ่อน,kʰon˩˩˦.ʔɔːn˨˩,1,kʰon˨˥.ʔɔːn˨˩,,ERROR: Could not align 'ขนอ่อน' with 'kʰon˨˥.ʔɔːn˨˩'
+ขนอ่อน,kʰon˩˩˦.ʔɔːn˨˩,1,kʰon˨˥.ʔɔːn˨˩,ขนอ่อน,kʰon˨˥.ʔɔːn˨˩
 ขนัด,kʰa˨˩.nat̚˨˩,1,kʰaʔ˨˩.nat˨˩,ขนัด,kʰaʔ˨˩.nat˨˩
 ขนาด,kʰa˨˩.naːt̚˨˩,1,kʰaʔ˨˩.naːt˨˩,ขนาด,kʰaʔ˨˩.naːt˨˩
 ขนาน,kʰa˨˩.naːn˩˩˦,1,kʰaʔ˨˩.naːn˨˥,ขนาน,kʰaʔ˨˩.naːn˨˥
@@ -1937,7 +1937,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ขาลศก,kʰaːn˩˩˦.sok̚˨˩,1,kʰaːn˨˥.sok˨˩,ขาลศก,kʰaːn˨˥.sok˨˩
 ขาว,kʰaːw˩˩˦,1,kʰaːw˨˥,ขาว,kʰaːw˨˥
 ขาหัก,kʰaː˩˩˦.hak̚˨˩,1,kʰaː˨˥.hak˨˩,ขาหัก,kʰaː˨˥.hak˨˩
-ขาอ่อน,kʰaː˩˩˦.ʔɔːn˨˩,1,kʰaː˨˥.ʔɔːn˨˩,,ERROR: Could not align 'ขาอ่อน' with 'kʰaː˨˥.ʔɔːn˨˩'
+ขาอ่อน,kʰaː˩˩˦.ʔɔːn˨˩,1,kʰaː˨˥.ʔɔːn˨˩,ขาอ่อน,kʰaː˨˥.ʔɔːn˨˩
 ขำ,kʰam˩˩˦,1,kʰam˨˥,ขำ,kʰam˨˥
 ขำขัน,kʰam˩˩˦.kʰan˩˩˦,1,kʰam˨˥.kʰan˨˥,ขำขัน,kʰam˨˥.kʰan˨˥
 ขิง,kʰiŋ˩˩˦,1,kʰiŋ˨˥,ขิง,kʰiŋ˨˥
@@ -2013,7 +2013,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ขุ่นเคือง,kʰun˨˩.kʰɯa̯ŋ˧,1,kʰun˨˩.kʰɯəŋ˧,ขุ่นเคือง,kʰun˨˩.kʰɯəŋ˧
 ขูด,kʰuːt̚˨˩,1,kʰuːt˨˩,ขูด,kʰuːt˨˩
 ขู่,kʰuː˨˩,1,kʰuː˨˩,ขู่,kʰuː˨˩
-ขฺลา,kʰlaː˩˩˦,1,kʰlaː˨˥,ขฺลา,kʰlaː˨˥
+ขฺลา,kʰlaː˩˩˦,1,kʰlaː˨˥,,ERROR: Could not align 'ขฺลา' with 'kʰlaː˨˥'
 ขโมย,kʰa˨˩.moːj˧,1,kʰaʔ˨˩.moːj˧,ขโมย,kʰaʔ˨˩.moːj˧
 ขโยง,kʰa˨˩.joːŋ˩˩˦,1,kʰaʔ˨˩.joːŋ˨˥,ขโยง,kʰaʔ˨˩.joːŋ˨˥
 ข่ม,kʰom˨˩,1,kʰom˨˩,ข่ม,kʰom˨˩
@@ -2125,7 +2125,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ข้าวแดงแกงร้อน,kʰaːw˥˩.dɛːŋ˧.kɛːŋ˧.rɔːn˦˥,1,kʰaːw˦˩.dɛːŋ˧.kɛːŋ˧.rɔːn˦˥,ข้าวแดงแกงร้อน,kʰaːw˦˩.dɛːŋ˧.kɛːŋ˧.rɔːn˦˥
 ข้าวโพด,kʰaːw˥˩.pʰoːt̚˥˩,1,kʰaːw˦˩.pʰoːt˦˩,ข้าวโพด,kʰaːw˦˩.pʰoːt˦˩
 ข้าวโพดคั่ว,kʰaːw˥˩.pʰoːt̚˥˩.kʰua̯˥˩,1,kʰaːw˦˩.pʰoːt˦˩.kʰuə˦˩,ข้าวโพดคั่ว,kʰaːw˦˩.pʰoːt˦˩.kʰuə˦˩
-ข้าวโพดอ่อน,kʰaːw˥˩.pʰoːt̚˥˩.ʔɔːn˨˩,1,kʰaːw˦˩.pʰoːt˦˩.ʔɔːn˨˩,,ERROR: Could not align 'ข้าวโพดอ่อน' with 'kʰaːw˦˩.pʰoːt˦˩.ʔɔːn˨˩'
+ข้าวโพดอ่อน,kʰaːw˥˩.pʰoːt̚˥˩.ʔɔːn˨˩,1,kʰaːw˦˩.pʰoːt˦˩.ʔɔːn˨˩,ข้าวโพดอ่อน,kʰaːw˦˩.pʰoːt˦˩.ʔɔːn˨˩
 ข้าวโอ๊ต,kʰaːw˥˩.ʔoːt̚˦˥,1,kʰaːw˦˩.ʔoːt˦˥,ข้าวโอ๊ต,kʰaːw˦˩.ʔoːt˦˥
 ข้าวใหม่ปลามัน,kʰaːw˥˩.maj˨˩.plaː˧.man˧,1,kʰaːw˦˩.maj˨˩.plaː˧.man˧,ข้าวใหม่ปลามัน,kʰaːw˦˩.maj˨˩.plaː˧.man˧
 ข้าศึก,kʰaː˥˩.sɯk̚˨˩,1,kʰaː˦˩.sɯk˨˩,ข้าศึก,kʰaː˦˩.sɯk˨˩
@@ -2341,7 +2341,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 คลอด,kʰlɔːt̚˥˩,1,kʰlɔːt˦˩,คลอด,kʰlɔːt˦˩
 คลอน,kʰlɔːn˧,1,kʰlɔːn˧,คลอน,kʰlɔːn˧
 คลอรีน,kʰlɔː˧.riːn˧,1,kʰlɔː˧.riːn˧,คลอรีน,kʰlɔː˧.riːn˧
-คลอโรฟอร์ม,kʰlɔː˧.roː˧.fɔːm˧,1,kʰlɔː˧.roː˧.fɔːm˧,,ERROR: Could not align 'คลอโรฟอร์ม' with 'kʰlɔː˧.roː˧.fɔːm˧'
+คลอโรฟอร์ม,kʰlɔː˧.roː˧.fɔːm˧,1,kʰlɔː˧.roː˧.fɔːm˧,คลอโรฟอร์ม,kʰlɔː˧.roː˧.fɔːm˧
 คละ,kʰlaʔ˦˥,2,kʰlaʔ˦˥,คละ,kʰlaʔ˦˥
 คละ,kʰon˧.laʔ˦˥,2,kʰon˧.laʔ˦˥,,ERROR: Could not align 'คละ' with 'kʰon˧.laʔ˦˥'
 คลัง,kʰlaŋ˧,1,kʰlaŋ˧,คลัง,kʰlaŋ˧
@@ -2637,8 +2637,8 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ความอิจฉา,kʰwaːm˧.ʔit̚˨˩.t͡ɕʰaː˩˩˦,1,kʰwaːm˧.ʔit˨˩.t͡ɕʰaː˨˥,ความอิจฉา,kʰwaːm˧.ʔit˨˩.t͡ɕʰaː˨˥
 ความอึด,kʰwaːm˧.ʔɯt̚˨˩,1,kʰwaːm˧.ʔɯt˨˩,ความอึด,kʰwaːm˧.ʔɯt˨˩
 ความอุบาทว์,kʰwaːm˧.ʔu˨˩.baːt̚˨˩,1,kʰwaːm˧.ʔuʔ˨˩.baːt˨˩,ความอุบาทว์,kʰwaːm˧.ʔuʔ˨˩.baːt˨˩
-ความอ่อน,kʰwaːm˧.ʔɔːn˨˩,2,kʰwaːm˧.ʔɔːn˨˩,,ERROR: Could not align 'ความอ่อน' with 'kʰwaːm˧.ʔɔːn˨˩'
-ความอ่อน,kʰwaːm˧.ʔɔn˨˩,2,kʰwaːm˧.ʔɔn˨˩,,ERROR: Could not align 'ความอ่อน' with 'kʰwaːm˧.ʔɔn˨˩'
+ความอ่อน,kʰwaːm˧.ʔɔːn˨˩,2,kʰwaːm˧.ʔɔːn˨˩,ความอ่อน,kʰwaːm˧.ʔɔːn˨˩
+ความอ่อน,kʰwaːm˧.ʔɔn˨˩,2,kʰwaːm˧.ʔɔn˨˩,ความอ่อน,kʰwaːm˧.ʔɔn˨˩
 ความอ้วน,kʰwaːm˧.ʔua̯n˥˩,1,kʰwaːm˧.ʔuən˦˩,ความอ้วน,kʰwaːm˧.ʔuən˦˩
 ความเกรงใจ,kʰwaːm˧.kreːŋ˧.t͡ɕaj˧,1,kʰwaːm˧.kreːŋ˧.t͡ɕaj˧,ความเกรงใจ,kʰwaːm˧.kreːŋ˧.t͡ɕaj˧
 ความเกรียน,kʰwaːm˧.kria̯n˧,1,kʰwaːm˧.kriən˧,ความเกรียน,kʰwaːm˧.kriən˧
@@ -2786,8 +2786,8 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 คอมเมนต์,kʰɔm˧.men˦˥,1,kʰɔm˧.men˦˥,คอมเมนต์,kʰɔm˧.men˦˥
 คอย,kʰɔːj˧,1,kʰɔːj˧,คอย,kʰɔːj˧
 คอร์ซิกา,kʰɔː˧.si˦˥.kaː˥˩,1,kʰɔː˧.siʔ˦˥.kaː˦˩,คอร์ซิกา,kʰɔː˧.siʔ˦˥.kaː˦˩
-คอร์ด,kʰɔːt̚˨˩,1,kʰɔːt˨˩,,ERROR: Could not align 'คอร์ด' with 'kʰɔːt˨˩'
-คอร์ต,kʰɔːt̚˨˩,1,kʰɔːt˨˩,,ERROR: Could not align 'คอร์ต' with 'kʰɔːt˨˩'
+คอร์ด,kʰɔːt̚˨˩,1,kʰɔːt˨˩,คอร์ด,kʰɔːt˨˩
+คอร์ต,kʰɔːt̚˨˩,1,kʰɔːt˨˩,คอร์ต,kʰɔːt˨˩
 คอร์นวอลล์,kʰɔːn˧.wɔːl˧,1,kʰɔːn˧.wɔːl˧,,ERROR: argument of type 'NoneType' is not iterable
 คอร์รับชั่น,kʰɔː˧.rap̚˦˥.t͡ɕʰan˥˩,1,kʰɔː˧.rap˦˥.t͡ɕʰan˦˩,คอร์รับชั่น,kʰɔː˧.rap˦˥.t͡ɕʰan˦˩
 คอร์รัปชัน,kʰɔː˧.rap̚˦˥.t͡ɕʰan˥˩,1,kʰɔː˧.rap˦˥.t͡ɕʰan˦˩,คอร์รัปชัน,kʰɔː˧.rap˦˥.t͡ɕʰan˦˩
@@ -2962,7 +2962,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 คีตะ,kʰiː˧.taʔ˨˩,1,kʰiː˧.taʔ˨˩,คีตะ,kʰiː˧.taʔ˨˩
 คีบ,kʰiːp̚˥˩,1,kʰiːp˦˩,คีบ,kʰiːp˦˩
 คีม,kʰiːm˧,1,kʰiːm˧,คีม,kʰiːm˧
-คีย์บอร์ด,kʰiː˧.bɔːt̚˨˩,1,kʰiː˧.bɔːt˨˩,,ERROR: Could not align 'คีย์บอร์ด' with 'kʰiː˧.bɔːt˨˩'
+คีย์บอร์ด,kʰiː˧.bɔːt̚˨˩,1,kʰiː˧.bɔːt˨˩,คีย์บอร์ด,kʰiː˧.bɔːt˨˩
 คีรี,kʰiː˧.riː˧,1,kʰiː˧.riː˧,คีรี,kʰiː˧.riː˧
 คีร์กีซสถาน,kʰiː˧.kiːs˦˥.sa˨˩.tʰaːn˩˩˦,1,kʰiː˧.kiːs˦˥.saʔ˨˩.tʰaːn˨˥,,ERROR: argument of type 'NoneType' is not iterable
 คีวชู,kʰiːw˧.t͡ɕʰuː˧,1,kʰiːw˧.t͡ɕʰuː˧,คีวชู,kʰiːw˧.t͡ɕʰuː˧
@@ -3296,21 +3296,21 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 จักจี้,t͡ɕak̚˨˩.ka˨˩.t͡ɕiː˥˩,1,t͡ɕak˨˩.kaʔ˨˩.t͡ɕiː˦˩,จักจี้,t͡ɕak˨˩.kaʔ˨˩.t͡ɕiː˦˩
 จักร,t͡ɕak̚˨˩,2,t͡ɕak˨˩,จักร,t͡ɕak˨˩
 จักร,t͡ɕak̚˨˩.kra˨˩.,2,t͡ɕak˨˩.kraʔ˨˩,จักร,t͡ɕak˨˩.kraʔ˨˩
-จักรพรรดิ,t͡ɕak̚˨˩.kra˨˩.pʰat̚˦˥,1,t͡ɕak˨˩.kraʔ˨˩.pʰat˦˥,,ERROR: Could not align 'จักรพรรดิ' with 't͡ɕak˨˩.kraʔ˨˩.pʰat˦˥'
-จักรพรรดินี,t͡ɕak̚˨˩.kra˨˩.pʰat̚˦˥.di˨˩.niː˧,1,t͡ɕak˨˩.kraʔ˨˩.pʰat˦˥.diʔ˨˩.niː˧,,ERROR: Could not align 'จักรพรรดินี' with 't͡ɕak˨˩.kraʔ˨˩.pʰat˦˥.diʔ˨˩.niː˧'
+จักรพรรดิ,t͡ɕak̚˨˩.kra˨˩.pʰat̚˦˥,1,t͡ɕak˨˩.kraʔ˨˩.pʰat˦˥,จักรพรรดิ,t͡ɕak˨˩.kraʔ˨˩.pʰat˦˥
+จักรพรรดินี,t͡ɕak̚˨˩.kra˨˩.pʰat̚˦˥.di˨˩.niː˧,1,t͡ɕak˨˩.kraʔ˨˩.pʰat˦˥.diʔ˨˩.niː˧,จักรพรรดินี,t͡ɕak˨˩.kraʔ˨˩.pʰat˦˥.diʔ˨˩.niː˧
 จักรยาน,t͡ɕak̚˨˩.kra˨˩.jaːn˧,1,t͡ɕak˨˩.kraʔ˨˩.jaːn˧,จักรยาน,t͡ɕak˨˩.kraʔ˨˩.jaːn˧
 จักรยานยนต์,t͡ɕak̚˨˩.kra˨˩.jaːn˧.jon˧,1,t͡ɕak˨˩.kraʔ˨˩.jaːn˧.jon˧,,ERROR: Could not align 'จักรยานยนต์' with 't͡ɕak˨˩.kraʔ˨˩.jaːn˧.jon˧'
 จักรราศี,t͡ɕak̚˨˩.kra˨˩.raː˧.siː˩˩˦,1,t͡ɕak˨˩.kraʔ˨˩.raː˧.siː˨˥,จักรราศี,t͡ɕak˨˩.kraʔ˨˩.raː˧.siː˨˥
-จักรวรรดิ,t͡ɕak̚˨˩.kra˨˩.wat̚˨˩,1,t͡ɕak˨˩.kraʔ˨˩.wat˨˩,,ERROR: Could not align 'จักรวรรดิ' with 't͡ɕak˨˩.kraʔ˨˩.wat˨˩'
-จักรวรรดินิยม,t͡ɕak̚˨˩.kra˨˩.wat̚˨˩.ni˦˥.jom˧,1,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.niʔ˦˥.jom˧,,ERROR: Could not align 'จักรวรรดินิยม' with 't͡ɕak˨˩.kraʔ˨˩.wat˨˩.niʔ˦˥.jom˧'
-จักรวรรดิบริติช,t͡ɕak̚˨˩.kra˨˩.wat̚˨˩.bri˨˩.tit̚˦˥,2,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.briʔ˨˩.tit˦˥,,ERROR: Could not align 'จักรวรรดิบริติช' with 't͡ɕak˨˩.kraʔ˨˩.wat˨˩.briʔ˨˩.tit˦˥'
-จักรวรรดิบริติช,t͡ɕak̚˨˩.kra˨˩.wat̚˨˩.bri˦˥.tit̚˦˥,2,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.briʔ˦˥.tit˦˥,,ERROR: Could not align 'จักรวรรดิบริติช' with 't͡ɕak˨˩.kraʔ˨˩.wat˨˩.briʔ˦˥.tit˦˥'
-จักรวรรดิรัสเซีย,t͡ɕak̚˨˩.kra˨˩.wat̚˨˩.rat̚˦˥.sia̯˧,1,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.rat˦˥.siə˧,,ERROR: Could not align 'จักรวรรดิรัสเซีย' with 't͡ɕak˨˩.kraʔ˨˩.wat˨˩.rat˦˥.siə˧'
-จักรวรรดิออตโตมัน,t͡ɕak̚˨˩.kra˨˩.wat̚˨˩.ʔɔːt̚˦˥.toː˧.man˧,1,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.ʔɔːt˦˥.toː˧.man˧,,ERROR: Could not align 'จักรวรรดิออตโตมัน' with 't͡ɕak˨˩.kraʔ˨˩.wat˨˩.ʔɔːt˦˥.toː˧.man˧'
-จักรวรรดิอังกฤษ,t͡ɕak̚˨˩.kra˨˩.wat̚˨˩.ʔaŋ˧.krit̚˨˩,1,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.ʔaŋ˧.krit˨˩,,ERROR: Could not align 'จักรวรรดิอังกฤษ' with 't͡ɕak˨˩.kraʔ˨˩.wat˨˩.ʔaŋ˧.krit˨˩'
-จักรวรรดิโรมัน,t͡ɕak̚˨˩.kra˨˩.wat̚˨˩.roː˧.man˧,1,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.roː˧.man˧,,ERROR: Could not align 'จักรวรรดิโรมัน' with 't͡ɕak˨˩.kraʔ˨˩.wat˨˩.roː˧.man˧'
-จักรวรรดิโรมันอันศักดิ์สิทธิ์,t͡ɕak̚˨˩.kra˨˩.wat̚˨˩.roː˧.man˧.ʔan˧.sak̚˨˩.sit̚˨˩,1,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.roː˧.man˧.ʔan˧.sak˨˩.sit˨˩,,ERROR: Could not align 'จักรวรรดิโรมันอันศักดิ์สิทธิ์' with 't͡ɕak˨˩.kraʔ˨˩.wat˨˩.roː˧.man˧.ʔan˧.sak˨˩.sit˨˩'
-จักรวรรดิไบแซนไทน์,t͡ɕak̚˨˩.kra˨˩.wat̚˨˩.baj˧.sɛːn˧.tʰaj˧,1,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.baj˧.sɛːn˧.tʰaj˧,,ERROR: Could not align 'จักรวรรดิไบแซนไทน์' with 't͡ɕak˨˩.kraʔ˨˩.wat˨˩.baj˧.sɛːn˧.tʰaj˧'
+จักรวรรดิ,t͡ɕak̚˨˩.kra˨˩.wat̚˨˩,1,t͡ɕak˨˩.kraʔ˨˩.wat˨˩,จักรวรรดิ,t͡ɕak˨˩.kraʔ˨˩.wat˨˩
+จักรวรรดินิยม,t͡ɕak̚˨˩.kra˨˩.wat̚˨˩.ni˦˥.jom˧,1,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.niʔ˦˥.jom˧,จักรวรรดินิยม,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.niʔ˦˥.jom˧
+จักรวรรดิบริติช,t͡ɕak̚˨˩.kra˨˩.wat̚˨˩.bri˨˩.tit̚˦˥,2,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.briʔ˨˩.tit˦˥,จักรวรรดิบริติช,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.briʔ˨˩.tit˦˥
+จักรวรรดิบริติช,t͡ɕak̚˨˩.kra˨˩.wat̚˨˩.bri˦˥.tit̚˦˥,2,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.briʔ˦˥.tit˦˥,จักรวรรดิบริติช,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.briʔ˦˥.tit˦˥
+จักรวรรดิรัสเซีย,t͡ɕak̚˨˩.kra˨˩.wat̚˨˩.rat̚˦˥.sia̯˧,1,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.rat˦˥.siə˧,จักรวรรดิรัสเซีย,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.rat˦˥.siə˧
+จักรวรรดิออตโตมัน,t͡ɕak̚˨˩.kra˨˩.wat̚˨˩.ʔɔːt̚˦˥.toː˧.man˧,1,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.ʔɔːt˦˥.toː˧.man˧,จักรวรรดิออตโตมัน,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.ʔɔːt˦˥.toː˧.man˧
+จักรวรรดิอังกฤษ,t͡ɕak̚˨˩.kra˨˩.wat̚˨˩.ʔaŋ˧.krit̚˨˩,1,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.ʔaŋ˧.krit˨˩,จักรวรรดิอังกฤษ,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.ʔaŋ˧.krit˨˩
+จักรวรรดิโรมัน,t͡ɕak̚˨˩.kra˨˩.wat̚˨˩.roː˧.man˧,1,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.roː˧.man˧,จักรวรรดิโรมัน,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.roː˧.man˧
+จักรวรรดิโรมันอันศักดิ์สิทธิ์,t͡ɕak̚˨˩.kra˨˩.wat̚˨˩.roː˧.man˧.ʔan˧.sak̚˨˩.sit̚˨˩,1,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.roː˧.man˧.ʔan˧.sak˨˩.sit˨˩,จักรวรรดิโรมันอันศักดิ์สิทธิ์,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.roː˧.man˧.ʔan˧.sak˨˩.sit˨˩
+จักรวรรดิไบแซนไทน์,t͡ɕak̚˨˩.kra˨˩.wat̚˨˩.baj˧.sɛːn˧.tʰaj˧,1,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.baj˧.sɛːn˧.tʰaj˧,จักรวรรดิไบแซนไทน์,t͡ɕak˨˩.kraʔ˨˩.wat˨˩.baj˧.sɛːn˧.tʰaj˧
 จักรวาล,t͡ɕak̚˨˩.kra˨˩.waːn˧,2,t͡ɕak˨˩.kraʔ˨˩.waːn˧,จักรวาล,t͡ɕak˨˩.kraʔ˨˩.waːn˧
 จักรวาล,t͡ɕak̚˨˩.kra˨˩.waː˧.la˦˥.,2,t͡ɕak˨˩.kraʔ˨˩.waː˧.laʔ˦˥,จักรวาล,t͡ɕak˨˩.kraʔ˨˩.waː˧.laʔ˦˥
 จักรวาฬ,t͡ɕak̚˨˩.kra˨˩.waːn˧,1,t͡ɕak˨˩.kraʔ˨˩.waːn˧,จักรวาฬ,t͡ɕak˨˩.kraʔ˨˩.waːn˧
@@ -3686,8 +3686,8 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ชอบ,t͡ɕʰɔːp̚˥˩,1,t͡ɕʰɔːp˦˩,ชอบ,t͡ɕʰɔːp˦˩
 ชอบธรรม,t͡ɕʰɔːp̚˥˩.tʰam˧,1,t͡ɕʰɔːp˦˩.tʰam˧,ชอบธรรม,t͡ɕʰɔːp˦˩.tʰam˧
 ชอปปิ้ง,t͡ɕʰɔp̚˦˥.piŋ˥˩,1,t͡ɕʰɔp˦˥.piŋ˦˩,ชอปปิ้ง,t͡ɕʰɔp˦˥.piŋ˦˩
-ชอล์ก,t͡ɕʰɔk̚˦˥,1,t͡ɕʰɔk˦˥,,ERROR: Could not align 'ชอล์ก' with 't͡ɕʰɔk˦˥'
-ชอล์ค,t͡ɕʰɔk̚˦˥,1,t͡ɕʰɔk˦˥,,ERROR: Could not align 'ชอล์ค' with 't͡ɕʰɔk˦˥'
+ชอล์ก,t͡ɕʰɔk̚˦˥,1,t͡ɕʰɔk˦˥,ชอล์ก,t͡ɕʰɔk˦˥
+ชอล์ค,t͡ɕʰɔk̚˦˥,1,t͡ɕʰɔk˦˥,ชอล์ค,t͡ɕʰɔk˦˥
 ชะ,t͡ɕʰaʔ˦˥,1,t͡ɕʰaʔ˦˥,ชะ,t͡ɕʰaʔ˦˥
 ชะคราม,t͡ɕʰa˦˥.kʰraːm˧,1,t͡ɕʰaʔ˦˥.kʰraːm˧,ชะคราม,t͡ɕʰaʔ˦˥.kʰraːm˧
 ชะงัก,t͡ɕʰa˦˥.ŋak̚˦˥,1,t͡ɕʰaʔ˦˥.ŋak˦˥,ชะงัก,t͡ɕʰaʔ˦˥.ŋak˦˥
@@ -3769,7 +3769,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ชานชาลา,t͡ɕʰaːn˧.t͡ɕʰaː˧.laː˧,1,t͡ɕʰaːn˧.t͡ɕʰaː˧.laː˧,ชานชาลา,t͡ɕʰaːn˧.t͡ɕʰaː˧.laː˧
 ชานม,t͡ɕʰaː˧.nom˧,1,t͡ɕʰaː˧.nom˧,ชานม,t͡ɕʰaː˧.nom˧
 ชานมไข่มุก,t͡ɕʰaː˧.nom˧.kʰaj˨˩.muk̚˦˥,1,t͡ɕʰaː˧.nom˧.kʰaj˨˩.muk˦˥,ชานมไข่มุก,t͡ɕʰaː˧.nom˧.kʰaj˨˩.muk˦˥
-ชานอ้อย,t͡ɕʰaːn˧.ʔɔj˥˩,1,t͡ɕʰaːn˧.ʔɔj˦˩,,ERROR: Could not align 'ชานอ้อย' with 't͡ɕʰaːn˧.ʔɔj˦˩'
+ชานอ้อย,t͡ɕʰaːn˧.ʔɔj˥˩,1,t͡ɕʰaːn˧.ʔɔj˦˩,ชานอ้อย,t͡ɕʰaːn˧.ʔɔj˦˩
 ชานเมือง,t͡ɕʰaːn˧.mɯa̯ŋ˧,1,t͡ɕʰaːn˧.mɯəŋ˧,ชานเมือง,t͡ɕʰaːn˧.mɯəŋ˧
 ชาม,t͡ɕʰaːm˧,1,t͡ɕʰaːm˧,ชาม,t͡ɕʰaːm˧
 ชามผสม,t͡ɕʰaːm˧.pʰa˨˩.som˩˩˦,1,t͡ɕʰaːm˧.pʰaʔ˨˩.som˨˥,ชามผสม,t͡ɕʰaːm˧.pʰaʔ˨˩.som˨˥
@@ -3781,8 +3781,8 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ชายหาด,t͡ɕʰaːj˧.haːt̚˨˩,1,t͡ɕʰaːj˧.haːt˨˩,ชายหาด,t͡ɕʰaːj˧.haːt˨˩
 ชายา,t͡ɕʰaː˧.jaː˧,1,t͡ɕʰaː˧.jaː˧,ชายา,t͡ɕʰaː˧.jaː˧
 ชายแดน,t͡ɕʰaːj˧.dɛːn˧,1,t͡ɕʰaːj˧.dɛːn˧,ชายแดน,t͡ɕʰaːj˧.dɛːn˧
-ชาร์จ,t͡ɕʰaːt̚˦˥,1,t͡ɕʰaːt˦˥,,ERROR: Could not align 'ชาร์จ' with 't͡ɕʰaːt˦˥'
-ชาร์ป,t͡ɕʰaːp̚˦˥,1,t͡ɕʰaːp˦˥,,ERROR: Could not align 'ชาร์ป' with 't͡ɕʰaːp˦˥'
+ชาร์จ,t͡ɕʰaːt̚˦˥,1,t͡ɕʰaːt˦˥,ชาร์จ,t͡ɕʰaːt˦˥
+ชาร์ป,t͡ɕʰaːp̚˦˥,1,t͡ɕʰaːp˦˥,ชาร์ป,t͡ɕʰaːp˦˥
 ชาว,t͡ɕʰaːw˧,1,t͡ɕʰaːw˧,ชาว,t͡ɕʰaːw˧
 ชาวตะวันตก,t͡ɕʰaːw˧.ta˨˩.wan˧.tok̚˨˩,1,t͡ɕʰaːw˧.taʔ˨˩.wan˧.tok˨˩,ชาวตะวันตก,t͡ɕʰaːw˧.taʔ˨˩.wan˧.tok˨˩
 ชาวนา,t͡ɕʰaːw˧.naː˧,1,t͡ɕʰaːw˧.naː˧,ชาวนา,t͡ɕʰaːw˧.naː˧
@@ -4282,7 +4282,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ดับ,dap̚˨˩,1,dap˨˩,ดับ,dap˨˩
 ดับกลิ่น,dap̚˨˩.klin˨˩,1,dap˨˩.klin˨˩,ดับกลิ่น,dap˨˩.klin˨˩
 ดับขันธ์,dap̚˨˩.kʰan˩˩˦,1,dap˨˩.kʰan˨˥,ดับขันธ์,dap˨˩.kʰan˨˥
-ดับบลิว,dap̚˨˩.bliw˧,1,dap˨˩.bliw˧,ดับบลิว,dap˨˩.bliw˧
+ดับบลิว,dap̚˨˩.bliw˧,1,dap˨˩.bliw˧,,ERROR: Could not align 'ดับบลิว' with 'dap˨˩.bliw˧'
 ดับลิน,dap̚˨˩.blin˧,1,dap˨˩.blin˧,,ERROR: Could not align 'ดับลิน' with 'dap˨˩.blin˧'
 ดับเบิลยู,dap̚˨˩.bɤn˥˩.juː˧,1,dap˨˩.bɤn˦˩.juː˧,ดับเบิลยู,dap˨˩.bɤn˦˩.juː˧
 ดับเบิลเบส,dap̚˨˩.bɤn˥˩.beːt̚˨˩,1,dap˨˩.bɤn˦˩.beːt˨˩,ดับเบิลเบส,dap˨˩.bɤn˦˩.beːt˨˩
@@ -4307,8 +4307,8 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ดารา,daː˧.raː˧,1,daː˧.raː˧,ดารา,daː˧.raː˧
 ดาราจักร,daː˧.raː˧.t͡ɕak̚˨˩,1,daː˧.raː˧.t͡ɕak˨˩,ดาราจักร,daː˧.raː˧.t͡ɕak˨˩
 ดาราศาสตร์,daː˧.raː˧.saːt̚˨˩,1,daː˧.raː˧.saːt˨˩,ดาราศาสตร์,daː˧.raː˧.saːt˨˩
-ดาร์กช็อกโกแลต,daːk̚˦˥.t͡ɕʰɔk̚˦˥.koː˧.lɛt̚˦˥,1,daːk˦˥.t͡ɕʰɔk˦˥.koː˧.lɛt˦˥,,ERROR: Could not align 'ดาร์กช็อกโกแลต' with 'daːk˦˥.t͡ɕʰɔk˦˥.koː˧.lɛt˦˥'
-ดาร์มสตัดเทียม,daːm˧.sa˨˩.tat̚˦˥.tʰia̯m˥˩,1,daːm˧.saʔ˨˩.tat˦˥.tʰiəm˦˩,,ERROR: Could not align 'ดาร์มสตัดเทียม' with 'daːm˧.saʔ˨˩.tat˦˥.tʰiəm˦˩'
+ดาร์กช็อกโกแลต,daːk̚˦˥.t͡ɕʰɔk̚˦˥.koː˧.lɛt̚˦˥,1,daːk˦˥.t͡ɕʰɔk˦˥.koː˧.lɛt˦˥,ดาร์กช็อกโกแลต,daːk˦˥.t͡ɕʰɔk˦˥.koː˧.lɛt˦˥
+ดาร์มสตัดเทียม,daːm˧.sa˨˩.tat̚˦˥.tʰia̯m˥˩,1,daːm˧.saʔ˨˩.tat˦˥.tʰiəm˦˩,ดาร์มสตัดเทียม,daːm˧.saʔ˨˩.tat˦˥.tʰiəm˦˩
 ดาว,daːw˧,1,daːw˧,ดาว,daːw˧
 ดาวดึงส์,daːw˧.wa˦˥.dɯŋ˧,1,daːw˧.waʔ˦˥.dɯŋ˧,ดาวดึงส์,daːw˧.waʔ˦˥.dɯŋ˧
 ดาวตก,daːw˧.tok̚˨˩,1,daːw˧.tok˨˩,ดาวตก,daːw˧.tok˨˩
@@ -4518,8 +4518,8 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ตรงนี้,troŋ˧.niː˦˥,1,troŋ˧.niː˦˥,ตรงนี้,troŋ˧.niː˦˥
 ตรรกวิบัติ,tak̚˨˩.ka˨˩.wi˦˥.bat̚˨˩,1,tak˨˩.kaʔ˨˩.wiʔ˦˥.bat˨˩,ตรรกวิบัติ,tak˨˩.kaʔ˨˩.wiʔ˦˥.bat˨˩
 ตรรกศาสตร์,tak̚˨˩.ka˨˩.saːt̚˨˩,1,tak˨˩.kaʔ˨˩.saːt˨˩,ตรรกศาสตร์,tak˨˩.kaʔ˨˩.saːt˨˩
-ตรรกะ,tak̚˨˩.kaʔ˨˩,1,tak˨˩.kaʔ˨˩,,ERROR: Could not align 'ตรรกะ' with 'tak˨˩.kaʔ˨˩'
-ตรรกะวิบัติ,tak̚˨˩.ka˨˩.wi˦˥.bat̚˨˩,1,tak˨˩.kaʔ˨˩.wiʔ˦˥.bat˨˩,,ERROR: Could not align 'ตรรกะวิบัติ' with 'tak˨˩.kaʔ˨˩.wiʔ˦˥.bat˨˩'
+ตรรกะ,tak̚˨˩.kaʔ˨˩,1,tak˨˩.kaʔ˨˩,ตรรกะ,tak˨˩.kaʔ˨˩
+ตรรกะวิบัติ,tak̚˨˩.ka˨˩.wi˦˥.bat̚˨˩,1,tak˨˩.kaʔ˨˩.wiʔ˦˥.bat˨˩,ตรรกะวิบัติ,tak˨˩.kaʔ˨˩.wiʔ˦˥.bat˨˩
 ตรวจ,trua̯t̚˨˩,1,truət˨˩,ตรวจ,truət˨˩
 ตรวจตรา,trua̯t̚˨˩.traː˧,1,truət˨˩.traː˧,ตรวจตรา,truət˨˩.traː˧
 ตรวจสอบ,trua̯t̚˨˩.sɔːp̚˨˩,1,truət˨˩.sɔːp˨˩,ตรวจสอบ,truət˨˩.sɔːp˨˩
@@ -4556,7 +4556,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ตราสัง,traː˧.saŋ˩˩˦,1,traː˧.saŋ˨˥,ตราสัง,traː˧.saŋ˨˥
 ตราสาร,traː˧.saːn˩˩˦,1,traː˧.saːn˨˥,ตราสาร,traː˧.saːn˨˥
 ตราสารเปลี่ยนมือ,traː˧.saːn˩˩˦.plia̯n˨˩.mɯː˧,1,traː˧.saːn˨˥.pliən˨˩.mɯː˧,ตราสารเปลี่ยนมือ,traː˧.saːn˨˥.pliən˨˩.mɯː˧
-ตราอาร์ม,traː˧.ʔaːm˧,1,traː˧.ʔaːm˧,,ERROR: Could not align 'ตราอาร์ม' with 'traː˧.ʔaːm˧'
+ตราอาร์ม,traː˧.ʔaːm˧,1,traː˧.ʔaːm˧,ตราอาร์ม,traː˧.ʔaːm˧
 ตราไปรษณียากร,traː˧.praj˧.sa˨˩.niː˧.jaː˧.kɔːn˧,1,traː˧.praj˧.saʔ˨˩.niː˧.jaː˧.kɔːn˧,ตราไปรษณียากร,traː˧.praj˧.saʔ˨˩.niː˧.jaː˧.kɔːn˧
 ตรินิแดดและโตเบโก,tri˨˩.ni˦˥.dɛːt̚˨˩.lɛʔ˦˥.toː˧.beː˧.koː˥˩,1,triʔ˨˩.niʔ˦˥.dɛːt˨˩.lɛʔ˦˥.toː˧.beː˧.koː˦˩,ตรินิแดดและโตเบโก,triʔ˨˩.niʔ˦˥.dɛːt˨˩.lɛʔ˦˥.toː˧.beː˧.koː˦˩
 ตริปุระ,tri˨˩.pu˨˩.raʔ˦˥,1,triʔ˨˩.puʔ˨˩.raʔ˦˥,ตริปุระ,triʔ˨˩.puʔ˨˩.raʔ˦˥
@@ -4651,7 +4651,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ตะวันออกเฉียงเหนือ,ta˨˩.wan˧.ʔɔːk̚˨˩.t͡ɕʰia̯ŋ˩˩˦.nɯa̯˩˩˦,1,taʔ˨˩.wan˧.ʔɔːk˨˩.t͡ɕʰiəŋ˨˥.nɯə˨˥,ตะวันออกเฉียงเหนือ,taʔ˨˩.wan˧.ʔɔːk˨˩.t͡ɕʰiəŋ˨˥.nɯə˨˥
 ตะวันออกเฉียงใต้,ta˨˩.wan˧.ʔɔːk̚˨˩.t͡ɕʰia̯ŋ˩˩˦.taːj˥˩,1,taʔ˨˩.wan˧.ʔɔːk˨˩.t͡ɕʰiəŋ˨˥.taːj˦˩,ตะวันออกเฉียงใต้,taʔ˨˩.wan˧.ʔɔːk˨˩.t͡ɕʰiəŋ˨˥.taːj˦˩
 ตะวันออกไกล,ta˨˩.wan˧.ʔɔːk̚˨˩.klaj˧,1,taʔ˨˩.wan˧.ʔɔːk˨˩.klaj˧,ตะวันออกไกล,taʔ˨˩.wan˧.ʔɔːk˨˩.klaj˧
-ตะวันอ้อมข้าว,ta˨˩.wan˧.ʔɔːm˥˩.kʰaːw˥˩,1,taʔ˨˩.wan˧.ʔɔːm˦˩.kʰaːw˦˩,,ERROR: Could not align 'ตะวันอ้อมข้าว' with 'taʔ˨˩.wan˧.ʔɔːm˦˩.kʰaːw˦˩'
+ตะวันอ้อมข้าว,ta˨˩.wan˧.ʔɔːm˥˩.kʰaːw˥˩,1,taʔ˨˩.wan˧.ʔɔːm˦˩.kʰaːw˦˩,ตะวันอ้อมข้าว,taʔ˨˩.wan˧.ʔɔːm˦˩.kʰaːw˦˩
 ตะหลิว,ta˨˩.liw˩˩˦,1,taʔ˨˩.liw˨˥,ตะหลิว,taʔ˨˩.liw˨˥
 ตะเกียง,ta˨˩.kia̯ŋ˧,1,taʔ˨˩.kiəŋ˧,ตะเกียง,taʔ˨˩.kiəŋ˧
 ตะเกียบ,ta˨˩.kia̯p̚˨˩,1,taʔ˨˩.kiəp˨˩,ตะเกียบ,taʔ˨˩.kiəp˨˩
@@ -4699,7 +4699,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ตันหยงลิมอ,tan˧.joŋ˩˩˦.li˦˥.mɔː˧,1,tan˧.joŋ˨˥.liʔ˦˥.mɔː˧,ตันหยงลิมอ,tan˧.joŋ˨˥.liʔ˦˥.mɔː˧
 ตับ,tap̚˨˩,1,tap˨˩,ตับ,tap˨˩
 ตับอักเสบ,tap̚˨˩.ʔak̚˨˩.seːp̚˨˩,1,tap˨˩.ʔak˨˩.seːp˨˩,ตับอักเสบ,tap˨˩.ʔak˨˩.seːp˨˩
-ตับอ่อน,tap̚˨˩.ʔɔːn˨˩,1,tap˨˩.ʔɔːn˨˩,,ERROR: Could not align 'ตับอ่อน' with 'tap˨˩.ʔɔːn˨˩'
+ตับอ่อน,tap̚˨˩.ʔɔːn˨˩,1,tap˨˩.ʔɔːn˨˩,ตับอ่อน,tap˨˩.ʔɔːn˨˩
 ตับเหล็ก,tap̚˨˩.lek̚˨˩,1,tap˨˩.lek˨˩,ตับเหล็ก,tap˨˩.lek˨˩
 ตับแข็ง,tap̚˨˩.kʰɛŋ˩˩˦,1,tap˨˩.kʰɛŋ˨˥,ตับแข็ง,tap˨˩.kʰɛŋ˨˥
 ตับแตก,tap̚˨˩.tɛːk̚˨˩,1,tap˨˩.tɛːk˨˩,ตับแตก,tap˨˩.tɛːk˨˩
@@ -4733,7 +4733,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ตัวหารร่วมมาก,tua̯˧.haːn˩˩˦.rua̯m˥˩.maːk̚˥˩,1,tuə˧.haːn˨˥.ruəm˦˩.maːk˦˩,ตัวหารร่วมมาก,tuə˧.haːn˨˥.ruəm˦˩.maːk˦˩
 ตัวอย่าง,tua̯˧.jaːŋ˨˩,1,tuə˧.jaːŋ˨˩,ตัวอย่าง,tuə˧.jaːŋ˨˩
 ตัวอักษร,tua̯˧.ʔak̚˨˩.sɔːn˩˩˦,1,tuə˧.ʔak˨˩.sɔːn˨˥,ตัวอักษร,tuə˧.ʔak˨˩.sɔːn˨˥
-ตัวอ่อน,tua̯˧.ʔɔːn˨˩,1,tuə˧.ʔɔːn˨˩,,ERROR: Could not align 'ตัวอ่อน' with 'tuə˧.ʔɔːn˨˩'
+ตัวอ่อน,tua̯˧.ʔɔːn˨˩,1,tuə˧.ʔɔːn˨˩,ตัวอ่อน,tuə˧.ʔɔːn˨˩
 ตัวเงินตัวทอง,tua̯˧.ŋɤːn˧.tua̯˧.tʰɔːŋ˧,1,tuə˧.ŋɤːn˧.tuə˧.tʰɔːŋ˧,ตัวเงินตัวทอง,tuə˧.ŋɤːn˧.tuə˧.tʰɔːŋ˧
 ตัวเชื่อม,tua̯˧.t͡ɕʰɯa̯m˥˩,1,tuə˧.t͡ɕʰɯəm˦˩,ตัวเชื่อม,tuə˧.t͡ɕʰɯəm˦˩
 ตัวเมีย,tua̯˧.mia̯˧,1,tuə˧.miə˧,ตัวเมีย,tuə˧.miə˧
@@ -5208,7 +5208,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ทรัสต์,tʰrat̚˦˥,2,tʰrat˦˥,,ERROR: Could not align 'ทรัสต์' with 'tʰrat˦˥'
 ทราก,saːk̚˥˩,1,saːk˦˩,ทราก,saːk˦˩
 ทราบ,saːp̚˥˩,1,saːp˦˩,ทราบ,saːp˦˩
-ทราบฝ่าละอองธุลีพระบาท,saːp̚˥˩.faː˨˩.la˦˥.ʔɔːŋ˧.tʰu˦˥.liː˧.pʰra˦˥.baːt̚˨˩,1,saːp˦˩.faː˨˩.laʔ˦˥.ʔɔːŋ˧.tʰuʔ˦˥.liː˧.pʰraʔ˦˥.baːt˨˩,,ERROR: Could not align 'ทราบฝ่าละอองธุลีพระบาท' with 'saːp˦˩.faː˨˩.laʔ˦˥.ʔɔːŋ˧.tʰuʔ˦˥.liː˧.pʰraʔ˦˥.baːt˨˩'
+ทราบฝ่าละอองธุลีพระบาท,saːp̚˥˩.faː˨˩.la˦˥.ʔɔːŋ˧.tʰu˦˥.liː˧.pʰra˦˥.baːt̚˨˩,1,saːp˦˩.faː˨˩.laʔ˦˥.ʔɔːŋ˧.tʰuʔ˦˥.liː˧.pʰraʔ˦˥.baːt˨˩,ทราบฝ่าละอองธุลีพระบาท,saːp˦˩.faː˨˩.laʔ˦˥.ʔɔːŋ˧.tʰuʔ˦˥.liː˧.pʰraʔ˦˥.baːt˨˩
 ทราม,saːm˧,1,saːm˧,ทราม,saːm˧
 ทราย,saːj˧,1,saːj˧,ทราย,saːj˧
 ทรายดูด,saːj˧.duːt̚˨˩,1,saːj˧.duːt˨˩,ทรายดูด,saːj˧.duːt˨˩
@@ -5711,10 +5711,10 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ธรรมนูญ,tʰam˧.nuːn˧,2,tʰam˧.nuːn˧,ธรรมนูญ,tʰam˧.nuːn˧
 ธรรมบุตร,tʰam˧.ma˦˥.but̚˨˩,1,tʰam˧.maʔ˦˥.but˨˩,ธรรมบุตร,tʰam˧.maʔ˦˥.but˨˩
 ธรรมศาสตร์,tʰam˧.ma˦˥.saːt̚˨˩,1,tʰam˧.maʔ˦˥.saːt˨˩,ธรรมศาสตร์,tʰam˧.maʔ˦˥.saːt˨˩
-ธรรมะ,tʰam˧.maʔ˦˥,1,tʰam˧.maʔ˦˥,,ERROR: Could not align 'ธรรมะ' with 'tʰam˧.maʔ˦˥'
-ธรรมะธรรมโม,tʰam˧.ma˦˥.tʰam˧.moː˧,1,tʰam˧.maʔ˦˥.tʰam˧.moː˧,,ERROR: Could not align 'ธรรมะธรรมโม' with 'tʰam˧.maʔ˦˥.tʰam˧.moː˧'
-ธรรมะธัมโม,tʰam˧.ma˦˥.tʰam˧.moː˧,1,tʰam˧.maʔ˦˥.tʰam˧.moː˧,,ERROR: Could not align 'ธรรมะธัมโม' with 'tʰam˧.maʔ˦˥.tʰam˧.moː˧'
-ธรรมาภิบาล,tʰam˧.maː˧.pʰi˦˥.baːn˧,1,tʰam˧.maː˧.pʰiʔ˦˥.baːn˧,,ERROR: Could not align 'ธรรมาภิบาล' with 'tʰam˧.maː˧.pʰiʔ˦˥.baːn˧'
+ธรรมะ,tʰam˧.maʔ˦˥,1,tʰam˧.maʔ˦˥,ธรรมะ,tʰam˧.maʔ˦˥
+ธรรมะธรรมโม,tʰam˧.ma˦˥.tʰam˧.moː˧,1,tʰam˧.maʔ˦˥.tʰam˧.moː˧,ธรรมะธรรมโม,tʰam˧.maʔ˦˥.tʰam˧.moː˧
+ธรรมะธัมโม,tʰam˧.ma˦˥.tʰam˧.moː˧,1,tʰam˧.maʔ˦˥.tʰam˧.moː˧,ธรรมะธัมโม,tʰam˧.maʔ˦˥.tʰam˧.moː˧
+ธรรมาภิบาล,tʰam˧.maː˧.pʰi˦˥.baːn˧,1,tʰam˧.maː˧.pʰiʔ˦˥.baːn˧,ธรรมาภิบาล,tʰam˧.maː˧.pʰiʔ˦˥.baːn˧
 ธรรมาสน์,tʰam˧.maːt̚˥˩,1,tʰam˧.maːt˦˩,,ERROR: Could not align 'ธรรมาสน์' with 'tʰam˧.maːt˦˩'
 ธรรมเนียม,tʰam˧.nia̯m˧,1,tʰam˧.niəm˧,ธรรมเนียม,tʰam˧.niəm˧
 ธราดล,tʰa˦˥.raː˧.don˧,1,tʰaʔ˦˥.raː˧.don˧,ธราดล,tʰaʔ˦˥.raː˧.don˧
@@ -5849,9 +5849,9 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 นอนหลับ,nɔːn˧.lap̚˨˩,1,nɔːn˧.lap˨˩,นอนหลับ,nɔːn˧.lap˨˩
 นอย,nɔːj˧,1,nɔːj˧,นอย,nɔːj˧
 นอยด์,nɔːj˧,1,nɔːj˧,นอยด์,nɔːj˧
-นอร์ทดาโคตา,nɔt̚˦˥.daː˧.kʰoː˧.taː˥˩,1,nɔt˦˥.daː˧.kʰoː˧.taː˦˩,,ERROR: Could not align 'นอร์ทดาโคตา' with 'nɔt˦˥.daː˧.kʰoː˧.taː˦˩'
-นอร์ทมาซิโดเนีย,nɔːt̚˦˥.maː˧.si˦˥.doː˧.nia̯˧,1,nɔːt˦˥.maː˧.siʔ˦˥.doː˧.niə˧,,ERROR: Could not align 'นอร์ทมาซิโดเนีย' with 'nɔːt˦˥.maː˧.siʔ˦˥.doː˧.niə˧'
-นอร์ทแคโรไลนา,nɔt̚˦˥.kʰɛː˧.roː˧.laj˧.naː˥˩,1,nɔt˦˥.kʰɛː˧.roː˧.laj˧.naː˦˩,,ERROR: Could not align 'นอร์ทแคโรไลนา' with 'nɔt˦˥.kʰɛː˧.roː˧.laj˧.naː˦˩'
+นอร์ทดาโคตา,nɔt̚˦˥.daː˧.kʰoː˧.taː˥˩,1,nɔt˦˥.daː˧.kʰoː˧.taː˦˩,นอร์ทดาโคตา,nɔt˦˥.daː˧.kʰoː˧.taː˦˩
+นอร์ทมาซิโดเนีย,nɔːt̚˦˥.maː˧.si˦˥.doː˧.nia̯˧,1,nɔːt˦˥.maː˧.siʔ˦˥.doː˧.niə˧,นอร์ทมาซิโดเนีย,nɔːt˦˥.maː˧.siʔ˦˥.doː˧.niə˧
+นอร์ทแคโรไลนา,nɔt̚˦˥.kʰɛː˧.roː˧.laj˧.naː˥˩,1,nɔt˦˥.kʰɛː˧.roː˧.laj˧.naː˦˩,นอร์ทแคโรไลนา,nɔt˦˥.kʰɛː˧.roː˧.laj˧.naː˦˩
 นอร์ม็องดี,nɔː˧.mɔŋ˧.diː˧,1,nɔː˧.mɔŋ˧.diː˧,นอร์ม็องดี,nɔː˧.mɔŋ˧.diː˧
 นอร์เทิร์นไอร์แลนด์,nɔt̚˦˥.tʰɤn˥˩.ʔaj˧.lɛn˥˩,2,nɔt˦˥.tʰɤn˦˩.ʔaj˧.lɛn˦˩,,ERROR: Could not align 'นอร์เทิร์นไอร์แลนด์' with 'nɔt˦˥.tʰɤn˦˩.ʔaj˧.lɛn˦˩'
 นอร์เทิร์นไอร์แลนด์,nɔt̚˦˥.tʰɤn˥˩.ʔaj˧.lɛːn˧,2,nɔt˦˥.tʰɤn˦˩.ʔaj˧.lɛːn˧,,ERROR: Could not align 'นอร์เทิร์นไอร์แลนด์' with 'nɔt˦˥.tʰɤn˦˩.ʔaj˧.lɛːn˧'
@@ -5861,7 +5861,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 นักกฎหมาย,nak̚˦˥.kot̚˨˩.maːj˩˩˦,1,nak˦˥.kot˨˩.maːj˨˥,นักกฎหมาย,nak˦˥.kot˨˩.maːj˨˥
 นักกระโดดน้ำ,nak̚˦˥.kra˨˩.doːt̚˨˩.naːm˦˥,1,nak˦˥.kraʔ˨˩.doːt˨˩.naːm˦˥,นักกระโดดน้ำ,nak˦˥.kraʔ˨˩.doːt˨˩.naːm˦˥
 นักกระโดดร่ม,nak̚˦˥.kra˨˩.doːt̚˨˩.rom˥˩,1,nak˦˥.kraʔ˨˩.doːt˨˩.rom˦˩,นักกระโดดร่ม,nak˦˥.kraʔ˨˩.doːt˨˩.rom˦˩
-นักกอล์ฟ,nak̚˦˥.kɔːp̚˦˥,2,nak˦˥.kɔːp˦˥,,ERROR: Could not align 'นักกอล์ฟ' with 'nak˦˥.kɔːp˦˥'
+นักกอล์ฟ,nak̚˦˥.kɔːp̚˦˥,2,nak˦˥.kɔːp˦˥,นักกอล์ฟ,nak˦˥.kɔːp˦˥
 นักกอล์ฟ,nak̚˦˥.kɔːf˦˥,2,nak˦˥.kɔːf˦˥,,ERROR: argument of type 'NoneType' is not iterable
 นักกายกรรม,nak̚˦˥.kaːj˧.ja˦˥.kam˧,1,nak˦˥.kaːj˧.jaʔ˦˥.kam˧,นักกายกรรม,nak˦˥.kaːj˧.jaʔ˦˥.kam˧
 นักการ,nak̚˦˥.kaːn˧,1,nak˦˥.kaːn˧,นักการ,nak˦˥.kaːn˧
@@ -5970,11 +5970,11 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 นักเปียโน,nak̚˦˥.pia̯˧.noː˧,1,nak˦˥.piə˧.noː˧,นักเปียโน,nak˦˥.piə˧.noː˧
 นักเรียน,nak̚˦˥.ria̯n˧,1,nak˦˥.riən˧,นักเรียน,nak˦˥.riən˧
 นักเลง,nak̚˦˥.leːŋ˧,1,nak˦˥.leːŋ˧,นักเลง,nak˦˥.leːŋ˧
-นักเลงคีย์บอร์ด,nak̚˦˥.leːŋ˧.kʰiː˧.bɔːt̚˨˩,1,nak˦˥.leːŋ˧.kʰiː˧.bɔːt˨˩,,ERROR: Could not align 'นักเลงคีย์บอร์ด' with 'nak˦˥.leːŋ˧.kʰiː˧.bɔːt˨˩'
+นักเลงคีย์บอร์ด,nak̚˦˥.leːŋ˧.kʰiː˧.bɔːt̚˨˩,1,nak˦˥.leːŋ˧.kʰiː˧.bɔːt˨˩,นักเลงคีย์บอร์ด,nak˦˥.leːŋ˧.kʰiː˧.bɔːt˨˩
 นักเลงสุรา,nak̚˦˥.leːŋ˧.su˨˩.raː˧,1,nak˦˥.leːŋ˧.suʔ˨˩.raː˧,นักเลงสุรา,nak˦˥.leːŋ˧.suʔ˨˩.raː˧
 นักเลงโต,nak̚˦˥.leːŋ˧.toː˧,1,nak˦˥.leːŋ˧.toː˧,นักเลงโต,nak˦˥.leːŋ˧.toː˧
 นักเล่นแร่แปรธาตุ,nak̚˦˥.len˥˩.rɛː˥˩.prɛː˧.tʰaːt̚˥˩,1,nak˦˥.len˦˩.rɛː˦˩.prɛː˧.tʰaːt˦˩,นักเล่นแร่แปรธาตุ,nak˦˥.len˦˩.rɛː˦˩.prɛː˧.tʰaːt˦˩
-นักเศรษฐศาสตร์,nak̚˦˥.seːt̚˨˩.tʰa˨˩.saːt̚˨˩,1,nak˦˥.seːt˨˩.tʰaʔ˨˩.saːt˨˩,นักเศษฐศาสตร์,nak˦˥.seːt˨˩.tʰaʔ˨˩.saːt˨˩
+นักเศรษฐศาสตร์,nak̚˦˥.seːt̚˨˩.tʰa˨˩.saːt̚˨˩,1,nak˦˥.seːt˨˩.tʰaʔ˨˩.saːt˨˩,นักเศรษฐศาสตร์,nak˦˥.seːt˨˩.tʰaʔ˨˩.saːt˨˩
 นักแต่งกลอน,nak̚˦˥.tɛːŋ˨˩.klɔːn˧,1,nak˦˥.tɛːŋ˨˩.klɔːn˧,นักแต่งกลอน,nak˦˥.tɛːŋ˨˩.klɔːn˧
 นักแต่งบทละคร,nak̚˦˥.tɛːŋ˨˩.bot̚˨˩.la˦˥.kʰɔːn˧,1,nak˦˥.tɛːŋ˨˩.bot˨˩.laʔ˦˥.kʰɔːn˧,นักแต่งบทละคร,nak˦˥.tɛːŋ˨˩.bot˨˩.laʔ˦˥.kʰɔːn˧
 นักแต่งเพลง,nak̚˦˥.tɛŋ˨˩.pʰleːŋ˧,1,nak˦˥.tɛŋ˨˩.pʰleːŋ˧,นักแต่งเพลง,nak˦˥.tɛŋ˨˩.pʰleːŋ˧
@@ -6361,7 +6361,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 น้ำอบ,naːm˦˥.ʔop̚˨˩,1,naːm˦˥.ʔop˨˩,น้ำอบ,naːm˦˥.ʔop˨˩
 น้ำอัดลม,naːm˦˥.ʔat̚˨˩.lom˧,1,naːm˦˥.ʔat˨˩.lom˧,น้ำอัดลม,naːm˦˥.ʔat˨˩.lom˧
 น้ำอำพัน,naːm˦˥.ʔam˧.pʰan˧,1,naːm˦˥.ʔam˧.pʰan˧,น้ำอำพัน,naːm˦˥.ʔam˧.pʰan˧
-น้ำอ่อน,naːm˦˥.ʔɔːn˨˩,1,naːm˦˥.ʔɔːn˨˩,,ERROR: Could not align 'น้ำอ่อน' with 'naːm˦˥.ʔɔːn˨˩'
+น้ำอ่อน,naːm˦˥.ʔɔːn˨˩,1,naːm˦˥.ʔɔːn˨˩,น้ำอ่อน,naːm˦˥.ʔɔːn˨˩
 น้ำเกลือ,nam˦˥.klɯa̯˧,2,nam˦˥.klɯə˧,น้ำเกลือ,nam˦˥.klɯə˧
 น้ำเกลือ,naːm˦˥.klɯa̯˧,2,naːm˦˥.klɯə˧,น้ำเกลือ,naːm˦˥.klɯə˧
 น้ำเคย,nam˦˥.kʰɤːj˧,1,nam˦˥.kʰɤːj˧,น้ำเคย,nam˦˥.kʰɤːj˧
@@ -6500,10 +6500,10 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 บรูไน,bruː˧.naj˧,1,bruː˧.naj˧,บรูไน,bruː˧.naj˧
 บรเทศ,bɔː˧.ra˦˥.tʰeːt̚˥˩,1,bɔː˧.raʔ˦˥.tʰeːt˦˩,บรเทศ,bɔː˧.raʔ˦˥.tʰeːt˦˩
 บลัชออน,blat͡ɕʰ˨˩.ʔɔːn˧,1,blat͡ɕʰ˨˩.ʔɔːn˧,,ERROR: argument of type 'NoneType' is not iterable
-บลัดดีแมรี,blat̚˦˥.diː˥˩.mɛː˧.riː˥˩,2,blat˦˥.diː˦˩.mɛː˧.riː˦˩,บลัดดีแมรี,blat˦˥.diː˦˩.mɛː˧.riː˦˩
-บลัดดีแมรี,blat̚˨˩.diː˥˩.mɛː˧.riː˥˩,2,blat˨˩.diː˦˩.mɛː˧.riː˦˩,บลัดดีแมรี,blat˨˩.diː˦˩.mɛː˧.riː˦˩
-บล็อก,blɔk̚˦˥,1,blɔk˦˥,บล็อก,blɔk˦˥
-บล็อกเกอร์,blɔk̚˦˥.kɤː˥˩,1,blɔk˦˥.kɤː˦˩,บล็อกเกอร์,blɔk˦˥.kɤː˦˩
+บลัดดีแมรี,blat̚˦˥.diː˥˩.mɛː˧.riː˥˩,2,blat˦˥.diː˦˩.mɛː˧.riː˦˩,,ERROR: Could not align 'บลัดดีแมรี' with 'blat˦˥.diː˦˩.mɛː˧.riː˦˩'
+บลัดดีแมรี,blat̚˨˩.diː˥˩.mɛː˧.riː˥˩,2,blat˨˩.diː˦˩.mɛː˧.riː˦˩,,ERROR: Could not align 'บลัดดีแมรี' with 'blat˨˩.diː˦˩.mɛː˧.riː˦˩'
+บล็อก,blɔk̚˦˥,1,blɔk˦˥,,ERROR: Could not align 'บล็อก' with 'blɔk˦˥'
+บล็อกเกอร์,blɔk̚˦˥.kɤː˥˩,1,blɔk˦˥.kɤː˦˩,,ERROR: Could not align 'บล็อกเกอร์' with 'blɔk˦˥.kɤː˦˩'
 บวก,bua̯k̚˨˩,1,buək˨˩,บวก,buək˨˩
 บวงสรวง,bua̯ŋ˧.sua̯ŋ˩˩˦,1,buəŋ˧.suəŋ˨˥,บวงสรวง,buəŋ˧.suəŋ˨˥
 บวช,bua̯t̚˨˩,1,buət˨˩,บวช,buət˨˩
@@ -6523,13 +6523,13 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 บอด,bɔːt̚˨˩,1,bɔːt˨˩,บอด,bɔːt˨˩
 บอดี้,bɔː˧.diː˥˩,1,bɔː˧.diː˦˩,บอดี้,bɔː˧.diː˦˩
 บอตสวานา,bɔːt̚˦˥.sa˨˩.waː˧.naː˥˩,2,bɔːt˦˥.saʔ˨˩.waː˧.naː˦˩,บอตสวานา,bɔːt˦˥.saʔ˨˩.waː˧.naː˦˩
-บอตสวานา,bɔːt̚˦˥.swaː˩˩˦.naː˥˩,2,bɔːt˦˥.swaː˨˥.naː˦˩,บอตสวานา,bɔːt˦˥.swaː˨˥.naː˦˩
+บอตสวานา,bɔːt̚˦˥.swaː˩˩˦.naː˥˩,2,bɔːt˦˥.swaː˨˥.naː˦˩,,ERROR: Could not align 'บอตสวานา' with 'bɔːt˦˥.swaː˨˥.naː˦˩'
 บอนไซ,bɔːn˧.saj˧,2,bɔːn˧.saj˧,บอนไซ,bɔːn˧.saj˧
 บอนไซ,bɔn˧.saj˧,2,bɔn˧.saj˧,บอนไซ,bɔn˧.saj˧
 บอบ,bɔːp̚˨˩,1,bɔːp˨˩,บอบ,bɔːp˨˩
 บอมบ์,bɔm˧,1,bɔm˧,บอมบ์,bɔm˧
 บอมเบย์,bɔm˧.beː˧,1,bɔm˧.beː˧,บอมเบย์,bɔm˧.beː˧
-บอร์ด,bɔːt̚˨˩,1,bɔːt˨˩,,ERROR: Could not align 'บอร์ด' with 'bɔːt˨˩'
+บอร์ด,bɔːt̚˨˩,1,bɔːt˨˩,บอร์ด,bɔːt˨˩
 บอร์เนียว,bɔː˧.nia̯w˧,1,bɔː˧.niəw˧,บอร์เนียว,bɔː˧.niəw˧
 บอล,bɔn˧,2,bɔn˧,บอล,bɔn˧
 บอล,bɔl˧,2,bɔl˧,,ERROR: argument of type 'NoneType' is not iterable
@@ -7217,7 +7217,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ปลดกลางอากาศ,plot̚˨˩.klaːŋ˧.ʔaː˧.kaːt̚˨˩,1,plot˨˩.klaːŋ˧.ʔaː˧.kaːt˨˩,ปลดกลางอากาศ,plot˨˩.klaːŋ˧.ʔaː˧.kaːt˨˩
 ปลดทุกข์,plot̚˨˩.tʰuk̚˦˥,1,plot˨˩.tʰuk˦˥,ปลดทุกข์,plot˨˩.tʰuk˦˥
 ปลดปล่อย,plot̚˨˩.plɔj˨˩,1,plot˨˩.plɔj˨˩,ปลดปล่อย,plot˨˩.plɔj˨˩
-ปลดออก,plot̚˨˩.ʔɔːk̚˨˩,1,plot˨˩.ʔɔːk˨˩,,ERROR: Could not align 'ปลดออก' with 'plot˨˩.ʔɔːk˨˩'
+ปลดออก,plot̚˨˩.ʔɔːk̚˨˩,1,plot˨˩.ʔɔːk˨˩,ปลดออก,plot˨˩.ʔɔːk˨˩
 ปลดแอก,plot̚˨˩.ʔɛːk̚˨˩,1,plot˨˩.ʔɛːk˨˩,ปลดแอก,plot˨˩.ʔɛːk˨˩
 ปลวก,plua̯k̚˨˩,1,pluək˨˩,ปลวก,pluək˨˩
 ปลวังคะ,pa˨˩.la˦˥.waŋ˧.kʰaʔ˦˥,1,paʔ˨˩.laʔ˦˥.waŋ˧.kʰaʔ˦˥,ปลวังคะ,paʔ˨˩.laʔ˦˥.waŋ˧.kʰaʔ˦˥
@@ -7243,7 +7243,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ปลั๊กอิน,plak̚˦˥.ʔin˧,1,plak˦˥.ʔin˧,ปลั๊กอิน,plak˦˥.ʔin˧
 ปลั๊กอเนกประสงค์,plak̚˦˥.ʔa˨˩.neːk̚˨˩.pra˨˩.soŋ˩˩˦,1,plak˦˥.ʔaʔ˨˩.neːk˨˩.praʔ˨˩.soŋ˨˥,ปลั๊กอเนกประสงค์,plak˦˥.ʔaʔ˨˩.neːk˨˩.praʔ˨˩.soŋ˨˥
 ปลา,plaː˧,1,plaː˧,ปลา,plaː˧
-ปลากระดูกอ่อน,plaː˧.kra˨˩.duːk̚˨˩.ʔɔːn˨˩,1,plaː˧.kraʔ˨˩.duːk˨˩.ʔɔːn˨˩,,ERROR: Could not align 'ปลากระดูกอ่อน' with 'plaː˧.kraʔ˨˩.duːk˨˩.ʔɔːn˨˩'
+ปลากระดูกอ่อน,plaː˧.kra˨˩.duːk̚˨˩.ʔɔːn˨˩,1,plaː˧.kraʔ˨˩.duːk˨˩.ʔɔːn˨˩,ปลากระดูกอ่อน,plaː˧.kraʔ˨˩.duːk˨˩.ʔɔːn˨˩
 ปลาซิวปลาสร้อย,plaː˧.siw˧.plaː˧.sɔj˥˩,1,plaː˧.siw˧.plaː˧.sɔj˦˩,ปลาซิวปลาสร้อย,plaː˧.siw˧.plaː˧.sɔj˦˩
 ปลาดาว,plaː˧.daːw˧,1,plaː˧.daːw˧,ปลาดาว,plaː˧.daːw˧
 ปลาดิบ,plaː˧.dip̚˨˩,1,plaː˧.dip˨˩,ปลาดิบ,plaː˧.dip˨˩
@@ -7308,7 +7308,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ปอยเปต,pɔːj˧.peːt̚˨˩,1,pɔːj˧.peːt˨˩,ปอยเปต,pɔːj˧.peːt˨˩
 ปอยแปต,pɔːj˧.pɛːt̚˨˩,1,pɔːj˧.pɛːt˨˩,ปอยแปต,pɔːj˧.pɛːt˨˩
 ปอร์โตแปรงซ์,pɔː˧.toː˧.prɛŋ˦˥,1,pɔː˧.toː˧.prɛŋ˦˥,ปอร์โตแปรงซ์,pɔː˧.toː˧.prɛŋ˦˥
-ปอเปี๊ยะ,pɔː˧.pia̯ʔ˦˥,1,pɔː˧.piəʔ˦˥,,ERROR: Could not align 'ปอเปี๊ยะ' with 'pɔː˧.piəʔ˦˥'
+ปอเปี๊ยะ,pɔː˧.pia̯ʔ˦˥,1,pɔː˧.piəʔ˦˥,ปอเปี๊ยะ,pɔː˧.piəʔ˦˥
 ปะ,paʔ˨˩,1,paʔ˨˩,ปะ,paʔ˨˩
 ปะการัง,pa˨˩.kaː˧.raŋ˧,1,paʔ˨˩.kaː˧.raŋ˧,ปะการัง,paʔ˨˩.kaː˧.raŋ˧
 ปะทะ,pa˨˩.tʰaʔ˦˥,1,paʔ˨˩.tʰaʔ˦˥,ปะทะ,paʔ˨˩.tʰaʔ˦˥
@@ -7350,7 +7350,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ปัญญาจารย์,pan˧.jaː˧.t͡ɕaːn˧,1,pan˧.jaː˧.t͡ɕaːn˧,ปัญญาจารย์,pan˧.jaː˧.t͡ɕaːn˧
 ปัญญาชน,pan˧.jaː˧.t͡ɕʰon˧,1,pan˧.jaː˧.t͡ɕʰon˧,ปัญญาชน,pan˧.jaː˧.t͡ɕʰon˧
 ปัญญาประดิษฐ์,pan˧.jaː˧.pra˨˩.dit̚˨˩,1,pan˧.jaː˧.praʔ˨˩.dit˨˩,ปัญญาประดิษฐ์,pan˧.jaː˧.praʔ˨˩.dit˨˩
-ปัญญาอ่อน,pan˧.jaː˧.ʔɔːn˨˩,1,pan˧.jaː˧.ʔɔːn˨˩,,ERROR: Could not align 'ปัญญาอ่อน' with 'pan˧.jaː˧.ʔɔːn˨˩'
+ปัญญาอ่อน,pan˧.jaː˧.ʔɔːn˨˩,1,pan˧.jaː˧.ʔɔːn˨˩,ปัญญาอ่อน,pan˧.jaː˧.ʔɔːn˨˩
 ปัญหา,pan˧.haː˩˩˦,1,pan˧.haː˨˥,ปัญหา,pan˧.haː˨˥
 ปัญหาข้อเท็จจริง,pan˧.haː˩˩˦.kʰɔː˥˩.tʰet̚˦˥.t͡ɕiŋ˧,1,pan˧.haː˨˥.kʰɔː˦˩.tʰet˦˥.t͡ɕiŋ˧,ปัญหาข้อเท็จจริง,pan˧.haː˨˥.kʰɔː˦˩.tʰet˦˥.t͡ɕiŋ˧
 ปัญหาโลกแตก,pan˧.haː˩˩˦.loːk̚˥˩.tɛːk̚˨˩,1,pan˧.haː˨˥.loːk˦˩.tɛːk˨˩,ปัญหาโลกแตก,pan˧.haː˨˥.loːk˦˩.tɛːk˨˩
@@ -7426,7 +7426,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ปาลิเมนต์,paː˧.li˦˥.meːn˧,2,paː˧.liʔ˦˥.meːn˧,ปาลิเมนต์,paː˧.liʔ˦˥.meːn˧
 ปาลิเมนต์,paː˧.li˦˥.meːn˦˥,2,paː˧.liʔ˦˥.meːn˦˥,ปาลิเมนต์,paː˧.liʔ˦˥.meːn˦˥
 ปาลีกีร์,paː˧.liː˧.kiː˧,1,paː˧.liː˧.kiː˧,ปาลีกีร์,paː˧.liː˧.kiː˧
-ปาล์ม,paːm˧,1,paːm˧,,ERROR: Could not align 'ปาล์ม' with 'paːm˧'
+ปาล์ม,paːm˧,1,paːm˧,ปาล์ม,paːm˧
 ปาหี่,paː˧.hiː˨˩,1,paː˧.hiː˨˩,ปาหี่,paː˧.hiː˨˩
 ปาเลสไตน์,paː˧.leːs˦˥.taːj˧,1,paː˧.leːs˦˥.taːj˧,,ERROR: argument of type 'NoneType' is not iterable
 ปาเลา,paː˧.law˧,1,paː˧.law˧,ปาเลา,paː˧.law˧
@@ -7655,7 +7655,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ผัน,pʰan˩˩˦,1,pʰan˨˥,ผัน,pʰan˨˥
 ผับ,pʰap̚˨˩,1,pʰap˨˩,ผับ,pʰap˨˩
 ผัว,pʰua̯˩˩˦,1,pʰuə˨˥,ผัว,pʰuə˨˥
-ผัวะ,pʰua̯ʔ˨˩,1,pʰuəʔ˨˩,,ERROR: Could not align 'ผัวะ' with 'pʰuəʔ˨˩'
+ผัวะ,pʰua̯ʔ˨˩,1,pʰuəʔ˨˩,ผัวะ,pʰuəʔ˨˩
 ผัวเดียวเมียเดียว,pʰua̯˩˩˦.dia̯w˧.mia̯˧.dia̯w˧,1,pʰuə˨˥.diəw˧.miə˧.diəw˧,ผัวเดียวเมียเดียว,pʰuə˨˥.diəw˧.miə˧.diəw˧
 ผา,pʰaː˩˩˦,1,pʰaː˨˥,ผา,pʰaː˨˥
 ผาก,pʰaːk̚˨˩,1,pʰaːk˨˩,ผาก,pʰaːk˨˩
@@ -7867,7 +7867,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ผ้าม่าน,pʰaː˥˩.maːn˥˩,1,pʰaː˦˩.maːn˦˩,ผ้าม่าน,pʰaː˦˩.maːn˦˩
 ผ้าห่ม,pʰaː˥˩.hom˨˩,1,pʰaː˦˩.hom˨˩,ผ้าห่ม,pʰaː˦˩.hom˨˩
 ผ้าอนามัย,pʰaː˥˩.ʔa˨˩.naː˧.maj˧,1,pʰaː˦˩.ʔaʔ˨˩.naː˧.maj˧,ผ้าอนามัย,pʰaː˦˩.ʔaʔ˨˩.naː˧.maj˧
-ผ้าอ้อม,pʰaː˥˩.ʔɔːm˥˩,1,pʰaː˦˩.ʔɔːm˦˩,,ERROR: Could not align 'ผ้าอ้อม' with 'pʰaː˦˩.ʔɔːm˦˩'
+ผ้าอ้อม,pʰaː˥˩.ʔɔːm˥˩,1,pʰaː˦˩.ʔɔːm˦˩,ผ้าอ้อม,pʰaː˦˩.ʔɔːm˦˩
 ผ้าเช็ดตัว,pʰaː˥˩.t͡ɕʰet̚˦˥.tua̯˧,1,pʰaː˦˩.t͡ɕʰet˦˥.tuə˧,ผ้าเช็ดตัว,pʰaː˦˩.t͡ɕʰet˦˥.tuə˧
 ผ้าเช็ดปาก,pʰaː˥˩.t͡ɕʰet̚˦˥.paːk̚˨˩,1,pʰaː˦˩.t͡ɕʰet˦˥.paːk˨˩,ผ้าเช็ดปาก,pʰaː˦˩.t͡ɕʰet˦˥.paːk˨˩
 ผ้าเช็ดหน้า,pʰaː˥˩.t͡ɕʰet̚˦˥.naː˥˩,1,pʰaː˦˩.t͡ɕʰet˦˥.naː˦˩,ผ้าเช็ดหน้า,pʰaː˦˩.t͡ɕʰet˦˥.naː˦˩
@@ -7934,7 +7934,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ฝืน,fɯːn˩˩˦,1,fɯːn˨˥,ฝืน,fɯːn˨˥
 ฝุ่น,fun˨˩,1,fun˨˩,ฝุ่น,fun˨˩
 ฝุ่นควัน,fun˨˩.kʰwan˧,1,fun˨˩.kʰwan˧,ฝุ่นควัน,fun˨˩.kʰwan˧
-ฝุ่นละออง,fun˨˩.la˦˥.ʔɔːŋ˧,1,fun˨˩.laʔ˦˥.ʔɔːŋ˧,,ERROR: Could not align 'ฝุ่นละออง' with 'fun˨˩.laʔ˦˥.ʔɔːŋ˧'
+ฝุ่นละออง,fun˨˩.la˦˥.ʔɔːŋ˧,1,fun˨˩.laʔ˦˥.ʔɔːŋ˧,ฝุ่นละออง,fun˨˩.laʔ˦˥.ʔɔːŋ˧
 ฝุ่นเมือง,fun˨˩.mɯa̯ŋ˧,1,fun˨˩.mɯəŋ˧,ฝุ่นเมือง,fun˨˩.mɯəŋ˧
 ฝูง,fuːŋ˩˩˦,1,fuːŋ˨˥,ฝูง,fuːŋ˨˥
 ฝูงชน,fuːŋ˩˩˦.t͡ɕʰon˧,1,fuːŋ˨˥.t͡ɕʰon˧,ฝูงชน,fuːŋ˨˥.t͡ɕʰon˧
@@ -8221,7 +8221,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 พอดี,pʰɔː˧.diː˧,1,pʰɔː˧.diː˧,พอดี,pʰɔː˧.diː˧
 พอดแคสต์,pʰɔːt̚˨˩.kʰɛːs˦˥,2,pʰɔːt˨˩.kʰɛːs˦˥,,ERROR: argument of type 'NoneType' is not iterable
 พอดแคสต์,pʰɔːt̚˨˩.kʰɛːt̚˦˥,2,pʰɔːt˨˩.kʰɛːt˦˥,พอดแคสต์,pʰɔːt˨˩.kʰɛːt˦˥
-พอร์ต,pʰɔt̚˨˩,1,pʰɔt˨˩,,ERROR: Could not align 'พอร์ต' with 'pʰɔt˨˩'
+พอร์ต,pʰɔt̚˨˩,1,pʰɔt˨˩,พอร์ต,pʰɔt˨˩
 พอร์พอยส์,pʰɔː˧.pʰɔjs˦˥,1,pʰɔː˧.pʰɔjs˦˥,,ERROR: argument of type 'NoneType' is not iterable
 พอลินีเชีย,pʰɔː˧.li˦˥.niː˧.t͡ɕʰia̯˧,1,pʰɔː˧.liʔ˦˥.niː˧.t͡ɕʰiə˧,พอลินีเชีย,pʰɔː˧.liʔ˦˥.niː˧.t͡ɕʰiə˧
 พอเพียง,pʰɔː˧.pʰia̯ŋ˧,1,pʰɔː˧.pʰiəŋ˧,พอเพียง,pʰɔː˧.pʰiəŋ˧
@@ -8493,14 +8493,14 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ฟ,fɔː˧.fan˧,2,fɔː˧.fan˧,,ERROR: Could not align 'ฟ' with 'fɔː˧.fan˧'
 ฟก,fok̚˦˥,1,fok˦˥,ฟก,fok˦˥
 ฟงดูว์,foŋ˧.duː˧,1,foŋ˧.duː˧,ฟงดูว์,foŋ˧.duː˧
-ฟยอร์ด,fa˨˩.jɔːt̚˦˥,1,faʔ˨˩.jɔːt˦˥,,ERROR: Could not align 'ฟยอร์ด' with 'faʔ˨˩.jɔːt˦˥'
-ฟรังค์,fraŋ˧,1,fraŋ˧,ฟรังค์,fraŋ˧
-ฟรี,friː˧,1,friː˧,ฟรี,friː˧
-ฟลอริดา,flɔː˧.ri˦˥.daː˥˩,1,flɔː˧.riʔ˦˥.daː˦˩,ฟลอริดา,flɔː˧.riʔ˦˥.daː˦˩
-ฟลอเรนซ์,flɔː˧.ren˦˥,1,flɔː˧.ren˦˥,ฟลอเรนซ์,flɔː˧.ren˦˥
-ฟลีโรเวียม,fliː˧.roː˧.wia̯m˥˩,1,fliː˧.roː˧.wiəm˦˩,ฟลีโรเวียม,fliː˧.roː˧.wiəm˦˩
-ฟลุต,flut̚˦˥,1,flut˦˥,ฟลุต,flut˦˥
-ฟลูออรีน,fluː˧.ʔɔː˧.riːn˧,1,fluː˧.ʔɔː˧.riːn˧,ฟลูออรีน,fluː˧.ʔɔː˧.riːn˧
+ฟยอร์ด,fa˨˩.jɔːt̚˦˥,1,faʔ˨˩.jɔːt˦˥,ฟยอร์ด,faʔ˨˩.jɔːt˦˥
+ฟรังค์,fraŋ˧,1,fraŋ˧,,ERROR: Could not align 'ฟรังค์' with 'fraŋ˧'
+ฟรี,friː˧,1,friː˧,,ERROR: Could not align 'ฟรี' with 'friː˧'
+ฟลอริดา,flɔː˧.ri˦˥.daː˥˩,1,flɔː˧.riʔ˦˥.daː˦˩,,ERROR: Could not align 'ฟลอริดา' with 'flɔː˧.riʔ˦˥.daː˦˩'
+ฟลอเรนซ์,flɔː˧.ren˦˥,1,flɔː˧.ren˦˥,,ERROR: Could not align 'ฟลอเรนซ์' with 'flɔː˧.ren˦˥'
+ฟลีโรเวียม,fliː˧.roː˧.wia̯m˥˩,1,fliː˧.roː˧.wiəm˦˩,,ERROR: Could not align 'ฟลีโรเวียม' with 'fliː˧.roː˧.wiəm˦˩'
+ฟลุต,flut̚˦˥,1,flut˦˥,,ERROR: Could not align 'ฟลุต' with 'flut˦˥'
+ฟลูออรีน,fluː˧.ʔɔː˧.riːn˧,1,fluː˧.ʔɔː˧.riːn˧,,ERROR: Could not align 'ฟลูออรีน' with 'fluː˧.ʔɔː˧.riːn˧'
 ฟอก,fɔːk̚˥˩,1,fɔːk˦˩,ฟอก,fɔːk˦˩
 ฟอกเงิน,fɔːk̚˥˩.ŋɤn˧,1,fɔːk˦˩.ŋɤn˧,ฟอกเงิน,fɔːk˦˩.ŋɤn˧
 ฟอง,fɔːŋ˧,1,fɔːŋ˧,ฟอง,fɔːŋ˧
@@ -8510,8 +8510,8 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ฟอด,fɔːt̚˥˩,1,fɔːt˦˩,ฟอด,fɔːt˦˩
 ฟอน,fɔːn˧,1,fɔːn˧,ฟอน,fɔːn˧
 ฟอนต์,fɔn˦˥,1,fɔn˦˥,ฟอนต์,fɔn˦˥
-ฟอร์ด,fɔːt̚˨˩,1,fɔːt˨˩,,ERROR: Could not align 'ฟอร์ด' with 'fɔːt˨˩'
-ฟอร์ม,fɔːm˧,1,fɔːm˧,,ERROR: Could not align 'ฟอร์ม' with 'fɔːm˧'
+ฟอร์ด,fɔːt̚˨˩,1,fɔːt˨˩,ฟอร์ด,fɔːt˨˩
+ฟอร์ม,fɔːm˧,1,fɔːm˧,ฟอร์ม,fɔːm˧
 ฟอสซิล,fɔːt̚˦˥.sil˥˩,2,fɔːt˦˥.sil˦˩,,ERROR: argument of type 'NoneType' is not iterable
 ฟอสซิล,fɔt̚˦˥.sil˥˩,2,fɔt˦˥.sil˦˩,,ERROR: argument of type 'NoneType' is not iterable
 ฟอสฟอรัส,fɔːs˦˥.fɔː˧.ras˦˥,1,fɔːs˦˥.fɔː˧.ras˦˥,,ERROR: argument of type 'NoneType' is not iterable
@@ -8552,15 +8552,15 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ฟาดแข้ง,faːt̚˥˩.kʰɛŋ˥˩,1,faːt˦˩.kʰɛŋ˦˩,ฟาดแข้ง,faːt˦˩.kʰɛŋ˦˩
 ฟาน,faːn˧,1,faːn˧,ฟาน,faːn˧
 ฟาย,faːj˧,1,faːj˧,ฟาย,faːj˧
-ฟาร์ม,faːm˧,1,faːm˧,,ERROR: Could not align 'ฟาร์ม' with 'faːm˧'
+ฟาร์ม,faːm˧,1,faːm˧,ฟาร์ม,faːm˧
 ฟาสซิสต์,faːt̚˦˥.sit̚˦˥,1,faːt˦˥.sit˦˥,ฟาสซิสต์,faːt˦˥.sit˦˥
 ฟาโรห์,faː˧.roː˧,1,faː˧.roː˧,ฟาโรห์,faː˧.roː˧
 ฟิจิ,fi˦˥.t͡ɕiʔ˨˩,1,fiʔ˦˥.t͡ɕiʔ˨˩,ฟิจิ,fiʔ˦˥.t͡ɕiʔ˨˩
 ฟิน,fin˧,1,fin˧,ฟิน,fin˧
 ฟินแลนด์,fin˧.lɛːn˧,1,fin˧.lɛːn˧,ฟินแลนด์,fin˧.lɛːn˧
 ฟิลิปปินส์,fi˦˥.lip̚˦˥.pin˧,1,fiʔ˦˥.lip˦˥.pin˧,ฟิลิปปินส์,fiʔ˦˥.lip˦˥.pin˧
-ฟิล์ม,fim˧,2,fim˧,,ERROR: Could not align 'ฟิล์ม' with 'fim˧'
-ฟิล์ม,fiːm˧,2,fiːm˧,,ERROR: Could not align 'ฟิล์ม' with 'fiːm˧'
+ฟิล์ม,fim˧,2,fim˧,ฟิล์ม,fim˧
+ฟิล์ม,fiːm˧,2,fiːm˧,ฟิล์ม,fiːm˧
 ฟิวส์,fiw˧,1,fiw˧,ฟิวส์,fiw˧
 ฟิสิกส์,fi˦˥.sik̚˨˩,1,fiʔ˦˥.sik˨˩,ฟิสิกส์,fiʔ˦˥.sik˨˩
 ฟีจี,fiː˧.t͡ɕiː˧,1,fiː˧.t͡ɕiː˧,ฟีจี,fiː˧.t͡ɕiː˧
@@ -8681,7 +8681,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ภาวนา,pʰaː˧.wa˦˥.naː˧,1,pʰaː˧.waʔ˦˥.naː˧,ภาวนา,pʰaː˧.waʔ˦˥.naː˧
 ภาวะ,pʰaː˧.waʔ˦˥,1,pʰaː˧.waʔ˦˥,ภาวะ,pʰaː˧.waʔ˦˥
 ภาวะทรัสตี,pʰaː˧.wa˦˥.tʰras˦˥.tiː˧,1,pʰaː˧.waʔ˦˥.tʰras˦˥.tiː˧,,ERROR: argument of type 'NoneType' is not iterable
-ภาวะเศรษฐกิจถดถอย,pʰaː˧.wa˦˥.seːt̚˨˩.tʰa˨˩.kit̚˨˩.tʰot̚˨˩.tʰɔj˩˩˦,1,pʰaː˧.waʔ˦˥.seːt˨˩.tʰaʔ˨˩.kit˨˩.tʰot˨˩.tʰɔj˨˥,ภาวะเศษฐกิจถดถอย,pʰaː˧.waʔ˦˥.seːt˨˩.tʰaʔ˨˩.kit˨˩.tʰot˨˩.tʰɔj˨˥
+ภาวะเศรษฐกิจถดถอย,pʰaː˧.wa˦˥.seːt̚˨˩.tʰa˨˩.kit̚˨˩.tʰot̚˨˩.tʰɔj˩˩˦,1,pʰaː˧.waʔ˦˥.seːt˨˩.tʰaʔ˨˩.kit˨˩.tʰot˨˩.tʰɔj˨˥,ภาวะเศรษฐกิจถดถอย,pʰaː˧.waʔ˦˥.seːt˨˩.tʰaʔ˨˩.kit˨˩.tʰot˨˩.tʰɔj˨˥
 ภาวะโลกร้อน,pʰaː˧.wa˦˥.loːk̚˥˩.rɔːn˦˥,1,pʰaː˧.waʔ˦˥.loːk˦˩.rɔːn˦˥,ภาวะโลกร้อน,pʰaː˧.waʔ˦˥.loːk˦˩.rɔːn˦˥
 ภาษา,pʰaː˧.saː˩˩˦,1,pʰaː˧.saː˨˥,ภาษา,pʰaː˧.saː˨˥
 ภาษากลาง,pʰaː˧.saː˩˩˦.klaːŋ˧,1,pʰaː˧.saː˨˥.klaːŋ˧,ภาษากลาง,pʰaː˧.saː˨˥.klaːŋ˧
@@ -8885,13 +8885,13 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 มหายาน,ma˦˥.haː˩˩˦.jaːn˧,1,maʔ˦˥.haː˨˥.jaːn˧,มหายาน,maʔ˦˥.haː˨˥.jaːn˧
 มหาราช,ma˦˥.haː˩˩˦.raːt̚˥˩,1,maʔ˦˥.haː˨˥.raːt˦˩,มหาราช,maʔ˦˥.haː˨˥.raːt˦˩
 มหาราชา,ma˦˥.haː˩˩˦.raː˧.t͡ɕʰaː˧,1,maʔ˦˥.haː˨˥.raː˧.t͡ɕʰaː˧,มหาราชา,maʔ˦˥.haː˨˥.raː˧.t͡ɕʰaː˧
-มหาราษฏระ,ma˦˥.haː˩˩˦.raːt̚˥˩.sa˨˩.traʔ˨˩,1,maʔ˦˥.haː˨˥.raːt˦˩.saʔ˨˩.traʔ˨˩,มหาราษฏระ,maʔ˦˥.haː˨˥.raːt˦˩.saʔ˨˩.traʔ˨˩
+มหาราษฏระ,ma˦˥.haː˩˩˦.raːt̚˥˩.sa˨˩.traʔ˨˩,1,maʔ˦˥.haː˨˥.raːt˦˩.saʔ˨˩.traʔ˨˩,,ERROR: Could not align 'มหาราษฏระ' with 'maʔ˦˥.haː˨˥.raːt˦˩.saʔ˨˩.traʔ˨˩'
 มหาลัย,ma˦˥.haː˩˩˦.laj˧,1,maʔ˦˥.haː˨˥.laj˧,มหาลัย,maʔ˦˥.haː˨˥.laj˧
 มหาวิทยาลัย,ma˦˥.haː˩˩˦.wit̚˦˥.tʰa˦˥.jaː˧.laj˧,1,maʔ˦˥.haː˨˥.wit˦˥.tʰaʔ˦˥.jaː˧.laj˧,มหาวิทยาลัย,maʔ˦˥.haː˨˥.wit˦˥.tʰaʔ˦˥.jaː˧.laj˧
 มหาวิหาร,ma˦˥.haː˩˩˦.wi˦˥.haːn˩˩˦,1,maʔ˦˥.haː˨˥.wiʔ˦˥.haːn˨˥,มหาวิหาร,maʔ˦˥.haː˨˥.wiʔ˦˥.haːn˨˥
 มหาศักราช,ma˦˥.haː˩˩˦.sak̚˨˩.ka˨˩.raːt̚˨˩,1,maʔ˦˥.haː˨˥.sak˨˩.kaʔ˨˩.raːt˨˩,มหาศักราช,maʔ˦˥.haː˨˥.sak˨˩.kaʔ˨˩.raːt˨˩
 มหาสมุทร,ma˦˥.haː˩˩˦.sa˨˩.mut̚˨˩,1,maʔ˦˥.haː˨˥.saʔ˨˩.mut˨˩,มหาสมุทร,maʔ˦˥.haː˨˥.saʔ˨˩.mut˨˩
-มหาสมุทรอาร์กติก,ma˦˥.haː˩˩˦.sa˨˩.mut̚˨˩.ʔaːk̚˦˥.tik̚˨˩,1,maʔ˦˥.haː˨˥.saʔ˨˩.mut˨˩.ʔaːk˦˥.tik˨˩,,ERROR: Could not align 'มหาสมุทรอาร์กติก' with 'maʔ˦˥.haː˨˥.saʔ˨˩.mut˨˩.ʔaːk˦˥.tik˨˩'
+มหาสมุทรอาร์กติก,ma˦˥.haː˩˩˦.sa˨˩.mut̚˨˩.ʔaːk̚˦˥.tik̚˨˩,1,maʔ˦˥.haː˨˥.saʔ˨˩.mut˨˩.ʔaːk˦˥.tik˨˩,มหาสมุทรอาร์กติก,maʔ˦˥.haː˨˥.saʔ˨˩.mut˨˩.ʔaːk˦˥.tik˨˩
 มหาสมุทรอินเดีย,ma˦˥.haː˩˩˦.sa˨˩.mut̚˨˩.ʔin˧.dia̯˧,1,maʔ˦˥.haː˨˥.saʔ˨˩.mut˨˩.ʔin˧.diə˧,มหาสมุทรอินเดีย,maʔ˦˥.haː˨˥.saʔ˨˩.mut˨˩.ʔin˧.diə˧
 มหาสมุทรแปซิฟิก,ma˦˥.haː˩˩˦.sa˨˩.mut̚˨˩.pɛː˧.si˦˥.fik̚˨˩,1,maʔ˦˥.haː˨˥.saʔ˨˩.mut˨˩.pɛː˧.siʔ˦˥.fik˨˩,มหาสมุทรแปซิฟิก,maʔ˦˥.haː˨˥.saʔ˨˩.mut˨˩.pɛː˧.siʔ˦˥.fik˨˩
 มหาสมุทรแอตแลนติก,ma˦˥.haː˩˩˦.sa˨˩.mut̚˨˩.ʔɛt̚˦˥.lɛːn˧.tik̚˨˩,1,maʔ˦˥.haː˨˥.saʔ˨˩.mut˨˩.ʔɛt˦˥.lɛːn˧.tik˨˩,มหาสมุทรแอตแลนติก,maʔ˦˥.haː˨˥.saʔ˨˩.mut˨˩.ʔɛt˦˥.lɛːn˧.tik˨˩
@@ -8900,7 +8900,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 มหาอำนาจ,ma˦˥.haː˩˩˦.ʔam˧.naːt̚˥˩,1,maʔ˦˥.haː˨˥.ʔam˧.naːt˦˩,มหาอำนาจ,maʔ˦˥.haː˨˥.ʔam˧.naːt˦˩
 มหาเถร,ma˦˥.haː˩˩˦.tʰeːn˩˩˦,2,maʔ˦˥.haː˨˥.tʰeːn˨˥,มหาเถร,maʔ˦˥.haː˨˥.tʰeːn˨˥
 มหาเถร,ma˦˥.haː˩˩˦.tʰeː˩˩˦.ra˦˥.,2,maʔ˦˥.haː˨˥.tʰeː˨˥.raʔ˦˥,มหาเถร,maʔ˦˥.haː˨˥.tʰeː˨˥.raʔ˦˥
-มหาเศรษฐี,ma˦˥.haː˩˩˦.seːt̚˨˩.tʰiː˩˩˦,1,maʔ˦˥.haː˨˥.seːt˨˩.tʰiː˨˥,มหาเศษฐี,maʔ˦˥.haː˨˥.seːt˨˩.tʰiː˨˥
+มหาเศรษฐี,ma˦˥.haː˩˩˦.seːt̚˨˩.tʰiː˩˩˦,1,maʔ˦˥.haː˨˥.seːt˨˩.tʰiː˨˥,มหาเศรษฐี,maʔ˦˥.haː˨˥.seːt˨˩.tʰiː˨˥
 มหิงสา,ma˦˥.hiŋ˩˩˦.saː˩˩˦,1,maʔ˦˥.hiŋ˨˥.saː˨˥,มหิงสา,maʔ˦˥.hiŋ˨˥.saː˨˥
 มหิงส์,ma˦˥.hiŋ˩˩˦,1,maʔ˦˥.hiŋ˨˥,มหิงส์,maʔ˦˥.hiŋ˨˥
 มหิตลาธิเบศร,ma˦˥.hi˨˩.ta˨˩.laː˧.tʰi˦˥.beːt̚˨˩,1,maʔ˦˥.hiʔ˨˩.taʔ˨˩.laː˧.tʰiʔ˦˥.beːt˨˩,มหิตลาธิเบศร,maʔ˦˥.hiʔ˨˩.taʔ˨˩.laː˧.tʰiʔ˦˥.beːt˨˩
@@ -9175,7 +9175,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 มินสก์,mins˧,2,mins˧,,ERROR: argument of type 'NoneType' is not iterable
 มินสค์,min˦˥,2,min˦˥,มินสค์,min˦˥
 มินสค์,mins˦˥,2,mins˦˥,,ERROR: argument of type 'NoneType' is not iterable
-มินิมาร์ท,mi˦˥.ni˦˥.maːt̚˨˩,1,miʔ˦˥.niʔ˦˥.maːt˨˩,,ERROR: Could not align 'มินิมาร์ท' with 'miʔ˦˥.niʔ˦˥.maːt˨˩'
+มินิมาร์ท,mi˦˥.ni˦˥.maːt̚˨˩,1,miʔ˦˥.niʔ˦˥.maːt˨˩,มินิมาร์ท,miʔ˦˥.niʔ˦˥.maːt˨˩
 มินิแวน,mi˦˥.ni˦˥.wɛːn˧,1,miʔ˦˥.niʔ˦˥.wɛːn˧,มินิแวน,miʔ˦˥.niʔ˦˥.wɛːn˧
 มิลลิกรัม,min˧.li˦˥.kram˧,1,min˧.liʔ˦˥.kram˧,มิลลิกรัม,min˧.liʔ˦˥.kram˧
 มิลลิลิตร,min˧.li˦˥.lit̚˦˥,1,min˧.liʔ˦˥.lit˦˥,มิลลิลิตร,min˧.liʔ˦˥.lit˦˥
@@ -9387,7 +9387,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ยับ,jap̚˦˥,1,jap˦˥,ยับ,jap˦˥
 ยับยั้ง,jap̚˦˥.jaŋ˦˥,1,jap˦˥.jaŋ˦˥,ยับยั้ง,jap˦˥.jaŋ˦˥
 ยัย,jaj˧,1,jaj˧,ยัย,jaj˧
-ยัวะ,jua̯ʔ˦˥,1,juəʔ˦˥,,ERROR: Could not align 'ยัวะ' with 'juəʔ˦˥'
+ยัวะ,jua̯ʔ˦˥,1,juəʔ˦˥,ยัวะ,juəʔ˦˥
 ยั่งยืน,jaŋ˥˩.jɯːn˧,1,jaŋ˦˩.jɯːn˧,ยั่งยืน,jaŋ˦˩.jɯːn˧
 ยั่ว,jua̯˥˩,1,juə˦˩,ยั่ว,juə˦˩
 ยั่วเย้า,jua̯˥˩.jaw˦˥,1,juə˦˩.jaw˦˥,ยั่วเย้า,juə˦˩.jaw˦˥
@@ -9478,7 +9478,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ยิ่งใหญ่,jiŋ˥˩.jaj˨˩,1,jiŋ˦˩.jaj˨˩,ยิ่งใหญ่,jiŋ˦˩.jaj˨˩
 ยิ้ม,jim˦˥,1,jim˦˥,ยิ้ม,jim˦˥
 ยิ้มย่อง,jim˦˥.jɔŋ˥˩,1,jim˦˥.jɔŋ˦˩,ยิ้มย่อง,jim˦˥.jɔŋ˦˩
-ยิ้มอ่อน,jim˦˥.ʔɔːn˨˩,1,jim˦˥.ʔɔːn˨˩,,ERROR: Could not align 'ยิ้มอ่อน' with 'jim˦˥.ʔɔːn˨˩'
+ยิ้มอ่อน,jim˦˥.ʔɔːn˨˩,1,jim˦˥.ʔɔːn˨˩,ยิ้มอ่อน,jim˦˥.ʔɔːn˨˩
 ยิ้มแย้มแจ่มใส,jim˦˥.jɛːm˦˥.t͡ɕɛm˨˩.saj˩˩˦,1,jim˦˥.jɛːm˦˥.t͡ɕɛm˨˩.saj˨˥,ยิ้มแย้มแจ่มใส,jim˦˥.jɛːm˦˥.t͡ɕɛm˨˩.saj˨˥
 ยี,jiː˧,1,jiː˧,ยี,jiː˧
 ยีน,jiːn˧,1,jiːn˧,ยีน,jiːn˧
@@ -9567,8 +9567,8 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ยูทูบเบอร์,juː˧.tʰuːp̚˦˥.bɤː˥˩,1,juː˧.tʰuːp˦˥.bɤː˦˩,ยูทูบเบอร์,juː˧.tʰuːp˦˥.bɤː˦˩
 ยูทูป,juː˧.tʰuːp̚˦˥,1,juː˧.tʰuːp˦˥,ยูทูป,juː˧.tʰuːp˦˥
 ยูทูปเบอร์,juː˧.tʰuːp̚˥˩.bɤː˥˩,1,juː˧.tʰuːp˦˩.bɤː˦˩,ยูทูปเบอร์,juː˧.tʰuːp˦˩.bɤː˦˩
-ยูนิคอร์น,juː˧.ni˦˥.kʰɔn˧,1,juː˧.niʔ˦˥.kʰɔn˧,,ERROR: Could not align 'ยูนิคอร์น' with 'juː˧.niʔ˦˥.kʰɔn˧'
-ยูนิฟอร์ม,juː˧.ni˦˥.fɔːm˧,1,juː˧.niʔ˦˥.fɔːm˧,,ERROR: Could not align 'ยูนิฟอร์ม' with 'juː˧.niʔ˦˥.fɔːm˧'
+ยูนิคอร์น,juː˧.ni˦˥.kʰɔn˧,1,juː˧.niʔ˦˥.kʰɔn˧,ยูนิคอร์น,juː˧.niʔ˦˥.kʰɔn˧
+ยูนิฟอร์ม,juː˧.ni˦˥.fɔːm˧,1,juː˧.niʔ˦˥.fɔːm˧,ยูนิฟอร์ม,juː˧.niʔ˦˥.fɔːm˧
 ยูเครน,juː˧.kʰreːn˧,1,juː˧.kʰreːn˧,ยูเครน,juː˧.kʰreːn˧
 ยูเทิร์น,juː˧.tʰɤːn˧,1,juː˧.tʰɤːn˧,ยูเทิร์น,juː˧.tʰɤːn˧
 ยูเรนัส,juː˧.reː˧.nas˦˥,1,juː˧.reː˧.nas˦˥,,ERROR: argument of type 'NoneType' is not iterable
@@ -9800,7 +9800,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ระเบิดปรมาณู,ra˦˥.bɤːt̚˨˩.pa˨˩.ra˦˥.maː˧.nuː˧,1,raʔ˦˥.bɤːt˨˩.paʔ˨˩.raʔ˦˥.maː˧.nuː˧,ระเบิดปรมาณู,raʔ˦˥.bɤːt˨˩.paʔ˨˩.raʔ˦˥.maː˧.nuː˧
 ระเบิดมือ,ra˦˥.bɤːt̚˨˩.mɯː˧,1,raʔ˦˥.bɤːt˨˩.mɯː˧,ระเบิดมือ,raʔ˦˥.bɤːt˨˩.mɯː˧
 ระเบียง,ra˦˥.bia̯ŋ˧,1,raʔ˦˥.biəŋ˧,ระเบียง,raʔ˦˥.biəŋ˧
-ระเบียงเศรษฐกิจ,ra˦˥.bia̯ŋ˧.seːt̚˨˩.tʰa˨˩.kit̚˨˩,1,raʔ˦˥.biəŋ˧.seːt˨˩.tʰaʔ˨˩.kit˨˩,ระเบียงเศษฐกิจ,raʔ˦˥.biəŋ˧.seːt˨˩.tʰaʔ˨˩.kit˨˩
+ระเบียงเศรษฐกิจ,ra˦˥.bia̯ŋ˧.seːt̚˨˩.tʰa˨˩.kit̚˨˩,1,raʔ˦˥.biəŋ˧.seːt˨˩.tʰaʔ˨˩.kit˨˩,ระเบียงเศรษฐกิจ,raʔ˦˥.biəŋ˧.seːt˨˩.tʰaʔ˨˩.kit˨˩
 ระเบียบ,ra˦˥.bia̯p̚˨˩,1,raʔ˦˥.biəp˨˩,ระเบียบ,raʔ˦˥.biəp˨˩
 ระเบียบวินัย,ra˦˥.bia̯p̚˨˩.wi˦˥.naj˧,1,raʔ˦˥.biəp˨˩.wiʔ˦˥.naj˧,ระเบียบวินัย,raʔ˦˥.biəp˨˩.wiʔ˦˥.naj˧
 ระเหย,ra˦˥.hɤːj˩˩˦,1,raʔ˦˥.hɤːj˨˥,ระเหย,raʔ˦˥.hɤːj˨˥
@@ -10047,7 +10047,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 รีมูฟเวอร์,riː˧.muːf˦˥.wɤː˥˩,2,riː˧.muːf˦˥.wɤː˦˩,,ERROR: argument of type 'NoneType' is not iterable
 รียาด,riː˧.jaːt̚˦˥,1,riː˧.jaːt˦˥,รียาด,riː˧.jaːt˦˥
 รีวกีว,riːw˧.kiːw˧,1,riːw˧.kiːw˧,รีวกีว,riːw˧.kiːw˧
-รีสอร์ท,riː˧.sɔːt̚˨˩,1,riː˧.sɔːt˨˩,,ERROR: Could not align 'รีสอร์ท' with 'riː˧.sɔːt˨˩'
+รีสอร์ท,riː˧.sɔːt̚˨˩,1,riː˧.sɔːt˨˩,รีสอร์ท,riː˧.sɔːt˨˩
 รีเนียม,riː˧.nia̯m˥˩,1,riː˧.niəm˦˩,รีเนียม,riː˧.niəm˦˩
 รีโมต,riː˧.moːt̚˨˩,1,riː˧.moːt˨˩,รีโมต,riː˧.moːt˨˩
 รีโมตคอนโทรล,riː˧.moːt̚˨˩.kʰɔn˧.tʰroːl˧,2,riː˧.moːt˨˩.kʰɔn˧.tʰroːl˧,,ERROR: argument of type 'NoneType' is not iterable
@@ -10265,7 +10265,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ลอยตัว,lɔːj˧.tua̯˧,1,lɔːj˧.tuə˧,ลอยตัว,lɔːj˧.tuə˧
 ลอยนวล,lɔːj˧.nua̯n˧,1,lɔːj˧.nuən˧,ลอยนวล,lɔːj˧.nuən˧
 ลอว์เรนเซียม,lɔː˧.ren˧.sia̯m˥˩,1,lɔː˧.ren˧.siəm˦˩,ลอว์เรนเซียม,lɔː˧.ren˧.siəm˦˩
-ลออ,la˦˥.ʔɔː˧,1,laʔ˦˥.ʔɔː˧,,ERROR: Could not align 'ลออ' with 'laʔ˦˥.ʔɔː˧'
+ลออ,la˦˥.ʔɔː˧,1,laʔ˦˥.ʔɔː˧,ลออ,laʔ˦˥.ʔɔː˧
 ละ,laʔ˦˥,1,laʔ˦˥,ละ,laʔ˦˥
 ละก์ซา,la˦˥.saː˧,1,laʔ˦˥.saː˧,ละก์ซา,laʔ˦˥.saː˧
 ละคร,la˦˥.kʰɔːn˧,1,laʔ˦˥.kʰɔːn˧,ละคร,laʔ˦˥.kʰɔːn˧
@@ -10283,10 +10283,10 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ละหมาด,la˦˥.maːt̚˨˩,1,laʔ˦˥.maːt˨˩,ละหมาด,laʔ˦˥.maːt˨˩
 ละหาน,la˦˥.haːn˩˩˦,1,laʔ˦˥.haːn˨˥,ละหาน,laʔ˦˥.haːn˨˥
 ละหุ่ง,la˦˥.huŋ˨˩,1,laʔ˦˥.huŋ˨˩,ละหุ่ง,laʔ˦˥.huŋ˨˩
-ละออ,la˦˥.ʔɔː˧,1,laʔ˦˥.ʔɔː˧,,ERROR: Could not align 'ละออ' with 'laʔ˦˥.ʔɔː˧'
-ละออง,la˦˥.ʔɔːŋ˧,1,laʔ˦˥.ʔɔːŋ˧,,ERROR: Could not align 'ละออง' with 'laʔ˦˥.ʔɔːŋ˧'
-ละอองลอย,la˦˥.ʔɔːŋ˧.lɔːj˧,1,laʔ˦˥.ʔɔːŋ˧.lɔːj˧,,ERROR: Could not align 'ละอองลอย' with 'laʔ˦˥.ʔɔːŋ˧.lɔːj˧'
-ละอองเรณู,la˦˥.ʔɔːŋ˧.reː˧.nuː˧,1,laʔ˦˥.ʔɔːŋ˧.reː˧.nuː˧,,ERROR: Could not align 'ละอองเรณู' with 'laʔ˦˥.ʔɔːŋ˧.reː˧.nuː˧'
+ละออ,la˦˥.ʔɔː˧,1,laʔ˦˥.ʔɔː˧,ละออ,laʔ˦˥.ʔɔː˧
+ละออง,la˦˥.ʔɔːŋ˧,1,laʔ˦˥.ʔɔːŋ˧,ละออง,laʔ˦˥.ʔɔːŋ˧
+ละอองลอย,la˦˥.ʔɔːŋ˧.lɔːj˧,1,laʔ˦˥.ʔɔːŋ˧.lɔːj˧,ละอองลอย,laʔ˦˥.ʔɔːŋ˧.lɔːj˧
+ละอองเรณู,la˦˥.ʔɔːŋ˧.reː˧.nuː˧,1,laʔ˦˥.ʔɔːŋ˧.reː˧.nuː˧,ละอองเรณู,laʔ˦˥.ʔɔːŋ˧.reː˧.nuː˧
 ละอาย,la˦˥.ʔaːj˧,1,laʔ˦˥.ʔaːj˧,ละอาย,laʔ˦˥.ʔaːj˧
 ละอายใจ,la˦˥.ʔaːj˧.t͡ɕaj˧,1,laʔ˦˥.ʔaːj˧.t͡ɕaj˧,ละอายใจ,laʔ˦˥.ʔaːj˧.t͡ɕaj˧
 ละเมอ,la˦˥.mɤː˧,1,laʔ˦˥.mɤː˧,ละเมอ,laʔ˦˥.mɤː˧
@@ -10325,10 +10325,10 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ลัทธิ,lat̚˦˥.tʰiʔ˦˥,1,lat˦˥.tʰiʔ˦˥,ลัทธิ,lat˦˥.tʰiʔ˦˥
 ลัทธิคอมมิวนิสต์,lat̚˦˥.tʰi˦˥.kʰɔm˧.miw˧.nit̚˦˥,1,lat˦˥.tʰiʔ˦˥.kʰɔm˧.miw˧.nit˦˥,ลัทธิคอมมิวนิสต์,lat˦˥.tʰiʔ˦˥.kʰɔm˧.miw˧.nit˦˥
 ลัทธิคุ้มครอง,lat̚˦˥.tʰi˦˥.kʰum˦˥.kʰrɔːŋ˧,1,lat˦˥.tʰiʔ˦˥.kʰum˦˥.kʰrɔːŋ˧,ลัทธิคุ้มครอง,lat˦˥.tʰiʔ˦˥.kʰum˦˥.kʰrɔːŋ˧
-ลัทธิจักรวรรดินิยม,lat̚˦˥.tʰi˦˥.t͡ɕak̚˨˩.kra˨˩.wat̚˨˩.ni˦˥.jom˧,1,lat˦˥.tʰiʔ˦˥.t͡ɕak˨˩.kraʔ˨˩.wat˨˩.niʔ˦˥.jom˧,,ERROR: Could not align 'ลัทธิจักรวรรดินิยม' with 'lat˦˥.tʰiʔ˦˥.t͡ɕak˨˩.kraʔ˨˩.wat˨˩.niʔ˦˥.jom˧'
+ลัทธิจักรวรรดินิยม,lat̚˦˥.tʰi˦˥.t͡ɕak̚˨˩.kra˨˩.wat̚˨˩.ni˦˥.jom˧,1,lat˦˥.tʰiʔ˦˥.t͡ɕak˨˩.kraʔ˨˩.wat˨˩.niʔ˦˥.jom˧,ลัทธิจักรวรรดินิยม,lat˦˥.tʰiʔ˦˥.t͡ɕak˨˩.kraʔ˨˩.wat˨˩.niʔ˦˥.jom˧
 ลัทธิทหาร,lat̚˦˥.tʰi˦˥.tʰa˦˥.haːn˩˩˦,1,lat˦˥.tʰiʔ˦˥.tʰaʔ˦˥.haːn˨˥,ลัทธิทหาร,lat˦˥.tʰiʔ˦˥.tʰaʔ˦˥.haːn˨˥
 ลัทธินายทุน,lat̚˦˥.tʰi˦˥.naːj˧.tʰun˧,1,lat˦˥.tʰiʔ˦˥.naːj˧.tʰun˧,ลัทธินายทุน,lat˦˥.tʰiʔ˦˥.naːj˧.tʰun˧
-ลัทธิมาร์กซ,lat̚˦˥.tʰi˦˥.maːk̚˥˩,1,lat˦˥.tʰiʔ˦˥.maːk˦˩,,ERROR: Could not align 'ลัทธิมาร์กซ' with 'lat˦˥.tʰiʔ˦˥.maːk˦˩'
+ลัทธิมาร์กซ,lat̚˦˥.tʰi˦˥.maːk̚˥˩,1,lat˦˥.tʰiʔ˦˥.maːk˦˩,ลัทธิมาร์กซ,lat˦˥.tʰiʔ˦˥.maːk˦˩
 ลัทธิสตาลิน,lat̚˦˥.tʰi˦˥.sa˨˩.taː˧.lin˧,1,lat˦˥.tʰiʔ˦˥.saʔ˨˩.taː˧.lin˧,ลัทธิสตาลิน,lat˦˥.tʰiʔ˦˥.saʔ˨˩.taː˧.lin˧
 ลัทธิอาณานิคม,lat̚˦˥.tʰi˦˥.ʔaː˧.naː˧.ni˦˥.kʰom˧,1,lat˦˥.tʰiʔ˦˥.ʔaː˧.naː˧.niʔ˦˥.kʰom˧,ลัทธิอาณานิคม,lat˦˥.tʰiʔ˦˥.ʔaː˧.naː˧.niʔ˦˥.kʰom˧
 ลัทธิอำนาจนิยม,lat̚˦˥.tʰi˦˥.ʔam˧.naːt̚˥˩.ni˦˥.jom˧,1,lat˦˥.tʰiʔ˦˥.ʔam˧.naːt˦˩.niʔ˦˥.jom˧,ลัทธิอำนาจนิยม,lat˦˥.tʰiʔ˦˥.ʔam˧.naːt˦˩.niʔ˦˥.jom˧
@@ -10541,7 +10541,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ลูกหลวง,luːk̚˥˩.lua̯ŋ˩˩˦,1,luːk˦˩.luəŋ˨˥,ลูกหลวง,luːk˦˩.luəŋ˨˥
 ลูกหลาน,luːk̚˥˩.laːn˩˩˦,1,luːk˦˩.laːn˨˥,ลูกหลาน,luːk˦˩.laːn˨˥
 ลูกอม,luːk̚˥˩.ʔom˧,1,luːk˦˩.ʔom˧,ลูกอม,luːk˦˩.ʔom˧
-ลูกอ๊อด,luːk̚˥˩.ʔɔːt̚˦˥,1,luːk˦˩.ʔɔːt˦˥,,ERROR: Could not align 'ลูกอ๊อด' with 'luːk˦˩.ʔɔːt˦˥'
+ลูกอ๊อด,luːk̚˥˩.ʔɔːt̚˦˥,1,luːk˦˩.ʔɔːt˦˥,ลูกอ๊อด,luːk˦˩.ʔɔːt˦˥
 ลูกเขย,luːk̚˥˩.kʰɤːj˩˩˦,1,luːk˦˩.kʰɤːj˨˥,ลูกเขย,luːk˦˩.kʰɤːj˨˥
 ลูกเขยตายแม่ยายทำศพ,luːk̚˥˩.kʰɤːj˩˩˦.taːj˧.mɛː˥˩.jaːj˧.tʰam˧.sop̚˨˩,1,luːk˦˩.kʰɤːj˨˥.taːj˧.mɛː˦˩.jaːj˧.tʰam˧.sop˨˩,ลูกเขยตายแม่ยายทำศพ,luːk˦˩.kʰɤːj˨˥.taːj˧.mɛː˦˩.jaːj˧.tʰam˧.sop˨˩
 ลูกเต๋า,luːk̚˥˩.taw˩˩˦,1,luːk˦˩.taw˨˥,ลูกเต๋า,luːk˦˩.taw˨˥
@@ -10569,7 +10569,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ลูทีเชียม,luː˧.tʰiː˧.t͡ɕʰia̯m˥˩,1,luː˧.tʰiː˧.t͡ɕʰiəm˦˩,ลูทีเชียม,luː˧.tʰiː˧.t͡ɕʰiəm˦˩
 ลูทีเทียม,luː˧.tʰiː˧.tʰia̯m˥˩,1,luː˧.tʰiː˧.tʰiəm˦˩,ลูทีเทียม,luː˧.tʰiː˧.tʰiəm˦˩
 ลูบ,luːp̚˥˩,1,luːp˦˩,ลูบ,luːp˦˩
-ลูบลิยานา,luː˧.bli˨˩.jaː˧.naː˥˩,1,luː˧.bliʔ˨˩.jaː˧.naː˦˩,ลูบลิยานา,luː˧.bliʔ˨˩.jaː˧.naː˦˩
+ลูบลิยานา,luː˧.bli˨˩.jaː˧.naː˥˩,1,luː˧.bliʔ˨˩.jaː˧.naː˦˩,,ERROR: Could not align 'ลูบลิยานา' with 'luː˧.bliʔ˨˩.jaː˧.naː˦˩'
 ลูพิน,luː˧.pʰin˧,1,luː˧.pʰin˧,ลูพิน,luː˧.pʰin˧
 ลู่,luː˥˩,1,luː˦˩,ลู่,luː˦˩
 ลแวก,la˦˥.wɛːk̚˥˩,1,laʔ˦˥.wɛːk˦˩,ลแวก,laʔ˦˥.wɛːk˦˩
@@ -10827,8 +10827,8 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 วารสารศาสตร์,waː˧.ra˦˥.saːn˩˩˦.saːt̚˨˩,1,waː˧.raʔ˦˥.saːn˨˥.saːt˨˩,วารสารศาสตร์,waː˧.raʔ˦˥.saːn˨˥.saːt˨˩
 วาระ,waː˧.raʔ˦˥,1,waː˧.raʔ˦˥,วาระ,waː˧.raʔ˦˥
 วาระซ่อนเร้น,waː˧.ra˦˥.sɔːn˥˩.ren˦˥,1,waː˧.raʔ˦˥.sɔːn˦˩.ren˦˥,วาระซ่อนเร้น,waː˧.raʔ˦˥.sɔːn˦˩.ren˦˥
-วาร์ป,waːp̚˦˥,1,waːp˦˥,,ERROR: Could not align 'วาร์ป' with 'waːp˦˥'
-วาล์ว,waːw˧,1,waːw˧,,ERROR: Could not align 'วาล์ว' with 'waːw˧'
+วาร์ป,waːp̚˦˥,1,waːp˦˥,วาร์ป,waːp˦˥
+วาล์ว,waːw˧,1,waːw˧,วาล์ว,waːw˧
 วาว,waːw˧,1,waːw˧,วาว,waːw˧
 วาสนา,waːt̚˥˩.sa˨˩.naː˩˩˦,1,waːt˦˩.saʔ˨˩.naː˨˥,วาสนา,waːt˦˩.saʔ˨˩.naː˨˥
 วาสลีน,waːt̚˦˥.sa˨˩.liːn˧,1,waːt˦˥.saʔ˨˩.liːn˧,วาสลีน,waːt˦˥.saʔ˨˩.liːn˧
@@ -11256,7 +11256,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 สติกเกอร์,sa˨˩.tik̚˦˥.kɤː˥˩,1,saʔ˨˩.tik˦˥.kɤː˦˩,สติกเกอร์,saʔ˨˩.tik˦˥.kɤː˦˩
 สตูล,sa˨˩.tuːn˧,1,saʔ˨˩.tuːn˧,สตูล,saʔ˨˩.tuːn˧
 สต็อก,sa˨˩.tɔk̚˦˥,1,saʔ˨˩.tɔk˦˥,สต็อก,saʔ˨˩.tɔk˦˥
-สต็อกโฮล์ม,sa˨˩.tɔk̚˦˥.hoːm˧,1,saʔ˨˩.tɔk˦˥.hoːm˧,,ERROR: Could not align 'สต็อกโฮล์ม' with 'saʔ˨˩.tɔk˦˥.hoːm˧'
+สต็อกโฮล์ม,sa˨˩.tɔk̚˦˥.hoːm˧,1,saʔ˨˩.tɔk˦˥.hoːm˧,สต็อกโฮล์ม,saʔ˨˩.tɔk˦˥.hoːm˧
 สถบดี,sa˨˩.tʰa˨˩.bɔː˧.diː˧,1,saʔ˨˩.tʰaʔ˨˩.bɔː˧.diː˧,,ERROR: Could not align 'สถบดี' with 'saʔ˨˩.tʰaʔ˨˩.bɔː˧.diː˧'
 สถล,sa˨˩.tʰon˩˩˦,2,saʔ˨˩.tʰon˨˥,สถล,saʔ˨˩.tʰon˨˥
 สถล,sa˨˩.tʰon˩˩˦.la˦˥.,2,saʔ˨˩.tʰon˨˥.laʔ˦˥,สถล,saʔ˨˩.tʰon˨˥.laʔ˦˥
@@ -11336,7 +11336,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 สบู่เหลว,sa˨˩.buː˨˩.leːw˩˩˦,1,saʔ˨˩.buː˨˩.leːw˨˥,สบู่เหลว,saʔ˨˩.buː˨˩.leːw˨˥
 สปริง,sa˨˩.priŋ˧,1,saʔ˨˩.priŋ˧,สปริง,saʔ˨˩.priŋ˧
 สปอร์,sa˨˩.pɔː˧,1,saʔ˨˩.pɔː˧,สปอร์,saʔ˨˩.pɔː˧
-สปอร์ต,sa˨˩.pɔːt̚˨˩,1,saʔ˨˩.pɔːt˨˩,,ERROR: Could not align 'สปอร์ต' with 'saʔ˨˩.pɔːt˨˩'
+สปอร์ต,sa˨˩.pɔːt̚˨˩,1,saʔ˨˩.pɔːt˨˩,สปอร์ต,saʔ˨˩.pɔːt˨˩
 สปา,sa˨˩.paː˧,1,saʔ˨˩.paː˧,สปา,saʔ˨˩.paː˧
 สปาย,sa˨˩.paːj˧,1,saʔ˨˩.paːj˧,สปาย,saʔ˨˩.paːj˧
 สปาเกตตี,sa˨˩.paː˧.ket̚˦˥.tiː˥˩,1,saʔ˨˩.paː˧.ket˦˥.tiː˦˩,สปาเกตตี,saʔ˨˩.paː˧.ket˦˥.tiː˦˩
@@ -11435,7 +11435,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 สมาธิ,sa˧.maː˧.tʰiʔ˦˥,2,saʔ˧.maː˧.tʰiʔ˦˥,สมาธิ,saʔ˧.maː˧.tʰiʔ˦˥
 สมาพันธรัฐ,sa˨˩.maː˧.pʰan˧.tʰa˦˥.rat̚˦˥,1,saʔ˨˩.maː˧.pʰan˧.tʰaʔ˦˥.rat˦˥,สมาพันธรัฐ,saʔ˨˩.maː˧.pʰan˧.tʰaʔ˦˥.rat˦˥
 สมาพันธ์,sa˨˩.maː˧.pʰan˧,1,saʔ˨˩.maː˧.pʰan˧,สมาพันธ์,saʔ˨˩.maː˧.pʰan˧
-สมาร์ตโฟน,sa˨˩.maːt̚˦˥.foːn˧,1,saʔ˨˩.maːt˦˥.foːn˧,,ERROR: Could not align 'สมาร์ตโฟน' with 'saʔ˨˩.maːt˦˥.foːn˧'
+สมาร์ตโฟน,sa˨˩.maːt̚˦˥.foːn˧,1,saʔ˨˩.maːt˦˥.foːn˧,สมาร์ตโฟน,saʔ˨˩.maːt˦˥.foːn˧
 สมาส,sa˨˩.maːt̚˨˩,1,saʔ˨˩.maːt˨˩,สมาส,saʔ˨˩.maːt˨˩
 สมิง,sa˨˩.miŋ˩˩˦,1,saʔ˨˩.miŋ˨˥,สมิง,saʔ˨˩.miŋ˨˥
 สมี,sa˨˩.miː˩˩˦,1,saʔ˨˩.miː˨˥,สมี,saʔ˨˩.miː˨˥
@@ -12045,7 +12045,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 สำลัก,sam˩˩˦.lak̚˦˥,1,sam˨˥.lak˦˥,สำลัก,sam˨˥.lak˦˥
 สำส่อน,sam˩˩˦.sɔn˨˩,1,sam˨˥.sɔn˨˩,สำส่อน,sam˨˥.sɔn˨˩
 สำหรับ,sam˩˩˦.rap̚˨˩,1,sam˨˥.rap˨˩,สำหรับ,sam˨˥.rap˨˩
-สำออย,sam˩˩˦.ʔɔːj˧,1,sam˨˥.ʔɔːj˧,,ERROR: Could not align 'สำออย' with 'sam˨˥.ʔɔːj˧'
+สำออย,sam˩˩˦.ʔɔːj˧,1,sam˨˥.ʔɔːj˧,สำออย,sam˨˥.ʔɔːj˧
 สำเนา,sam˩˩˦.naw˧,1,sam˨˥.naw˧,สำเนา,sam˨˥.naw˧
 สำเนียง,sam˩˩˦.nia̯ŋ˧,1,sam˨˥.niəŋ˧,สำเนียง,sam˨˥.niəŋ˧
 สำเภา,sam˩˩˦.pʰaw˧,1,sam˨˥.pʰaw˧,สำเภา,sam˨˥.pʰaw˧
@@ -12135,8 +12135,8 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 สี,siː˩˩˦,1,siː˨˥,สี,siː˨˥
 สีกา,siː˩˩˦.kaː˧,1,siː˨˥.kaː˧,สีกา,siː˨˥.kaː˧
 สีข้าง,siː˩˩˦.kʰaːŋ˥˩,1,siː˨˥.kʰaːŋ˦˩,สีข้าง,siː˨˥.kʰaːŋ˦˩
-สีชอล์ก,siː˩˩˦.t͡ɕʰɔk̚˦˥,1,siː˨˥.t͡ɕʰɔk˦˥,,ERROR: Could not align 'สีชอล์ก' with 'siː˨˥.t͡ɕʰɔk˦˥'
-สีชอล์ค,siː˩˩˦.t͡ɕʰɔk̚˦˥,1,siː˨˥.t͡ɕʰɔk˦˥,,ERROR: Could not align 'สีชอล์ค' with 'siː˨˥.t͡ɕʰɔk˦˥'
+สีชอล์ก,siː˩˩˦.t͡ɕʰɔk̚˦˥,1,siː˨˥.t͡ɕʰɔk˦˥,สีชอล์ก,siː˨˥.t͡ɕʰɔk˦˥
+สีชอล์ค,siː˩˩˦.t͡ɕʰɔk̚˦˥,1,siː˨˥.t͡ɕʰɔk˦˥,สีชอล์ค,siː˨˥.t͡ɕʰɔk˦˥
 สีซอให้ควายฟัง,siː˩˩˦.sɔː˧.haj˥˩.kʰwaːj˧.faŋ˧,1,siː˨˥.sɔː˧.haj˦˩.kʰwaːj˧.faŋ˧,สีซอให้ควายฟัง,siː˨˥.sɔː˧.haj˦˩.kʰwaːj˧.faŋ˧
 สีนสอด,sin˩˩˦.sɔːt̚˨˩,1,sin˨˥.sɔːt˨˩,สีนสอด,sin˨˥.sɔːt˨˩
 สีน้ำ,siː˩˩˦.naːm˦˥,1,siː˨˥.naːm˦˥,สีน้ำ,siː˨˥.naːm˦˥
@@ -12571,7 +12571,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 หมอย,mɔj˩˩˦,2,mɔj˨˥,หมอย,mɔj˨˥
 หมอยา,mɔː˩˩˦.jaː˧,1,mɔː˨˥.jaː˧,หมอยา,mɔː˨˥.jaː˧
 หมอลำ,mɔː˩˩˦.lam˧,1,mɔː˨˥.lam˧,หมอลำ,mɔː˨˥.lam˧
-หมออ้อย,mɔː˩˩˦.ʔɔj˥˩,1,mɔː˨˥.ʔɔj˦˩,,ERROR: Could not align 'หมออ้อย' with 'mɔː˨˥.ʔɔj˦˩'
+หมออ้อย,mɔː˩˩˦.ʔɔj˥˩,1,mɔː˨˥.ʔɔj˦˩,หมออ้อย,mɔː˨˥.ʔɔj˦˩
 หมัก,mak̚˨˩,1,mak˨˩,หมัก,mak˨˩
 หมัด,mat̚˨˩,1,mat˨˩,หมัด,mat˨˩
 หมัดตรง,mat̚˨˩.troŋ˧,1,mat˨˩.troŋ˧,หมัดตรง,mat˨˩.troŋ˧
@@ -13014,7 +13014,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 หินหนืด,hin˩˩˦.nɯːt̚˨˩,1,hin˨˥.nɯːt˨˩,หินหนืด,hin˨˥.nɯːt˨˩
 หินหลอมเหลว,hin˩˩˦.lɔːm˩˩˦.leːw˩˩˦,1,hin˨˥.lɔːm˨˥.leːw˨˥,หินหลอมเหลว,hin˨˥.lɔːm˨˥.leːw˨˥
 หินอัคนี,hin˩˩˦.ʔak̚˨˩.kʰa˦˥.niː˧,1,hin˨˥.ʔak˨˩.kʰaʔ˦˥.niː˧,หินอัคนี,hin˨˥.ʔak˨˩.kʰaʔ˦˥.niː˧
-หินอ่อน,hin˩˩˦.ʔɔːn˨˩,1,hin˨˥.ʔɔːn˨˩,,ERROR: Could not align 'หินอ่อน' with 'hin˨˥.ʔɔːn˨˩'
+หินอ่อน,hin˩˩˦.ʔɔːn˨˩,1,hin˨˥.ʔɔːn˨˩,หินอ่อน,hin˨˥.ʔɔːn˨˩
 หินเหล็กไฟ,hin˩˩˦.lek̚˨˩.faj˧,1,hin˨˥.lek˨˩.faj˧,หินเหล็กไฟ,hin˨˥.lek˨˩.faj˧
 หินแปร,hin˩˩˦.prɛː˧,1,hin˨˥.prɛː˧,หินแปร,hin˨˥.prɛː˧
 หินแลง,hin˩˩˦.lɛːŋ˧,1,hin˨˥.lɛːŋ˧,หินแลง,hin˨˥.lɛːŋ˧
@@ -13260,7 +13260,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 อบายมุข,ʔa˨˩.baːj˧.ja˦˥.muk̚˦˥,1,ʔaʔ˨˩.baːj˧.jaʔ˦˥.muk˦˥,อบายมุข,ʔaʔ˨˩.baːj˧.jaʔ˦˥.muk˦˥
 อบเชย,ʔop̚˨˩.t͡ɕʰɤːj˧,1,ʔop˨˩.t͡ɕʰɤːj˧,อบเชย,ʔop˨˩.t͡ɕʰɤːj˧
 อพยพ,ʔop̚˨˩.pʰa˦˥.jop̚˦˥,1,ʔop˨˩.pʰaʔ˦˥.jop˦˥,อพยพ,ʔop˨˩.pʰaʔ˦˥.jop˦˥
-อพาร์ทเมนท์,ʔa˨˩.pʰaːt̚˦˥.men˦˥,1,ʔaʔ˨˩.pʰaːt˦˥.men˦˥,,ERROR: Could not align 'อพาร์ทเมนท์' with 'ʔaʔ˨˩.pʰaːt˦˥.men˦˥'
+อพาร์ทเมนท์,ʔa˨˩.pʰaːt̚˦˥.men˦˥,1,ʔaʔ˨˩.pʰaːt˦˥.men˦˥,อพาร์ทเมนท์,ʔaʔ˨˩.pʰaːt˦˥.men˦˥
 อภัย,ʔa˨˩.pʰaj˧,2,ʔaʔ˨˩.pʰaj˧,อภัย,ʔaʔ˨˩.pʰaj˧
 อภัย,ʔa˨˩.pʰaj˧.ja˦˥.,2,ʔaʔ˨˩.pʰaj˧.jaʔ˦˥,อภัย,ʔaʔ˨˩.pʰaj˧.jaʔ˦˥
 อภัยโทษ,ʔa˨˩.pʰaj˧.ja˦˥.tʰoːt̚˥˩,1,ʔaʔ˨˩.pʰaj˧.jaʔ˦˥.tʰoːt˦˩,อภัยโทษ,ʔaʔ˨˩.pʰaj˧.jaʔ˦˥.tʰoːt˦˩
@@ -13320,7 +13320,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 อรรฆ,ʔak̚˨˩,2,ʔak˨˩,อรรฆ,ʔak˨˩
 อรรฆ,ʔak̚˨˩.kʰa˦˥.,2,ʔak˨˩.kʰaʔ˦˥,อรรฆ,ʔak˨˩.kʰaʔ˦˥
 อรรฆย์,ʔak̚˨˩,1,ʔak˨˩,อรรฆย์,ʔak˨˩
-อรรถาภิธาน,ʔat̚˨˩.tʰaː˩˩˦.pʰi˦˥.tʰaːn˧,1,ʔat˨˩.tʰaː˨˥.pʰiʔ˦˥.tʰaːn˧,,ERROR: Could not align 'อรรถาภิธาน' with 'ʔat˨˩.tʰaː˨˥.pʰiʔ˦˥.tʰaːn˧'
+อรรถาภิธาน,ʔat̚˨˩.tʰaː˩˩˦.pʰi˦˥.tʰaːn˧,1,ʔat˨˩.tʰaː˨˥.pʰiʔ˦˥.tʰaːn˧,อรรถาภิธาน,ʔat˨˩.tʰaː˨˥.pʰiʔ˦˥.tʰaːn˧
 อรัญวาสี,ʔa˨˩.ran˧.ja˦˥.waː˧.siː˩˩˦,1,ʔaʔ˨˩.ran˧.jaʔ˦˥.waː˧.siː˨˥,อรัญวาสี,ʔaʔ˨˩.ran˧.jaʔ˦˥.waː˧.siː˨˥
 อรัณยวาสี,ʔa˨˩.ran˧.ja˦˥.waː˧.siː˩˩˦,1,ʔaʔ˨˩.ran˧.jaʔ˦˥.waː˧.siː˨˥,อรัณยวาสี,ʔaʔ˨˩.ran˧.jaʔ˦˥.waː˧.siː˨˥
 อริ,ʔa˨˩.riʔ˨˩,1,ʔaʔ˨˩.riʔ˨˩,อริ,ʔaʔ˨˩.riʔ˨˩
@@ -13373,55 +13373,55 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 อหิ,ʔa˨˩.hiʔ˨˩,1,ʔaʔ˨˩.hiʔ˨˩,อหิ,ʔaʔ˨˩.hiʔ˨˩
 อหิวาตกโรค,ʔa˨˩.hi˨˩.waː˧.ta˨˩.ka˨˩.roːk̚˥˩,1,ʔaʔ˨˩.hiʔ˨˩.waː˧.taʔ˨˩.kaʔ˨˩.roːk˦˩,อหิวาตกโรค,ʔaʔ˨˩.hiʔ˨˩.waː˧.taʔ˨˩.kaʔ˨˩.roːk˦˩
 อหิวาต์,ʔa˨˩.hi˨˩.waː˧,1,ʔaʔ˨˩.hiʔ˨˩.waː˧,อหิวาต์,ʔaʔ˨˩.hiʔ˨˩.waː˧
-ออ,ʔɔː˧,1,ʔɔː˧,,ERROR: Could not align 'ออ' with 'ʔɔː˧'
-ออก,ʔɔːk̚˨˩,1,ʔɔːk˨˩,,ERROR: Could not align 'ออก' with 'ʔɔːk˨˩'
-ออกกำลัง,ʔɔːk̚˨˩.kam˧.laŋ˧,1,ʔɔːk˨˩.kam˧.laŋ˧,,ERROR: Could not align 'ออกกำลัง' with 'ʔɔːk˨˩.kam˧.laŋ˧'
-ออกกำลังกาย,ʔɔːk̚˨˩.kam˧.laŋ˧.kaːj˧,1,ʔɔːk˨˩.kam˧.laŋ˧.kaːj˧,,ERROR: Could not align 'ออกกำลังกาย' with 'ʔɔːk˨˩.kam˧.laŋ˧.kaːj˧'
-ออกจาก,ʔɔːk̚˨˩.t͡ɕaːk̚˨˩,1,ʔɔːk˨˩.t͡ɕaːk˨˩,,ERROR: Could not align 'ออกจาก' with 'ʔɔːk˨˩.t͡ɕaːk˨˩'
-ออกซิเจน,ʔɔk̚˦˥.si˦˥.t͡ɕeːn˧,2,ʔɔk˦˥.siʔ˦˥.t͡ɕeːn˧,,ERROR: Could not align 'ออกซิเจน' with 'ʔɔk˦˥.siʔ˦˥.t͡ɕeːn˧'
-ออกซิเจน,ʔɔk̚˦˥.si˦˥.t͡ɕen˥˩,2,ʔɔk˦˥.siʔ˦˥.t͡ɕen˦˩,,ERROR: Could not align 'ออกซิเจน' with 'ʔɔk˦˥.siʔ˦˥.t͡ɕen˦˩'
-ออกญา,ʔɔːk̚˨˩.jaː˧,1,ʔɔːk˨˩.jaː˧,,ERROR: Could not align 'ออกญา' with 'ʔɔːk˨˩.jaː˧'
-ออกดอก,ʔɔːk̚˨˩.dɔːk̚˨˩,1,ʔɔːk˨˩.dɔːk˨˩,,ERROR: Could not align 'ออกดอก' with 'ʔɔːk˨˩.dɔːk˨˩'
-ออกตัว,ʔɔːk̚˨˩.tua̯˧,1,ʔɔːk˨˩.tuə˧,,ERROR: Could not align 'ออกตัว' with 'ʔɔːk˨˩.tuə˧'
-ออกทะเล,ʔɔːk̚˨˩.tʰa˦˥.leː˧,1,ʔɔːk˨˩.tʰaʔ˦˥.leː˧,,ERROR: Could not align 'ออกทะเล' with 'ʔɔːk˨˩.tʰaʔ˦˥.leː˧'
-ออกนั่งพิจารณา,ʔɔːk̚˨˩.naŋ˥˩.pʰi˦˥.t͡ɕaː˧.ra˦˥.naː˧,1,ʔɔːk˨˩.naŋ˦˩.pʰiʔ˦˥.t͡ɕaː˧.raʔ˦˥.naː˧,,ERROR: Could not align 'ออกนั่งพิจารณา' with 'ʔɔːk˨˩.naŋ˦˩.pʰiʔ˦˥.t͡ɕaː˧.raʔ˦˥.naː˧'
-ออกร้าน,ʔɔːk̚˨˩.raːn˦˥,1,ʔɔːk˨˩.raːn˦˥,,ERROR: Could not align 'ออกร้าน' with 'ʔɔːk˨˩.raːn˦˥'
-ออกลาย,ʔɔːk̚˨˩.laːj˧,1,ʔɔːk˨˩.laːj˧,,ERROR: Could not align 'ออกลาย' with 'ʔɔːk˨˩.laːj˧'
-ออกลูก,ʔɔːk̚˨˩.luːk̚˥˩,1,ʔɔːk˨˩.luːk˦˩,,ERROR: Could not align 'ออกลูก' with 'ʔɔːk˨˩.luːk˦˩'
-ออกหน้าออกตา,ʔɔːk̚˨˩.naː˥˩.ʔɔːk̚˨˩.taː˧,1,ʔɔːk˨˩.naː˦˩.ʔɔːk˨˩.taː˧,,ERROR: Could not align 'ออกหน้าออกตา' with 'ʔɔːk˨˩.naː˦˩.ʔɔːk˨˩.taː˧'
-ออกห่าง,ʔɔːk̚˨˩.haːŋ˨˩,1,ʔɔːk˨˩.haːŋ˨˩,,ERROR: Could not align 'ออกห่าง' with 'ʔɔːk˨˩.haːŋ˨˩'
-ออกอากาศ,ʔɔːk̚˨˩.ʔaː˧.kaːt̚˨˩,1,ʔɔːk˨˩.ʔaː˧.kaːt˨˩,,ERROR: Could not align 'ออกอากาศ' with 'ʔɔːk˨˩.ʔaː˧.kaːt˨˩'
-ออกเรือน,ʔɔːk̚˨˩.rɯa̯n˧,1,ʔɔːk˨˩.rɯən˧,,ERROR: Could not align 'ออกเรือน' with 'ʔɔːk˨˩.rɯən˧'
-ออกเสียง,ʔɔːk̚˨˩.sia̯ŋ˩˩˦,1,ʔɔːk˨˩.siəŋ˨˥,,ERROR: Could not align 'ออกเสียง' with 'ʔɔːk˨˩.siəŋ˨˥'
-ออกแบบ,ʔɔːk̚˨˩.bɛːp̚˨˩,1,ʔɔːk˨˩.bɛːp˨˩,,ERROR: Could not align 'ออกแบบ' with 'ʔɔːk˨˩.bɛːp˨˩'
-ออกโรง,ʔɔːk̚˨˩.roːŋ˧,1,ʔɔːk˨˩.roːŋ˧,,ERROR: Could not align 'ออกโรง' with 'ʔɔːk˨˩.roːŋ˧'
-ออตตาวา,ʔɔt̚˦˥.taː˧.waː˥˩,1,ʔɔt˦˥.taː˧.waː˦˩,,ERROR: Could not align 'ออตตาวา' with 'ʔɔt˦˥.taː˧.waː˦˩'
-ออตโตมัน,ʔɔːt̚˦˥.toː˧.man˧,1,ʔɔːt˦˥.toː˧.man˧,,ERROR: Could not align 'ออตโตมัน' with 'ʔɔːt˦˥.toː˧.man˧'
-ออนซ์,ʔɔːn˧,1,ʔɔːn˧,,ERROR: Could not align 'ออนซ์' with 'ʔɔːn˧'
-ออนแทรีโอ,ʔɔːn˧.tʰɛː˧.riː˧.ʔoː˥˩,2,ʔɔːn˧.tʰɛː˧.riː˧.ʔoː˦˩,,ERROR: Could not align 'ออนแทรีโอ' with 'ʔɔːn˧.tʰɛː˧.riː˧.ʔoː˦˩'
-ออนแทรีโอ,ʔɔn˧.tʰɛː˧.riː˧.ʔoː˥˩,2,ʔɔn˧.tʰɛː˧.riː˧.ʔoː˦˩,,ERROR: Could not align 'ออนแทรีโอ' with 'ʔɔn˧.tʰɛː˧.riː˧.ʔoː˦˩'
-ออนไลน์,ʔɔːn˧.laːj˧,1,ʔɔːn˧.laːj˧,,ERROR: Could not align 'ออนไลน์' with 'ʔɔːn˧.laːj˧'
-ออฟฟิศ,ʔɔːp̚˦˥.fit̚˦˥,2,ʔɔːp˦˥.fit˦˥,,ERROR: Could not align 'ออฟฟิศ' with 'ʔɔːp˦˥.fit˦˥'
+ออ,ʔɔː˧,1,ʔɔː˧,ออ,ʔɔː˧
+ออก,ʔɔːk̚˨˩,1,ʔɔːk˨˩,ออก,ʔɔːk˨˩
+ออกกำลัง,ʔɔːk̚˨˩.kam˧.laŋ˧,1,ʔɔːk˨˩.kam˧.laŋ˧,ออกกำลัง,ʔɔːk˨˩.kam˧.laŋ˧
+ออกกำลังกาย,ʔɔːk̚˨˩.kam˧.laŋ˧.kaːj˧,1,ʔɔːk˨˩.kam˧.laŋ˧.kaːj˧,ออกกำลังกาย,ʔɔːk˨˩.kam˧.laŋ˧.kaːj˧
+ออกจาก,ʔɔːk̚˨˩.t͡ɕaːk̚˨˩,1,ʔɔːk˨˩.t͡ɕaːk˨˩,ออกจาก,ʔɔːk˨˩.t͡ɕaːk˨˩
+ออกซิเจน,ʔɔk̚˦˥.si˦˥.t͡ɕeːn˧,2,ʔɔk˦˥.siʔ˦˥.t͡ɕeːn˧,ออกซิเจน,ʔɔk˦˥.siʔ˦˥.t͡ɕeːn˧
+ออกซิเจน,ʔɔk̚˦˥.si˦˥.t͡ɕen˥˩,2,ʔɔk˦˥.siʔ˦˥.t͡ɕen˦˩,ออกซิเจน,ʔɔk˦˥.siʔ˦˥.t͡ɕen˦˩
+ออกญา,ʔɔːk̚˨˩.jaː˧,1,ʔɔːk˨˩.jaː˧,ออกญา,ʔɔːk˨˩.jaː˧
+ออกดอก,ʔɔːk̚˨˩.dɔːk̚˨˩,1,ʔɔːk˨˩.dɔːk˨˩,ออกดอก,ʔɔːk˨˩.dɔːk˨˩
+ออกตัว,ʔɔːk̚˨˩.tua̯˧,1,ʔɔːk˨˩.tuə˧,ออกตัว,ʔɔːk˨˩.tuə˧
+ออกทะเล,ʔɔːk̚˨˩.tʰa˦˥.leː˧,1,ʔɔːk˨˩.tʰaʔ˦˥.leː˧,ออกทะเล,ʔɔːk˨˩.tʰaʔ˦˥.leː˧
+ออกนั่งพิจารณา,ʔɔːk̚˨˩.naŋ˥˩.pʰi˦˥.t͡ɕaː˧.ra˦˥.naː˧,1,ʔɔːk˨˩.naŋ˦˩.pʰiʔ˦˥.t͡ɕaː˧.raʔ˦˥.naː˧,ออกนั่งพิจารณา,ʔɔːk˨˩.naŋ˦˩.pʰiʔ˦˥.t͡ɕaː˧.raʔ˦˥.naː˧
+ออกร้าน,ʔɔːk̚˨˩.raːn˦˥,1,ʔɔːk˨˩.raːn˦˥,ออกร้าน,ʔɔːk˨˩.raːn˦˥
+ออกลาย,ʔɔːk̚˨˩.laːj˧,1,ʔɔːk˨˩.laːj˧,ออกลาย,ʔɔːk˨˩.laːj˧
+ออกลูก,ʔɔːk̚˨˩.luːk̚˥˩,1,ʔɔːk˨˩.luːk˦˩,ออกลูก,ʔɔːk˨˩.luːk˦˩
+ออกหน้าออกตา,ʔɔːk̚˨˩.naː˥˩.ʔɔːk̚˨˩.taː˧,1,ʔɔːk˨˩.naː˦˩.ʔɔːk˨˩.taː˧,ออกหน้าออกตา,ʔɔːk˨˩.naː˦˩.ʔɔːk˨˩.taː˧
+ออกห่าง,ʔɔːk̚˨˩.haːŋ˨˩,1,ʔɔːk˨˩.haːŋ˨˩,ออกห่าง,ʔɔːk˨˩.haːŋ˨˩
+ออกอากาศ,ʔɔːk̚˨˩.ʔaː˧.kaːt̚˨˩,1,ʔɔːk˨˩.ʔaː˧.kaːt˨˩,ออกอากาศ,ʔɔːk˨˩.ʔaː˧.kaːt˨˩
+ออกเรือน,ʔɔːk̚˨˩.rɯa̯n˧,1,ʔɔːk˨˩.rɯən˧,ออกเรือน,ʔɔːk˨˩.rɯən˧
+ออกเสียง,ʔɔːk̚˨˩.sia̯ŋ˩˩˦,1,ʔɔːk˨˩.siəŋ˨˥,ออกเสียง,ʔɔːk˨˩.siəŋ˨˥
+ออกแบบ,ʔɔːk̚˨˩.bɛːp̚˨˩,1,ʔɔːk˨˩.bɛːp˨˩,ออกแบบ,ʔɔːk˨˩.bɛːp˨˩
+ออกโรง,ʔɔːk̚˨˩.roːŋ˧,1,ʔɔːk˨˩.roːŋ˧,ออกโรง,ʔɔːk˨˩.roːŋ˧
+ออตตาวา,ʔɔt̚˦˥.taː˧.waː˥˩,1,ʔɔt˦˥.taː˧.waː˦˩,ออตตาวา,ʔɔt˦˥.taː˧.waː˦˩
+ออตโตมัน,ʔɔːt̚˦˥.toː˧.man˧,1,ʔɔːt˦˥.toː˧.man˧,ออตโตมัน,ʔɔːt˦˥.toː˧.man˧
+ออนซ์,ʔɔːn˧,1,ʔɔːn˧,ออนซ์,ʔɔːn˧
+ออนแทรีโอ,ʔɔːn˧.tʰɛː˧.riː˧.ʔoː˥˩,2,ʔɔːn˧.tʰɛː˧.riː˧.ʔoː˦˩,ออนแทรีโอ,ʔɔːn˧.tʰɛː˧.riː˧.ʔoː˦˩
+ออนแทรีโอ,ʔɔn˧.tʰɛː˧.riː˧.ʔoː˥˩,2,ʔɔn˧.tʰɛː˧.riː˧.ʔoː˦˩,ออนแทรีโอ,ʔɔn˧.tʰɛː˧.riː˧.ʔoː˦˩
+ออนไลน์,ʔɔːn˧.laːj˧,1,ʔɔːn˧.laːj˧,ออนไลน์,ʔɔːn˧.laːj˧
+ออฟฟิศ,ʔɔːp̚˦˥.fit̚˦˥,2,ʔɔːp˦˥.fit˦˥,ออฟฟิศ,ʔɔːp˦˥.fit˦˥
 ออฟฟิศ,ʔɔːp̚˦˥.fis˦˥,2,ʔɔːp˦˥.fis˦˥,,ERROR: argument of type 'NoneType' is not iterable
-ออม,ʔɔːm˧,1,ʔɔːm˧,,ERROR: Could not align 'ออม' with 'ʔɔːm˧'
-ออริกอน,ʔɔː˧.ri˦˥.kɔn˥˩,1,ʔɔː˧.riʔ˦˥.kɔn˦˩,,ERROR: Could not align 'ออริกอน' with 'ʔɔː˧.riʔ˦˥.kɔn˦˩'
-ออริกาโน,ʔɔː˧.ri˦˥.kaː˧.noː˥˩,1,ʔɔː˧.riʔ˦˥.kaː˧.noː˦˩,,ERROR: Could not align 'ออริกาโน' with 'ʔɔː˧.riʔ˦˥.kaː˧.noː˦˩'
-ออร์ทอดอกซ์,ʔɔː˧.tʰɔː˧.dɔk̚˨˩,1,ʔɔː˧.tʰɔː˧.dɔk˨˩,,ERROR: Could not align 'ออร์ทอดอกซ์' with 'ʔɔː˧.tʰɔː˧.dɔk˨˩'
+ออม,ʔɔːm˧,1,ʔɔːm˧,ออม,ʔɔːm˧
+ออริกอน,ʔɔː˧.ri˦˥.kɔn˥˩,1,ʔɔː˧.riʔ˦˥.kɔn˦˩,ออริกอน,ʔɔː˧.riʔ˦˥.kɔn˦˩
+ออริกาโน,ʔɔː˧.ri˦˥.kaː˧.noː˥˩,1,ʔɔː˧.riʔ˦˥.kaː˧.noː˦˩,ออริกาโน,ʔɔː˧.riʔ˦˥.kaː˧.noː˦˩
+ออร์ทอดอกซ์,ʔɔː˧.tʰɔː˧.dɔk̚˨˩,1,ʔɔː˧.tʰɔː˧.dɔk˨˩,ออร์ทอดอกซ์,ʔɔː˧.tʰɔː˧.dɔk˨˩
 ออร์เคสตรา,ʔɔː˧.kʰeːs˦˥.traː˥˩,1,ʔɔː˧.kʰeːs˦˥.traː˦˩,,ERROR: argument of type 'NoneType' is not iterable
-ออร์เดอร์,ʔɔː˧.dɤː˥˩,1,ʔɔː˧.dɤː˦˩,,ERROR: Could not align 'ออร์เดอร์' with 'ʔɔː˧.dɤː˦˩'
+ออร์เดอร์,ʔɔː˧.dɤː˥˩,1,ʔɔː˧.dɤː˦˩,ออร์เดอร์,ʔɔː˧.dɤː˦˩
 ออร์เลอ็อง,ʔɔː˧.leː˧.ʔɔŋ˧,1,ʔɔː˧.leː˧.ʔɔŋ˧,,ERROR: Could not align 'ออร์เลอ็อง' with 'ʔɔː˧.leː˧.ʔɔŋ˧'
-ออร์แกน,ʔɔː˧.kɛːn˧,1,ʔɔː˧.kɛːn˧,,ERROR: Could not align 'ออร์แกน' with 'ʔɔː˧.kɛːn˧'
+ออร์แกน,ʔɔː˧.kɛːn˧,1,ʔɔː˧.kɛːn˧,ออร์แกน,ʔɔː˧.kɛːn˧
 ออสเตรีย,ʔɔːs˦˥.tria̯˧,1,ʔɔːs˦˥.triə˧,,ERROR: argument of type 'NoneType' is not iterable
 ออสเตรเลีย,ʔɔs˦˥.treː˧.lia̯˧,1,ʔɔs˦˥.treː˧.liə˧,,ERROR: argument of type 'NoneType' is not iterable
 ออสเมียม,ʔɔːs˦˥.mia̯m˥˩,1,ʔɔːs˦˥.miəm˦˩,,ERROR: argument of type 'NoneType' is not iterable
 ออสโตรเอเชียติก,ʔɔːs˦˥.troː˧.ʔeː˧.t͡ɕʰia̯˧.tik̚˨˩,1,ʔɔːs˦˥.troː˧.ʔeː˧.t͡ɕʰiə˧.tik˨˩,,ERROR: argument of type 'NoneType' is not iterable
 ออสโล,ʔɔːs˦˥.loː˧,1,ʔɔːs˦˥.loː˧,,ERROR: argument of type 'NoneType' is not iterable
-ออส่วน,ʔɔː˧.sua̯n˨˩,1,ʔɔː˧.suən˨˩,,ERROR: Could not align 'ออส่วน' with 'ʔɔː˧.suən˨˩'
-ออเจ้า,ʔɔː˧.t͡ɕaw˥˩,1,ʔɔː˧.t͡ɕaw˦˩,,ERROR: Could not align 'ออเจ้า' with 'ʔɔː˧.t͡ɕaw˦˩'
-ออเดอร์,ʔɔː˧.dɤː˥˩,1,ʔɔː˧.dɤː˦˩,,ERROR: Could not align 'ออเดอร์' with 'ʔɔː˧.dɤː˦˩'
-ออเดิร์ฟ,ʔɔː˧.dɤːp̚˦˥,2,ʔɔː˧.dɤːp˦˥,,ERROR: Could not align 'ออเดิร์ฟ' with 'ʔɔː˧.dɤːp˦˥'
+ออส่วน,ʔɔː˧.sua̯n˨˩,1,ʔɔː˧.suən˨˩,ออส่วน,ʔɔː˧.suən˨˩
+ออเจ้า,ʔɔː˧.t͡ɕaw˥˩,1,ʔɔː˧.t͡ɕaw˦˩,ออเจ้า,ʔɔː˧.t͡ɕaw˦˩
+ออเดอร์,ʔɔː˧.dɤː˥˩,1,ʔɔː˧.dɤː˦˩,ออเดอร์,ʔɔː˧.dɤː˦˩
+ออเดิร์ฟ,ʔɔː˧.dɤːp̚˦˥,2,ʔɔː˧.dɤːp˦˥,ออเดิร์ฟ,ʔɔː˧.dɤːp˦˥
 ออเดิร์ฟ,ʔɔː˧.dɤːf˦˥,2,ʔɔː˧.dɤːf˦˥,,ERROR: argument of type 'NoneType' is not iterable
-ออโรรา,ʔɔː˧.roː˧.raː˥˩,1,ʔɔː˧.roː˧.raː˦˩,,ERROR: Could not align 'ออโรรา' with 'ʔɔː˧.roː˧.raː˦˩'
+ออโรรา,ʔɔː˧.roː˧.raː˥˩,1,ʔɔː˧.roː˧.raː˦˩,ออโรรา,ʔɔː˧.roː˧.raː˦˩
 อะ,ʔaʔ˨˩,1,ʔaʔ˨˩,อะ,ʔaʔ˨˩
 อะดีเกยา,ʔa˨˩.diː˧.keː˧.jaː˥˩,1,ʔaʔ˨˩.diː˧.keː˧.jaː˦˩,อะดีเกยา,ʔaʔ˨˩.diː˧.keː˧.jaː˦˩
 อะตอม,ʔa˨˩.tɔm˧,1,ʔaʔ˨˩.tɔm˧,อะตอม,ʔaʔ˨˩.tɔm˧
@@ -13459,7 +13459,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 อักษรศาสตร์,ʔak̚˨˩.sɔːn˩˩˦.saːt̚˨˩,2,ʔak˨˩.sɔːn˨˥.saːt˨˩,อักษรศาสตร์,ʔak˨˩.sɔːn˨˥.saːt˨˩
 อักษรสาสน์,ʔak̚˨˩.sɔːn˩˩˦.ra˦˥.saːt̚˨˩,2,ʔak˨˩.sɔːn˨˥.raʔ˦˥.saːt˨˩,อักษรสาสน์,ʔak˨˩.sɔːn˨˥.raʔ˦˥.saːt˨˩
 อักษรสาสน์,ʔak̚˨˩.sɔːn˩˩˦.saːt̚˨˩,2,ʔak˨˩.sɔːn˨˥.saːt˨˩,อักษรสาสน์,ʔak˨˩.sɔːn˨˥.saːt˨˩
-อักษรสาส์น,ʔak̚˨˩.sɔːn˩˩˦.saːn˩˩˦,1,ʔak˨˩.sɔːn˨˥.saːn˨˥,,ERROR: Could not align 'อักษรสาส์น' with 'ʔak˨˩.sɔːn˨˥.saːn˨˥'
+อักษรสาส์น,ʔak̚˨˩.sɔːn˩˩˦.saːn˩˩˦,1,ʔak˨˩.sɔːn˨˥.saːn˨˥,อักษรสาส์น,ʔak˨˩.sɔːn˨˥.saːn˨˥
 อักษรสูง,ʔak̚˨˩.sɔːn˩˩˦.suːŋ˩˩˦,1,ʔak˨˩.sɔːn˨˥.suːŋ˨˥,อักษรสูง,ʔak˨˩.sɔːn˨˥.suːŋ˨˥
 อักเสบ,ʔak̚˨˩.seːp̚˨˩,1,ʔak˨˩.seːp˨˩,อักเสบ,ʔak˨˩.seːp˨˩
 อัคคี,ʔak̚˨˩.kʰiː˧,1,ʔak˨˩.kʰiː˧,อัคคี,ʔak˨˩.kʰiː˧
@@ -13706,7 +13706,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 อารี,ʔaː˧.riː˧,1,ʔaː˧.riː˧,อารี,ʔaː˧.riː˧
 อารูบา,ʔaː˧.ruː˧.baː˥˩,1,ʔaː˧.ruː˧.baː˦˩,อารูบา,ʔaː˧.ruː˧.baː˦˩
 อาร์,ʔaː˧,1,ʔaː˧,อาร์,ʔaː˧
-อาร์กติก,ʔaːk̚˦˥.tik̚˨˩,1,ʔaːk˦˥.tik˨˩,,ERROR: Could not align 'อาร์กติก' with 'ʔaːk˦˥.tik˨˩'
+อาร์กติก,ʔaːk̚˦˥.tik̚˨˩,1,ʔaːk˦˥.tik˨˩,อาร์กติก,ʔaːk˦˥.tik˨˩
 อาร์กอน,ʔaː˧.kɔn˥˩,1,ʔaː˧.kɔn˦˩,อาร์กอน,ʔaː˧.kɔn˦˩
 อาร์คันซอ,ʔaː˧.kʰan˧.sɔː˧,1,ʔaː˧.kʰan˧.sɔː˧,อาร์คันซอ,ʔaː˧.kʰan˧.sɔː˧
 อาร์ชดัชเชส,ʔaːt͡ɕʰ˦˥.dat̚˦˥.t͡ɕʰes˦˥,2,ʔaːt͡ɕʰ˦˥.dat˦˥.t͡ɕʰes˦˥,,ERROR: argument of type 'NoneType' is not iterable
@@ -13727,8 +13727,8 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 อาวุธปืน,ʔaː˧.wut̚˦˥.pɯːn˧,1,ʔaː˧.wut˦˥.pɯːn˧,อาวุธปืน,ʔaː˧.wut˦˥.pɯːn˧
 อาวุธเคมี,ʔaː˧.wut̚˦˥.kʰeː˧.miː˧,1,ʔaː˧.wut˦˥.kʰeː˧.miː˧,อาวุธเคมี,ʔaː˧.wut˦˥.kʰeː˧.miː˧
 อาวุโส,ʔaː˧.wu˦˥.soː˩˩˦,1,ʔaː˧.wuʔ˦˥.soː˨˥,อาวุโส,ʔaː˧.wuʔ˦˥.soː˨˥
-อาศรม,ʔaː˧.som˩˩˦,2,ʔaː˧.som˨˥,,ERROR: Could not align 'อาศรม' with 'ʔaː˧.som˨˥'
-อาศรม,ʔaː˧.som˩˩˦.,2,ʔaː˧.som˨˥,,ERROR: Could not align 'อาศรม' with 'ʔaː˧.som˨˥'
+อาศรม,ʔaː˧.som˩˩˦,2,ʔaː˧.som˨˥,อาศรม,ʔaː˧.som˨˥
+อาศรม,ʔaː˧.som˩˩˦.,2,ʔaː˧.som˨˥,อาศรม,ʔaː˧.som˨˥
 อาศัย,ʔaː˧.saj˩˩˦,1,ʔaː˧.saj˨˥,อาศัย,ʔaː˧.saj˨˥
 อาศัยอยู่,ʔaː˧.saj˩˩˦.juː˨˩,1,ʔaː˧.saj˨˥.juː˨˩,อาศัยอยู่,ʔaː˧.saj˨˥.juː˨˩
 อาศเลษา,ʔaː˧.sa˨˩.leː˧.saː˩˩˦,1,ʔaː˧.saʔ˨˩.leː˧.saː˨˥,อาศเลษา,ʔaː˧.saʔ˨˩.leː˧.saː˨˥
@@ -13807,7 +13807,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 อินทรียวัตถุ,ʔin˧.siː˧.ja˦˥.wat̚˦˥.tʰuʔ˨˩,1,ʔin˧.siː˧.jaʔ˦˥.wat˦˥.tʰuʔ˨˩,อินทรียวัตถุ,ʔin˧.siː˧.jaʔ˦˥.wat˦˥.tʰuʔ˨˩
 อินทรีย์,ʔin˧.siː˧,1,ʔin˧.siː˧,อินทรีย์,ʔin˧.siː˧
 อินทร์,ʔin˧,1,ʔin˧,อินทร์,ʔin˧
-อินฟราเรด,ʔin˧.fraː˧.reːt̚˨˩,1,ʔin˧.fraː˧.reːt˨˩,อินฟราเรด,ʔin˧.fraː˧.reːt˨˩
+อินฟราเรด,ʔin˧.fraː˧.reːt̚˨˩,1,ʔin˧.fraː˧.reːt˨˩,,ERROR: Could not align 'อินฟราเรด' with 'ʔin˧.fraː˧.reːt˨˩'
 อินฟาเรด,ʔin˧.faː˧.reːt̚˨˩,1,ʔin˧.faː˧.reːt˨˩,อินฟาเรด,ʔin˧.faː˧.reːt˨˩
 อินสตาแกรม,ʔin˧.sa˨˩.taː˧.krɛm˧,1,ʔin˧.saʔ˨˩.taː˧.krɛm˧,อินสตาแกรม,ʔin˧.saʔ˨˩.taː˧.krɛm˧
 อินเดีย,ʔin˧.dia̯˧,1,ʔin˧.diə˧,อินเดีย,ʔin˧.diə˧
@@ -13880,7 +13880,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 อึ้ง,ʔɯŋ˥˩,1,ʔɯŋ˦˩,อึ้ง,ʔɯŋ˦˩
 อืด,ʔɯːt̚˨˩,1,ʔɯːt˨˩,อืด,ʔɯːt˨˩
 อืม,ʔɯːm˧,1,ʔɯːm˧,อืม,ʔɯːm˧
-อือออ,ʔɯː˧.ʔɔː˧,1,ʔɯː˧.ʔɔː˧,,ERROR: Could not align 'อือออ' with 'ʔɯː˧.ʔɔː˧'
+อือออ,ʔɯː˧.ʔɔː˧,1,ʔɯː˧.ʔɔː˧,อือออ,ʔɯː˧.ʔɔː˧
 อื่น,ʔɯːn˨˩,1,ʔɯːn˨˩,อื่น,ʔɯːn˨˩
 อื้อ,ʔɯː˥˩,1,ʔɯː˦˩,อื้อ,ʔɯː˦˩
 อื้อฉาว,ʔɯː˥˩.t͡ɕʰaːw˩˩˦,1,ʔɯː˦˩.t͡ɕʰaːw˨˥,อื้อฉาว,ʔɯː˦˩.t͡ɕʰaːw˨˥
@@ -13902,7 +13902,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 อุดมคติ,ʔu˨˩.dom˧.kʰa˦˥.tiʔ˨˩,2,ʔuʔ˨˩.dom˧.kʰaʔ˦˥.tiʔ˨˩,อุดมคติ,ʔuʔ˨˩.dom˧.kʰaʔ˦˥.tiʔ˨˩
 อุดมศึกษา,ʔu˨˩.dom˧.sɯk̚˨˩.saː˩˩˦,2,ʔuʔ˨˩.dom˧.sɯk˨˩.saː˨˥,อุดมศึกษา,ʔuʔ˨˩.dom˧.sɯk˨˩.saː˨˥
 อุดมศึกษา,ʔu˨˩.dom˧.ma˦˥.sɯk̚˨˩.saː˩˩˦,2,ʔuʔ˨˩.dom˧.maʔ˦˥.sɯk˨˩.saː˨˥,อุดมศึกษา,ʔuʔ˨˩.dom˧.maʔ˦˥.sɯk˨˩.saː˨˥
-อุดมูร์ต,ʔut̚˦˥.muːt̚˥˩,1,ʔut˦˥.muːt˦˩,,ERROR: Could not align 'อุดมูร์ต' with 'ʔut˦˥.muːt˦˩'
+อุดมูร์ต,ʔut̚˦˥.muːt̚˥˩,1,ʔut˦˥.muːt˦˩,อุดมูร์ต,ʔut˦˥.muːt˦˩
 อุดมูร์เตีย,ʔut̚˦˥.muː˧.tia̯˧,1,ʔut˦˥.muː˧.tiə˧,อุดมูร์เตีย,ʔut˦˥.muː˧.tiə˧
 อุดร,ʔu˨˩.dɔːn˧,1,ʔuʔ˨˩.dɔːn˧,อุดร,ʔuʔ˨˩.dɔːn˧
 อุดรธานี,ʔu˨˩.dɔːn˧.tʰaː˧.niː˧,1,ʔuʔ˨˩.dɔːn˧.tʰaː˧.niː˧,อุดรธานี,ʔuʔ˨˩.dɔːn˧.tʰaː˧.niː˧
@@ -14038,13 +14038,13 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 อไญยนิยม,ʔa˨˩.jaj˧.ja˦˥.ni˦˥.jom˧,1,ʔaʔ˨˩.jaj˧.jaʔ˦˥.niʔ˦˥.jom˧,อไญยนิยม,ʔaʔ˨˩.jaj˧.jaʔ˦˥.niʔ˦˥.jom˧
 อ็อกซีตานี,ʔɔk̚˦˥.siː˧.taː˧.niː˧,1,ʔɔk˦˥.siː˧.taː˧.niː˧,อ็อกซีตานี,ʔɔk˦˥.siː˧.taː˧.niː˧
 อ่วม,ʔua̯m˨˩,1,ʔuəm˨˩,อ่วม,ʔuəm˨˩
-อ่อน,ʔɔːn˨˩,2,ʔɔːn˨˩,,ERROR: Could not align 'อ่อน' with 'ʔɔːn˨˩'
-อ่อน,ʔɔn˨˩,2,ʔɔn˨˩,,ERROR: Could not align 'อ่อน' with 'ʔɔn˨˩'
-อ่อนข้อ,ʔɔːn˨˩.kʰɔː˥˩,1,ʔɔːn˨˩.kʰɔː˦˩,,ERROR: Could not align 'อ่อนข้อ' with 'ʔɔːn˨˩.kʰɔː˦˩'
-อ่อนวัย,ʔɔːn˨˩.waj˧,1,ʔɔːn˨˩.waj˧,,ERROR: Could not align 'อ่อนวัย' with 'ʔɔːn˨˩.waj˧'
-อ่อนแอ,ʔɔːn˨˩.ʔɛː˧,1,ʔɔːn˨˩.ʔɛː˧,,ERROR: Could not align 'อ่อนแอ' with 'ʔɔːn˨˩.ʔɛː˧'
-อ่อนโยน,ʔɔːn˨˩.joːn˧,1,ʔɔːn˨˩.joːn˧,,ERROR: Could not align 'อ่อนโยน' with 'ʔɔːn˨˩.joːn˧'
-อ่อย,ʔɔj˨˩,1,ʔɔj˨˩,,ERROR: Could not align 'อ่อย' with 'ʔɔj˨˩'
+อ่อน,ʔɔːn˨˩,2,ʔɔːn˨˩,อ่อน,ʔɔːn˨˩
+อ่อน,ʔɔn˨˩,2,ʔɔn˨˩,อ่อน,ʔɔn˨˩
+อ่อนข้อ,ʔɔːn˨˩.kʰɔː˥˩,1,ʔɔːn˨˩.kʰɔː˦˩,อ่อนข้อ,ʔɔːn˨˩.kʰɔː˦˩
+อ่อนวัย,ʔɔːn˨˩.waj˧,1,ʔɔːn˨˩.waj˧,อ่อนวัย,ʔɔːn˨˩.waj˧
+อ่อนแอ,ʔɔːn˨˩.ʔɛː˧,1,ʔɔːn˨˩.ʔɛː˧,อ่อนแอ,ʔɔːn˨˩.ʔɛː˧
+อ่อนโยน,ʔɔːn˨˩.joːn˧,1,ʔɔːn˨˩.joːn˧,อ่อนโยน,ʔɔːn˨˩.joːn˧
+อ่อย,ʔɔj˨˩,1,ʔɔj˨˩,อ่อย,ʔɔj˨˩
 อ่ะ,ʔaʔ˨˩,1,ʔaʔ˨˩,อ่ะ,ʔaʔ˨˩
 อ่าง,ʔaːŋ˨˩,1,ʔaːŋ˨˩,อ่าง,ʔaːŋ˨˩
 อ่างทอง,ʔaːŋ˨˩.tʰɔːŋ˧,1,ʔaːŋ˨˩.tʰɔːŋ˧,อ่างทอง,ʔaːŋ˨˩.tʰɔːŋ˧
@@ -14058,10 +14058,10 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 อ้น,ʔon˥˩,1,ʔon˦˩,อ้น,ʔon˦˩
 อ้วก,ʔua̯k̚˥˩,1,ʔuək˦˩,อ้วก,ʔuək˦˩
 อ้วน,ʔua̯n˥˩,1,ʔuən˦˩,อ้วน,ʔuən˦˩
-อ้อ,ʔɔː˥˩,1,ʔɔː˦˩,,ERROR: Could not align 'อ้อ' with 'ʔɔː˦˩'
-อ้อน,ʔɔːn˥˩,1,ʔɔːn˦˩,,ERROR: Could not align 'อ้อน' with 'ʔɔːn˦˩'
-อ้อม,ʔɔːm˥˩,1,ʔɔːm˦˩,,ERROR: Could not align 'อ้อม' with 'ʔɔːm˦˩'
-อ้อย,ʔɔj˥˩,1,ʔɔj˦˩,,ERROR: Could not align 'อ้อย' with 'ʔɔj˦˩'
+อ้อ,ʔɔː˥˩,1,ʔɔː˦˩,อ้อ,ʔɔː˦˩
+อ้อน,ʔɔːn˥˩,1,ʔɔːn˦˩,อ้อน,ʔɔːn˦˩
+อ้อม,ʔɔːm˥˩,1,ʔɔːm˦˩,อ้อม,ʔɔːm˦˩
+อ้อย,ʔɔj˥˩,1,ʔɔj˦˩,อ้อย,ʔɔj˦˩
 อ้า,ʔaː˥˩,1,ʔaː˦˩,อ้า,ʔaː˦˩
 อ้าง,ʔaːŋ˥˩,1,ʔaːŋ˦˩,อ้าง,ʔaːŋ˦˩
 อ้างว้าง,ʔaːŋ˥˩.waːŋ˦˥,1,ʔaːŋ˦˩.waːŋ˦˥,อ้างว้าง,ʔaːŋ˦˩.waːŋ˦˥
@@ -14070,7 +14070,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 อ้าว,ʔaːw˥˩,1,ʔaːw˦˩,อ้าว,ʔaːw˦˩
 อ๊บ,ʔop̚˦˥,1,ʔop˦˥,อ๊บ,ʔop˦˥
 อ๊วก,ʔua̯k̚˦˥,1,ʔuək˦˥,อ๊วก,ʔuək˦˥
-อ๋อง,ʔɔŋ˩˩˦,1,ʔɔŋ˨˥,,ERROR: Could not align 'อ๋อง' with 'ʔɔŋ˨˥'
+อ๋อง,ʔɔŋ˩˩˦,1,ʔɔŋ˨˥,อ๋อง,ʔɔŋ˨˥
 ฮ,hɔː˧,2,hɔː˧,,ERROR: Could not align 'ฮ' with 'hɔː˧'
 ฮ,hɔː˧.nok̚˦˥.huːk̚˥˩,2,hɔː˧.nok˦˥.huːk˦˩,,ERROR: Could not align 'ฮ' with 'hɔː˧.nok˦˥.huːk˦˩'
 ฮกไกโด,hok̚˦˥.kaj˧.doː˧,1,hok˦˥.kaj˧.doː˧,ฮกไกโด,hok˦˥.kaj˧.doː˧
@@ -14100,7 +14100,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ฮัดชิ้ว,hat̚˦˥.t͡ɕʰiw˦˥,1,hat˦˥.t͡ɕʰiw˦˥,ฮัดชิ้ว,hat˦˥.t͡ɕʰiw˦˥
 ฮันกึล,han˧.kɯl˧,1,han˧.kɯl˧,,ERROR: argument of type 'NoneType' is not iterable
 ฮันบก,han˧.bok̚˨˩,1,han˧.bok˨˩,ฮันบก,han˧.bok˨˩
-ฮัมบวร์ค,ham˧.bua̯k̚˨˩,1,ham˧.buək˨˩,,ERROR: Could not align 'ฮัมบวร์ค' with 'ham˧.buək˨˩'
+ฮัมบวร์ค,ham˧.bua̯k̚˨˩,1,ham˧.buək˨˩,ฮัมบวร์ค,ham˧.buək˨˩
 ฮัมมิงเบิร์ด,ham˧.miŋ˥˩.bɤːt̚˦˥,1,ham˧.miŋ˦˩.bɤːt˦˥,ฮัมมิงเบิร์ด,ham˧.miŋ˦˩.bɤːt˦˥
 ฮัลโล,han˧.loː˧,1,han˧.loː˧,ฮัลโล,han˧.loː˧
 ฮัลโหล,han˧.loː˩˩˦,1,han˧.loː˨˥,ฮัลโหล,han˧.loː˨˥
@@ -14113,9 +14113,9 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ฮาม,haːm˧,1,haːm˧,ฮาม,haːm˧
 ฮามาส,haː˧.maːt̚˦˥,2,haː˧.maːt˦˥,ฮามาส,haː˧.maːt˦˥
 ฮามาส,haː˧.maːs˦˥,2,haː˧.maːs˦˥,,ERROR: argument of type 'NoneType' is not iterable
-ฮาร์ดแวร์,haːt̚˦˥.wɛː˧,1,haːt˦˥.wɛː˧,,ERROR: Could not align 'ฮาร์ดแวร์' with 'haːt˦˥.wɛː˧'
+ฮาร์ดแวร์,haːt̚˦˥.wɛː˧,1,haːt˦˥.wɛː˧,ฮาร์ดแวร์,haːt˦˥.wɛː˧
 ฮาร์ตฟอร์ด,haːt̚˦˥.fɔːt̚˨˩,1,haːt˦˥.fɔːt˨˩,,ERROR: Could not align 'ฮาร์ตฟอร์ด' with 'haːt˦˥.fɔːt˨˩'
-ฮาร์ป,haːp̚˦˥,1,haːp˦˥,,ERROR: Could not align 'ฮาร์ป' with 'haːp˦˥'
+ฮาร์ป,haːp̚˦˥,1,haːp˦˥,ฮาร์ป,haːp˦˥
 ฮาลาล,haː˧.laːn˧,2,haː˧.laːn˧,ฮาลาล,haː˧.laːn˧
 ฮาลาล,haː˧.laːn˦˥,2,haː˧.laːn˦˥,ฮาลาล,haː˧.laːn˦˥
 ฮาวานา,haː˧.waː˧.naː˥˩,1,haː˧.waː˧.naː˦˩,ฮาวานา,haː˧.waː˧.naː˦˩
@@ -14172,8 +14172,8 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 เกรงใจ,kreːŋ˧.t͡ɕaj˧,1,kreːŋ˧.t͡ɕaj˧,เกรงใจ,kreːŋ˧.t͡ɕaj˧
 เกรด,kreːt̚˨˩,1,kreːt˨˩,เกรด,kreːt˨˩
 เกรตบริเตน,kreːt̚˦˥.bri˨˩.teːn˧,1,kreːt˦˥.briʔ˨˩.teːn˧,เกรตบริเตน,kreːt˦˥.briʔ˨˩.teːn˧
-เกรปฟรุต,kreːp̚˦˥.frut̚˦˥,1,kreːp˦˥.frut˦˥,เกรปฟรุต,kreːp˦˥.frut˦˥
-เกรปฟรูต,kreːp̚˦˥.fruːt̚˦˥,1,kreːp˦˥.fruːt˦˥,เกรปฟรูต,kreːp˦˥.fruːt˦˥
+เกรปฟรุต,kreːp̚˦˥.frut̚˦˥,1,kreːp˦˥.frut˦˥,,ERROR: Could not align 'เกรปฟรุต' with 'kreːp˦˥.frut˦˥'
+เกรปฟรูต,kreːp̚˦˥.fruːt̚˦˥,1,kreːp˦˥.fruːt˦˥,,ERROR: Could not align 'เกรปฟรูต' with 'kreːp˦˥.fruːt˦˥'
 เกรละ,keː˧.ra˦˥.laʔ˦˥,1,keː˧.raʔ˦˥.laʔ˦˥,เกรละ,keː˧.raʔ˦˥.laʔ˦˥
 เกรวี,kreː˧.wiː˥˩,1,kreː˧.wiː˦˩,เกรวี,kreː˧.wiː˦˩
 เกราะ,krɔʔ˨˩,1,krɔʔ˨˩,เกราะ,krɔʔ˨˩
@@ -14275,7 +14275,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 เกี้ยมไฉ่,kia̯m˥˩.t͡ɕʰaj˨˩,1,kiəm˦˩.t͡ɕʰaj˨˩,เกี้ยมไฉ่,kiəm˦˩.t͡ɕʰaj˨˩
 เกี้ยว,kia̯w˥˩,1,kiəw˦˩,เกี้ยว,kiəw˦˩
 เกี๊ยว,kia̯w˦˥,1,kiəw˦˥,เกี๊ยว,kiəw˦˥
-เกี๊ยะ,kia̯ʔ˦˥,1,kiəʔ˦˥,,ERROR: Could not align 'เกี๊ยะ' with 'kiəʔ˦˥'
+เกี๊ยะ,kia̯ʔ˦˥,1,kiəʔ˦˥,เกี๊ยะ,kiəʔ˦˥
 เกือก,kɯa̯k̚˨˩,1,kɯək˨˩,เกือก,kɯək˨˩
 เกือกม้า,kɯa̯k̚˨˩.maː˦˥,1,kɯək˨˩.maː˦˥,เกือกม้า,kɯək˨˩.maː˦˥
 เกือกแตะ,kɯa̯k̚˨˩.tɛʔ˨˩,1,kɯək˨˩.tɛʔ˨˩,เกือกแตะ,kɯək˨˩.tɛʔ˨˩
@@ -14482,7 +14482,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 เครื่องสูบลม,kʰrɯa̯ŋ˥˩.suːp̚˨˩.lom˧,1,kʰrɯəŋ˦˩.suːp˨˩.lom˧,เครื่องสูบลม,kʰrɯəŋ˦˩.suːp˨˩.lom˧
 เครื่องหมาย,kʰrɯa̯ŋ˥˩.maːj˩˩˦,1,kʰrɯəŋ˦˩.maːj˨˥,เครื่องหมาย,kʰrɯəŋ˦˩.maːj˨˥
 เครื่องหมายการค้า,kʰrɯa̯ŋ˥˩.maːj˩˩˦.kaːn˧.kʰaː˦˥,1,kʰrɯəŋ˦˩.maːj˨˥.kaːn˧.kʰaː˦˥,เครื่องหมายการค้า,kʰrɯəŋ˦˩.maːj˨˥.kaːn˧.kʰaː˦˥
-เครื่องหมายการออกเสียง,kʰrɯa̯ŋ˥˩.maːj˩˩˦.kaːn˧.ʔɔːk̚˨˩.sia̯ŋ˩˩˦,1,kʰrɯəŋ˦˩.maːj˨˥.kaːn˧.ʔɔːk˨˩.siəŋ˨˥,,ERROR: Could not align 'เครื่องหมายการออกเสียง' with 'kʰrɯəŋ˦˩.maːj˨˥.kaːn˧.ʔɔːk˨˩.siəŋ˨˥'
+เครื่องหมายการออกเสียง,kʰrɯa̯ŋ˥˩.maːj˩˩˦.kaːn˧.ʔɔːk̚˨˩.sia̯ŋ˩˩˦,1,kʰrɯəŋ˦˩.maːj˨˥.kaːn˧.ʔɔːk˨˩.siəŋ˨˥,เครื่องหมายการออกเสียง,kʰrɯəŋ˦˩.maːj˨˥.kaːn˧.ʔɔːk˨˩.siəŋ˨˥
 เครื่องหมายคำถาม,kʰrɯa̯ŋ˥˩.maːj˩˩˦.kʰam˧.tʰaːm˩˩˦,1,kʰrɯəŋ˦˩.maːj˨˥.kʰam˧.tʰaːm˨˥,เครื่องหมายคำถาม,kʰrɯəŋ˦˩.maːj˨˥.kʰam˧.tʰaːm˨˥
 เครื่องหมายจราจร,kʰrɯa̯ŋ˥˩.maːj˩˩˦.t͡ɕa˨˩.raː˧.t͡ɕɔːn˧,1,kʰrɯəŋ˦˩.maːj˨˥.t͡ɕaʔ˨˩.raː˧.t͡ɕɔːn˧,เครื่องหมายจราจร,kʰrɯəŋ˦˩.maːj˨˥.t͡ɕaʔ˨˩.raː˧.t͡ɕɔːn˧
 เครื่องหมายตกใจ,kʰrɯa̯ŋ˥˩.maːj˩˩˦.tok̚˨˩.t͡ɕaj˧,1,kʰrɯəŋ˦˩.maːj˨˥.tok˨˩.t͡ɕaj˧,เครื่องหมายตกใจ,kʰrɯəŋ˦˩.maːj˨˥.tok˨˩.t͡ɕaj˧
@@ -14614,7 +14614,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 เจียว,t͡ɕia̯w˧,1,t͡ɕiəw˧,เจียว,t͡ɕiəw˧
 เจี๊ยก,t͡ɕia̯k̚˦˥,1,t͡ɕiək˦˥,เจี๊ยก,t͡ɕiək˦˥
 เจี๊ยว,t͡ɕia̯w˦˥,1,t͡ɕiəw˦˥,เจี๊ยว,t͡ɕiəw˦˥
-เจี๊ยะ,t͡ɕia̯ʔ˦˥,1,t͡ɕiəʔ˦˥,,ERROR: Could not align 'เจี๊ยะ' with 't͡ɕiəʔ˦˥'
+เจี๊ยะ,t͡ɕia̯ʔ˦˥,1,t͡ɕiəʔ˦˥,เจี๊ยะ,t͡ɕiəʔ˦˥
 เจี๋ยมเจี้ยม,t͡ɕia̯m˩˩˦.t͡ɕia̯m˥˩,1,t͡ɕiəm˨˥.t͡ɕiəm˦˩,เจี๋ยมเจี้ยม,t͡ɕiəm˨˥.t͡ɕiəm˦˩
 เจือ,t͡ɕɯa̯˧,1,t͡ɕɯə˧,เจือ,t͡ɕɯə˧
 เจือจาง,t͡ɕɯa̯˧.t͡ɕaːŋ˧,1,t͡ɕɯə˧.t͡ɕaːŋ˧,เจือจาง,t͡ɕɯə˧.t͡ɕaːŋ˧
@@ -14853,7 +14853,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 เดดซี,deːt̚˦˥.siː˧,1,deːt˦˥.siː˧,เดดซี,deːt˦˥.siː˧
 เดท,deːt̚˨˩,1,deːt˨˩,เดท,deːt˨˩
 เดน,deːn˧,1,deːn˧,เดน,deːn˧
-เดนมาร์ก,den˧.maːk̚˨˩,1,den˧.maːk˨˩,,ERROR: Could not align 'เดนมาร์ก' with 'den˧.maːk˨˩'
+เดนมาร์ก,den˧.maːk̚˨˩,1,den˧.maːk˨˩,เดนมาร์ก,den˧.maːk˨˩
 เดนลอว์,deːn˧.lɔː˧,1,deːn˧.lɔː˧,,ERROR: Could not align 'เดนลอว์' with 'deːn˧.lɔː˧'
 เดนเวอร์,den˧.wɤː˥˩,1,den˧.wɤː˦˩,เดนเวอร์,den˧.wɤː˦˩
 เดมะนิม,deː˧.ma˦˥.nim˧,1,deː˧.maʔ˦˥.nim˧,เดมะนิม,deː˧.maʔ˦˥.nim˧
@@ -14901,7 +14901,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 เด็กสาว,dek̚˨˩.saːw˩˩˦,1,dek˨˩.saːw˨˥,เด็กสาว,dek˨˩.saːw˨˥
 เด็กหญิง,dek̚˨˩.jiŋ˩˩˦,1,dek˨˩.jiŋ˨˥,เด็กหญิง,dek˨˩.jiŋ˨˥
 เด็กอนามัย,dek̚˨˩.ʔa˨˩.naː˧.maj˧,1,dek˨˩.ʔaʔ˨˩.naː˧.maj˧,เด็กอนามัย,dek˨˩.ʔaʔ˨˩.naː˧.maj˧
-เด็กอ่อน,dek̚˨˩.ʔɔːn˨˩,1,dek˨˩.ʔɔːn˨˩,,ERROR: Could not align 'เด็กอ่อน' with 'dek˨˩.ʔɔːn˨˩'
+เด็กอ่อน,dek̚˨˩.ʔɔːn˨˩,1,dek˨˩.ʔɔːn˨˩,เด็กอ่อน,dek˨˩.ʔɔːn˨˩
 เด็กเจ็ดเข้าเฒ่าเจ็ดสิบ,dek̚˨˩.t͡ɕet̚˨˩.kʰaːw˥˩.tʰaw˥˩.t͡ɕet̚˨˩.sip̚˨˩,2,dek˨˩.t͡ɕet˨˩.kʰaːw˦˩.tʰaw˦˩.t͡ɕet˨˩.sip˨˩,เด็กเจ็ดเข้าเฒ่าเจ็ดสิบ,dek˨˩.t͡ɕet˨˩.kʰaːw˦˩.tʰaw˦˩.t͡ɕet˨˩.sip˨˩
 เด็กเจ็ดเข้าเฒ่าเจ็ดสิบ,dek̚˨˩.t͡ɕet̚˨˩.kʰaw˥˩.tʰaw˥˩.t͡ɕet̚˨˩.sip̚˨˩,2,dek˨˩.t͡ɕet˨˩.kʰaw˦˩.tʰaw˦˩.t͡ɕet˨˩.sip˨˩,เด็กเจ็ดเข้าเฒ่าเจ็ดสิบ,dek˨˩.t͡ɕet˨˩.kʰaw˦˩.tʰaw˦˩.t͡ɕet˨˩.sip˨˩
 เด็กเปรต,dek̚˨˩.preːt̚˨˩,1,dek˨˩.preːt˨˩,เด็กเปรต,dek˨˩.preːt˨˩
@@ -15098,7 +15098,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 เนปจูน,neːp̚˥˩.t͡ɕuːn˧,1,neːp˦˩.t͡ɕuːn˧,เนปจูน,neːp˦˩.t͡ɕuːn˧
 เนปทูเนียม,neːp̚˦˥.tʰuː˧.nia̯m˥˩,2,neːp˦˥.tʰuː˧.niəm˦˩,เนปทูเนียม,neːp˦˥.tʰuː˧.niəm˦˩
 เนปทูเนียม,nep̚˦˥.tʰuː˧.nia̯m˥˩,2,nep˦˥.tʰuː˧.niəm˦˩,เนปทูเนียม,nep˦˥.tʰuː˧.niəm˦˩
-เนปยีดอ,neː˧.piː˧.dɔː˧,1,neː˧.piː˧.dɔː˧,เนปยีดอ,neː˧.piː˧.dɔː˧
+เนปยีดอ,neː˧.piː˧.dɔː˧,1,neː˧.piː˧.dɔː˧,,ERROR: Could not align 'เนปยีดอ' with 'neː˧.piː˧.dɔː˧'
 เนปาล,neː˧.paːn˧,1,neː˧.paːn˧,เนปาล,neː˧.paːn˧
 เนปีดอ,neː˧.piː˧.dɔː˧,1,neː˧.piː˧.dɔː˧,เนปีดอ,neː˧.piː˧.dɔː˧
 เนย,nɤːj˧,1,nɤːj˧,เนย,nɤːj˧
@@ -15181,7 +15181,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 เบริลเลียม,beː˧.ril˧.lia̯m˥˩,1,beː˧.ril˧.liəm˦˩,,ERROR: argument of type 'NoneType' is not iterable
 เบรุต,beː˧.rut̚˦˥,1,beː˧.rut˦˥,เบรุต,beː˧.rut˦˥
 เบลฟาสต์,bel˧.faːs˦˥,1,bel˧.faːs˦˥,,ERROR: argument of type 'NoneType' is not iterable
-เบลอ,blɤː˧,1,blɤː˧,เบลอ,blɤː˧
+เบลอ,blɤː˧,1,blɤː˧,,ERROR: Could not align 'เบลอ' with 'blɤː˧'
 เบลารุส,beː˧.laː˧.rus˦˥,2,beː˧.laː˧.rus˦˥,,ERROR: argument of type 'NoneType' is not iterable
 เบลารุส,beː˧.laː˧.rut̚˦˥,2,beː˧.laː˧.rut˦˥,เบลารุส,beː˧.laː˧.rut˦˥
 เบลีซ,beː˧.liːs˦˥,1,beː˧.liːs˦˥,,ERROR: argument of type 'NoneType' is not iterable
@@ -15289,10 +15289,10 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 เปอร์เซ็นต์,pɤː˧.sen˧,1,pɤː˧.sen˧,เปอร์เซ็นต์,pɤː˧.sen˧
 เปา,paw˧,1,paw˧,เปา,paw˧
 เปาบุ้นจิ้น,paw˧.bun˥˩.t͡ɕin˥˩,1,paw˧.bun˦˩.t͡ɕin˦˩,เปาบุ้นจิ้น,paw˧.bun˦˩.t͡ɕin˦˩
-เปาะเปี๊ยะ,pɔʔ˨˩.pia̯ʔ˦˥,1,pɔʔ˨˩.piəʔ˦˥,,ERROR: Could not align 'เปาะเปี๊ยะ' with 'pɔʔ˨˩.piəʔ˦˥'
+เปาะเปี๊ยะ,pɔʔ˨˩.pia̯ʔ˦˥,1,pɔʔ˨˩.piəʔ˦˥,เปาะเปี๊ยะ,pɔʔ˨˩.piəʔ˦˥
 เปิงมางคอก,pɤːŋ˧.maːŋ˧.kʰɔːk̚˥˩,1,pɤːŋ˧.maːŋ˧.kʰɔːk˦˩,เปิงมางคอก,pɤːŋ˧.maːŋ˧.kʰɔːk˦˩
 เปิด,pɤːt̚˨˩,1,pɤːt˨˩,เปิด,pɤːt˨˩
-เปิดการ์ด,pɤːt̚˨˩.kaːt̚˦˥,1,pɤːt˨˩.kaːt˦˥,,ERROR: Could not align 'เปิดการ์ด' with 'pɤːt˨˩.kaːt˦˥'
+เปิดการ์ด,pɤːt̚˨˩.kaːt̚˦˥,1,pɤːt˨˩.kaːt˦˥,เปิดการ์ด,pɤːt˨˩.kaːt˦˥
 เปิดตัว,pɤːt̚˨˩.tua̯˧,1,pɤːt˨˩.tuə˧,เปิดตัว,pɤːt˨˩.tuə˧
 เปิดเผย,pɤːt̚˨˩.pʰɤːj˩˩˦,1,pɤːt˨˩.pʰɤːj˨˥,เปิดเผย,pɤːt˨˩.pʰɤːj˨˥
 เปิดโปง,pɤːt̚˨˩.poːŋ˧,1,pɤːt˨˩.poːŋ˧,เปิดโปง,pɤːt˨˩.poːŋ˧
@@ -15432,7 +15432,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 เพิ่ม,pʰɤːm˥˩,1,pʰɤːm˦˩,เพิ่ม,pʰɤːm˦˩
 เพียง,pʰia̯ŋ˧,1,pʰiəŋ˧,เพียง,pʰiəŋ˧
 เพียงพอน,pʰia̯ŋ˧.pʰɔːn˧,1,pʰiəŋ˧.pʰɔːn˧,เพียงพอน,pʰiəŋ˧.pʰɔːn˧
-เพียงออ,pʰia̯ŋ˧.ʔɔː˧,1,pʰiəŋ˧.ʔɔː˧,,ERROR: Could not align 'เพียงออ' with 'pʰiəŋ˧.ʔɔː˧'
+เพียงออ,pʰia̯ŋ˧.ʔɔː˧,1,pʰiəŋ˧.ʔɔː˧,เพียงออ,pʰiəŋ˧.ʔɔː˧
 เพียบ,pʰia̯p̚˥˩,1,pʰiəp˦˩,เพียบ,pʰiəp˦˩
 เพียบพร้อม,pʰia̯p̚˥˩.pʰrɔːm˦˥,1,pʰiəp˦˩.pʰrɔːm˦˥,เพียบพร้อม,pʰiəp˦˩.pʰrɔːm˦˥
 เพียร,pʰia̯n˧,1,pʰiən˧,เพียร,pʰiən˧
@@ -15738,7 +15738,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 เลอะ,lɤʔ˦˥,1,lɤʔ˦˥,เลอะ,lɤʔ˦˥
 เลอะเทอะ,lɤʔ˦˥.tʰɤʔ˦˥,1,lɤʔ˦˥.tʰɤʔ˦˥,เลอะเทอะ,lɤʔ˦˥.tʰɤʔ˦˥
 เลอะเลือน,lɤʔ˦˥.lɯa̯n˧,1,lɤʔ˦˥.lɯən˧,เลอะเลือน,lɤʔ˦˥.lɯən˧
-เลอเวือะ,lɤː˧.wɯa̯ʔ˦˥,1,lɤː˧.wɯəʔ˦˥,,ERROR: Could not align 'เลอเวือะ' with 'lɤː˧.wɯəʔ˦˥'
+เลอเวือะ,lɤː˧.wɯa̯ʔ˦˥,1,lɤː˧.wɯəʔ˦˥,เลอเวือะ,lɤː˧.wɯəʔ˦˥
 เละ,leʔ˦˥,1,leʔ˦˥,เละ,leʔ˦˥
 เละเทะ,leʔ˦˥.tʰeʔ˦˥,1,leʔ˦˥.tʰeʔ˦˥,เละเทะ,leʔ˦˥.tʰeʔ˦˥
 เลา,law˧,1,law˧,เลา,law˧
@@ -15887,17 +15887,17 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 เว้น,wen˦˥,1,wen˦˥,เว้น,wen˦˥
 เว้นแต่,wen˦˥.tɛː˨˩,1,wen˦˥.tɛː˨˩,เว้นแต่,wen˦˥.tɛː˨˩
 เว้า,waw˦˥,1,waw˦˥,เว้า,waw˦˥
-เศรษฐ,seːt̚˨˩.tʰa˨˩.,1,seːt˨˩.tʰaʔ˨˩,เศษฐ,seːt˨˩.tʰaʔ˨˩
-เศรษฐกิจ,seːt̚˨˩.tʰa˨˩.kit̚˨˩,2,seːt˨˩.tʰaʔ˨˩.kit˨˩,เศษฐกิจ,seːt˨˩.tʰaʔ˨˩.kit˨˩
-เศรษฐกิจ,seːt̚˨˩.tʰa˧.kit̚˨˩,2,seːt˨˩.tʰaʔ˧.kit˨˩,เศษฐกิจ,seːt˨˩.tʰaʔ˧.kit˨˩
-เศรษฐยาธิปไตย,seːt̚˨˩.tʰa˨˩.jaː˧.tʰi˦˥.pa˨˩.taj˧,2,seːt˨˩.tʰaʔ˨˩.jaː˧.tʰiʔ˦˥.paʔ˨˩.taj˧,เศษฐยาธิปไตย,seːt˨˩.tʰaʔ˨˩.jaː˧.tʰiʔ˦˥.paʔ˨˩.taj˧
-เศรษฐยาธิปไตย,seːt̚˨˩.tʰa˨˩.jaː˧.tʰip̚˦˥.pa˨˩.taj˧,2,seːt˨˩.tʰaʔ˨˩.jaː˧.tʰip˦˥.paʔ˨˩.taj˧,เศษฐยาธิปไตย,seːt˨˩.tʰaʔ˨˩.jaː˧.tʰip˦˥.paʔ˨˩.taj˧
-เศรษฐศาสตร์,seːt̚˨˩.tʰa˨˩.saːt̚˨˩,1,seːt˨˩.tʰaʔ˨˩.saːt˨˩,เศษฐศาสตร์,seːt˨˩.tʰaʔ˨˩.saːt˨˩
-เศรษฐศาสตร์จุลภาค,seːt̚˨˩.tʰa˨˩.saːt̚˨˩.t͡ɕun˧.la˦˥.pʰaːk̚˥˩,1,seːt˨˩.tʰaʔ˨˩.saːt˨˩.t͡ɕun˧.laʔ˦˥.pʰaːk˦˩,เศษฐศาสตร์จุลภาค,seːt˨˩.tʰaʔ˨˩.saːt˨˩.t͡ɕun˧.laʔ˦˥.pʰaːk˦˩
-เศรษฐศาสตร์มหัพภาค,seːt̚˨˩.tʰa˨˩.saːt̚˨˩.ma˦˥.hap̚˨˩.pʰaːk̚˥˩,1,seːt˨˩.tʰaʔ˨˩.saːt˨˩.maʔ˦˥.hap˨˩.pʰaːk˦˩,เศษฐศาสตร์มหัพภาค,seːt˨˩.tʰaʔ˨˩.saːt˨˩.maʔ˦˥.hap˨˩.pʰaːk˦˩
-เศรษฐินี,seːt̚˨˩.tʰi˨˩.niː˧,1,seːt˨˩.tʰiʔ˨˩.niː˧,เศษฐินี,seːt˨˩.tʰiʔ˨˩.niː˧
-เศรษฐี,seːt̚˨˩.tʰiː˩˩˦,1,seːt˨˩.tʰiː˨˥,เศษฐี,seːt˨˩.tʰiː˨˥
-เศรษฐีนี,seːt̚˨˩.tʰiː˩˩˦.niː˧,1,seːt˨˩.tʰiː˨˥.niː˧,เศษฐีนี,seːt˨˩.tʰiː˨˥.niː˧
+เศรษฐ,seːt̚˨˩.tʰa˨˩.,1,seːt˨˩.tʰaʔ˨˩,เศรษฐ,seːt˨˩.tʰaʔ˨˩
+เศรษฐกิจ,seːt̚˨˩.tʰa˨˩.kit̚˨˩,2,seːt˨˩.tʰaʔ˨˩.kit˨˩,เศรษฐกิจ,seːt˨˩.tʰaʔ˨˩.kit˨˩
+เศรษฐกิจ,seːt̚˨˩.tʰa˧.kit̚˨˩,2,seːt˨˩.tʰaʔ˧.kit˨˩,เศรษฐกิจ,seːt˨˩.tʰaʔ˧.kit˨˩
+เศรษฐยาธิปไตย,seːt̚˨˩.tʰa˨˩.jaː˧.tʰi˦˥.pa˨˩.taj˧,2,seːt˨˩.tʰaʔ˨˩.jaː˧.tʰiʔ˦˥.paʔ˨˩.taj˧,เศรษฐยาธิปไตย,seːt˨˩.tʰaʔ˨˩.jaː˧.tʰiʔ˦˥.paʔ˨˩.taj˧
+เศรษฐยาธิปไตย,seːt̚˨˩.tʰa˨˩.jaː˧.tʰip̚˦˥.pa˨˩.taj˧,2,seːt˨˩.tʰaʔ˨˩.jaː˧.tʰip˦˥.paʔ˨˩.taj˧,เศรษฐยาธิปไตย,seːt˨˩.tʰaʔ˨˩.jaː˧.tʰip˦˥.paʔ˨˩.taj˧
+เศรษฐศาสตร์,seːt̚˨˩.tʰa˨˩.saːt̚˨˩,1,seːt˨˩.tʰaʔ˨˩.saːt˨˩,เศรษฐศาสตร์,seːt˨˩.tʰaʔ˨˩.saːt˨˩
+เศรษฐศาสตร์จุลภาค,seːt̚˨˩.tʰa˨˩.saːt̚˨˩.t͡ɕun˧.la˦˥.pʰaːk̚˥˩,1,seːt˨˩.tʰaʔ˨˩.saːt˨˩.t͡ɕun˧.laʔ˦˥.pʰaːk˦˩,เศรษฐศาสตร์จุลภาค,seːt˨˩.tʰaʔ˨˩.saːt˨˩.t͡ɕun˧.laʔ˦˥.pʰaːk˦˩
+เศรษฐศาสตร์มหัพภาค,seːt̚˨˩.tʰa˨˩.saːt̚˨˩.ma˦˥.hap̚˨˩.pʰaːk̚˥˩,1,seːt˨˩.tʰaʔ˨˩.saːt˨˩.maʔ˦˥.hap˨˩.pʰaːk˦˩,เศรษฐศาสตร์มหัพภาค,seːt˨˩.tʰaʔ˨˩.saːt˨˩.maʔ˦˥.hap˨˩.pʰaːk˦˩
+เศรษฐินี,seːt̚˨˩.tʰi˨˩.niː˧,1,seːt˨˩.tʰiʔ˨˩.niː˧,เศรษฐินี,seːt˨˩.tʰiʔ˨˩.niː˧
+เศรษฐี,seːt̚˨˩.tʰiː˩˩˦,1,seːt˨˩.tʰiː˨˥,เศรษฐี,seːt˨˩.tʰiː˨˥
+เศรษฐีนี,seːt̚˨˩.tʰiː˩˩˦.niː˧,1,seːt˨˩.tʰiː˨˥.niː˧,เศรษฐีนี,seːt˨˩.tʰiː˨˥.niː˧
 เศร้า,saw˥˩,1,saw˦˩,เศร้า,saw˦˩
 เศร้าสร้อย,saw˥˩.sɔj˥˩,1,saw˦˩.sɔj˦˩,เศร้าสร้อย,saw˦˩.sɔj˦˩
 เศร้าโศก,saw˥˩.soːk̚˨˩,1,saw˦˩.soːk˨˩,เศร้าโศก,saw˦˩.soːk˨˩
@@ -16212,7 +16212,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 เอกสารชั้นต้น,ʔeːk̚˨˩.ka˨˩.saːn˩˩˦.t͡ɕʰan˦˥.ton˥˩,1,ʔeːk˨˩.kaʔ˨˩.saːn˨˥.t͡ɕʰan˦˥.ton˦˩,เอกสารชั้นต้น,ʔeːk˨˩.kaʔ˨˩.saːn˨˥.t͡ɕʰan˦˥.ton˦˩
 เอกสารชั้นรอง,ʔeːk̚˨˩.ka˨˩.saːn˩˩˦.t͡ɕʰan˦˥.rɔːŋ˧,1,ʔeːk˨˩.kaʔ˨˩.saːn˨˥.t͡ɕʰan˦˥.rɔːŋ˧,เอกสารชั้นรอง,ʔeːk˨˩.kaʔ˨˩.saːn˨˥.t͡ɕʰan˦˥.rɔːŋ˧
 เอกอัครราชทูต,ʔeːk̚˨˩.ʔak̚˨˩.kʰra˦˥.raːt̚˥˩.t͡ɕʰa˦˥.tʰuːt̚˥˩,2,ʔeːk˨˩.ʔak˨˩.kʰraʔ˦˥.raːt˦˩.t͡ɕʰaʔ˦˥.tʰuːt˦˩,เอกอัครราชทูต,ʔeːk˨˩.ʔak˨˩.kʰraʔ˦˥.raːt˦˩.t͡ɕʰaʔ˦˥.tʰuːt˦˩
-เอกอัครราชทูต,ʔeːk̚˨˩.ʔak̚˨˩.kʰa˦˥.raːt̚˥˩.t͡ɕʰa˦˥.tʰuːt̚˥˩,2,ʔeːk˨˩.ʔak˨˩.kʰaʔ˦˥.raːt˦˩.t͡ɕʰaʔ˦˥.tʰuːt˦˩,เอกอัครราชทูต,ʔeːk˨˩.ʔak˨˩.kʰaʔ˦˥.raːt˦˩.t͡ɕʰaʔ˦˥.tʰuːt˦˩
+เอกอัครราชทูต,ʔeːk̚˨˩.ʔak̚˨˩.kʰa˦˥.raːt̚˥˩.t͡ɕʰa˦˥.tʰuːt̚˥˩,2,ʔeːk˨˩.ʔak˨˩.kʰaʔ˦˥.raːt˦˩.t͡ɕʰaʔ˦˥.tʰuːt˦˩,,ERROR: Could not align 'เอกอัครราชทูต' with 'ʔeːk˨˩.ʔak˨˩.kʰaʔ˦˥.raːt˦˩.t͡ɕʰaʔ˦˥.tʰuːt˦˩'
 เอกอัครสมณทูต,ʔeːk̚˨˩.ʔak̚˨˩.kʰra˦˥.sa˨˩.ma˦˥.na˦˥.tʰuːt̚˥˩,1,ʔeːk˨˩.ʔak˨˩.kʰraʔ˦˥.saʔ˨˩.maʔ˦˥.naʔ˦˥.tʰuːt˦˩,เอกอัครสมณทูต,ʔeːk˨˩.ʔak˨˩.kʰraʔ˦˥.saʔ˨˩.maʔ˦˥.naʔ˦˥.tʰuːt˦˩
 เอกาธิปไตย,ʔeː˧.kaː˧.tʰi˦˥.pa˨˩.taj˧,2,ʔeː˧.kaː˧.tʰiʔ˦˥.paʔ˨˩.taj˧,เอกาธิปไตย,ʔeː˧.kaː˧.tʰiʔ˦˥.paʔ˨˩.taj˧
 เอกาธิปไตย,ʔeː˧.kaː˧.tʰip̚˦˥.pa˨˩.taj˧,2,ʔeː˧.kaː˧.tʰip˦˥.paʔ˨˩.taj˧,เอกาธิปไตย,ʔeː˧.kaː˧.tʰip˦˥.paʔ˨˩.taj˧
@@ -16262,9 +16262,9 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 เอสเปรันโต,ʔeːs˨˩.peː˧.ran˧.toː˧,2,ʔeːs˨˩.peː˧.ran˧.toː˧,,ERROR: argument of type 'NoneType' is not iterable
 เอสเปรันโต,ʔeːt̚˨˩.peː˧.ran˧.toː˧,2,ʔeːt˨˩.peː˧.ran˧.toː˧,เอสเปรันโต,ʔeːt˨˩.peː˧.ran˧.toː˧
 เอสโตเนีย,ʔeːs˦˥.toː˧.nia̯˧,1,ʔeːs˦˥.toː˧.niə˧,,ERROR: argument of type 'NoneType' is not iterable
-เออร์เบียม,ʔɤː˧.bia̯m˥˩,1,ʔɤː˧.biəm˦˩,,ERROR: Could not align 'เออร์เบียม' with 'ʔɤː˧.biəm˦˩'
-เออออ,ʔɤː˧.ʔɔː˧,1,ʔɤː˧.ʔɔː˧,,ERROR: Could not align 'เออออ' with 'ʔɤː˧.ʔɔː˧'
-เออออห่อหมก,ʔɤː˧.ʔɔː˧.hɔː˨˩.mok̚˨˩,1,ʔɤː˧.ʔɔː˧.hɔː˨˩.mok˨˩,,ERROR: Could not align 'เออออห่อหมก' with 'ʔɤː˧.ʔɔː˧.hɔː˨˩.mok˨˩'
+เออร์เบียม,ʔɤː˧.bia̯m˥˩,1,ʔɤː˧.biəm˦˩,เออร์เบียม,ʔɤː˧.biəm˦˩
+เออออ,ʔɤː˧.ʔɔː˧,1,ʔɤː˧.ʔɔː˧,เออออ,ʔɤː˧.ʔɔː˧
+เออออห่อหมก,ʔɤː˧.ʔɔː˧.hɔː˨˩.mok̚˨˩,1,ʔɤː˧.ʔɔː˧.hɔː˨˩.mok˨˩,เออออห่อหมก,ʔɤː˧.ʔɔː˧.hɔː˨˩.mok˨˩
 เอฮิเมะ,ʔeː˧.hi˦˥.meʔ˦˥,1,ʔeː˧.hiʔ˦˥.meʔ˦˥,เอฮิเมะ,ʔeː˧.hiʔ˦˥.meʔ˦˥
 เอะอะ,ʔeʔ˨˩.ʔaʔ˨˩,1,ʔeʔ˨˩.ʔaʔ˨˩,เอะอะ,ʔeʔ˨˩.ʔaʔ˨˩
 เอะใจ,ʔeʔ˨˩.t͡ɕaj˧,1,ʔeʔ˨˩.t͡ɕaj˧,เอะใจ,ʔeʔ˨˩.t͡ɕaj˧
@@ -16333,7 +16333,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 เอ็มพีสาม,ʔem˧.pʰiː˧.saːm˩˩˦,1,ʔem˧.pʰiː˧.saːm˨˥,เอ็มพีสาม,ʔem˧.pʰiː˧.saːm˨˥
 เอ่ย,ʔɤːj˨˩,1,ʔɤːj˨˩,เอ่ย,ʔɤːj˨˩
 เอ๋ง,ʔeŋ˩˩˦,1,ʔeŋ˨˥,เอ๋ง,ʔeŋ˨˥
-เอ๋อ,ʔɤː˩˩˦,1,ʔɤː˨˥,,ERROR: Could not align 'เอ๋อ' with 'ʔɤː˨˥'
+เอ๋อ,ʔɤː˩˩˦,1,ʔɤː˨˥,เอ๋อ,ʔɤː˨˥
 เฮ,heː˧,1,heː˧,เฮ,heː˧
 เฮก,heːk̚˦˥,2,heːk˦˥,เฮก,heːk˦˥
 เฮก,hek̚˦˥,2,hek˦˥,เฮก,hek˦˥
@@ -16674,8 +16674,8 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 แบบแปลน,bɛːp̚˨˩.plɛːn˧,1,bɛːp˨˩.plɛːn˧,แบบแปลน,bɛːp˨˩.plɛːn˧
 แบบแผน,bɛːp̚˨˩.pʰɛːn˩˩˦,1,bɛːp˨˩.pʰɛːn˨˥,แบบแผน,bɛːp˨˩.pʰɛːn˨˥
 แบรนด์,brɛːn˧,1,brɛːn˧,แบรนด์,brɛːn˧
-แบร์น,bɛːn˧,1,bɛːn˧,,ERROR: Could not align 'แบร์น' with 'bɛːn˧'
-แบล็กเมล์,blɛk̚˦˥.meː˧,1,blɛk˦˥.meː˧,แบล็กเมล์,blɛk˦˥.meː˧
+แบร์น,bɛːn˧,1,bɛːn˧,แบร์น,bɛːn˧
+แบล็กเมล์,blɛk̚˦˥.meː˧,1,blɛk˦˥.meː˧,,ERROR: Could not align 'แบล็กเมล์' with 'blɛk˦˥.meː˧'
 แบเรียม,bɛː˧.ria̯m˥˩,1,bɛː˧.riəm˦˩,แบเรียม,bɛː˧.riəm˦˩
 แบ่ง,bɛŋ˨˩,1,bɛŋ˨˩,แบ่ง,bɛŋ˨˩
 แบ่งปัน,bɛŋ˨˩.pan˧,1,bɛŋ˨˩.pan˧,แบ่งปัน,bɛŋ˨˩.pan˧
@@ -17061,7 +17061,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 แองโกลา,ʔɛŋ˧.koː˧.laː˥˩,1,ʔɛŋ˧.koː˧.laː˦˩,แองโกลา,ʔɛŋ˧.koː˧.laː˦˩
 แอตแลนติก,ʔɛːt̚˦˥.lɛːn˧.tik̚˨˩,1,ʔɛːt˦˥.lɛːn˧.tik˨˩,แอตแลนติก,ʔɛːt˦˥.lɛːn˧.tik˨˩
 แอนดรอยด์,ʔɛːn˧.drɔːj˧,1,ʔɛːn˧.drɔːj˧,แอนดรอยด์,ʔɛːn˧.drɔːj˧
-แอนตาร์กติกา,ʔɛn˧.taːk̚˦˥.ti˨˩.kaː˥˩,1,ʔɛn˧.taːk˦˥.tiʔ˨˩.kaː˦˩,,ERROR: Could not align 'แอนตาร์กติกา' with 'ʔɛn˧.taːk˦˥.tiʔ˨˩.kaː˦˩'
+แอนตาร์กติกา,ʔɛn˧.taːk̚˦˥.ti˨˩.kaː˥˩,1,ʔɛn˧.taːk˦˥.tiʔ˨˩.kaː˦˩,แอนตาร์กติกา,ʔɛn˧.taːk˦˥.tiʔ˨˩.kaː˦˩
 แอนติกาและบาร์บูดา,ʔɛːn˧.ti˨˩.kaː˥˩.lɛʔ˦˥.baː˧.buː˧.daː˥˩,1,ʔɛːn˧.tiʔ˨˩.kaː˦˩.lɛʔ˦˥.baː˧.buː˧.daː˦˩,แอนติกาและบาร์บูดา,ʔɛːn˧.tiʔ˨˩.kaː˦˩.lɛʔ˦˥.baː˧.buː˧.daː˦˩
 แอนติบอดี,ʔɛːn˧.ti˨˩.bɔː˧.diː˥˩,1,ʔɛːn˧.tiʔ˨˩.bɔː˧.diː˦˩,แอนติบอดี,ʔɛːn˧.tiʔ˨˩.bɔː˧.diː˦˩
 แอนติเจน,ʔɛːn˧.ti˨˩.t͡ɕen˥˩,1,ʔɛːn˧.tiʔ˨˩.t͡ɕen˦˩,แอนติเจน,ʔɛːn˧.tiʔ˨˩.t͡ɕen˦˩
@@ -17091,7 +17091,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 แอลฟา,ʔɛl˧.faː˥˩,2,ʔɛl˧.faː˦˩,,ERROR: argument of type 'NoneType' is not iterable
 แอละแบมา,ʔɛː˧.la˦˥.bɛː˧.maː˥˩,1,ʔɛː˧.laʔ˦˥.bɛː˧.maː˦˩,แอละแบมา,ʔɛː˧.laʔ˦˥.bɛː˧.maː˦˩
 แอลเจียร์ส,ʔɛl˧.t͡ɕia̯t̚˨˩,2,ʔɛl˧.t͡ɕiət˨˩,,ERROR: argument of type 'NoneType' is not iterable
-แอลเจียร์ส,ʔɛn˧.t͡ɕia̯t̚˨˩,2,ʔɛn˧.t͡ɕiət˨˩,,ERROR: Could not align 'แอลเจียร์ส' with 'ʔɛn˧.t͡ɕiət˨˩'
+แอลเจียร์ส,ʔɛn˧.t͡ɕia̯t̚˨˩,2,ʔɛn˧.t͡ɕiət˨˩,แอลเจียร์ส,ʔɛn˧.t͡ɕiət˨˩
 แอลเบเนีย,ʔɛl˧.beː˧.nia̯˧,1,ʔɛl˧.beː˧.niə˧,,ERROR: argument of type 'NoneType' is not iterable
 แอสทาทีน,ʔɛːs˦˥.tʰaː˧.tʰiːn˧,1,ʔɛːs˦˥.tʰaː˧.tʰiːn˧,,ERROR: argument of type 'NoneType' is not iterable
 แอสไพริน,ʔɛːs˦˥.pʰaj˧.rin˧,1,ʔɛːs˦˥.pʰaj˧.rin˧,,ERROR: argument of type 'NoneType' is not iterable
@@ -17188,7 +17188,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 โครงสร้าง,kʰroːŋ˧.saːŋ˥˩,1,kʰroːŋ˧.saːŋ˦˩,โครงสร้าง,kʰroːŋ˧.saːŋ˦˩
 โครงสร้างพื้นฐาน,kʰroːŋ˧.saːŋ˥˩.pʰɯːn˦˥.tʰaːn˩˩˦,1,kʰroːŋ˧.saːŋ˦˩.pʰɯːn˦˥.tʰaːn˨˥,โครงสร้างพื้นฐาน,kʰroːŋ˧.saːŋ˦˩.pʰɯːn˦˥.tʰaːn˨˥
 โครงเรื่อง,kʰroːŋ˧.rɯa̯ŋ˥˩,1,kʰroːŋ˧.rɯəŋ˦˩,โครงเรื่อง,kʰroːŋ˧.rɯəŋ˦˩
-โครต,kʰoːt̚˥˩,1,kʰoːt˦˩,โคต,kʰoːt˦˩
+โครต,kʰoːt̚˥˩,1,kʰoːt˦˩,,ERROR: Could not align 'โครต' with 'kʰoːt˦˩'
 โครยอ,kʰoː˧.ra˦˥.jɔː˧,1,kʰoː˧.raʔ˦˥.jɔː˧,โครยอ,kʰoː˧.raʔ˦˥.jɔː˧
 โคราช,kʰoː˧.raːt̚˥˩,1,kʰoː˧.raːt˦˩,โคราช,kʰoː˧.raːt˦˩
 โครเมียม,kʰroː˧.mia̯m˥˩,1,kʰroː˧.miəm˦˩,โครเมียม,kʰroː˧.miəm˦˩
@@ -17419,7 +17419,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 โปร่งใส,proːŋ˨˩.saj˩˩˦,1,proːŋ˨˩.saj˨˥,โปร่งใส,proːŋ˨˩.saj˨˥
 โปลิศ,poː˧.lit̚˦˥,1,poː˧.lit˦˥,โปลิศ,poː˧.lit˦˥
 โปลิโอ,poː˧.li˦˥.ʔoː˧,1,poː˧.liʔ˦˥.ʔoː˧,โปลิโอ,poː˧.liʔ˦˥.ʔoː˧
-โปสต์การ์ด,poːt̚˦˥.kaːt̚˦˥,3,poːt˦˥.kaːt˦˥,,ERROR: Could not align 'โปสต์การ์ด' with 'poːt˦˥.kaːt˦˥'
+โปสต์การ์ด,poːt̚˦˥.kaːt̚˦˥,3,poːt˦˥.kaːt˦˥,โปสต์การ์ด,poːt˦˥.kaːt˦˥
 โปสต์การ์ด,poːs˦˥.kaːt̚˦˥,3,poːs˦˥.kaːt˦˥,,ERROR: argument of type 'NoneType' is not iterable
 โปสต์การ์ด,poːt̚˦˥.sa˨˩.kaːt̚˦˥,3,poːt˦˥.saʔ˨˩.kaːt˦˥,,ERROR: Could not align 'โปสต์การ์ด' with 'poːt˦˥.saʔ˨˩.kaːt˦˥'
 โปสเตอร์,poːt̚˦˥.tɤː˥˩,2,poːt˦˥.tɤː˦˩,โปสเตอร์,poːt˦˥.tɤː˦˩
@@ -17702,7 +17702,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 โอฐ,ʔoːt̚˨˩,1,ʔoːt˨˩,โอฐ,ʔoːt˨˩
 โอฑิศา,ʔoː˧.di˨˩.saː˩˩˦,1,ʔoː˧.diʔ˨˩.saː˨˥,,ERROR: Could not align 'โอฑิศา' with 'ʔoː˧.diʔ˨˩.saː˨˥'
 โอน,ʔoːn˧,1,ʔoːn˧,โอน,ʔoːn˧
-โอนอ่อน,ʔoːn˧.ʔɔːn˨˩,1,ʔoːn˧.ʔɔːn˨˩,,ERROR: Could not align 'โอนอ่อน' with 'ʔoːn˧.ʔɔːn˨˩'
+โอนอ่อน,ʔoːn˧.ʔɔːn˨˩,1,ʔoːn˧.ʔɔːn˨˩,โอนอ่อน,ʔoːn˧.ʔɔːn˨˩
 โอนิงิริ,ʔoː˧.ni˦˥.ŋi˦˥.riʔ˦˥,1,ʔoː˧.niʔ˦˥.ŋiʔ˦˥.riʔ˦˥,โอนิงิริ,ʔoː˧.niʔ˦˥.ŋiʔ˦˥.riʔ˦˥
 โอบ,ʔoːp̚˨˩,1,ʔoːp˨˩,โอบ,ʔoːp˨˩
 โอบามา,ʔoː˧.baː˧.maː˥˩,1,ʔoː˧.baː˧.maː˦˩,โอบามา,ʔoː˧.baː˧.maː˦˩
@@ -17710,7 +17710,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 โอพอสซัม,ʔoː˧.pʰɔt̚˦˥.sam˥˩,1,ʔoː˧.pʰɔt˦˥.sam˦˩,โอพอสซัม,ʔoː˧.pʰɔt˦˥.sam˦˩
 โอมาน,ʔoː˧.maːn˧,1,ʔoː˧.maːn˧,โอมาน,ʔoː˧.maːn˧
 โอมาฮา,ʔoː˧.maː˧.haː˥˩,1,ʔoː˧.maː˧.haː˦˩,โอมาฮา,ʔoː˧.maː˧.haː˦˩
-โอยัวะ,ʔoː˧.jua̯ʔ˦˥,1,ʔoː˧.juəʔ˦˥,,ERROR: Could not align 'โอยัวะ' with 'ʔoː˧.juəʔ˦˥'
+โอยัวะ,ʔoː˧.jua̯ʔ˦˥,1,ʔoː˧.juəʔ˦˥,โอยัวะ,ʔoː˧.juəʔ˦˥
 โอรส,ʔoː˧.rot̚˦˥,3,ʔoː˧.rot˦˥,โอรส,ʔoː˧.rot˦˥
 โอรส,ʔoː˧.rot̚˦˥.,3,ʔoː˧.rot˦˥,โอรส,ʔoː˧.rot˦˥
 โอรส,ʔoː˧.ra˦˥.sa˨˩.,3,ʔoː˧.raʔ˦˥.saʔ˨˩,โอรส,ʔoː˧.raʔ˦˥.saʔ˨˩
@@ -17721,7 +17721,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 โอสถ,ʔoː˧.sot̚˨˩,3,ʔoː˧.sot˨˩,โอสถ,ʔoː˧.sot˨˩
 โอสถ,ʔoː˧.sot̚˨˩.tʰa˨˩.,3,ʔoː˧.sot˨˩.tʰaʔ˨˩,โอสถ,ʔoː˧.sot˨˩.tʰaʔ˨˩
 โอสถ,ʔoː˧.sa˨˩.tʰa˨˩.,3,ʔoː˧.saʔ˨˩.tʰaʔ˨˩,โอสถ,ʔoː˧.saʔ˨˩.tʰaʔ˨˩
-โอห์ม,ʔoːm˧,1,ʔoːm˧,,ERROR: Could not align 'โอห์ม' with 'ʔoːm˧'
+โอห์ม,ʔoːm˧,1,ʔoːm˧,โอห์ม,ʔoːm˧
 โอฬารึก,ʔoː˧.laː˧.rɯk̚˦˥,1,ʔoː˧.laː˧.rɯk˦˥,โอฬารึก,ʔoː˧.laː˧.rɯk˦˥
 โออิชิ,ʔoː˧.ʔi˨˩.t͡ɕʰiʔ˦˥,1,ʔoː˧.ʔiʔ˨˩.t͡ɕʰiʔ˦˥,โออิชิ,ʔoː˧.ʔiʔ˨˩.t͡ɕʰiʔ˦˥
 โอเค,ʔoː˧.kʰeː˧,1,ʔoː˧.kʰeː˧,โอเค,ʔoː˧.kʰeː˧
@@ -17791,8 +17791,8 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ใต้ดิน,taj˥˩.din˧,1,taj˦˩.din˧,ใต้ดิน,taj˦˩.din˧
 ใต้ถุน,taːj˥˩.tʰun˩˩˦,1,taːj˦˩.tʰun˨˥,ใต้ถุน,taːj˦˩.tʰun˨˥
 ใต้ฝ่าพระบาท,taːj˥˩.faː˨˩.pʰra˦˥.baːt̚˨˩,1,taːj˦˩.faː˨˩.pʰraʔ˦˥.baːt˨˩,ใต้ฝ่าพระบาท,taːj˦˩.faː˨˩.pʰraʔ˦˥.baːt˨˩
-ใต้ฝ่าละอองธุลีพระบาท,taːj˥˩.faː˨˩.la˦˥.ʔɔːŋ˧.tʰu˦˥.liː˧.pʰra˦˥.baːt̚˨˩,1,taːj˦˩.faː˨˩.laʔ˦˥.ʔɔːŋ˧.tʰuʔ˦˥.liː˧.pʰraʔ˦˥.baːt˨˩,,ERROR: Could not align 'ใต้ฝ่าละอองธุลีพระบาท' with 'taːj˦˩.faː˨˩.laʔ˦˥.ʔɔːŋ˧.tʰuʔ˦˥.liː˧.pʰraʔ˦˥.baːt˨˩'
-ใต้ฝ่าละอองพระบาท,taːj˥˩.faː˨˩.la˦˥.ʔɔːŋ˧.pʰra˦˥.baːt̚˨˩,1,taːj˦˩.faː˨˩.laʔ˦˥.ʔɔːŋ˧.pʰraʔ˦˥.baːt˨˩,,ERROR: Could not align 'ใต้ฝ่าละอองพระบาท' with 'taːj˦˩.faː˨˩.laʔ˦˥.ʔɔːŋ˧.pʰraʔ˦˥.baːt˨˩'
+ใต้ฝ่าละอองธุลีพระบาท,taːj˥˩.faː˨˩.la˦˥.ʔɔːŋ˧.tʰu˦˥.liː˧.pʰra˦˥.baːt̚˨˩,1,taːj˦˩.faː˨˩.laʔ˦˥.ʔɔːŋ˧.tʰuʔ˦˥.liː˧.pʰraʔ˦˥.baːt˨˩,ใต้ฝ่าละอองธุลีพระบาท,taːj˦˩.faː˨˩.laʔ˦˥.ʔɔːŋ˧.tʰuʔ˦˥.liː˧.pʰraʔ˦˥.baːt˨˩
+ใต้ฝ่าละอองพระบาท,taːj˥˩.faː˨˩.la˦˥.ʔɔːŋ˧.pʰra˦˥.baːt̚˨˩,1,taːj˦˩.faː˨˩.laʔ˦˥.ʔɔːŋ˧.pʰraʔ˦˥.baːt˨˩,ใต้ฝ่าละอองพระบาท,taːj˦˩.faː˨˩.laʔ˦˥.ʔɔːŋ˧.pʰraʔ˦˥.baːt˨˩
 ใต้เท้า,taːj˥˩.tʰaːw˦˥,2,taːj˦˩.tʰaːw˦˥,ใต้เท้า,taːj˦˩.tʰaːw˦˥
 ใต้เท้า,taj˥˩.tʰaːw˦˥,2,taj˦˩.tʰaːw˦˥,ใต้เท้า,taj˦˩.tʰaːw˦˥
 ใน,naj˧,1,naj˧,ใน,naj˧
@@ -17876,8 +17876,8 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ไก่ทอด,kaj˨˩.tʰɔːt̚˥˩,1,kaj˨˩.tʰɔːt˦˩,ไก่ทอด,kaj˨˩.tʰɔːt˦˩
 ไก่ป่า,kaj˨˩.paː˨˩,1,kaj˨˩.paː˨˩,ไก่ป่า,kaj˨˩.paː˨˩
 ไก่ฟ้า,kaj˨˩.faː˦˥,1,kaj˨˩.faː˦˥,ไก่ฟ้า,kaj˨˩.faː˦˥
-ไก่อ่อน,kaj˨˩.ʔɔːn˨˩,2,kaj˨˩.ʔɔːn˨˩,,ERROR: Could not align 'ไก่อ่อน' with 'kaj˨˩.ʔɔːn˨˩'
-ไก่อ่อน,kaj˨˩.ʔɔn˨˩,2,kaj˨˩.ʔɔn˨˩,,ERROR: Could not align 'ไก่อ่อน' with 'kaj˨˩.ʔɔn˨˩'
+ไก่อ่อน,kaj˨˩.ʔɔːn˨˩,2,kaj˨˩.ʔɔːn˨˩,ไก่อ่อน,kaj˨˩.ʔɔːn˨˩
+ไก่อ่อน,kaj˨˩.ʔɔn˨˩,2,kaj˨˩.ʔɔn˨˩,ไก่อ่อน,kaj˨˩.ʔɔn˨˩
 ไก่เขี่ย,kaj˨˩.kʰia̯˨˩,1,kaj˨˩.kʰiə˨˩,ไก่เขี่ย,kaj˨˩.kʰiə˨˩
 ไก่โห่,kaj˨˩.hoː˨˩,1,kaj˨˩.hoː˨˩,ไก่โห่,kaj˨˩.hoː˨˩
 ไก่ได้พลอย,kaj˨˩.daːj˥˩.pʰlɔːj˧,1,kaj˨˩.daːj˦˩.pʰlɔːj˧,ไก่ได้พลอย,kaj˨˩.daːj˦˩.pʰlɔːj˧
@@ -17934,8 +17934,8 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ไชโย,t͡ɕʰaj˧.joː˧,1,t͡ɕʰaj˧.joː˧,ไชโย,t͡ɕʰaj˧.joː˧
 ไซ,saj˧,1,saj˧,ไซ,saj˧
 ไซน์,saːj˧,1,saːj˧,ไซน์,saːj˧
-ไซบอร์ก,saj˧.bɔːk̚˨˩,2,saj˧.bɔːk˨˩,,ERROR: Could not align 'ไซบอร์ก' with 'saj˧.bɔːk˨˩'
-ไซบอร์ก,saj˧.bɔk̚˨˩,2,saj˧.bɔk˨˩,,ERROR: Could not align 'ไซบอร์ก' with 'saj˧.bɔk˨˩'
+ไซบอร์ก,saj˧.bɔːk̚˨˩,2,saj˧.bɔːk˨˩,ไซบอร์ก,saj˧.bɔːk˨˩
+ไซบอร์ก,saj˧.bɔk̚˨˩,2,saj˧.bɔk˨˩,ไซบอร์ก,saj˧.bɔk˨˩
 ไซบีเรีย,saj˧.biː˧.ria̯˧,1,saj˧.biː˧.riə˧,ไซบีเรีย,saj˧.biː˧.riə˧
 ไซบูทรามีน,saj˧.buː˧.tʰraː˧.miːn˧,1,saj˧.buː˧.tʰraː˧.miːn˧,,ERROR: Could not align 'ไซบูทรามีน' with 'saj˧.buː˧.tʰraː˧.miːn˧'
 ไซปรัส,saj˧.pras˦˥,2,saj˧.pras˦˥,,ERROR: argument of type 'NoneType' is not iterable
@@ -18131,7 +18131,7 @@ writing,phonetic,count,normalized_phonetic,reconstructed_text,phonetic_answer
 ไม้,maːj˦˥,1,maːj˦˥,ไม้,maːj˦˥
 ไม้กวาด,maj˦˥.kwaːt̚˨˩,2,maj˦˥.kwaːt˨˩,ไม้กวาด,maj˦˥.kwaːt˨˩
 ไม้กวาด,maːj˦˥.kwaːt̚˨˩,2,maːj˦˥.kwaːt˨˩,ไม้กวาด,maːj˦˥.kwaːt˨˩
-ไม้กอล์ฟ,maːj˦˥.kɔːp̚˦˥,2,maːj˦˥.kɔːp˦˥,,ERROR: Could not align 'ไม้กอล์ฟ' with 'maːj˦˥.kɔːp˦˥'
+ไม้กอล์ฟ,maːj˦˥.kɔːp̚˦˥,2,maːj˦˥.kɔːp˦˥,ไม้กอล์ฟ,maːj˦˥.kɔːp˦˥
 ไม้กอล์ฟ,maːj˦˥.kɔːf˦˥,2,maːj˦˥.kɔːf˦˥,,ERROR: argument of type 'NoneType' is not iterable
 ไม้กางเขน,maːj˦˥.kaːŋ˧.kʰeːn˩˩˦,1,maːj˦˥.kaːŋ˧.kʰeːn˨˥,ไม้กางเขน,maːj˦˥.kaːŋ˧.kʰeːn˨˥
 ไม้ขนไก่,maːj˦˥.kʰon˩˩˦.kaj˨˩,1,maːj˦˥.kʰon˨˥.kaj˨˩,ไม้ขนไก่,maːj˦˥.kʰon˨˥.kaj˨˩

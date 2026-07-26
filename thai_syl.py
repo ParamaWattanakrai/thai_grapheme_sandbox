@@ -257,6 +257,13 @@ class Syllable:
         vowel_form, nucleus = cls._get_vowel(text)
         onset_chars, coda_chars = cls._get_consonants(text, vowel_form)
 
+        def _strip_trailing_cancelled(s: str) -> str:
+            while len(s) >= 2 and s[-1] == '์':
+                s = s[:-2]
+            return s
+
+        cleaned_onset_chars = _strip_trailing_cancelled(onset_chars)
+
         has_ambiguous_cluster = False
         has_impossible_cluster = False
         cluster_type = None
@@ -288,7 +295,7 @@ class Syllable:
             elif sesquisyllable:
                 onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
             else:
-                if len(onset_chars) > 2:
+                if len(cleaned_onset_chars) > 2:
                     candidate_onset, remainder = onset_chars[:2], onset_chars[2:]
                     if cls._cluster_is_valid(candidate_onset):
                         cluster_type = get_key(ONSET_CLUSTERS, candidate_onset)
@@ -299,7 +306,7 @@ class Syllable:
                         has_ambiguous_cluster = True
                         onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
                 else:
-                    cluster_type = get_key(ONSET_CLUSTERS, onset_chars)
+                    cluster_type = get_key(ONSET_CLUSTERS, cleaned_onset_chars)
                     if force_cluster:
                         onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
                     elif cluster_type in ['old_thai', 'old_khmer']:
