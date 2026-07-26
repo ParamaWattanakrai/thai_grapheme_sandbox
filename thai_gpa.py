@@ -20,7 +20,7 @@ def _compute_can_merge(clusters: list) -> list:
         syllable = Syllable.extract(cluster, force_cluster=False, sesquisyllable=False)
         if re.match(r'^[เ-ไ]', cluster) or len(syllable.onset_chars) > 1:
             can_merge[i] = False
-        if re.search(r'[ะำ์]', cluster):
+        if re.search(r'[ะำ]', cluster):
             can_merge[i + 1] = False
     return can_merge
 
