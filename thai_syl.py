@@ -143,10 +143,14 @@ class SyllablePart:
     assimilated_vowel_tone_split: Optional[Tuple[str, str]] = None
     assimilated_vowel_tone: Optional[str] = None
 
+    irregular_vowel: Optional[str] = None
+    irregular_vowel_duration: Optional[str] = None
+    irregular_tone: Optional[str] = None
+
     def __getitem__(self, item: str) -> Any:
         return getattr(self, item)
 
-    def get_ipa(self) -> str:
+    def get_ipa(self, apply_irregularities: bool = True) -> str:
         if not self.onset and not self.nucleus:
             return ""
         if self.assimilate_vowel and self.assimilated_nucleus is not None:
@@ -157,6 +161,17 @@ class SyllablePart:
             nucleus = self.nucleus
             coda = self.coda
             tone = (self.assimilated_tone if self.assimilate_tone and self.assimilated_tone is not None else self.tone)
+
+        if apply_irregularities and self.irregular_vowel is not None:
+            nucleus = self.irregular_vowel
+        if apply_irregularities and self.irregular_vowel_duration is not None and nucleus:
+            if self.irregular_vowel_duration == 'short':
+                nucleus = nucleus.rstrip('ː')
+            elif self.irregular_vowel_duration == 'long' and not nucleus.endswith('ː'):
+                nucleus = nucleus + 'ː'
+        if apply_irregularities and self.irregular_tone is not None:
+            tone = self.irregular_tone
+
         return (self.onset or '') + (self.medial or '') + (nucleus or '') + (coda or '') + (tone or '')
 
 @dataclass
@@ -169,6 +184,7 @@ class Syllable:
     is_tone_assimilated: bool = False
     is_vowel_assimilated: bool = False
     is_reduplicated: bool = False
+    is_irregular: bool = False
     
     minor_syllable: SyllablePart = field(default_factory=SyllablePart)
     main_syllable: SyllablePart = field(default_factory=SyllablePart)
@@ -222,10 +238,10 @@ class Syllable:
         return getattr(self, item)
 
     def __str__(self) -> str:
-        return self.get_ipa(is_reduplicated=self.is_reduplicated)
+        return self.get_ipa(is_reduplicated=self.is_reduplicated, apply_irregularities=True)
 
     def __repr__(self) -> str:
-        return self.get_ipa(is_reduplicated=self.is_reduplicated)
+        return self.get_ipa(is_reduplicated=self.is_reduplicated, apply_irregularities=True)
 
     @classmethod
     def _cluster_is_valid(cls, chars: str) -> bool:
@@ -549,14 +565,14 @@ class Syllable:
 
         return tone_split, old_tone
 
-    def get_ipa(self, is_reduplicated: bool = False) -> str:
+    def get_ipa(self, is_reduplicated: bool = False, apply_irregularities: bool = True) -> str:
         parts = []
         if self.minor_syllable.nucleus:
-            parts.append(self.minor_syllable.get_ipa())
+            parts.append(self.minor_syllable.get_ipa(apply_irregularities=apply_irregularities))
         if self.main_syllable.nucleus:
-            parts.append(self.main_syllable.get_ipa())
+            parts.append(self.main_syllable.get_ipa(apply_irregularities=apply_irregularities))
         if is_reduplicated and self.is_reduplicable and self.reduplicated_syllable.nucleus:
-            parts.append(self.reduplicated_syllable.get_ipa())
+            parts.append(self.reduplicated_syllable.get_ipa(apply_irregularities=apply_irregularities))
         return '.'.join(parts)
     
     def reconstruct_text(self) -> str:

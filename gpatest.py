@@ -1,8 +1,8 @@
 import thai_gpa
 
-syllables = thai_gpa.align('ฤทธิ์', 'rit˦˥')
+syllables = thai_gpa.align('การขัดกันของผลประโยชน์', 'kaːn˧.kʰat˨˩.kan˧.kʰɔːŋ˨˥.pʰon˨˥.praʔ˨˩.joːt˨˩')
 print(syllables)
-
+print(syllables[0].get_ipa(apply_irregularities=False))
 
 # 'การขัดกันของผลประโยชน์', 'kaːn˧.kʰat˨˩.kan˧.kʰɔːŋ˨˥.pʰon˨˥.praʔ˨˩.joːt˨˩'
 # 'การตลาด', 'kaːn˧.taʔ˨˩.laːt˨˩'
@@ -17,3 +17,4 @@ print(syllables)
 # 'กรณี', 'kɔː˧.raʔ˦˥.niː˧'
 # 'เล่น', 'len˦˩'
 # 'ไหม', 'maj˦˥'
+# 'ฤทธิ์', 'rit˦˥'
