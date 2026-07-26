@@ -1,6 +1,6 @@
 import thai_gpa
 
-syllables = thai_gpa.align('ปอร์ต', 'pɔːt˨˩')
+syllables = thai_gpa.align('เกรปฟรุต', 'kreːp˦˥.frut˦˥')
 print(syllables)
 print(syllables[0].get_ipa(apply_irregularities=False))
 

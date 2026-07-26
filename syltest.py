@@ -42,7 +42,10 @@ cases = [
     ('ทิฐิ', False, False),
     ('เอ๋อ', False, False),
     ('อ๋อง', False, False),
-    ('ปอร์ต', False, False),
+    ('เมรุ', False, False),
+    ('พรหม', False, False),
+    ('ฤๅ', False, False),
+    ('โครต', False, False)
 ]
 
 for text, force_cluster, sesqui in cases:
