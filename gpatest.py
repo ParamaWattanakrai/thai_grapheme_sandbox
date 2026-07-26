@@ -1,8 +1,8 @@
 import thai_gpa
 
-syllables = thai_gpa.align('เกรปฟรุต', 'kreːp˦˥.frut˦˥')
+syllables = thai_gpa.align('อธิบดี', 'ʔaʔ˨˩.tʰiʔ˦˥.bɔː˧.diː˧')
 print(syllables)
-print(syllables[0].get_ipa(apply_irregularities=False))
+print(syllables[2].get_ipa(apply_irregularities=False))
 
 # 'การขัดกันของผลประโยชน์', 'kaːn˧.kʰat˨˩.kan˧.kʰɔːŋ˨˥.pʰon˨˥.praʔ˨˩.joːt˨˩'
 # 'การตลาด', 'kaːn˧.taʔ˨˩.laːt˨˩'

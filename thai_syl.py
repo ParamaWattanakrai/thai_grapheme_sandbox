@@ -42,7 +42,7 @@ ONSET_CLUSTERS = {
         'กร', 'ตร', 'ทร', 'ปร', 'ผล', 'สร',
         'คร', 'พร', 'กล', 'คล', 'ปล', 'พล', 'มล', 'กว', 'คว'],
     'orthography': ['จร', 'ซร'],
-    'foreign': ['บร', 'ดร', 'ฟร', 'ฟล']
+    'foreign': ['บร', 'ดร', 'ฟร']
 }
 
 CODAS = {
@@ -146,6 +146,7 @@ class SyllablePart:
     irregular_vowel: Optional[str] = None
     irregular_vowel_duration: Optional[str] = None
     irregular_tone: Optional[str] = None
+    irregular_coda: Optional[str] = None
 
     def __getitem__(self, item: str) -> Any:
         return getattr(self, item)
@@ -171,6 +172,8 @@ class SyllablePart:
                 nucleus = nucleus + 'ː'
         if apply_irregularities and self.irregular_tone is not None:
             tone = self.irregular_tone
+        if apply_irregularities and self.irregular_coda is not None:
+            coda = self.irregular_coda
 
         return (self.onset or '') + (self.medial or '') + (nucleus or '') + (coda or '') + (tone or '')
 
@@ -329,21 +332,37 @@ class Syllable:
             m_onset_chars = onset_chars[0]
             m_onset = get_key(OLD_THAI_ONSETS, m_onset_chars)
             m_class = get_key(CONSONANT_CLASSES, m_onset_chars)
-            m_tone_split, m_old_tone = cls._get_tones('', m_class, 'dead', 'short')
-            
-            minor_part = SyllablePart(
-                vowel_form=('', ''),
-                onset_chars=m_onset_chars,
-                onset=m_onset,
-                medial=None,
-                nucleus='a',
-                coda='ʔ',
-                vowel_duration='short',
-                coda_type='dead',
-                consonant_class=m_class,
-                tone_split=m_tone_split,
-                tone=m_old_tone,
-            )
+
+            if m_onset_chars == 'บ':
+                m_tone_split, m_old_tone = cls._get_tones('', m_class, 'live', 'long')
+                minor_part = SyllablePart(
+                    vowel_form=('', ''),
+                    onset_chars=m_onset_chars,
+                    onset=m_onset,
+                    medial=None,
+                    nucleus='ɔː',
+                    coda=None,
+                    vowel_duration='long',
+                    coda_type='live',
+                    consonant_class=m_class,
+                    tone_split=m_tone_split,
+                    tone=m_old_tone,
+                )
+            else:
+                m_tone_split, m_old_tone = cls._get_tones('', m_class, 'dead', 'short')
+                minor_part = SyllablePart(
+                    vowel_form=('', ''),
+                    onset_chars=m_onset_chars,
+                    onset=m_onset,
+                    medial=None,
+                    nucleus='a',
+                    coda='ʔ',
+                    vowel_duration='short',
+                    coda_type='dead',
+                    consonant_class=m_class,
+                    tone_split=m_tone_split,
+                    tone=m_old_tone,
+                )
             onset_chars = onset_chars[1:]
 
         m_onset, m_medial, cluster_type_mapped, m_vowel, m_coda, m_vowel_duration, m_coda_type, m_consonant_class, m_tone_split, m_old_tone = cls._process_phonemes(
@@ -439,7 +458,10 @@ class Syllable:
         onset, medial, cluster_type = cls._get_onset(onset_chars, force_cluster=force_cluster)
         coda = cls._get_coda(coda_chars)
         nucleus = raw_vowel
-        
+
+        if vowel_form == ('', '') and onset_chars == 'บ' and nucleus == 'a':
+            nucleus = 'ɔː'
+
         if nucleus == 'o, ɔː':
             if coda_chars and re.fullmatch(expand(r'รf?'), coda_chars):
                 nucleus = 'ɔː'
@@ -525,7 +547,12 @@ class Syllable:
         digraph = get_key(DIGRAPHS, cleaned_onset_chars)
 
         if len(cleaned_onset_chars) == 2 and digraph is None and (cluster_type in ['old_thai', 'old_khmer'] or force_cluster):
-            if cleaned_onset_chars in ['ทร', 'สร']:
+            if cleaned_onset_chars in ['ทร', 'สร'] and not force_cluster:
+                # ทร/สร conventionally collapse to a single /s/ (ทราบ, ทราย,
+                # ทรง, สร้าง) -- that's the default reading. But a handful of
+                # etymologically Sanskrit words (จันทรา) keep the genuine
+                # cluster instead; force_cluster=True is how a caller asks
+                # for that alternate reading rather than the usual /s/.
                 return 's', None, cluster_type
             cluster_type = cluster_type if cluster_type else 'foreign'
             return get_key(OLD_THAI_ONSETS, cleaned_onset_chars[0]), get_key(OLD_THAI_ONSETS, cleaned_onset_chars[1]), cluster_type

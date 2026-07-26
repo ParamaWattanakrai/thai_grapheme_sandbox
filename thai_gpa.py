@@ -142,33 +142,39 @@ def _lenient_match(part_objs: list, target_slice: list):
     """
     Fallback comparison used only once the strict pass has found no
     complete solution anywhere in the word. Unlike the strict pass (which
-    requires an exact string match), this allows each part's nucleus and
-    tone to independently differ from its target -- never onset, medial, or
-    coda, since those aren't the kind of thing that goes irregular on their
-    own. A word can need more than one irregularity at once (เจน is spelled
-    with the long-eː เ pattern and its class/coda would regularly give ˧,
-    but it's actually said with both a short e AND tone ˦˩), so nucleus and
-    tone are checked independently rather than requiring at most one to be
+    requires an exact string match), this allows each part's coda, nucleus,
+    and tone to independently differ from its target -- never onset or
+    medial, since those aren't the kind of thing that goes irregular on
+    their own. A word can need more than one irregularity at once (เจน is
+    spelled with the long-eː เ pattern and its class/coda would regularly
+    give ˧, but it's actually said with both a short e AND tone ˦˩), so
+    each is checked independently rather than requiring at most one to be
     off. thai_ipa.parse() already hands back onset/medial/nucleus/coda/tone
     as separate fields, so this can tell exactly which respects are off
     rather than falling back to fuzzy string distance. A nucleus mismatch is
     further split: if stripping the length mark makes both sides equal,
     it's the same vowel just spoken short/long (irregular_vowel_duration);
-    otherwise it's a genuinely different vowel (irregular_vowel).
+    otherwise it's a genuinely different vowel (irregular_vowel). Coda
+    mismatches cover borrowed-word codas that skip standard Thai
+    neutralization -- ออสเตรีย's -s (ส would regularly neutralize to -t),
+    ครัช's -t͡ɕʰ (ช would regularly neutralize to -t), and dark-l -w
+    (ล would regularly neutralize to -n).
 
     Returns a list of (part, kind, value) irregularities to apply if every
-    part's onset/medial/coda match exactly (the list is empty when nucleus
-    and tone also matched exactly -- still a valid, just non-irregular,
-    lenient match), or None if any part's onset/medial/coda don't match --
-    too different to call "irregular".
+    part's onset/medial match exactly (the list is empty when coda,
+    nucleus, and tone also matched exactly -- still a valid, just
+    non-irregular, lenient match), or None if any part's onset/medial don't
+    match -- too different to call "irregular".
     """
     irregularities = []
     for p, t in zip(part_objs, target_slice):
         onset_ok = (p.onset or '') == (t['initial'] or '')
         medial_ok = (p.medial or '') == (t['medial'] or '')
-        coda_ok = (_effective_coda(p) or '') == (t['coda'] or '')
-        if not (onset_ok and medial_ok and coda_ok):
+        if not (onset_ok and medial_ok):
             return None
+
+        if (_effective_coda(p) or '') != (t['coda'] or ''):
+            irregularities.append((p, 'coda', t['coda']))
 
         p_nucleus = _effective_nucleus(p)
         if p_nucleus != t['nucleus']:
@@ -269,6 +275,8 @@ def align_all(text: str, ipa: str) -> list:
                                 part.irregular_vowel = value
                             elif kind == 'duration':
                                 part.irregular_vowel_duration = value
+                            elif kind == 'coda':
+                                part.irregular_coda = value
                             else:
                                 part.irregular_tone = value
                         if irregularities:
@@ -294,9 +302,9 @@ def align_all(text: str, ipa: str) -> list:
     def _signature(s: 'Syllable') -> tuple:
         return (
             s.text, s.is_reduplicated, bool(s.minor_syllable.nucleus),
-            s.main_syllable.irregular_vowel, s.main_syllable.irregular_vowel_duration, s.main_syllable.irregular_tone,
-            s.minor_syllable.irregular_vowel, s.minor_syllable.irregular_vowel_duration, s.minor_syllable.irregular_tone,
-            s.reduplicated_syllable.irregular_vowel, s.reduplicated_syllable.irregular_vowel_duration, s.reduplicated_syllable.irregular_tone,
+            s.main_syllable.irregular_vowel, s.main_syllable.irregular_vowel_duration, s.main_syllable.irregular_tone, s.main_syllable.irregular_coda,
+            s.minor_syllable.irregular_vowel, s.minor_syllable.irregular_vowel_duration, s.minor_syllable.irregular_tone, s.minor_syllable.irregular_coda,
+            s.reduplicated_syllable.irregular_vowel, s.reduplicated_syllable.irregular_vowel_duration, s.reduplicated_syllable.irregular_tone, s.reduplicated_syllable.irregular_coda,
         )
 
     seen = set()

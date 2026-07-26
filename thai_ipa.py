@@ -19,11 +19,11 @@ NUCLEI = {
     'iə', 'ɯə', 'uə'
 }
 
-CODAS = {'ʔ', 'k', 'p', 't', 'n', 'm', 'ŋ', 'w', 'j'}
+CODAS = {'ʔ', 'k', 'p', 't', 'n', 'm', 'ŋ', 'w', 'j', 's', 't͡ɕʰ'}
 
 TONES = {'˧', '˨˩', '˦˩', '˦˥', '˨˥'}
 
-OBSTRUENTS = {'ʔ', 'k', 'p', 't'}
+OBSTRUENTS = {'ʔ', 'k', 'p', 't', 's', 't͡ɕʰ'}
 
 TONE_PATTERN = re.compile(r'[˥˦˧˨˩]+$')
 
