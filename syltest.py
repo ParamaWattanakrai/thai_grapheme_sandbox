@@ -31,9 +31,10 @@ cases = [
     ('ไหม', False, False),
     ('แหน', True, False),
     ('แปล', True, False),
-    ('พฤติ', False, False)
+    ('พฤติ', False, False),
+    ('เจน', False, False)
 ]
 
 for text, force_cluster, sesqui in cases:
     syllable = Syllable.extract(text, force_cluster=force_cluster, sesquisyllable=sesqui)
-    print(f'{syllable.reconstruct_text()}, {syllable}, cluster {force_cluster}, sesqui {sesqui}, {syllable.main_syllable.vowel_form}')
+    print(f'{syllable.reconstruct_text()}, {syllable}, {syllable.sound_shift()}, cluster {force_cluster}, sesqui {sesqui}, {syllable.main_syllable.vowel_form}')
