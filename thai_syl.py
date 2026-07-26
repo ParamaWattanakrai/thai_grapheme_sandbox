@@ -209,7 +209,6 @@ class Syllable:
         (r'เy*cืt?อะr?p*f?', ('เ', 'ือะ'), 'ɯəː'),
         (r'เy*cืt?อ?r?p*f?', ('เ', 'ือ'), 'ɯə'),
         (r'y*ct?ะr?p*f?', ('', 'ะ'), 'a'),
-        (r'y*cัt?p*cิ?f?', ('', 'ั'), 'a'),
         (r'y*ct?าr?p*f?', ('', 'า'), 'aː'),
         (r'y*ct?ำr?f?', ('', 'ำ'), 'am'),
         (r'y*cิt?r?p*f?', ('', 'ิ'), 'i'),
@@ -222,7 +221,9 @@ class Syllable:
         (r'y*c็t?อr?p+f?', ('', '็อ'), 'ɔ'),
         (r'y*cัt?วะf?', ('', 'ัวะ'), 'uə'),
         (r'y*cัt?วf?', ('', 'ัว'), 'uə'),
-        (r'y*ct?รรp*f?', ('', 'รร'), 'a'),
+        (r'y*cัt?p*cิ?f?', ('', 'ั'), 'a'),
+        (r'y*ct?รรp+f?', ('', 'รร'), 'a'),
+        (r'y*ct?รรf?', ('', 'รร'), 'an'),
         (r'y*ct?อr?p*f?', ('', 'อ'), 'ɔː'),
         (r'y*ct?วr?p*f?', ('', 'ว'), 'uə'),
         (r'เy*ct?r?p*f?', ('เ', ''), 'eː'),
@@ -298,7 +299,7 @@ class Syllable:
                         onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
                     elif cluster_type in ['old_thai', 'old_khmer']:
                         onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
-                    elif nucleus and nucleus[-1] in ['j', 'w', 'm', 'ɰ']:
+                    elif nucleus and nucleus[-1] in ['j', 'w', 'm', 'ɰ', 'n']:
                         onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
                     else:
                         has_ambiguous_cluster = True
@@ -437,7 +438,7 @@ class Syllable:
         if nucleus and nucleus[0] in ['r', 'l']:
             medial = nucleus[0]
             nucleus = nucleus[1:]
-        if nucleus and nucleus[-1] in ['j', 'w', 'm', 'ɰ']:
+        if nucleus and nucleus[-1] in ['j', 'w', 'm', 'ɰ', 'n']:
             coda = nucleus[-1]
             nucleus = nucleus[:-1]
             
@@ -485,15 +486,6 @@ class Syllable:
         if post_vowel in ('ฤ', 'ฦ') and text.startswith(post_vowel):
             return '', text[len(post_vowel):]
 
-        # A tone mark always attaches directly to the vowel-above component,
-        # so for a multi-character vowel literal like ีย (เดี่ยว) or ือ
-        # (เนื้อ), it can land *between* those characters in real spelling --
-        # _VOWEL_PATTERNS already accounts for this (its t? sits right
-        # between ี and ย), but treating pre_vowel/post_vowel as fixed
-        # contiguous literals here doesn't, so the search below would never
-        # find "ีย" as a substring and fall through to dumping the whole
-        # text into onset_chars. Allow an optional tone mark between every
-        # adjacent character pair to match what actually gets matched.
         def _with_optional_tone_gaps(literal: str) -> str:
             tone_gap = expand('t') + '?'
             return tone_gap.join(re.escape(ch) for ch in literal)

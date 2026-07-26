@@ -33,6 +33,7 @@ cases = [
     ('แปล', True, False),
     ('พฤติ', False, False),
     ('หม้าย', True, False),
+    ('รั่ว', False, False),
     ('สรร', False, False)
 ]
 
