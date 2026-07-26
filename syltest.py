@@ -32,7 +32,8 @@ cases = [
     ('แหน', True, False),
     ('แปล', True, False),
     ('พฤติ', False, False),
-    ('หม้าย', True, False)
+    ('หม้าย', True, False),
+    ('เดี่ยว', False, False)
 ]
 
 for text, force_cluster, sesqui in cases:

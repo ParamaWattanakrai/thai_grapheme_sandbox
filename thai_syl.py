@@ -485,12 +485,28 @@ class Syllable:
         if post_vowel in ('ฤ', 'ฦ') and text.startswith(post_vowel):
             return '', text[len(post_vowel):]
 
-        pattern = rf'^{pre_vowel}(.*?){post_vowel}$'
+        # A tone mark always attaches directly to the vowel-above component,
+        # so for a multi-character vowel literal like ีย (เดี่ยว) or ือ
+        # (เนื้อ), it can land *between* those characters in real spelling --
+        # _VOWEL_PATTERNS already accounts for this (its t? sits right
+        # between ี and ย), but treating pre_vowel/post_vowel as fixed
+        # contiguous literals here doesn't, so the search below would never
+        # find "ีย" as a substring and fall through to dumping the whole
+        # text into onset_chars. Allow an optional tone mark between every
+        # adjacent character pair to match what actually gets matched.
+        def _with_optional_tone_gaps(literal: str) -> str:
+            tone_gap = expand('t') + '?'
+            return tone_gap.join(re.escape(ch) for ch in literal)
+
+        pre_pattern = _with_optional_tone_gaps(pre_vowel)
+        post_pattern = _with_optional_tone_gaps(post_vowel)
+
+        pattern = rf'^{pre_pattern}(.*?){post_pattern}$'
         match = re.search(pattern, text)
         if match:
             return match.group(1), ''
 
-        pattern = rf'^{pre_vowel}(.+?){post_vowel}(.+)$'
+        pattern = rf'^{pre_pattern}(.+?){post_pattern}(.+)$'
         match = re.search(pattern, text)
         if match:
             return match.group(1), match.group(2)
@@ -582,7 +598,8 @@ class Syllable:
         tone_marker = self.main_syllable.tone_marker if self.main_syllable.tone_marker else ''
         if any(ch in self.main_syllable.vowel_form[1] for ch in ['ั', 'ิ', 'ี', 'ึ', 'ื', 'ุ', 'ู']):
             onset_tone = self.main_syllable.onset_chars
-            vowel_tone = self.main_syllable.vowel_form[1] + tone_marker
+            vf1 = self.main_syllable.vowel_form[1]
+            vowel_tone = vf1[0] + tone_marker + vf1[1:]
         else:
             onset_tone = self.main_syllable.onset_chars + tone_marker
             vowel_tone = self.main_syllable.vowel_form[1]
