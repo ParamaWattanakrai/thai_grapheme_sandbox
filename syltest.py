@@ -45,7 +45,7 @@ cases = [
     ('เมรุ', False, False),
     ('พรหม', False, False),
     ('ฤๅ', False, False),
-    ('โครต', False, False)
+    ('ไทร', True, False)
 ]
 
 for text, force_cluster, sesqui in cases:

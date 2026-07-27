@@ -147,6 +147,8 @@ class SyllablePart:
     irregular_vowel_duration: Optional[str] = None
     irregular_tone: Optional[str] = None
     irregular_coda: Optional[str] = None
+    irregular_onset: Optional[str] = None
+    irregular_medial: Optional[str] = None
 
     def __getitem__(self, item: str) -> Any:
         return getattr(self, item)
@@ -163,6 +165,13 @@ class SyllablePart:
             coda = self.coda
             tone = (self.assimilated_tone if self.assimilate_tone and self.assimilated_tone is not None else self.tone)
 
+        onset = self.onset
+        medial = self.medial
+
+        if apply_irregularities and self.irregular_onset is not None:
+            onset = self.irregular_onset
+        if apply_irregularities and self.irregular_medial is not None:
+            medial = self.irregular_medial
         if apply_irregularities and self.irregular_vowel is not None:
             nucleus = self.irregular_vowel
         if apply_irregularities and self.irregular_vowel_duration is not None and nucleus:
@@ -175,7 +184,7 @@ class SyllablePart:
         if apply_irregularities and self.irregular_coda is not None:
             coda = self.irregular_coda
 
-        return (self.onset or '') + (self.medial or '') + (nucleus or '') + (coda or '') + (tone or '')
+        return (onset or '') + (medial or '') + (nucleus or '') + (coda or '') + (tone or '')
 
 @dataclass
 class Syllable:
@@ -192,6 +201,9 @@ class Syllable:
     minor_syllable: SyllablePart = field(default_factory=SyllablePart)
     main_syllable: SyllablePart = field(default_factory=SyllablePart)
     reduplicated_syllable: SyllablePart = field(default_factory=SyllablePart)
+
+    NO_WRITTEN_VOWEL = ('', '')
+    SHORT_INHERENT_VOWEL = 'a'
 
     _VOWEL_PATTERNS = [
         (r'y*ฤp*f?', ('', 'ฤ'), 'rɯ'),
@@ -234,8 +246,8 @@ class Syllable:
         (r'แy*ct?r?p*f?', ('แ', ''), 'ɛː'),
         (r'ไy*ct?r?p*f?', ('ไ', ''), 'aj'),
         (r'ใy*ct?r?p*f?', ('ใ', ''), 'aɰ'),
-        (r'y*cp+f?', ('', ''), 'o, ɔː'),
-        (r'y*cf?', ('', ''), 'a'),
+        (r'y*cp+f?', NO_WRITTEN_VOWEL, 'o, ɔː'),
+        (r'y*cf?', NO_WRITTEN_VOWEL, SHORT_INHERENT_VOWEL),
     ]
 
     def __getitem__(self, item: str) -> Any:
@@ -321,10 +333,10 @@ class Syllable:
                     cluster_type = get_key(ONSET_CLUSTERS, cleaned_onset_chars)
                     if force_cluster:
                         onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
-                    elif cluster_type in ['old_thai', 'old_khmer']:
-                        onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
                     elif nucleus and nucleus[-1] in ['j', 'w', 'm', 'ɰ', 'n', 'ʔ']:
                         onset_chars, coda_chars = onset_chars[:2], onset_chars[2:]
+                    elif cluster_type in ['old_thai', 'old_khmer']:
+                        onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
                     else:
                         has_ambiguous_cluster = True
                         onset_chars, coda_chars = onset_chars[:1], onset_chars[1:]
@@ -345,7 +357,7 @@ class Syllable:
             if m_onset_chars == 'บ':
                 m_tone_split, m_old_tone = cls._get_tones('', m_class, 'live', 'long')
                 minor_part = SyllablePart(
-                    vowel_form=('', ''),
+                    vowel_form=cls.NO_WRITTEN_VOWEL,
                     onset_chars=m_onset_chars,
                     onset=m_onset,
                     medial=None,
@@ -360,11 +372,11 @@ class Syllable:
             else:
                 m_tone_split, m_old_tone = cls._get_tones('', m_class, 'dead', 'short')
                 minor_part = SyllablePart(
-                    vowel_form=('', ''),
+                    vowel_form=cls.NO_WRITTEN_VOWEL,
                     onset_chars=m_onset_chars,
                     onset=m_onset,
                     medial=None,
-                    nucleus='a',
+                    nucleus=cls.SHORT_INHERENT_VOWEL,
                     coda='ʔ',
                     vowel_duration='short',
                     coda_type='dead',
@@ -425,12 +437,12 @@ class Syllable:
                 redup_text = redup_source
                 
             r_vowel_form, r_raw_vowel = cls._get_vowel(redup_text)
-            if r_vowel_form != ('', ''):
+            if r_vowel_form != cls.NO_WRITTEN_VOWEL:
                 r_onset_chars, r_coda_chars = cls._get_consonants(redup_text, r_vowel_form)
             else:
                 r_onset_chars = redup_text
                 r_coda_chars = ''
-                r_raw_vowel = 'a'
+                r_raw_vowel = cls.SHORT_INHERENT_VOWEL
 
             r_onset, r_medial, r_cluster_type, r_vowel, r_coda, r_vowel_duration, r_coda_type, r_consonant_class, r_tone_split, r_old_tone = cls._process_phonemes(
                 r_vowel_form, r_onset_chars, r_coda_chars, '', r_raw_vowel, force_cluster=True
@@ -469,7 +481,7 @@ class Syllable:
         coda = cls._get_coda(coda_chars)
         nucleus = raw_vowel
 
-        if vowel_form == ('', '') and onset_chars == 'บ' and nucleus == 'a':
+        if vowel_form == cls.NO_WRITTEN_VOWEL and onset_chars == 'บ' and nucleus == cls.SHORT_INHERENT_VOWEL:
             nucleus = 'ɔː'
 
         if nucleus == 'o, ɔː':
@@ -519,7 +531,7 @@ class Syllable:
         for pat, form, val in cls._VOWEL_PATTERNS:
             if re.fullmatch(expand(pat), text):
                 return form, val
-        return ('', ''), 'a'
+        return cls.NO_WRITTEN_VOWEL, cls.SHORT_INHERENT_VOWEL
 
     @classmethod
     def _fullmatches_vowel_pattern(cls, text: str) -> bool:
@@ -561,7 +573,7 @@ class Syllable:
         digraph = get_key(DIGRAPHS, cleaned_onset_chars)
 
         if len(cleaned_onset_chars) == 2 and digraph is None and (cluster_type in ['old_thai', 'old_khmer'] or force_cluster):
-            if cleaned_onset_chars in ['ทร', 'สร'] and not force_cluster:
+            if cleaned_onset_chars in ['ทร', 'สร']:
                 return 's', None, cluster_type
             cluster_type = cluster_type if cluster_type else 'foreign'
             return get_key(OLD_THAI_ONSETS, cleaned_onset_chars[0]), get_key(OLD_THAI_ONSETS, cleaned_onset_chars[1]), cluster_type
@@ -682,8 +694,8 @@ class Syllable:
         if not (
             m.onset_chars and len(m.onset_chars) == 1
             and not m.coda_chars
-            and m.vowel_form == ('', '')
-            and m.nucleus == 'a'
+            and m.vowel_form == self.NO_WRITTEN_VOWEL
+            and m.nucleus == self.SHORT_INHERENT_VOWEL
             and donor.onset_chars == 'ร'
         ):
             return
@@ -722,10 +734,10 @@ class Syllable:
                 if main.onset + main.medial == epenthesis:
                     minor.text = main.onset_chars[0]
                     minor.onset_chars = minor.text
-                    minor.vowel_form = ('', '')
+                    minor.vowel_form = self.NO_WRITTEN_VOWEL
                     minor.coda_chars = ''
                     minor.tone_marker = ''
-                    minor.nucleus = 'a'
+                    minor.nucleus = self.SHORT_INHERENT_VOWEL
                     minor.coda = 'ʔ'
                     minor.vowel_duration = 'short'
                     minor.onset = get_key(OLD_THAI_ONSETS, minor.text)
