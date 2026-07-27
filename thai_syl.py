@@ -257,6 +257,15 @@ class Syllable:
 
     @classmethod
     def extract(cls, text: str, force_cluster: bool = False, sesquisyllable: bool = False) -> 'Syllable':
+        original_text = text
+        tail_leftover = ''
+        if not cls._fullmatches_vowel_pattern(text):
+            for k in range(len(text) - 1, 0, -1):
+                if cls._fullmatches_vowel_pattern(text[:k]):
+                    tail_leftover = text[k:]
+                    text = text[:k]
+                    break
+
         vowel_form, nucleus = cls._get_vowel(text)
         onset_chars, coda_chars = cls._get_consonants(text, vowel_form)
 
@@ -409,21 +418,22 @@ class Syllable:
         is_reduplicable = False
         if coda_chars and '์' not in coda_chars:
             is_reduplicable = True
-            if len(coda_chars) > 1 and coda_chars[0] in ['ร', 'ห']:
-                redup_text = coda_chars[1:]
+            redup_source = coda_chars + tail_leftover
+            if len(redup_source) > 1 and redup_source[0] in ['ร', 'ห']:
+                redup_text = redup_source[1:]
             else:
-                redup_text = coda_chars
+                redup_text = redup_source
                 
             r_vowel_form, r_raw_vowel = cls._get_vowel(redup_text)
-            r_coda_chars = ''
             if r_vowel_form != ('', ''):
-                r_onset_chars, _ = cls._get_consonants(redup_text, r_vowel_form)
+                r_onset_chars, r_coda_chars = cls._get_consonants(redup_text, r_vowel_form)
             else:
                 r_onset_chars = redup_text
+                r_coda_chars = ''
                 r_raw_vowel = 'a'
 
             r_onset, r_medial, r_cluster_type, r_vowel, r_coda, r_vowel_duration, r_coda_type, r_consonant_class, r_tone_split, r_old_tone = cls._process_phonemes(
-                r_vowel_form, r_onset_chars, '', '', r_raw_vowel, force_cluster=True
+                r_vowel_form, r_onset_chars, r_coda_chars, '', r_raw_vowel, force_cluster=True
             )
 
             redup_part = SyllablePart(
@@ -443,7 +453,7 @@ class Syllable:
             )
 
         return cls(
-            text=text,
+            text=original_text,
             onset_chars=full_onset_chars,
             has_ambiguous_cluster=has_ambiguous_cluster,
             has_impossible_cluster=has_impossible_cluster,
@@ -510,6 +520,10 @@ class Syllable:
             if re.fullmatch(expand(pat), text):
                 return form, val
         return ('', ''), 'a'
+
+    @classmethod
+    def _fullmatches_vowel_pattern(cls, text: str) -> bool:
+        return any(re.fullmatch(expand(pat), text) for pat, _, _ in cls._VOWEL_PATTERNS)
 
 
 
@@ -631,7 +645,7 @@ class Syllable:
             vowel_tone = self.main_syllable.vowel_form[1]
         
         text = self.main_syllable.vowel_form[0] + minor + onset_tone + vowel_tone + \
-            ((self.reduplicated_syllable.onset_chars + self.reduplicated_syllable.vowel_form[1]) if self.is_reduplicable else self.main_syllable.coda_chars)
+            ((self.reduplicated_syllable.onset_chars + self.reduplicated_syllable.vowel_form[1] + self.reduplicated_syllable.coda_chars) if self.is_reduplicable else self.main_syllable.coda_chars)
 
         return text
 
